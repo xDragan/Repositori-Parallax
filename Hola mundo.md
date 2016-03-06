@@ -1,3 +1,4 @@
-##Hola mundo desde casa Marc Fabi·n Barcelona
+##Hola mundo desde casa Marc Fabi√°n Barcelona
 ##Hola mundo desde casa de Javier Ortiz en el Prat de Llobregat
-##Hola mundo desde casa de Dani LÛpez en Cornella de Llobregat gg
+##Hola mundo desde casa de Dani L√≥pez en Cornella de Llobregat gg
+##Hola mundo desde casa Marc Lopez Sant Cugat
