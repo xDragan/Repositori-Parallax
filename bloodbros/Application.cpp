@@ -13,6 +13,7 @@
 #include"ModuleLevel2.h"
 #include "ModuleLevel3.h"
 #include "ModuleTittleScreen.h"
+#include "ModuleCollision.h"
 
 Application::Application()
 {
@@ -22,14 +23,15 @@ Application::Application()
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = audio0 = new ModuleAudio0();
 	modules[5] = titlescreen = new ModuleTitleScreen();
-	modules[6] = Level1 = new ModuleLevel1();
-	modules[7] = Level2 = new ModuleLevel2();
-	modules[8] = Level3 = new ModuleLevel3();
-	modules[9] = player = new ModulePlayer();
-	modules[10] = fade = new ModuleFadeToBlack();
-	modules[11] = audio1 = new ModuleAudio1();
-	modules[12] = audio2 = new ModuleAudio2();
-	modules[13] = audio3 = new ModuleAudio3();
+	modules[6] = collision = new ModuleCollision();
+	modules[7] = Level1 = new ModuleLevel1();
+	modules[8] = Level2 = new ModuleLevel2();
+	modules[9] = Level3 = new ModuleLevel3();
+	modules[10] = player = new ModulePlayer();
+	modules[11] = fade = new ModuleFadeToBlack();
+	modules[12] = audio1 = new ModuleAudio1();
+	modules[13] = audio2 = new ModuleAudio2();
+	modules[14] = audio3 = new ModuleAudio3();
 
 }	
 

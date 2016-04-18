@@ -43,7 +43,7 @@ ModulePlayer::ModulePlayer()
 	down.PushBack({ 583, 18, 28, 47 });
 
 	shoot.PushBack({ 263, 74, 27, 68 });
-	shoot.PushBack({ 263, 148, 27, 68 });
+	shoot.PushBack({ 260, 148, 29, 68 });
 	shoot.speed = 0.15f;
 	
 }
