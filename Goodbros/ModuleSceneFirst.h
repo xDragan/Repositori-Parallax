@@ -1,15 +1,15 @@
-#ifndef __MODULESCENESPACE_H__
-#define __MODULESCENESPACE_H__
+#ifndef __ModuleSceneFirst_H__
+#define __ModuleSceneFirst_H__
 
 #include "Module.h"
 
 struct SDL_Texture;
 
-class ModuleSceneSpace : public Module
+class ModuleSceneFirst : public Module
 {
 public:
-	ModuleSceneSpace();
-	~ModuleSceneSpace();
+	ModuleSceneFirst();
+	~ModuleSceneFirst();
 
 	bool Start();
 	update_status Update();
@@ -21,4 +21,4 @@ public:
 	SDL_Texture* stars = nullptr;
 };
 
-#endif // __MODULESCENESPACE_H__
+#endif // __ModuleSceneFirst_H__

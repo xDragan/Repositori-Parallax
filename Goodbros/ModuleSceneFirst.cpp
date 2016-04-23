@@ -5,18 +5,19 @@
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
-#include "ModuleSceneSpace.h"
+#include "ModuleSceneFirst.h"
+#include "ModuleAim.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
-ModuleSceneSpace::ModuleSceneSpace()
+ModuleSceneFirst::ModuleSceneFirst()
 {}
 
-ModuleSceneSpace::~ModuleSceneSpace()
+ModuleSceneFirst::~ModuleSceneFirst()
 {}
 
 // Load assets
-bool ModuleSceneSpace::Start()
+bool ModuleSceneFirst::Start()
 {
 	LOG("Loading space scene");
 	
@@ -25,6 +26,7 @@ bool ModuleSceneSpace::Start()
 	App->player->Enable();
 	App->particles->Enable();
 	App->collision->Enable();
+	App->aim->Enable();
 	
 	// Colliders ---
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_WALL);
@@ -35,7 +37,7 @@ bool ModuleSceneSpace::Start()
 }
 
 // UnLoad assets
-bool ModuleSceneSpace::CleanUp()
+bool ModuleSceneFirst::CleanUp()
 {
 	LOG("Unloading space scene");
 
@@ -43,12 +45,13 @@ bool ModuleSceneSpace::CleanUp()
 	App->player->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
+	App->aim->Disable();
 	
 	return true;
 }
 
 // Update: draw background
-update_status ModuleSceneSpace::Update()
+update_status ModuleSceneFirst::Update()
 {
 	// Move camera forward -----------------------------
 	int scroll_speed = 0;

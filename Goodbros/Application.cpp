@@ -3,12 +3,13 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
-#include "ModuleSceneSpace.h"
+#include "ModuleSceneFirst.h"
 #include "ModuleSceneIntro.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
+#include "ModuleAim.h"
 
 Application::Application()
 {
@@ -18,11 +19,13 @@ Application::Application()
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = scene_intro = new ModuleSceneIntro();
-	modules[i++] = scene_space = new ModuleSceneSpace();
+	modules[i++] = scene_space = new ModuleSceneFirst();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
+	modules[i++] = aim = new ModuleAim();
+
 }	
 
 Application::~Application()
