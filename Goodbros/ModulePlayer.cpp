@@ -47,133 +47,150 @@ ModulePlayer::ModulePlayer()
 
 	// idle animation //
 
-	idle[far_left].PushBack({ 115, 3, 27, 61 });
-	idle[Middle_left].PushBack({ 164, 2, 30, 60 });
-	idle[near_left].PushBack({ 214, 2, 29, 60 });
-	idle[middle].PushBack({ 266, 5, 23, 60 });
-	idle[near_right].PushBack({ 310, 7, 23, 61 });
-	idle[middle_right].PushBack({ 347, 8, 27, 61 });
-	idle[far_right].PushBack({ 387, 9, 31, 61 });
+	idle[far_left].PushBack({ 86, 57, 60, 69 });
+	idle[Middle_left].PushBack({ 146, 57, 51, 69 });
+	idle[near_left].PushBack({ 203, 57, 45, 69 });
+	idle[middle].PushBack({ 254, 57, 45, 69 });
+	idle[near_right].PushBack({ 305, 57, 45, 69 });
+	idle[middle_right].PushBack({ 357, 57, 56, 69 });
+	idle[far_right].PushBack({ 409, 57, 53, 69 });
 
-	down[far_left].PushBack({ 435, 1, 32, 64 });
-	down[Middle_left].PushBack({ 486, 1, 30, 64 });
-	down[near_left].PushBack({ 538, 1, 28, 64 });
-	down[middle].PushBack({ 583, 1, 29, 64 });
-	down[near_right].PushBack({ 627, 1, 27, 64 });
-	down[middle_right].PushBack({ 669, 1, 30, 64 });
-	down[far_right].PushBack({ 709, 1, 32, 64 });
+	down[far_left].PushBack({ 501, 57, 56, 69 });
+	down[Middle_left].PushBack({ 561, 57, 47, 69 });
+	down[near_left].PushBack({ 615, 57, 45, 69 });
+	down[middle].PushBack({ 668, 57, 45, 69 });
+	down[near_right].PushBack({ 719, 57, 45, 69 });
+	down[middle_right].PushBack({ 774, 57, 52, 69 });
+	down[far_right].PushBack({ 826, 57, 54, 69 });
 
 	//Shoot animations //
-	shoot[far_left].PushBack({ 96, 78, 47, 62 });
-	shoot[far_left].PushBack({ 96, 147, 47, 62 });
-	shoot[Middle_left].PushBack({ 151, 73, 43, 63 });
-	shoot[Middle_left].PushBack({ 151, 149, 43, 63 });
-	shoot[near_left].PushBack({ 203, 68, 38, 70 });
-	shoot[near_left].PushBack({ 203, 143, 38, 70 });
+	shoot[far_left].PushBack({ 86, 187, 60, 69 });
+	shoot[far_left].PushBack({ 86, 57, 60, 69 });
+	shoot[far_left].PushBack({ 86, 314, 60, 69 });
+	shoot[Middle_left].PushBack({ 146, 187, 43, 73 });
+	shoot[Middle_left].PushBack({ 146, 57, 51, 73 });
+	shoot[Middle_left].PushBack({ 146, 314, 43, 73 });
+	shoot[near_left].PushBack({ 203, 187, 38, 70 });
+	shoot[near_left].PushBack({ 203, 57, 45, 69 });
+	shoot[near_left].PushBack({ 203, 314, 45, 69 });
 
-	shoot[middle].PushBack({ 260, 77, 31, 65 });
-	shoot[middle].PushBack({ 258, 149, 31, 65 });
+	shoot[middle].PushBack({ 254, 187, 45, 69 });
+	shoot[middle].PushBack({ 254, 57, 45, 69 });
+	shoot[middle].PushBack({ 254, 314, 45, 69 });
 
-	shoot[near_right].PushBack({ 303, 72, 29, 66 });
-	shoot[near_right].PushBack({ 299, 149, 29, 64 });
-	shoot[middle_right].PushBack({ 344, 79, 40, 61 });
-	shoot[middle_right].PushBack({ 338, 153, 40, 61 });
-	shoot[far_right].PushBack({ 385, 80, 46, 60 });
-	shoot[far_right].PushBack({ 379, 151, 46, 60 });
+	shoot[near_right].PushBack({ 305, 187, 45, 69 });
+	shoot[near_right].PushBack({ 305, 57, 45, 69 });
+	shoot[near_right].PushBack({ 305, 314, 45, 69 });
+	shoot[middle_right].PushBack({ 357, 187, 56, 69 });
+	shoot[middle_right].PushBack({ 357, 57, 56, 69 });
+	shoot[middle_right].PushBack({ 357, 314, 56, 69 });
+	shoot[far_right].PushBack({ 413, 187, 53, 69 });
+	shoot[far_right].PushBack({ 413, 57, 53, 69 });
+	shoot[far_right].PushBack({ 413, 314, 53, 69 });
 
 	//shot speed
-	shoot[far_left].speed = 0.15f;
-	shoot[Middle_left].speed = 0.15f;
-	shoot[near_left].speed = 0.15f;
-	shoot[middle].speed = 0.15f;
-	shoot[near_right].speed = 0.15f;
-	shoot[middle_right].speed = 0.15f;
-	shoot[far_right].speed = 0.15f;
+	shoot[far_left].speed = 0.22f;
+	shoot[Middle_left].speed = 0.22f;
+	shoot[near_left].speed = 0.22f;
+	shoot[middle].speed = 0.22f;
+	shoot[near_right].speed = 0.22f;
+	shoot[middle_right].speed = 0.22f;
+	shoot[far_right].speed = 0.22f;
 
 	//Shoot Seated Animation//
 
-	shootdown[far_left].PushBack({ 429, 71, 48, 64 });
-	shootdown[far_left].PushBack({ 430, 134, 48, 64 });
-	shootdown[Middle_left].PushBack({ 474, 71, 43, 64 });
-	shootdown[Middle_left].PushBack({ 483, 134, 43, 64 });
-	shootdown[near_left].PushBack({ 528, 71, 38, 64 });
-	shootdown[near_left].PushBack({ 531, 134, 38, 64 });
+	shootdown[far_left].PushBack({ 501, 187, 56, 70 });
+	shootdown[far_left].PushBack({ 501, 57, 56, 69 });
+	shootdown[far_left].PushBack({ 501, 314, 56, 69 });
+	shootdown[Middle_left].PushBack({ 561, 187, 47, 69 });
+	shootdown[Middle_left].PushBack({ 561, 57, 47, 69 });
+	shootdown[Middle_left].PushBack({ 561, 314, 47, 69 });
+	shootdown[near_left].PushBack({ 615, 187, 45, 69 });
+	shootdown[near_left].PushBack({ 615, 57, 45, 69 });
+	shootdown[near_left].PushBack({ 615, 314, 45, 69 });
 
-	shootdown[middle].PushBack({ 581, 71, 44, 64 });
-	shootdown[middle].PushBack({ 585, 13, 44, 64 });
+	shootdown[middle].PushBack({ 668, 187, 45, 69 });
+	shootdown[middle].PushBack({ 668, 57, 45, 69 });
+	shootdown[middle].PushBack({ 668, 314, 45, 69 });
 
-	shootdown[near_right].PushBack({ 629, 71, 29, 66 });
-	shootdown[near_right].PushBack({ 629, 134, 29, 64 });
-	shootdown[middle_right].PushBack({ 667, 71, 42, 64 });
-	shootdown[middle_right].PushBack({ 666, 134, 35, 64 });
-	shootdown[far_right].PushBack({ 712, 71, 37, 64 });
-	shootdown[far_right].PushBack({ 711, 134, 39, 64 });
+	shootdown[near_right].PushBack({ 719, 187, 45, 69 });
+	shootdown[near_right].PushBack({ 719, 57, 45, 69 });
+	shootdown[near_right].PushBack({ 719, 314, 45, 69 });
+	shootdown[middle_right].PushBack({ 774, 187, 52, 69 });
+	shootdown[middle_right].PushBack({ 774, 57, 52, 69 });
+	shootdown[middle_right].PushBack({ 774, 314, 52, 69 });
+	shootdown[far_right].PushBack({ 826, 187, 54, 69 });
+	shootdown[far_right].PushBack({ 826, 57, 54, 69 });
+	shootdown[far_right].PushBack({ 826, 314, 54, 69 });
 
 	//shot  seated speed
-	shootdown[far_left].speed = 0.15f;
-	shootdown[Middle_left].speed = 0.15f;
-	shootdown[near_left].speed = 0.15f;
-	shootdown[middle].speed = 0.15f;
-	shootdown[near_right].speed = 0.15f;
-	shootdown[middle_right].speed = 0.15f;
-	shootdown[far_right].speed = 0.15f;
+	shootdown[far_left].speed = 0.20f;
+	shootdown[Middle_left].speed = 0.20f;
+	shootdown[near_left].speed = 0.20f;
+	shootdown[middle].speed = 0.20f;
+	shootdown[near_right].speed = 0.20f;
+	shootdown[middle_right].speed = 0.20f;
+	shootdown[far_right].speed = 0.20f;
+
+
 
 	// walk forward animation//	
-	forward.PushBack({ 66, 225, 35, 59 });
-	forward.PushBack({ 107, 226, 35, 60 });
-	forward.PushBack({ 147, 227, 41, 61 });
-	forward.PushBack({ 198, 227, 32, 61 });
-	forward.PushBack({ 234, 227, 31, 61 });
-	forward.PushBack({ 277, 230, 41, 61 });
-	forward.speed = 0.1f;
+	forward.PushBack({ 96, 438, 46, 60 });
+	forward.PushBack({ 152, 438, 46, 60 });
+	forward.PushBack({ 203, 438, 46, 60 });
+	forward.PushBack({ 255, 438, 46, 60 });
+	forward.PushBack({ 306, 438, 46, 60 });
+	forward.PushBack({ 357, 438, 46, 60 });
+	forward.speed = 0.25f;
 	// frontward tumble animation//
-	ftumble.PushBack({ 428, 227, 33, 61 });
-	ftumble.PushBack({ 475, 227, 66, 61 });
-	ftumble.PushBack({ 544, 228, 39, 61 });
-	ftumble.PushBack({ 592, 227, 44, 61 });
-	ftumble.PushBack({ 636, 227, 33, 61 });
-	ftumble.PushBack({ 675, 227, 50, 61 });
-	ftumble.PushBack({ 725, 227, 50, 61 });
-	ftumble.PushBack({ 773, 227, 33, 61 });
-	ftumble.PushBack({ 428, 227, 33, 61 });
+	ftumble.PushBack({ 511, 436, 46, 62 });
+	ftumble.PushBack({ 564, 436, 97, 62 });
+	ftumble.PushBack({ 668, 436, 46, 62 });
+	ftumble.PushBack({ 720, 436, 46, 62 });
+	ftumble.PushBack({ 774, 436, 46, 62 });
+	ftumble.PushBack({ 825, 436, 46, 62 });
+	ftumble.PushBack({ 875, 436, 46, 62 });
+	ftumble.PushBack({ 928, 436, 46, 62 });
 	ftumble.speed = 0.1f;
 
 	//down frontward tumble animation//
-	downftumble.PushBack({ 592, 227, 44, 61 });
-	downftumble.PushBack({ 636, 227, 33, 61 });
-	downftumble.PushBack({ 675, 227, 50, 61 });
-	downftumble.PushBack({ 725, 227, 50, 61 });
-	downftumble.PushBack({ 773, 227, 33, 61 });
-	downftumble.PushBack({ 428, 227, 33, 61 });
+	downftumble.PushBack({ 720, 436, 46, 62 });
+	downftumble.PushBack({ 774, 436, 46, 62 });
+	downftumble.PushBack({ 825, 436, 46, 62 });
+	downftumble.PushBack({ 875, 436, 46, 62 });
+	downftumble.PushBack({ 928, 436, 46, 62 });
 	downftumble.speed = 0.1f;
 
 	//walk backward animation//
-	backward.PushBack({ 563, 343, 41, 60 });
-	backward.PushBack({ 615, 340, 33, 62 });
-	backward.PushBack({ 651, 340, 33, 61 });
-	backward.PushBack({ 693, 340, 41, 62 });
-	backward.PushBack({ 741, 340, 34, 61 });
-	backward.PushBack({ 780, 340, 35, 61 });
-	backward.speed = 0.1f;
+	backward.PushBack({ 96, 508, 46, 60 });
+	backward.PushBack({ 151, 508, 46, 60 });
+	backward.PushBack({ 202, 508, 46, 60 });
+	backward.PushBack({ 254, 508, 46, 60 });
+	backward.PushBack({ 306, 508, 46, 60 });
+	backward.PushBack({ 357, 508, 46, 60 });
+	backward.speed = 0.25f;
 	//backward tumble animation//
 
-	btumble.PushBack({ 419, 340, 34, 63 });
-	btumble.PushBack({ 341, 340, 66, 61 });
-	btumble.PushBack({ 297, 340, 40, 64 });
-	btumble.PushBack({ 245, 340, 45, 61 });
-	btumble.PushBack({ 211, 340, 34, 64 });
-	btumble.PushBack({ 158, 340, 51, 61 });
-	btumble.PushBack({ 110, 340, 47, 61 });
-	btumble.PushBack({ 75, 340, 33, 61 });
+	btumble.PushBack({ 928, 506, 46, 62 });
+	btumble.PushBack({ 826, 506, 97, 62 });
+	btumble.PushBack({ 774, 506, 46, 62 });
+	btumble.PushBack({ 720, 506, 46, 62 });
+	btumble.PushBack({ 668, 506, 46, 62 });
+	btumble.PushBack({ 615, 506, 46, 62 });
+	btumble.PushBack({ 564, 506, 46, 62 });
+	btumble.PushBack({ 511, 506, 46, 62 });
 	btumble.speed = 0.1f;
 
 	//down backward tumble animation//
-	downbtumble.PushBack({ 245, 340, 45, 61 });
-	downbtumble.PushBack({ 211, 340, 34, 64 });
-	downbtumble.PushBack({ 158, 340, 51, 61 });
-	downbtumble.PushBack({ 110, 340, 47, 61 });
-	downbtumble.PushBack({ 75, 340, 33, 61 });
+
+	btumble.PushBack({ 720, 506, 46, 62 });
+	btumble.PushBack({ 668, 506, 46, 62 });
+	btumble.PushBack({ 615, 506, 46, 62 });
+	btumble.PushBack({ 564, 506, 46, 62 });
+	btumble.PushBack({ 511, 506, 46, 62 });
 	downbtumble.speed = 0.1f;
+
+
 }
 
 ModulePlayer::~ModulePlayer()
