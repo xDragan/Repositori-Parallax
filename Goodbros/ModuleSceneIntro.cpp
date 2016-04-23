@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneIntro.h"
-
+#include "ModuleAudio.h"
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneIntro::ModuleSceneIntro()
@@ -20,7 +20,7 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading game intro");
 	
 	background = App->textures->Load("bloodbros/Welcomepage.png");
-
+	App->audio->Enable(0);
 	App->render->camera.x = App->render->camera.y = 0;
 	
 	return true;

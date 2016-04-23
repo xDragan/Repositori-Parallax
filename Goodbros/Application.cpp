@@ -10,6 +10,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
 #include "ModuleAim.h"
+#include "ModuleAudio.h"
 
 Application::Application()
 {
@@ -25,7 +26,7 @@ Application::Application()
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = aim = new ModuleAim();
-
+	modules[i++] = audio = new ModuleAudio();
 }	
 
 Application::~Application()

@@ -11,6 +11,7 @@ public:
 	ModuleAudio();
 	~ModuleAudio();
 public:
+	void Enable(int lvl);
 	bool Start(int lvl);
 	bool CleanUp();
 	Mix_Music *music;

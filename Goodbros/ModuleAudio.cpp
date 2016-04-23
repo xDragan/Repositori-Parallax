@@ -6,7 +6,14 @@
 ModuleAudio::ModuleAudio(){ };
 ModuleAudio::~ModuleAudio(){ };
 
-
+void ModuleAudio::Enable(int lvl)
+{
+	if (enabled == false)
+	{
+		enabled = true;
+	}
+	Start(lvl);
+}
 
 bool ModuleAudio::Start(int lvl) //receives int lvl that will load audio diferently depending on lvl
 {

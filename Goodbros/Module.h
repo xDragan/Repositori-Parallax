@@ -7,7 +7,7 @@ struct Collider;
 
 class Module
 {
-private:
+protected:
 	bool enabled = true;
 
 public:
@@ -24,7 +24,7 @@ public:
 	// Module activation ---
 	bool IsEnabled() const				{ return enabled; }
 
-	void Enable()
+	virtual void Enable(int lvl)
 	{
 		if(enabled == false)
 		{

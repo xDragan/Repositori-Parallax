@@ -7,7 +7,7 @@
 #include "ModuleParticles.h"
 #include "ModuleSceneFirst.h"
 #include "ModuleAim.h"
-
+#include "ModuleAudio.h"
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneFirst::ModuleSceneFirst()
@@ -22,11 +22,11 @@ bool ModuleSceneFirst::Start()
 	LOG("Loading space scene");
 	
 	background = App->textures->Load("bloodbros/level1.png");
-
-	App->player->Enable();
-	App->particles->Enable();
-	App->collision->Enable();
-	App->aim->Enable();
+	App->audio->Enable(1);
+	App->player->Enable(0);
+	App->particles->Enable(0);
+	App->collision->Enable(0);
+	App->aim->Enable(0);
 	
 	// Colliders ---
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_WALL);
