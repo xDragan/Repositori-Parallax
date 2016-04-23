@@ -13,13 +13,13 @@ class ModulePlayer : public Module
 public:
 	ModulePlayer();
 	~ModulePlayer();
-
+public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-
 public:
-
+	Collider* player_coll;
+public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect cowboy;
 	Animation* current_animation = nullptr;

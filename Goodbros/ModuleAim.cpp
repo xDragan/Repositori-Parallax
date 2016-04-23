@@ -13,11 +13,11 @@
 
 ModuleAim::ModuleAim()
 {
-	idle.PushBack({ 465, 283, 33, 31 });
+	idle.PushBack({ 542, 289, 23, 21 });
 
 
-	shoot.PushBack({ 465, 283, 33, 31 });
-	shoot.PushBack({ 501, 283, 33, 31 });
+	shoot.PushBack({ 542, 289, 23, 21 });
+	shoot.PushBack({ 579, 289, 23, 31 });
 	shoot.speed = 0.2f;
 	
 }
@@ -32,7 +32,7 @@ bool ModuleAim::Start()
 
 	graphics = App->textures->Load("bloodbros/Stuff.png");
 
-	position.x = 100;
+	position.x = 110;
 	position.y = 75;
 
 	
@@ -56,24 +56,24 @@ update_status ModuleAim::Update()
 	int speed = 3;
 	current_animation = &idle;
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT&&position.x>2)
 	{
 		current_animation = &idle;
 		position.x -= speed;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT&&position.x<230)
 	{
 		current_animation = &idle;
 		position.x += speed;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT&&position.y>2)
 	{
 		current_animation = &idle;
 		position.y -= speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT&&position.y<157)
 	{
 		current_animation = &idle;
 		position.y += speed;

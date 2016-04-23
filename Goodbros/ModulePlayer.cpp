@@ -18,7 +18,7 @@ ModulePlayer::ModulePlayer()
 	cowboy.h = 64;
 
 	// idle animation (arcade sprite sheet)
-	idle.PushBack({ 258, 2, 31, 64 });
+	idle.PushBack({ 266, 5, 23, 60 });
 
 	shoot.PushBack({ 258, 76, 31, 66 });
 	shoot.PushBack({ 258, 148, 31, 64 });
@@ -104,7 +104,7 @@ bool ModulePlayer::Start()
 	position.x = 120;
 	position.y = 150;
 
-	// TODO 2: Add a collider to the player
+	player_coll=App->collision->AddCollider({ 128, 153, 22, 27 }, COLLIDER_PLAYER);//cowboy collider
 
 	return true;
 }
@@ -125,13 +125,13 @@ update_status ModulePlayer::Update()
 	float speed = 1.8;
 	current_animation = &idle;
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT&& position.x>8)
 	{
 		current_animation = &backward;
 		position.x -= speed;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT&& position.x<228)
 	{
 		current_animation = &forward;
 		position.x += speed;
@@ -184,8 +184,7 @@ update_status ModulePlayer::Update()
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 		current_animation = &idle;*/
 
-	// TODO 3: Update collider position to player position
-
+	player_coll->SetPos(position.x, position.y);
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 

@@ -109,10 +109,10 @@
     <ClCompile Include="ModuleSceneFirst.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleAim.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleAudio.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleAim.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
