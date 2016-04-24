@@ -42,7 +42,7 @@ ModulePlayer::ModulePlayer()
 	cowboy.w = 47;
 	cowboy.h = 64;
 
-	// idle animation (arcade sprite sheet)
+	// idle animation //
 
 	idle[far_left].PushBack({ 115, 3, 27, 61 });
 	idle[Middle_left].PushBack({ 164, 2, 30, 60 });
@@ -60,7 +60,7 @@ ModulePlayer::ModulePlayer()
 	down[middle_right].PushBack({ 669, 1, 30, 64 });
 	down[far_right].PushBack({ 709, 1, 32, 64 });
 
-	//Shoot animations, only middle shot is correct
+	//Shoot animations //
 	shoot[far_left].PushBack({ 96, 78, 47, 62 });
 	shoot[far_left].PushBack({ 96, 147, 47, 62 });
 	shoot[Middle_left].PushBack({ 151, 73, 43, 63 });
@@ -86,6 +86,36 @@ ModulePlayer::ModulePlayer()
 	shoot[near_right].speed = 0.15f;
 	shoot[middle_right].speed = 0.15f;
 	shoot[far_right].speed = 0.15f;
+
+	//Shoot Seated Animation//
+
+	shootdown[far_left].PushBack({ 429, 71, 48, 64 });
+	shootdown[far_left].PushBack({ 430, 134, 48, 64 });
+	shootdown[Middle_left].PushBack({474 , 71, 43, 64 });
+	shootdown[Middle_left].PushBack({ 483, 134, 43, 64 });
+	shootdown[near_left].PushBack({ 528, 71, 38, 64 });
+	shootdown[near_left].PushBack({ 531, 134, 38, 64 });
+
+	shootdown[middle].PushBack({ 581, 71, 44, 64 });
+	shootdown[middle].PushBack({ 585, 13, 44, 64 });
+
+	shootdown[near_right].PushBack({ 629, 71, 29, 66 });
+	shootdown[near_right].PushBack({ 629, 134, 29, 64 });
+	shootdown[middle_right].PushBack({ 667, 71, 42, 64 });
+	shootdown[middle_right].PushBack({ 666, 134, 35, 64 });
+	shootdown[far_right].PushBack({ 712, 71, 37, 64 });
+	shootdown[far_right].PushBack({ 711, 134, 39, 64 });
+
+	//shot  seated speed
+	shootdown[far_left].speed = 0.15f;
+	shootdown[Middle_left].speed = 0.15f;
+	shootdown[near_left].speed = 0.15f;
+	shootdown[middle].speed = 0.15f;
+	shootdown[near_right].speed = 0.15f;
+	shootdown[middle_right].speed = 0.15f;
+	shootdown[far_right].speed = 0.15f;
+
+
 
 	// walk forward animation//	
 	forward.PushBack({ 66, 225, 35, 59 });
@@ -145,7 +175,7 @@ ModulePlayer::ModulePlayer()
 	downbtumble.PushBack({ 75, 340, 33, 61 });
 	downbtumble.speed = 0.1f;
 
-	//down animation//
+	
 	
 	
 	
@@ -229,41 +259,37 @@ update_status ModulePlayer::Update()
 		current_animation = &downbtumble;
 
 	}
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x += speed;
-	}
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x -= speed;
-	}
 
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT &&App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT){
 
+		current_animation = &shootdown[Looking_at];
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT){
 
 	current_animation = &shoot[Looking_at];
 
 	}
+
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
-		position.x -= speed;
-		current_animation = &shoot[Looking_at];
+		position.x += speed;
+		current_animation = &shootdown[Looking_at];
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
-		position.x += speed;
-		current_animation = &shoot[Looking_at];
+		position.x -= speed;
+		current_animation = &shootdown[Looking_at];
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{
 		position.x += speed;
 		current_animation = &shoot[Looking_at];
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{
 		position.x -= speed;
 		current_animation = &shoot[Looking_at];
@@ -272,17 +298,11 @@ update_status ModulePlayer::Update()
 
 
 
-	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE)
 	{
-		if(current_animation != &down[Looking_at])
-		{
-			
-			current_animation = &down[Looking_at];
-		}
+		current_animation = &down[Looking_at];
 	}
-	/*if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
-		current_animation = &idle;*/
+
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{
 		player_coll->SetPos(position.x+8, position.y);

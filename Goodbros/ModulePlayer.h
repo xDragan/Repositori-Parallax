@@ -39,6 +39,7 @@ public:
 	Animation forward;
 	Animation backward;
 	Animation shoot[7];
+	Animation shootdown[7];
 	Animation down[7];
 	Animation ftumble;
 	Animation btumble;
