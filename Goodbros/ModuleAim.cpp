@@ -23,8 +23,12 @@ ModuleAim::ModuleAim()
 	Aimshoot.PushBack({ 660, 289, 23, 21 });
 	Aimshoot.PushBack({ 696, 288, 23, 21 });
 	Aimshoot.PushBack({ 737, 288, 23, 21 });
-	Aimshoot.speed = 0.2f;
+	Aimshoot.PushBack({ 542, 289, 23, 21 });
+	Aimshoot.PushBack({ 579, 289, 23, 31 });
+	Aimshoot.PushBack({ 542, 289, 23, 21 });
+	Aimshoot.speed = 0.4f;
 	Aimshoot.loop = true;
+
 
 	
 }

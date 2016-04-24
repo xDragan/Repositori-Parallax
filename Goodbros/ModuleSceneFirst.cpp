@@ -24,7 +24,7 @@ bool ModuleSceneFirst::Start()
 {
 	LOG("Loading space scene");
 	
-	background = App->textures->Load("bloodbros/stage1_clean.png");
+	background = App->textures->Load("bloodbros/level1destroyed.png");
 
 	App->audio->Enable(1);
 	App->player->Enable(0);
