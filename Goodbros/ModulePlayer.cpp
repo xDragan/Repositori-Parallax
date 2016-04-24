@@ -8,6 +8,16 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 
+#include "Globals.h"
+#include "Application.h"
+#include "ModuleTextures.h"
+#include "ModuleInput.h"
+#include "ModuleParticles.h"
+#include "ModuleRender.h"
+#include "ModuleCollision.h"
+#include "ModuleFadeToBlack.h"
+#include "ModulePlayer.h"
+
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 int const ModulePlayer::looking_at()
 {
@@ -70,13 +80,13 @@ ModulePlayer::ModulePlayer()
 
 	shoot[middle].PushBack({ 260, 77, 31, 65 });
 	shoot[middle].PushBack({ 258, 149, 31, 65 });
-	
+
 	shoot[near_right].PushBack({ 303, 72, 29, 66 });
 	shoot[near_right].PushBack({ 299, 149, 29, 64 });
 	shoot[middle_right].PushBack({ 344, 79, 40, 61 });
 	shoot[middle_right].PushBack({ 338, 153, 40, 61 });
-	shoot[far_right].PushBack({ 385, 80, 46, 60});
-	shoot[far_right].PushBack({ 379, 151, 46, 60});
+	shoot[far_right].PushBack({ 385, 80, 46, 60 });
+	shoot[far_right].PushBack({ 379, 151, 46, 60 });
 
 	//shot speed
 	shoot[far_left].speed = 0.15f;
@@ -91,7 +101,7 @@ ModulePlayer::ModulePlayer()
 
 	shootdown[far_left].PushBack({ 429, 71, 48, 64 });
 	shootdown[far_left].PushBack({ 430, 134, 48, 64 });
-	shootdown[Middle_left].PushBack({474 , 71, 43, 64 });
+	shootdown[Middle_left].PushBack({ 474, 71, 43, 64 });
 	shootdown[Middle_left].PushBack({ 483, 134, 43, 64 });
 	shootdown[near_left].PushBack({ 528, 71, 38, 64 });
 	shootdown[near_left].PushBack({ 531, 134, 38, 64 });
@@ -136,7 +146,7 @@ ModulePlayer::ModulePlayer()
 	ftumble.PushBack({ 773, 227, 33, 61 });
 	ftumble.PushBack({ 428, 227, 33, 61 });
 	ftumble.speed = 0.1f;
-	
+
 	//down frontward tumble animation//
 	downftumble.PushBack({ 592, 227, 44, 61 });
 	downftumble.PushBack({ 636, 227, 33, 61 });
@@ -156,14 +166,14 @@ ModulePlayer::ModulePlayer()
 	backward.speed = 0.1f;
 	//backward tumble animation//
 
-	btumble.PushBack({419,340,34,63});
-	btumble.PushBack({341, 340, 66, 61 });
-	btumble.PushBack({297, 340, 40, 64 });
-	btumble.PushBack({245, 340, 45, 61 });
-	btumble.PushBack({211, 340, 34, 64 });
-	btumble.PushBack({158, 340, 51, 61 });
-	btumble.PushBack({110, 340, 47, 61 });
-	btumble.PushBack({75, 340, 33, 61 });
+	btumble.PushBack({ 419, 340, 34, 63 });
+	btumble.PushBack({ 341, 340, 66, 61 });
+	btumble.PushBack({ 297, 340, 40, 64 });
+	btumble.PushBack({ 245, 340, 45, 61 });
+	btumble.PushBack({ 211, 340, 34, 64 });
+	btumble.PushBack({ 158, 340, 51, 61 });
+	btumble.PushBack({ 110, 340, 47, 61 });
+	btumble.PushBack({ 75, 340, 33, 61 });
 	btumble.speed = 0.1f;
 
 	//down backward tumble animation//
@@ -174,11 +184,6 @@ ModulePlayer::ModulePlayer()
 	downbtumble.PushBack({ 110, 340, 47, 61 });
 	downbtumble.PushBack({ 75, 340, 33, 61 });
 	downbtumble.speed = 0.1f;
-
-	
-	
-	
-	
 }
 
 ModulePlayer::~ModulePlayer()
@@ -194,11 +199,11 @@ bool ModulePlayer::Start()
 	position.x = 120;
 	position.y = 150;
 
-	player_coll=App->collision->AddCollider({ 128, 153, 22, 27 }, COLLIDER_PLAYER);//cowboy collider
-	
+	player_coll = App->collision->AddCollider({ 128, 153, 22, 27 }, COLLIDER_PLAYER);//cowboy collider
+
 	Aimposition.x = position.x;
 	Aimposition.y = position.y - 150;
-	
+
 	return true;
 }
 
@@ -251,35 +256,33 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
+		position.x -= speed;
 		current_animation = &downftumble;
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
+		position.x += speed;
 		current_animation = &downbtumble;
-
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT &&App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT){
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT){
 
 		current_animation = &shootdown[Looking_at];
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT){
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE){
 
-	current_animation = &shoot[Looking_at];
+		current_animation = &shoot[Looking_at];
 
 	}
-
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
-		position.x += speed;
 		current_animation = &shootdown[Looking_at];
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
-		position.x -= speed;
 		current_animation = &shootdown[Looking_at];
 	}
 
@@ -295,9 +298,6 @@ update_status ModulePlayer::Update()
 		current_animation = &shoot[Looking_at];
 	}
 
-
-
-
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE)
 	{
 		current_animation = &down[Looking_at];
@@ -305,15 +305,15 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{
-		player_coll->SetPos(position.x+8, position.y);
+		player_coll->SetPos(position.x + 8, position.y);
 	}
 	else if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{
-		player_coll->SetPos(position.x+4, position.y);
+		player_coll->SetPos(position.x + 4, position.y);
 	}
 	else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
-		player_coll->SetPos(position.x, position.y+20);
+		player_coll->SetPos(position.x, position.y + 20);
 	}
 	else
 		player_coll->SetPos(position.x, position.y);
@@ -323,4 +323,3 @@ update_status ModulePlayer::Update()
 
 	return UPDATE_CONTINUE;
 }
-
