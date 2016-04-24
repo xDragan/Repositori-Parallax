@@ -9,7 +9,7 @@
 #include "ModulePlayer.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
-int const ModulePlayer::portion_calculate()
+int const ModulePlayer::looking_at()
 {
 	int distance = (Aimposition.x + 70 / 2) - (position.x + 80 / 2);
 	int portion = SCREEN_WIDTH / 7;
@@ -60,10 +60,31 @@ ModulePlayer::ModulePlayer()
 	down[middle_right].PushBack({ 669, 1, 30, 64 });
 	down[far_right].PushBack({ 709, 1, 32, 64 });
 
+	//Shoot animations, only middle shot is correct
+	shoot[far_left].PushBack({ 258, 76, 31, 66 });
+	shoot[far_left].PushBack({ 258, 76, 31, 66 });
+	shoot[Middle_left].PushBack({ 258, 76, 31, 66 });
+	shoot[Middle_left].PushBack({ 258, 76, 31, 66 });
+	shoot[near_left].PushBack({ 258, 76, 31, 66 });
+	shoot[near_left].PushBack({ 258, 76, 31, 66 });
+	shoot[middle].PushBack({ 259, 76, 27, 66 });
+	shoot[middle].PushBack({ 259, 148, 37, 64 });
+	
+	shoot[near_right].PushBack({ 258, 76, 31, 66 });
+	shoot[near_right].PushBack({ 258, 76, 31, 66 });
+	shoot[middle_right].PushBack({ 258, 76, 31, 66 });
+	shoot[middle_right].PushBack({ 258, 76, 31, 66 });
+	shoot[far_right].PushBack({ 258, 76, 31, 66 });
+	shoot[far_right].PushBack({ 258, 76, 31, 66 });
 
-	shoot.PushBack({ 258, 76, 31, 66 });
-	shoot.PushBack({ 258, 148, 31, 64 });
-	shoot.speed = 3.0f;
+	//shot speed
+	shoot[far_left].speed = 3.0f;
+	shoot[Middle_left].speed = 3.0f;
+	shoot[near_left].speed = 3.0f;
+	shoot[middle].speed = 0.15f;
+	shoot[near_right].speed = 3.0f;
+	shoot[middle_right].speed = 3.0f;
+	shoot[far_right].speed = 3.0f;
 
 	// walk forward animation//	
 	forward.PushBack({ 66, 225, 35, 59 });
@@ -126,9 +147,7 @@ ModulePlayer::ModulePlayer()
 	//down animation//
 	
 	
-	shoot.PushBack({ 259, 76, 27, 66 });
-	shoot.PushBack({ 259, 148, 37, 64 });
-	shoot.speed = 0.15f;
+	
 }
 
 ModulePlayer::~ModulePlayer()
@@ -169,8 +188,8 @@ update_status ModulePlayer::Update()
 	int AimSpeed = 3;
 	int xcorrection = 0;
 	int ycorrection = 0;
-	int screen_portion = portion_calculate();
-	current_animation = &idle[screen_portion];
+	int Looking_at = looking_at();
+	current_animation = &idle[Looking_at];
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT&& position.x > 8)
 	{
@@ -223,31 +242,31 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT){
 
-	current_animation = &shoot;
+	current_animation = &shoot[Looking_at];
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
-		current_animation = &shoot;
+		current_animation = &shoot[Looking_at];
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
-		current_animation = &shoot;
+		current_animation = &shoot[Looking_at];
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
-		current_animation = &shoot;
+		current_animation = &shoot[Looking_at];
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
-		current_animation = &shoot;
+		current_animation = &shoot[Looking_at];
 	}
 
 
@@ -255,10 +274,10 @@ update_status ModulePlayer::Update()
 
 	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
-		if(current_animation != &down[screen_portion])
+		if(current_animation != &down[Looking_at])
 		{
 			
-			current_animation = &down[screen_portion];
+			current_animation = &down[Looking_at];
 		}
 	}
 	/*if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE

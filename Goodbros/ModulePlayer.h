@@ -28,7 +28,7 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-	int const portion_calculate();
+	int const looking_at();
 public:
 	Collider* player_coll;
 public:
@@ -38,7 +38,7 @@ public:
 	Animation idle[7];
 	Animation forward;
 	Animation backward;
-	Animation shoot;
+	Animation shoot[7];
 	Animation down[7];
 	Animation ftumble;
 	Animation btumble;
