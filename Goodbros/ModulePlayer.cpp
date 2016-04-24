@@ -61,30 +61,31 @@ ModulePlayer::ModulePlayer()
 	down[far_right].PushBack({ 709, 1, 32, 64 });
 
 	//Shoot animations, only middle shot is correct
-	shoot[far_left].PushBack({ 258, 76, 31, 66 });
-	shoot[far_left].PushBack({ 258, 76, 31, 66 });
-	shoot[Middle_left].PushBack({ 258, 76, 31, 66 });
-	shoot[Middle_left].PushBack({ 258, 76, 31, 66 });
-	shoot[near_left].PushBack({ 258, 76, 31, 66 });
-	shoot[near_left].PushBack({ 258, 76, 31, 66 });
-	shoot[middle].PushBack({ 259, 76, 27, 66 });
-	shoot[middle].PushBack({ 259, 148, 37, 64 });
+	shoot[far_left].PushBack({ 96, 78, 47, 62 });
+	shoot[far_left].PushBack({ 96, 147, 47, 62 });
+	shoot[Middle_left].PushBack({ 151, 73, 43, 63 });
+	shoot[Middle_left].PushBack({ 151, 149, 43, 63 });
+	shoot[near_left].PushBack({ 203, 68, 38, 70 });
+	shoot[near_left].PushBack({ 203, 143, 38, 70 });
+
+	shoot[middle].PushBack({ 260, 77, 31, 65 });
+	shoot[middle].PushBack({ 258, 149, 31, 65 });
 	
-	shoot[near_right].PushBack({ 258, 76, 31, 66 });
-	shoot[near_right].PushBack({ 258, 76, 31, 66 });
-	shoot[middle_right].PushBack({ 258, 76, 31, 66 });
-	shoot[middle_right].PushBack({ 258, 76, 31, 66 });
-	shoot[far_right].PushBack({ 258, 76, 31, 66 });
-	shoot[far_right].PushBack({ 258, 76, 31, 66 });
+	shoot[near_right].PushBack({ 303, 72, 29, 66 });
+	shoot[near_right].PushBack({ 299, 149, 29, 64 });
+	shoot[middle_right].PushBack({ 344, 79, 40, 61 });
+	shoot[middle_right].PushBack({ 338, 153, 40, 61 });
+	shoot[far_right].PushBack({ 385, 80, 46, 60});
+	shoot[far_right].PushBack({ 379, 151, 46, 60});
 
 	//shot speed
-	shoot[far_left].speed = 3.0f;
-	shoot[Middle_left].speed = 3.0f;
-	shoot[near_left].speed = 3.0f;
+	shoot[far_left].speed = 0.15f;
+	shoot[Middle_left].speed = 0.15f;
+	shoot[near_left].speed = 0.15f;
 	shoot[middle].speed = 0.15f;
-	shoot[near_right].speed = 3.0f;
-	shoot[middle_right].speed = 3.0f;
-	shoot[far_right].speed = 3.0f;
+	shoot[near_right].speed = 0.15f;
+	shoot[middle_right].speed = 0.15f;
+	shoot[far_right].speed = 0.15f;
 
 	// walk forward animation//	
 	forward.PushBack({ 66, 225, 35, 59 });
