@@ -14,20 +14,12 @@ ModuleParticles::ModuleParticles()
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
 
-	explosion.anim.PushBack({ 274, 296, 33, 30 });
-	explosion.anim.PushBack({ 313, 296, 33, 30 });
-	explosion.anim.PushBack({ 346, 296, 33, 30 });
-	explosion.anim.PushBack({ 382, 296, 33, 30 });
-	explosion.anim.PushBack({ 419, 296, 33, 30 });
-	explosion.anim.PushBack({ 457, 296, 33, 30 });
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
-
-	laser.anim.PushBack({ 232, 103, 16, 12 });
-	laser.anim.PushBack({ 249, 103, 16, 12 });
-	laser.anim.speed = 0.2f;
-	laser.speed.x = 5;
-	laser.life = 3000;
+	//shot.anim.PushBack({ 625, 288, 22, 14 });
+	shot.anim.PushBack({ 660, 290, 19, 12 });
+	shot.anim.PushBack({ 696, 289, 22, 14 });
+	shot.anim.speed = 0.2f;
+	shot.anim.loop = true;
+	shot.life = 50;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -37,9 +29,8 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-
-	// Load particles fx particle
-	laser.fx = App->audio->LoadFx("bloodbros/shot.wav");
+	shot.fx = App->audio->LoadFx("bloodbros/shot.wav");
+	graphics = App->textures->Load("bloodbros/Stuff.png");
 
 	return true;
 }

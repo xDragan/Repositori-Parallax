@@ -273,7 +273,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{
-		App->particles->AddParticle(App->particles->laser, position.x, position.y, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->shot, position.x, position.y, COLLIDER_PLAYER_SHOT);
 		current_animation = &shoot[Looking_at];
 	}
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)

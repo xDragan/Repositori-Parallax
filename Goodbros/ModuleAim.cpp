@@ -78,9 +78,9 @@ update_status ModuleAim::Update()
 	{
 		position.y += speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_DOWN)
 	{
-
+		App->particles->AddParticle(App->particles->shot, position.x + 2, position.y + 3, COLLIDER_PLAYER_SHOT);
 	
 	}
 
