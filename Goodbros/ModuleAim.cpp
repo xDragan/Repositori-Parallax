@@ -36,7 +36,7 @@ bool ModuleAim::Start()
 	position.x = 110;
 	position.y = 75;
 
-	
+	Aim = App->collision->AddCollider({ position.x + 3, position.y + 3, 22, 20 }, COLLIDER_PLAYER_SHOT);
 
 	return true;
 }
@@ -83,11 +83,14 @@ update_status ModuleAim::Update()
 
 	
 	}
+
+	Aim->rect.x = position.x + 1;
+	Aim->rect.y = position.y + 1;
+
 	/*if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 	&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 	current_animation = &idle;*/
 
-	// TODO 3: Update collider position to player position
 
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));

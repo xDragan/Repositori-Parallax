@@ -93,7 +93,7 @@ ModulePlayer::ModulePlayer()
 	forward.PushBack({ 198, 227, 32, 61 });
 	forward.PushBack({ 234, 227, 31, 61 });
 	forward.PushBack({ 277, 230, 41, 61 });
-	forward.speed = 0.3f;
+	forward.speed = 0.1f;
 	// frontward tumble animation//
 	ftumble.PushBack({ 428, 227, 33, 61 });
 	ftumble.PushBack({ 475, 227, 66, 61 });
@@ -104,7 +104,7 @@ ModulePlayer::ModulePlayer()
 	ftumble.PushBack({ 725, 227, 50, 61 });
 	ftumble.PushBack({ 773, 227, 33, 61 });
 	ftumble.PushBack({ 428, 227, 33, 61 });
-	ftumble.speed = 0.15f;
+	ftumble.speed = 0.1f;
 	
 	//down frontward tumble animation//
 	downftumble.PushBack({ 592, 227, 44, 61 });
@@ -113,7 +113,7 @@ ModulePlayer::ModulePlayer()
 	downftumble.PushBack({ 725, 227, 50, 61 });
 	downftumble.PushBack({ 773, 227, 33, 61 });
 	downftumble.PushBack({ 428, 227, 33, 61 });
-	downftumble.speed = 0.15f;
+	downftumble.speed = 0.1f;
 
 	//walk backward animation//
 	backward.PushBack({ 563, 343, 41, 60 });
@@ -122,7 +122,7 @@ ModulePlayer::ModulePlayer()
 	backward.PushBack({ 693, 340, 41, 62 });
 	backward.PushBack({ 741, 340, 34, 61 });
 	backward.PushBack({ 780, 340, 35, 61 });
-	backward.speed = 0.3f;
+	backward.speed = 0.1f;
 	//backward tumble animation//
 
 	btumble.PushBack({419,340,34,63});
@@ -133,7 +133,7 @@ ModulePlayer::ModulePlayer()
 	btumble.PushBack({158, 340, 51, 61 });
 	btumble.PushBack({110, 340, 47, 61 });
 	btumble.PushBack({75, 340, 33, 61 });
-	btumble.speed = 0.15f;
+	btumble.speed = 0.1f;
 
 	//down backward tumble animation//
 
@@ -142,7 +142,7 @@ ModulePlayer::ModulePlayer()
 	downbtumble.PushBack({ 158, 340, 51, 61 });
 	downbtumble.PushBack({ 110, 340, 47, 61 });
 	downbtumble.PushBack({ 75, 340, 33, 61 });
-	downbtumble.speed = 0.15f;
+	downbtumble.speed = 0.1f;
 
 	//down animation//
 	
@@ -185,13 +185,13 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 	float speed = 1.8;
-	int AimSpeed = 3;
+	int AimSpeed = 2;
 	int xcorrection = 0;
 	int ycorrection = 0;
 	int Looking_at = looking_at();
 	current_animation = &idle[Looking_at];
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT&& position.x > 8)
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 8)
 	{
 		current_animation = &backward;
 		position.x -= speed;
@@ -200,7 +200,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT&& position.x < 228)
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < 228)
 	{
 		current_animation = &forward;
 		position.x += speed;
@@ -218,22 +218,21 @@ update_status ModulePlayer::Update()
 		current_animation = &btumble;
 
 	}
-
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &downftumble;
 
 	}
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT &&App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &downbtumble;
 
 	}
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_IDLE)
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_IDLE)
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
 	}
@@ -283,12 +282,24 @@ update_status ModulePlayer::Update()
 	/*if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 		current_animation = &idle;*/
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
+	{
+		player_coll->SetPos(position.x+8, position.y);
+	}
+	else if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
+	{
+		player_coll->SetPos(position.x+4, position.y);
+	}
+	else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	{
+		player_coll->SetPos(position.x, position.y+20);
+	}
+	else
+		player_coll->SetPos(position.x, position.y);
 
-	player_coll->SetPos(position.x, position.y);
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;
 }
 
-// TODO 4: Detect collision with a wall. If so, go back to intro screen.
