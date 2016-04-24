@@ -90,3 +90,17 @@ bool ModuleAudio::UnLoadFx(uint id)
 
 	return ret;
 }
+
+// Play WAV
+bool ModuleAudio::PlayFx(uint id, int repeat)
+{
+	bool ret = false;
+
+	if (fx[id] != nullptr)
+	{
+		Mix_PlayChannel(-1, fx[id], repeat);
+		ret = true;
+	}
+
+	return ret;
+}

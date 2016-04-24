@@ -23,6 +23,9 @@ public:
 	uint LoadFx(const char* path);
 	bool UnLoadFx(uint id);
 
+	// Play a previously loaded WAV
+	bool PlayFx(unsigned int fx, int repeat = 0);
+
 private:
 
 	Mix_Chunk*	fx[MAX_FX];
