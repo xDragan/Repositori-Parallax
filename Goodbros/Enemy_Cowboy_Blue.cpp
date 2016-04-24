@@ -1,28 +1,29 @@
-#include "Application.h"
+ #include "Application.h"
 #include "Enemy_CowBoy_Blue.h"
 #include "ModuleCollision.h"
 
 Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 {
-	forward.PushBack({ 88, 405, 20, 44 });
-	forward.PushBack({ 123, 405, 26, 44 });
-	forward.PushBack({ 176, 405, 26, 44 });
-	forward.PushBack({ 229, 405, 26, 44 });
-	forward.PushBack({ 267, 405, 26, 44 });
-	forward.PushBack({ 310, 405, 26, 44 });
+	forward.PushBack({ 117, 396, 30, 55 });
+	forward.PushBack({ 152, 396, 30, 55 });
+	forward.PushBack({ 188, 396, 30, 55 });
+	forward.PushBack({ 224, 396, 30, 55 });
+	forward.PushBack({ 261, 396, 30, 55 });
+	forward.PushBack({ 299, 396, 30, 55 });
 	forward.speed = 0.06f;
 
-	backward.PushBack({ 88, 469, 20, 44 });
-	backward.PushBack({ 135, 469, 26, 44 });
-	backward.PushBack({ 181, 469, 26, 44 });
-	backward.PushBack({ 221, 469, 31, 44 });
-	backward.PushBack({ 278, 469, 26, 44 });
-	backward.PushBack({ 319, 469, 26, 44 });
+	backward.PushBack({ 117, 459, 30, 55 });
+	backward.PushBack({ 152, 459, 30, 55 });
+	backward.PushBack({ 188, 459, 30, 55 });
+	backward.PushBack({ 224, 459, 30, 55 });
+	backward.PushBack({ 261, 459, 30, 55 });
+	backward.PushBack({ 299, 459, 30, 55 });
 	backward.speed = 0.06f;
-	
-	stop_shoot.PushBack({ 491, 406, 29, 44 });
-	stop_shoot.PushBack({ 523, 406, 26, 54 });
+
+	stop_shoot.PushBack({ 353, 396, 30, 55 });
+	stop_shoot.PushBack({ 392, 396, 30, 55 });
 	stop_shoot.speed = 0.02f;
+
 
 	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 

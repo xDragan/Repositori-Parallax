@@ -4,8 +4,8 @@
 
 Enemy_Pig::Enemy_Pig(int x, int y) : Enemy(x, y)
 {
-	run.PushBack({ 0, 11, 38, 27 });
-	run.PushBack({ 39, 11, 38, 27 });
+	run.PushBack({ 81, 127, 32, 24 });
+	run.PushBack({ 127, 127, 32, 24 });
 	run.speed = 0.07f;
 
 	animation = &run;
