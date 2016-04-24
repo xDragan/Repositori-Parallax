@@ -52,13 +52,13 @@ ModulePlayer::ModulePlayer()
 	idle[middle_right].PushBack({ 347, 8, 27, 61 });
 	idle[far_right].PushBack({ 387, 9, 31, 61 });
 
-	down[far_left].PushBack({ 435, 21, 32, 45 });
-	down[Middle_left].PushBack({ 486, 22, 30, 45 });
-	down[near_left].PushBack({ 538, 21, 28, 41 });
-	down[middle].PushBack({ 583, 19, 23, 45 });
-	down[near_right].PushBack({ 627, 19, 27, 45 });
-	down[middle_right].PushBack({ 669, 19, 30, 45 });
-	down[far_right].PushBack({ 709, 19, 32, 45 });
+	down[far_left].PushBack({ 435, 1, 32, 64 });
+	down[Middle_left].PushBack({ 486, 1, 30, 64 });
+	down[near_left].PushBack({ 538, 1, 28, 64 });
+	down[middle].PushBack({ 583, 1, 29, 64 });
+	down[near_right].PushBack({ 627, 1, 27, 64 });
+	down[middle_right].PushBack({ 669, 1, 30, 64 });
+	down[far_right].PushBack({ 709, 1, 32, 64 });
 
 
 	shoot.PushBack({ 258, 76, 31, 66 });
@@ -210,6 +210,15 @@ update_status ModulePlayer::Update()
 		current_animation = &downbtumble;
 
 	}
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_IDLE)
+	{
+		position.x += speed;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_IDLE)
+	{
+		position.x -= speed;
+	}
+
 
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
