@@ -24,7 +24,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("bloodbros/pigs.png");
+	sprites = App->textures->Load("bloodbros/enemy.png");
 
 	return true;
 }
@@ -127,12 +127,13 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	{
 		switch (info.type)
 		{
-		case ENEMY_TYPES::PIG:
-			enemies[i] = new Enemy_Pig(info.x, info.y);
-			break;
 		case ENEMY_TYPES::BLUE_COWBOY:
 			enemies[i] = new Enemy_CowBoy_Blue(info.x, info.y);
 			break;
+		case ENEMY_TYPES::PIG:
+			enemies[i] = new Enemy_Pig(info.x, info.y);
+			break;
+		
 		}
 	}
 }
