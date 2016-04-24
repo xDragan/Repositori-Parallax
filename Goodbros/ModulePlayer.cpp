@@ -9,6 +9,31 @@
 #include "ModulePlayer.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
+int const ModulePlayer::portion_calculate()
+{
+	int distance = (Aimposition.x + 70 / 2) - (position.x + 80 / 2);
+	int portion = SCREEN_WIDTH / 7;
+	if (distance >= portion / 2)
+	{
+		if (distance >= (2 * portion + portion / 2))
+			return far_right;
+		else if (distance >= (portion + portion / 2))
+			return middle_right;
+		else
+			return near_right;
+	}
+	else if (distance <= -portion / 2)
+	{
+		if (distance <= -(2 * portion + portion / 2))
+			return far_left;
+		else if (distance <= -(portion + portion / 2))
+			return Middle_left;
+		else
+			return near_left;
+	}
+	else
+		return middle;
+}
 
 ModulePlayer::ModulePlayer()
 {
@@ -18,7 +43,23 @@ ModulePlayer::ModulePlayer()
 	cowboy.h = 64;
 
 	// idle animation (arcade sprite sheet)
-	idle.PushBack({ 266, 5, 23, 60 });
+
+	idle[far_left].PushBack({ 115, 3, 27, 61 });
+	idle[Middle_left].PushBack({ 164, 2, 30, 60 });
+	idle[near_left].PushBack({ 214, 2, 29, 60 });
+	idle[middle].PushBack({ 266, 5, 23, 60 });
+	idle[near_right].PushBack({ 310, 7, 23, 61 });
+	idle[middle_right].PushBack({ 347, 8, 27, 61 });
+	idle[far_right].PushBack({ 387, 9, 31, 61 });
+
+	down[far_left].PushBack({ 435, 21, 32, 45 });
+	down[Middle_left].PushBack({ 486, 22, 30, 45 });
+	down[near_left].PushBack({ 538, 21, 28, 41 });
+	down[middle].PushBack({ 583, 19, 23, 45 });
+	down[near_right].PushBack({ 627, 19, 27, 45 });
+	down[middle_right].PushBack({ 669, 19, 30, 45 });
+	down[far_right].PushBack({ 709, 19, 32, 45 });
+
 
 	shoot.PushBack({ 258, 76, 31, 66 });
 	shoot.PushBack({ 258, 148, 31, 64 });
@@ -84,7 +125,6 @@ ModulePlayer::ModulePlayer()
 
 	//down animation//
 	
-	down.PushBack({ 583, 5, 28, 61 });
 	
 	shoot.PushBack({ 259, 76, 27, 66 });
 	shoot.PushBack({ 259, 148, 37, 64 });
@@ -105,7 +145,10 @@ bool ModulePlayer::Start()
 	position.y = 150;
 
 	player_coll=App->collision->AddCollider({ 128, 153, 22, 27 }, COLLIDER_PLAYER);//cowboy collider
-
+	
+	Aimposition.x = position.x;
+	Aimposition.y = position.y - 150;
+	
 	return true;
 }
 
@@ -123,18 +166,28 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 	float speed = 1.8;
-	current_animation = &idle;
+	int AimSpeed = 3;
+	int xcorrection = 0;
+	int ycorrection = 0;
+	int screen_portion = portion_calculate();
+	current_animation = &idle[screen_portion];
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT&& position.x>8)
 	{
 		current_animation = &backward;
 		position.x -= speed;
+		if (Aimposition.x >= 0){
+			Aimposition.x -= AimSpeed;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT&& position.x<228)
 	{
 		current_animation = &forward;
 		position.x += speed;
+		if (Aimposition.x <= 249){
+			Aimposition.x += AimSpeed;
+		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{
@@ -168,10 +221,10 @@ update_status ModulePlayer::Update()
 
 	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
-		if(current_animation != &down)
+		if(current_animation != &down[screen_portion])
 		{
 			
-			current_animation = &down;
+			current_animation = &down[screen_portion];
 		}
 	}
 	/*if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
@@ -180,7 +233,7 @@ update_status ModulePlayer::Update()
 
 	player_coll->SetPos(position.x, position.y);
 	// Draw everything --------------------------------------
-	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	App->render->Blit(graphics, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;
 }

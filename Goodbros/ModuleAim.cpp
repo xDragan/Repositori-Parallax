@@ -18,6 +18,7 @@ ModuleAim::ModuleAim()
 
 	shoot.PushBack({ 542, 289, 23, 21 });
 	shoot.PushBack({ 579, 289, 23, 31 });
+	shoot.loop = true;
 	shoot.speed = 0.2f;
 	
 }
@@ -54,33 +55,32 @@ bool ModuleAim::CleanUp()
 update_status ModuleAim::Update()
 {
 	int speed = 3;
-	current_animation = &idle;
+	current_animation = &shoot;
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT&&position.x>2)
 	{
-		current_animation = &idle;
+
 		position.x -= speed;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT&&position.x<230)
 	{
-		current_animation = &idle;
+		
 		position.x += speed;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT&&position.y>2)
 	{
-		current_animation = &idle;
+	;
 		position.y -= speed;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT&&position.y<157)
 	{
-		current_animation = &idle;
 		position.y += speed;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
 	{
-		current_animation = &shoot;
+
 	
 	}
 	/*if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
