@@ -8,6 +8,8 @@
 #include "ModuleSceneFirst.h"
 #include "ModuleAim.h"
 #include "ModuleAudio.h"
+#include "ModuleEnemies.h"
+
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneFirst::ModuleSceneFirst()
@@ -31,7 +33,8 @@ bool ModuleSceneFirst::Start()
 	// Colliders ---
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_WALL);
 
-	// TODO 1: Add colliders for the first columns of the level
+
+	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
 
 	return true;
 }

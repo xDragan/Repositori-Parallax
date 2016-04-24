@@ -15,6 +15,8 @@ protected:
 
 public:
 	iPoint position;
+	uint fx = 0;
+	bool fx_played = false;
 
 public:
 	Enemy(int x, int y);

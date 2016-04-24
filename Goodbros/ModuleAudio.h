@@ -3,7 +3,9 @@
 #include "Globals.h"
 #include "Module.h"
 #include "SDL_mixer\include\SDL_mixer.h"
+
 #define N_MUSIC 4
+#define MAX_FX 200
 
 class ModuleAudio :public Module
 {
@@ -16,6 +18,15 @@ public:
 	bool CleanUp();
 	Mix_Music *music;
 	Mix_Music *Load(int lvl);
+
+	// Load a WAV in memory
+	uint LoadFx(const char* path);
+	bool UnLoadFx(uint id);
+
+private:
+
+	Mix_Chunk*	fx[MAX_FX];
+	uint			last_fx = 1;
 };
 
 #endif
