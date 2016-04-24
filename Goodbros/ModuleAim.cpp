@@ -15,10 +15,8 @@ ModuleAim::ModuleAim()
 {
 	idle.PushBack({ 542, 289, 23, 21 });
 
-
 	shoot.PushBack({ 542, 289, 23, 21 });
 	shoot.PushBack({ 579, 289, 23, 31 });
-	shoot.loop = true;
 	shoot.speed = 0.2f;
 	
 }
@@ -80,8 +78,7 @@ update_status ModuleAim::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->shot, position.x + 2, position.y + 3, COLLIDER_PLAYER_SHOT);
-	
+		App->particles->AddParticle(App->particles->shot, position.x + 2, position.y + 3);
 	}
 
 	Aim->rect.x = position.x + 1;
@@ -97,5 +94,3 @@ update_status ModuleAim::Update()
 
 	return UPDATE_CONTINUE;
 }
-
-// TODO 4: Detect collision with a wall. If so, go back to intro screen.

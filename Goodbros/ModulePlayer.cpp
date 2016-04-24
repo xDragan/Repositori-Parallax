@@ -8,16 +8,6 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 
-#include "Globals.h"
-#include "Application.h"
-#include "ModuleTextures.h"
-#include "ModuleInput.h"
-#include "ModuleParticles.h"
-#include "ModuleRender.h"
-#include "ModuleCollision.h"
-#include "ModuleFadeToBlack.h"
-#include "ModulePlayer.h"
-
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 int const ModulePlayer::looking_at()
 {
@@ -272,8 +262,7 @@ update_status ModulePlayer::Update()
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
-	{
-		App->particles->AddParticle(App->particles->shot, position.x, position.y, COLLIDER_PLAYER_SHOT);
+	{ 
 		current_animation = &shoot[Looking_at];
 	}
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
