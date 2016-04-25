@@ -44,6 +44,8 @@ Mix_Music* ModuleAudio::Load(int lvl){
 		break;
 	case 2: music = Mix_LoadMUS("bloodbros/Victory.wav");
 		break;
+	case 3: music = Mix_LoadMUS("bloodbros/PreStage.wav");
+		break;
 	}
 	Mix_PlayMusic(music, -1);
 	return music;
