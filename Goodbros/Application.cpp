@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleSceneFirst.h"
+#include "ModuleScenePreStage.h"
 #include "ModuleSceneIntro.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
@@ -21,6 +22,7 @@ Application::Application()
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = scene_intro = new ModuleSceneIntro();
+	modules[i++] = scene_prestage = new ModuleScenePreStage();
 	modules[i++] = scene_space = new ModuleSceneFirst();
 	modules[i++] = aim = new ModuleAim();
 	modules[i++] = enemies = new ModuleEnemies();
@@ -43,6 +45,7 @@ bool Application::Init()
 
 	// Deactivate modules here ----
 	scene_space->Disable();
+	scene_prestage->Disable();
 	player->Disable();
 	collision->Disable();
 	// ----------------------------

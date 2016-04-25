@@ -11,7 +11,7 @@ struct Collider;
 class ModulePlayer : public Module
 {
 public:
-	enum SCREEN_LOOKING
+	enum SCREEN_PORTION
 	{
 		far_left = 0,
 		Middle_left,
@@ -20,11 +20,6 @@ public:
 		near_right,
 		middle_right,
 		far_right,
-	};
-	enum PLAYER_STATE
-	{
-		NORMAL = 0,
-		TUMBLE,
 	};
 public:
 	ModulePlayer();
