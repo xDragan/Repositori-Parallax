@@ -18,6 +18,7 @@ ModuleParticles::ModuleParticles()
 	shot.anim.PushBack({ 660, 290, 19, 12 });
 	shot.anim.PushBack({ 696, 289, 22, 14 });
 	shot.anim.speed = 0.2f;
+	shot.anim.loop = true;
 	shot.life = 3000;
 }
 

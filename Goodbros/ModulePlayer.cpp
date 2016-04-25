@@ -217,7 +217,7 @@ update_status ModulePlayer::Update()
 	int Looking_at = looking_at();
 	current_animation = &idle[Looking_at];
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 8)
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE && position.x > 8)
 	{
 		current_animation = &backward;
 		position.x -= speed;
@@ -225,8 +225,10 @@ update_status ModulePlayer::Update()
 			Aimposition.x -= AimSpeed;
 		}
 	}
-
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < 228)
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT){
+		current_animation = &idle[Looking_at];
+	}
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE && position.x < 228)
 	{
 		current_animation = &forward;
 		position.x += speed;
@@ -237,23 +239,35 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{
 		current_animation = &ftumble;
+		if (Aimposition.x <= 249){
+			Aimposition.x += AimSpeed;
+		}
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{
 		current_animation = &btumble;
+		if (Aimposition.x >= 0){
+			Aimposition.x -= AimSpeed;
+		}
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
 		current_animation = &downftumble;
+		if (Aimposition.x <= 249){
+			Aimposition.x += AimSpeed;
+		}
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
 		current_animation = &downbtumble;
+		if (Aimposition.x >= 0){
+			Aimposition.x -= AimSpeed;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT){
@@ -261,30 +275,42 @@ update_status ModulePlayer::Update()
 		current_animation = &shootdown[Looking_at];
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{ 
 		current_animation = &shoot[Looking_at];
 	}
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &shootdown[Looking_at];
+		if (Aimposition.x >= 0){
+			Aimposition.x -= AimSpeed;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		current_animation = &shootdown[Looking_at];
+		if (Aimposition.x <= 249){
+			Aimposition.x += AimSpeed;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{
 		position.x += speed;
 		current_animation = &shoot[Looking_at];
+		if (Aimposition.x >= 0){
+			Aimposition.x -= AimSpeed;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 	{
 		position.x -= speed;
 		current_animation = &shoot[Looking_at];
+		if (Aimposition.x <= 249){
+			Aimposition.x += AimSpeed;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE)
