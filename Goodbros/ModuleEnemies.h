@@ -10,6 +10,7 @@ enum ENEMY_TYPES
 {
 	NO_TYPE,
 	PIG,
+	BLUE_COWBOY,
 };
 
 class Enemy;
@@ -26,8 +27,6 @@ public:
 
 	ModuleEnemies();
 	~ModuleEnemies();
-
-	
 
 	update_status PreUpdate();
 	update_status Update();

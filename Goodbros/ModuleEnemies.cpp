@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_Pig.h"
+#include "Enemy_Cowboy_Blue.h"
 
 #define SPAWN_MARGIN 40
 
@@ -23,7 +24,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("bloodbros/pigs.png");
+	//sprites = App->textures->Load("bloodbros/pigs.png");
 
 	return true;
 }
@@ -128,6 +129,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		{
 		case ENEMY_TYPES::PIG:
 			enemies[i] = new Enemy_Pig(info.x, info.y);
+			break;
+		case ENEMY_TYPES::BLUE_COWBOY:
+			enemies[i] = new Enemy_CowBoy_Blue(info.x, info.y);
 			break;
 		}
 	}

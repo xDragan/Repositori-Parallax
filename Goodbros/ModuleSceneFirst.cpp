@@ -36,6 +36,7 @@ bool ModuleSceneFirst::Start()
 
 
 	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 50);
 
 	return true;
 }
