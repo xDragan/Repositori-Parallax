@@ -19,12 +19,11 @@ public:
 	bool CleanUp();
 
 public:
-
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect rearsight;
 	Collider* Aim;
 	Animation* current_animation = nullptr;
-	Animation shoot;
+	Animation aim;
 	Animation idle;
 	iPoint position;
 };

@@ -17,9 +17,9 @@ ModuleParticles::ModuleParticles()
 	//shot.anim.PushBack({ 625, 288, 22, 14 });
 	shot.anim.PushBack({ 660, 290, 19, 12 });
 	shot.anim.PushBack({ 696, 289, 22, 14 });
-	shot.anim.speed = 0.2f;
+	shot.anim.speed = 0.01f;
+	shot.life = 40;
 	shot.anim.loop = true;
-	shot.life = 3000;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -32,7 +32,7 @@ bool ModuleParticles::Start()
 
 	shot.fx = App->audio->LoadFx("bloodbros/shot.wav");
 
-	graphics = App->textures->Load("bloodbros/Stuff.png");
+	//graphics = App->textures->Load("bloodbros/Stuff.png");
 
 	return true;
 }
@@ -79,10 +79,10 @@ update_status ModuleParticles::Update()
 			{
 				p->fx_played = true;
 				App->audio->PlayFx(p->fx);
+				
 			}
 		}
 	}
-
 	return UPDATE_CONTINUE;
 }
 
@@ -140,17 +140,14 @@ bool Particle::Update()
 {
 	bool ret = true;
 
-	if (life > 0)
-	{
-		if ((SDL_GetTicks() - born) > life)
-			ret = false;
-	}
-	else
 	if (anim.Finished())
 		ret = false;
 
-	position.x += speed.x;
-	position.y += speed.y;
+	//position.x += speed.x;
+	//position.y += speed.y;
+
+	position.x = 0;
+	position.y = 0;
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);

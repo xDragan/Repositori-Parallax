@@ -15,9 +15,9 @@ ModuleAim::ModuleAim()
 {
 	idle.PushBack({ 542, 289, 23, 21 });
 
-	shoot.PushBack({ 542, 289, 23, 21 });
-	shoot.PushBack({ 579, 289, 23, 31 });
-	shoot.speed = 0.2f;
+	aim.PushBack({ 542, 289, 23, 21 });
+	aim.PushBack({ 579, 289, 23, 31 });
+	aim.speed = 0.2f;
 	
 }
 
@@ -53,7 +53,7 @@ bool ModuleAim::CleanUp()
 update_status ModuleAim::Update()
 {
 	int speed = 3;
-	current_animation = &shoot;
+	current_animation = &aim;
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT&&position.x>2)
 	{
@@ -76,10 +76,6 @@ update_status ModuleAim::Update()
 	{
 		position.y += speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
-	{
-		App->particles->AddParticle(App->particles->shot, position.x + 2, position.y + 3);
-	}
 
 	Aim->rect.x = position.x + 1;
 	Aim->rect.y = position.y + 1;
@@ -87,7 +83,6 @@ update_status ModuleAim::Update()
 	/*if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 	&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
 	current_animation = &idle;*/
-
 
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));

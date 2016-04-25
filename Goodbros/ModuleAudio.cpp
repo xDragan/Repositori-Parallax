@@ -3,6 +3,7 @@
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 #include "Globals.h"
 #include "Application.h"
+#include "SDL\include\SDL.h"
 ModuleAudio::ModuleAudio(){ };
 ModuleAudio::~ModuleAudio(){ };
 
@@ -37,14 +38,13 @@ bool ModuleAudio::Start(int lvl) //receives int lvl that will load audio diferen
 
 Mix_Music* ModuleAudio::Load(int lvl){
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
+
 	switch (lvl){
 	case 0: music = Mix_LoadMUS("bloodbros/TittleScreen.wav");
 		break;
 	case 1: music = Mix_LoadMUS("bloodbros/level1.wav");
 		break;
 	case 2: music = Mix_LoadMUS("bloodbros/Victory.wav");
-		break;
-	case 3: music = Mix_LoadMUS("bloodbros/PreStage.wav");
 		break;
 	}
 	Mix_PlayMusic(music, -1);
@@ -94,13 +94,13 @@ bool ModuleAudio::UnLoadFx(uint id)
 }
 
 // Play WAV
-bool ModuleAudio::PlayFx(uint id, int repeat)
+bool ModuleAudio::PlayFx(uint id)
 {
 	bool ret = false;
 
 	if (fx[id] != nullptr)
 	{
-		Mix_PlayChannel(-1, fx[id], repeat);
+		Mix_PlayChannelTimed(-1, fx[id], 1, 200);
 		ret = true;
 	}
 
