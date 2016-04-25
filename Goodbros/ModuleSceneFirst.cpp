@@ -9,7 +9,8 @@
 #include "ModuleAim.h"
 #include "ModuleAudio.h"
 #include "ModuleEnemies.h"
-
+#include "ModuleInput.h"
+#include "ModuleFadeToBlack.h"
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneFirst::ModuleSceneFirst()
@@ -66,5 +67,14 @@ update_status ModuleSceneFirst::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0, NULL);
 	
+	//PROVISIONAL WIN CONDITION HERE
+
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN && App->fade->IsFading() == false)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene_win);
+	}
+
+
+
 	return UPDATE_CONTINUE;
 }
