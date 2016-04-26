@@ -236,65 +236,67 @@ update_status ModulePlayer::Update()
 	switch (Status)
 	{
 	case NORMAL:
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE && position.x > 8)
-		{
-			current_animation = &backward;
-			position.x -= speed;
-			
-		}
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-		{
-			current_animation = &idle[Looking_at];
-		}
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE && position.x < 228)
-		{
-			current_animation = &forward;
-			position.x += speed;
-			
-		}
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
-		{
-			
-			Status = ROLLING;
-		}
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
-		{
-			btumble.loops = 0;
-			btumble.Reset();
-			current_animation = &btumble;
-			
-			Status = ROLLING;
-		}
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-		{
-			position.x -= speed;
-			current_animation = &downftumble;
-			
+		player_coll->SetPos(position.x + 8, position.y + 6);
+		player_coll->type = COLLIDER_PLAYER;
 
-		}
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		{
-			position.x += speed;
-			current_animation = &downbtumble;
-			
+			if (position.x > 0)
+			{
+				current_animation = &backward;
+				position.x -= speed;
+				player_coll->SetPos(position.x + 8, position.y);
+			}
+			if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+			{
+				current_animation = &idle[Looking_at];
+			}
+			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN)
+			{
+				btumble.loops = 0;
+				btumble.Reset();
+				current_animation = &btumble;
+				Status = ROLLING;
+			}
+			if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+			{
+				position.x += speed;
+				current_animation = &downbtumble;
+			}
+			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
+			{
+				position.x += speed;
+				current_animation = &shoot[Looking_at];
+			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 		{
-			if (isPlaying > 9)
+			if (position.x < 220)
 			{
-				App->audio->PlayFx(App->particles->shot.fx);
+				current_animation = &forward;
+				position.x += speed;
+				player_coll->SetPos(position.x + 12, position.y);
 			}
-			if (isPlaying == 10)
+			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN)
 			{
-				isPlaying = 0;
+				Status = ROLLING;
 			}
-			isPlaying++;
-			current_animation = &shootdown[Looking_at];
+			if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+			{
+				position.x -= speed;
+				current_animation = &downftumble;
+			}
+			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
+			{
+				position.x -= speed;
+				current_animation = &shoot[Looking_at];
+			}
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 		{
+			player_coll->SetPos(position.x + 10, position.y + 6);
 			if (isPlaying > 9)
 			{
 				App->audio->PlayFx(App->particles->shot.fx);
@@ -306,102 +308,81 @@ update_status ModulePlayer::Update()
 			isPlaying++;
 			current_animation = &shoot[Looking_at];
 		}
-		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-		{
-			current_animation = &shootdown[Looking_at];
-			
-		}
 
-		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-		{
-			current_animation = &shootdown[Looking_at];
-		
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
-		{
-			position.x += speed;
-			current_animation = &shoot[Looking_at];
-			
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
-		{
-			position.x -= speed;
-			current_animation = &shoot[Looking_at];
-			
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE)
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			current_animation = &down[Looking_at];
+			player_coll->SetPos(position.x + 10, position.y + 20);
+
+			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
+			{
+				current_animation = &shootdown[Looking_at];
+			}
+			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
+			{
+				if (isPlaying > 9)
+				{
+					App->audio->PlayFx(App->particles->shot.fx);
+				}
+				if (isPlaying == 10)
+				{
+					isPlaying = 0;
+				}
+
+				isPlaying++;
+				current_animation = &shootdown[Looking_at];
+			}
+		}
+				break;
+
+	case ROLLING:
+		player_coll->type = COLLIDER_NONE;
+		current_animation = &btumble;
+
+		if (current_animation == &btumble)
+		{
+			if (position.x <= 0)
+			{
+				speed = 0;
+			}
+			else
+			{
+				position.x -= speed + 1;
+			}
+			if (current_animation->Finished() == true)
+			{
+				Status = NORMAL;
+				break;
+			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
+		/* if (current_animation == &ftumble)
 		{
-			player_coll->SetPos(position.x + 8, position.y);
-		}
-		else if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
+		current_animation = &ftumble;
+
+		if (current_animation == &ftumble)
 		{
-			player_coll->SetPos(position.x + 4, position.y);
-		}
-		else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+		if (position.x <= 0)
 		{
-			player_coll->SetPos(position.x, position.y + 20);
+		speed = 0;
 		}
 		else
 		{
-			player_coll->SetPos(position.x, position.y);
+		position.x -= speed + 1;
 		}
-
+		if (current_animation->Finished() == true)
+		{
+		Status = NORMAL;
 		break;
+		}
+		}
+		}*/
 
-		case ROLLING:
+			}
 
-				current_animation = &btumble;
+			// Draw everything --------------------------------------
+			App->render->Blit(graphics, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
 
-				if (current_animation == &btumble)
-				{
-					if (position.x <= 0)
-					{
-						speed = 0;
-					}
-					else
-					{
-						position.x -= speed + 1;
-					}
-					if (current_animation->Finished() == true)
-					{
-						Status = NORMAL;
-						break;
-					}
-				}
+			return UPDATE_CONTINUE;
 
-			/* if (current_animation == &ftumble)
-			{
-				current_animation = &ftumble;
-
-				if (current_animation == &ftumble)
-				{
-					if (position.x <= 0)
-					{
-						speed = 0;
-					}
-					else
-					{
-						position.x -= speed + 1;
-					}
-					if (current_animation->Finished() == true)
-					{
-						Status = NORMAL;
-						break;
-					}
-				}
-			}*/
 	}
-
-	// Draw everything --------------------------------------
-	App->render->Blit(graphics, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
-
-	return UPDATE_CONTINUE;
-}
