@@ -9,12 +9,12 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
-
+#include "ModuleAim.h"
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 int const ModulePlayer::looking_at()
 {
-	int distance = (Aimposition.x + 70 / 2) - (position.x + 80 / 2);
+	int distance = (App->aim->position.x + 70 / 2) - (position.x + 80 / 2);
 	int portion = SCREEN_WIDTH / 7;
 	if (distance >= portion / 2)
 	{
@@ -208,8 +208,6 @@ bool ModulePlayer::Start()
 
 	player_coll = App->collision->AddCollider({ 128, 153, 22, 27 }, COLLIDER_PLAYER);//cowboy collider
 
-	Aimposition.x = position.x;
-	Aimposition.y = position.y - 150;
 
 	return true;
 }
@@ -242,9 +240,7 @@ update_status ModulePlayer::Update()
 		{
 			current_animation = &backward;
 			position.x -= speed;
-			if (Aimposition.x >= 0){
-				Aimposition.x -= AimSpeed;
-			}
+			
 		}
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 		{
@@ -254,16 +250,11 @@ update_status ModulePlayer::Update()
 		{
 			current_animation = &forward;
 			position.x += speed;
-			if (Aimposition.x <= 249){
-				Aimposition.x += AimSpeed;
-			}
+			
 		}
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 		{
-			if (Aimposition.x <= 249)
-			{
-				Aimposition.x += AimSpeed;
-			}
+			
 			Status = ROLLING;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
@@ -271,29 +262,21 @@ update_status ModulePlayer::Update()
 			btumble.loops = 0;
 			btumble.Reset();
 			current_animation = &btumble;
-			if (Aimposition.x >= 0)
-			{
-				Aimposition.x -= AimSpeed;
-			}
+			
 			Status = ROLLING;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x -= speed;
 			current_animation = &downftumble;
-			if (Aimposition.x <= 249){
-				Aimposition.x += AimSpeed;
-			}
+			
 
 		}
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			position.x += speed;
 			current_animation = &downbtumble;
-			if (Aimposition.x >= 0)
-			{
-				Aimposition.x -= AimSpeed;
-			}
+			
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
@@ -326,36 +309,27 @@ update_status ModulePlayer::Update()
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			current_animation = &shootdown[Looking_at];
-			if (Aimposition.x >= 0){
-				Aimposition.x -= AimSpeed;
-			}
+			
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			current_animation = &shootdown[Looking_at];
-			if (Aimposition.x <= 249){
-				Aimposition.x += AimSpeed;
-			}
+		
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 		{
 			position.x += speed;
 			current_animation = &shoot[Looking_at];
-			if (Aimposition.x >= 0){
-				Aimposition.x -= AimSpeed;
-			}
+			
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 		{
 			position.x -= speed;
 			current_animation = &shoot[Looking_at];
-			if (Aimposition.x <= 249)
-			{
-				Aimposition.x += AimSpeed;
-			}
+			
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE)
@@ -396,10 +370,6 @@ update_status ModulePlayer::Update()
 					{
 						position.x -= speed + 1;
 					}
-					if (Aimposition.x >= 0)
-					{
-						Aimposition.x -= AimSpeed;
-					}
 					if (current_animation->Finished() == true)
 					{
 						Status = NORMAL;
@@ -420,10 +390,6 @@ update_status ModulePlayer::Update()
 					else
 					{
 						position.x -= speed + 1;
-					}
-					if (Aimposition.x >= 0)
-					{
-						Aimposition.x -= AimSpeed;
 					}
 					if (current_animation->Finished() == true)
 					{

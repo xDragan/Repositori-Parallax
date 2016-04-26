@@ -52,7 +52,6 @@ public:
 	Animation downftumble;
 	Animation downbtumble;
 	iPoint position;
-	iPoint Aimposition;
 	int isPlaying = 0;
 	
 };
