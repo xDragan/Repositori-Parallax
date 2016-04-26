@@ -97,7 +97,6 @@ ModulePlayer::ModulePlayer()
 	shoot[far_right].speed = 0.22f;
 
 	//Shoot Seated Animation//
-
 	shootdown[far_left].PushBack({ 501, 187, 56, 70 });
 	shootdown[far_left].PushBack({ 501, 57, 56, 69 });
 	shootdown[far_left].PushBack({ 501, 314, 56, 69 });
@@ -131,8 +130,6 @@ ModulePlayer::ModulePlayer()
 	shootdown[middle_right].speed = 0.20f;
 	shootdown[far_right].speed = 0.20f;
 
-
-
 	// walk forward animation//	
 	forward.PushBack({ 96, 438, 46, 60 });
 	forward.PushBack({ 152, 438, 46, 60 });
@@ -141,6 +138,7 @@ ModulePlayer::ModulePlayer()
 	forward.PushBack({ 306, 438, 46, 60 });
 	forward.PushBack({ 357, 438, 46, 60 });
 	forward.speed = 0.2f;
+
 	// frontward tumble animation//
 	ftumble.PushBack({ 511, 436, 46, 62 });
 	ftumble.PushBack({ 564, 436, 97, 62 });
@@ -150,6 +148,7 @@ ModulePlayer::ModulePlayer()
 	ftumble.PushBack({ 825, 436, 46, 62 });
 	ftumble.PushBack({ 875, 436, 46, 62 });
 	ftumble.PushBack({ 928, 436, 46, 62 });
+	ftumble.loop = true;
 	ftumble.speed = 0.1f;
 
 	//down frontward tumble animation//
@@ -178,17 +177,16 @@ ModulePlayer::ModulePlayer()
 	btumble.PushBack({ 615, 506, 46, 62 });
 	btumble.PushBack({ 564, 506, 46, 62 });
 	btumble.PushBack({ 511, 506, 46, 62 });
+	btumble.loop = true;
 	btumble.speed = 0.1f;
 
 	//down backward tumble animation//
-	btumble.PushBack({ 720, 506, 46, 62 });
-	btumble.PushBack({ 668, 506, 46, 62 });
-	btumble.PushBack({ 615, 506, 46, 62 });
-	btumble.PushBack({ 564, 506, 46, 62 });
-	btumble.PushBack({ 511, 506, 46, 62 });
+	downbtumble.PushBack({ 720, 506, 46, 62 });
+	downbtumble.PushBack({ 668, 506, 46, 62 });
+	downbtumble.PushBack({ 615, 506, 46, 62 });
+	downbtumble.PushBack({ 564, 506, 46, 62 });
+	downbtumble.PushBack({ 511, 506, 46, 62 });
 	downbtumble.speed = 0.1f;
-
-
 }
 
 ModulePlayer::~ModulePlayer()
@@ -208,6 +206,7 @@ bool ModulePlayer::Start()
 
 	player_coll = App->collision->AddCollider({ 128, 153, 22, 27 }, COLLIDER_PLAYER);//cowboy collider
 
+	current_animation = &idle[0];
 
 	return true;
 }
@@ -231,19 +230,22 @@ update_status ModulePlayer::Update()
 	int ycorrection = 0;
 	int Looking_at = looking_at();
 
-	current_animation = &idle[Looking_at];
-
 	switch (Status)
 	{
 	case NORMAL:
 		player_coll->SetPos(position.x + 8, position.y + 6);
 		player_coll->type = COLLIDER_PLAYER;
 
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE)
+		{
+			current_animation = &idle[Looking_at];
+		}
+
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		{
+			current_animation = &backward;
 			if (position.x > 0)
 			{
-				current_animation = &backward;
 				position.x -= speed;
 				player_coll->SetPos(position.x + 8, position.y);
 			}
@@ -261,7 +263,7 @@ update_status ModulePlayer::Update()
 			if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 			{
 				position.x += speed;
-				current_animation = &downbtumble;
+				current_animation = &down[Looking_at];
 			}
 			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 			{
@@ -272,20 +274,27 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 		{
+			current_animation = &forward;
 			if (position.x < 220)
 			{
-				current_animation = &forward;
 				position.x += speed;
 				player_coll->SetPos(position.x + 12, position.y);
 			}
+			if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+			{
+				current_animation = &idle[Looking_at];
+			}
 			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN)
 			{
+				ftumble.loops = 0;
+				ftumble.Reset();
+				current_animation = &ftumble;
 				Status = ROLLING;
 			}
 			if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 			{
 				position.x -= speed;
-				current_animation = &downftumble;
+				current_animation = &down[Looking_at];
 			}
 			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 			{
@@ -332,22 +341,36 @@ update_status ModulePlayer::Update()
 				isPlaying++;
 				current_animation = &shootdown[Looking_at];
 			}
+			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+			{
+				downftumble.loops = 0;
+				downftumble.Reset();
+				current_animation = &downftumble;
+				Status = ROLLING;
+			}
+			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+			{
+				downbtumble.loops = 0;
+				downbtumble.Reset();
+				current_animation = &downbtumble;
+				Status = ROLLING;
+			}
 		}
-				break;
+		break;
 
 	case ROLLING:
 		player_coll->type = COLLIDER_NONE;
-		current_animation = &btumble;
 
 		if (current_animation == &btumble)
 		{
-			if (position.x <= 0)
+			if (position.x < 5 || position.x > 210)
 			{
 				speed = 0;
 			}
 			else
 			{
-				position.x -= speed + 1;
+				position.x -= 1;
+
 			}
 			if (current_animation->Finished() == true)
 			{
@@ -356,33 +379,76 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		/* if (current_animation == &ftumble)
-		{
-		current_animation = &ftumble;
-
 		if (current_animation == &ftumble)
 		{
-		if (position.x <= 0)
-		{
-		speed = 0;
-		}
-		else
-		{
-		position.x -= speed + 1;
-		}
-		if (current_animation->Finished() == true)
-		{
-		Status = NORMAL;
-		break;
-		}
-		}
-		}*/
+			current_animation = &ftumble;
 
+			if (current_animation == &ftumble)
+			{
+				if (position.x < 5 || position.x > 210)
+				{
+					speed = 0;
+				}
+				else
+				{
+					position.x += 1;
+				}
+				if (current_animation->Finished() == true)
+				{
+					Status = NORMAL;
+					break;
+				}
 			}
+		}
 
-			// Draw everything --------------------------------------
-			App->render->Blit(graphics, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
+		if (current_animation == &downftumble)
+		{
+			current_animation = &downftumble;
 
-			return UPDATE_CONTINUE;
+			if (current_animation == &downftumble)
+			{
+				if (position.x < 5 || position.x > 210)
+				{
+					speed = 0;
+				}
+				else
+				{
+					position.x += 1;
+				}
+				if (current_animation->Finished() == true)
+				{
+					Status = NORMAL;
+					break;
+				}
+			}
+		}
+
+		if (current_animation == &downbtumble)
+		{
+			current_animation = &downbtumble;
+
+			if (current_animation == &downbtumble)
+			{
+				if (position.x < 5 || position.x > 210)
+				{
+					speed = 0;
+				}
+				else
+				{
+					position.x -= 1;
+				}
+				if (current_animation->Finished() == true)
+				{
+					Status = NORMAL;
+					break;
+				}
+			}
+		}
+	}
+
+		// Draw everything --------------------------------------
+		App->render->Blit(graphics, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
+
+		return UPDATE_CONTINUE;
 
 	}
