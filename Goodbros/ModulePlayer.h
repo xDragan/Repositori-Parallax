@@ -11,6 +11,11 @@ struct Collider;
 class ModulePlayer : public Module
 {
 public:
+	enum type
+	{
+		NORMAL,
+		ROLLING,
+	};
 	enum SCREEN_PORTION
 	{
 		far_left = 0,
@@ -32,6 +37,7 @@ public:
 public:
 	Collider* player_coll;
 public:
+	type Status;
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect cowboy;
 	Animation* current_animation = nullptr;

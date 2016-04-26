@@ -5,8 +5,15 @@
 class Enemy_CowBoy_Blue : public Enemy
 {
 private:
+	bool going_forward = true;
+	bool stop = false;
+
+	int cont = position.x;
 	int original_y2 = 0;
-	Animation run2;
+
+	Animation forward;
+	Animation backward;
+	Animation stop_shoot;
 
 public:
 

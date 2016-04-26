@@ -102,7 +102,7 @@ bool ModuleAudio::PlayFx(uint id)
 
 	if (fx[id] != nullptr)
 	{
-		Mix_PlayChannelTimed(-1, fx[id], 1, 200);
+		Mix_PlayChannelTimed(-1, fx[id], 1, 250);
 		ret = true;
 	}
 

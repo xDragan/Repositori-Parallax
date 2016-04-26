@@ -4,8 +4,9 @@
 
 Enemy_Pig::Enemy_Pig(int x, int y) : Enemy(x, y)
 {
-	run.PushBack({ 0, 46, 147, 100});
-	run.speed = 0.09f;
+	run.PushBack({ 0, 11, 38, 27 });
+	run.PushBack({ 39, 11, 38, 27 });
+	run.speed = 0.07f;
 
 	animation = &run;
 
@@ -17,5 +18,5 @@ Enemy_Pig::Enemy_Pig(int x, int y) : Enemy(x, y)
 void Enemy_Pig::Move()
 {
 	position.y = original_y;
-	position.x -= 1;
+	position.x -= 0.6;
 }
