@@ -4,11 +4,11 @@
 
 Bar_House::Bar_House(int x, int y) : Enemy(x, y)
 {
-	run.PushBack({ 0, 11, 38, 27 });
-	run.PushBack({ 39, 11, 38, 27 });
-	run.speed = 0.07f;
+	destroy.PushBack({ 0, 11, 38, 27 });
+	destroy.PushBack({ 39, 11, 38, 27 });
+	destroy.speed = 0.07f;
 
-	animation = &run;
+	animation = &destroy;
 
 	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
 
