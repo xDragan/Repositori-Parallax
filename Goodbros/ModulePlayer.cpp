@@ -281,11 +281,11 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
-			if (isPlaying > 25)
+			if (isPlaying > 9)
 			{
 				App->audio->PlayFx(App->particles->shot.fx);
 			}
-			if (isPlaying == 26)
+			if (isPlaying == 10)
 			{
 				isPlaying = 0;
 			}
@@ -295,11 +295,11 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 		{
-			if (isPlaying > 25)
+			if (isPlaying > 9)
 			{
 				App->audio->PlayFx(App->particles->shot.fx);
 			}
-			if (isPlaying == 26)
+			if (isPlaying == 10)
 			{
 				isPlaying = 0;
 			}
