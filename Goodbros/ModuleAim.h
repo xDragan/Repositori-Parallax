@@ -25,6 +25,7 @@ public:
 	Animation* current_animation = nullptr;
 	Animation aim;
 	Animation idle;
+	Animation Aimshoot;
 	iPoint position;
 };
 

@@ -18,6 +18,14 @@ ModuleAim::ModuleAim()
 	aim.PushBack({ 542, 289, 23, 21 });
 	aim.PushBack({ 579, 289, 23, 31 });
 	aim.speed = 0.2f;
+
+	Aimshoot.PushBack({ 626, 288, 23, 21 });
+	Aimshoot.PushBack({ 660, 289, 23, 21 });
+	Aimshoot.PushBack({ 696, 288, 23, 21 });
+	Aimshoot.PushBack({ 737, 288, 23, 21 });
+	Aimshoot.speed = 0.2f;
+	Aimshoot.loop = true;
+
 	
 }
 
@@ -75,6 +83,16 @@ update_status ModuleAim::Update()
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT&&position.y<157)
 	{
 		position.y += speed;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
+	{
+		current_animation = &Aimshoot;
+		Aim->type = COLLIDER_PLAYER_SHOT;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE)
+	{
+		current_animation = &aim;
+		Aim->type = COLLIDER_PLAYER_NOSHOT;
 	}
 
 	Aim->rect.x = position.x + 1;
