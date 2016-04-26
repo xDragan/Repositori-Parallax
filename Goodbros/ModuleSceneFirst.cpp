@@ -11,6 +11,9 @@
 #include "ModuleEnemies.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+
+#include "SDL/include/SDL.h"
+
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneFirst::ModuleSceneFirst()
@@ -35,10 +38,10 @@ bool ModuleSceneFirst::Start()
 	// Colliders ---
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
 
-
 	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::BAR_HOUSE, 145, 0);
+
 	return true;
 }
 
@@ -64,19 +67,16 @@ update_status ModuleSceneFirst::Update()
 
 	App->player->position.x += 0;
 	App->render->camera.x -= 0;
-	
+
 
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0, NULL);
-	
-	//PROVISIONAL WIN CONDITION HERE
 
+	//PROVISIONAL WIN CONDITION HERE
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN && App->fade->IsFading() == false)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
 	}
-
-
 
 	return UPDATE_CONTINUE;
 }

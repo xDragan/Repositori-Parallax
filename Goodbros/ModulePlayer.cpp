@@ -374,7 +374,7 @@ update_status ModulePlayer::Update()
 
 		if (current_animation == &btumble)
 		{
-			if (position.x < 5 || position.x > 210)
+			if (position.x < 5)
 			{
 				speed = 0;
 			}
@@ -396,7 +396,7 @@ update_status ModulePlayer::Update()
 
 			if (current_animation == &ftumble)
 			{
-				if (position.x < 5 || position.x > 210)
+				if (position.x > 210)
 				{
 					speed = 0;
 				}
@@ -418,7 +418,7 @@ update_status ModulePlayer::Update()
 
 			if (current_animation == &downftumble)
 			{
-				if (position.x < 5 || position.x > 210)
+				if (position.x > 210)
 				{
 					speed = 0;
 				}
@@ -440,7 +440,7 @@ update_status ModulePlayer::Update()
 
 			if (current_animation == &downbtumble)
 			{
-				if (position.x < 5 || position.x > 210)
+				if (position.x < 5)
 				{
 					speed = 0;
 				}
