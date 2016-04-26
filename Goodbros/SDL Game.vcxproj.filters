@@ -15,6 +15,9 @@
     <Filter Include="Modules\Enemies">
       <UniqueIdentifier>{1238e946-20a6-4435-9e07-3dc191dc6b58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\Stages">
+      <UniqueIdentifier>{1fd15c76-6018-4ea1-b4ce-bd132559d3a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -59,12 +62,6 @@
     <ClInclude Include="ModuleCollision.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleSceneIntro.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleSceneFirst.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleAim.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -80,13 +77,22 @@
     <ClInclude Include="Enemy_Pig.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Cowboy_Blue.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
     <ClInclude Include="ModuleScenePreStage.h">
-      <Filter>Modules</Filter>
+      <Filter>Modules\Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneIntro.h">
+      <Filter>Modules\Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneFirst.h">
+      <Filter>Modules\Stages</Filter>
     </ClInclude>
     <ClInclude Include="ModuleSceneWin.h">
-      <Filter>Modules</Filter>
+      <Filter>Modules\Stages</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_Cowboy_Blue.h">
+    <ClInclude Include="Bar_House.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
@@ -124,12 +130,6 @@
     <ClCompile Include="ModuleCollision.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleSceneIntro.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleSceneFirst.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleAudio.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -145,13 +145,22 @@
     <ClCompile Include="Enemy_Pig.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_Cowboy_Blue.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
     <ClCompile Include="ModuleScenePreStage.cpp">
-      <Filter>Modules</Filter>
+      <Filter>Modules\Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneIntro.cpp">
+      <Filter>Modules\Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneFirst.cpp">
+      <Filter>Modules\Stages</Filter>
     </ClCompile>
     <ClCompile Include="ModuleSceneWin.cpp">
-      <Filter>Modules</Filter>
+      <Filter>Modules\Stages</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_Cowboy_Blue.cpp">
+    <ClCompile Include="Bar_House.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>

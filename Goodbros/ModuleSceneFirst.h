@@ -18,7 +18,7 @@ public:
 public:
 	
 	SDL_Texture* background = nullptr;
-	SDL_Texture* stars = nullptr;
+	SDL_Texture* houses = nullptr;
 };
 
 #endif // __ModuleSceneFirst_H__

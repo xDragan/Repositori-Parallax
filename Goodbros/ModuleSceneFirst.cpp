@@ -25,6 +25,7 @@ bool ModuleSceneFirst::Start()
 	LOG("Loading space scene");
 	
 	background = App->textures->Load("bloodbros/stage1_clean.png");
+
 	App->audio->Enable(1);
 	App->player->Enable(0);
 	App->particles->Enable(0);
