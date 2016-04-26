@@ -20,12 +20,13 @@ private:
 	Animation bwtumbleshoot;
 	Animation grenade;
 
+	bool isdead = false;
 
 	iPoint original_pos;
 public:
 
 	Enemy_CowBoy_Blue(int x, int y);
-
+	void OnCollision(Collider* c1, Collider* c2);
 	void Move();
 };
 

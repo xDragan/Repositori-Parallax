@@ -9,6 +9,8 @@
 #include "Enemy_Cowboy_Blue.h"
 #include "Bar_House.h"
 
+#include "SDL/include/SDL_timer.h"
+
 #define SPAWN_MARGIN 40
 
 ModuleEnemies::ModuleEnemies()
@@ -146,13 +148,17 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
+	int time = 0;
+	time = SDL_GetTicks();
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			App->particles->AddParticle(App->particles->explosion, enemies[i]->position.x, enemies[i]->position.y);
-			delete enemies[i];
-			enemies[i] = nullptr;
+			enemies[i]->OnCollision(c1, c2);
+			if (time > 11000){
+				delete enemies[i];
+				enemies[i] = nullptr;
+			}
 			break;
 		}
 	}

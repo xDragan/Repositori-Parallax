@@ -31,6 +31,7 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 	dieshot.PushBack({ 589, 397, 35, 54 });
 	dieshot.PushBack({ 632, 397, 35, 54 });
 	dieshot.speed = 0.09f;
+	dieshot.loop = false;
 
 	dieexplotion.PushBack({744,397,36,54});
 	dieexplotion.PushBack({ 798, 397, 36, 54 });
@@ -87,7 +88,7 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 
 
 
-	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, -20, 24, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 
 	original_pos.x = x;
@@ -96,7 +97,6 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 	path.PushBack({ 0, 0 }, 67, &stop_shoot);
 	path.PushBack({ -1.0f, 0 }, 50, &bwtumbleshoot);
 	path.PushBack({ 0, 0 }, 67, &stop_shoot);
-	path.PushBack({ 1.0f, 0 }, 50, &fwtumbleshoot);
 	path.PushBack({ 1.0f, 0 }, 150, &backward);
 
 	original_y2 = y;
@@ -105,4 +105,16 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 void Enemy_CowBoy_Blue::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
+	if (isdead == true && dieshot.Finished() == true){
+		to_delete = true;
+	}
+}
+
+void Enemy_CowBoy_Blue::OnCollision(Collider* c1, Collider* c2)
+{
+	path.Erase();
+	path.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
+	path.loop = false;
+
+	isdead = true;
 }

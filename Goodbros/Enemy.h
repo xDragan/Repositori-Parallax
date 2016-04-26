@@ -18,6 +18,7 @@ public:
 	iPoint position;
 	Path path;
 	uint fx = 0;
+	bool to_delete = false;
 	bool fx_played = false;
 
 public:
@@ -28,6 +29,7 @@ public:
 
 	virtual void Move() {};
 	virtual void Draw(SDL_Texture* sprites);
+	virtual void OnCollision(Collider* c1, Collider* c2);
 	
 };
 
