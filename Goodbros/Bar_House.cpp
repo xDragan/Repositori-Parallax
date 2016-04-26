@@ -4,13 +4,18 @@
 
 Bar_House::Bar_House(int x, int y) : Enemy(x, y)
 {
-	destroy.PushBack({ 0, 11, 38, 27 });
-	destroy.PushBack({ 39, 11, 38, 27 });
-	destroy.speed = 0.07f;
+	
+	if (hp >= 80){
+		destroy.PushBack({ 80, 2266, 115, 147 });  //115x147
+	}
+	else if (hp >= 60){
+		destroy.PushBack({ 345, 2266, 115, 147 });  //115x147
+	}
+	//destroy.speed = 0.07f;
 
 	animation = &destroy;
 
-	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 145, 0, 115, 147 }, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
 
 }
 

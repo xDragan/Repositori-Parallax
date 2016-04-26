@@ -11,6 +11,7 @@ enum ENEMY_TYPES
 	NO_TYPE,
 	PIG,
 	BLUE_COWBOY,
+	BAR_HOUSE,
 };
 
 class Enemy;

@@ -31,14 +31,14 @@ bool ModuleSceneFirst::Start()
 	App->particles->Enable(0);
 	App->collision->Enable(0);
 	App->aim->Enable(0);
-	
+	App->enemies->Enable(0);
 	// Colliders ---
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_WALL);
 
 
 	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 50);
-
+	App->enemies->AddEnemy(ENEMY_TYPES::BAR_HOUSE, 145, 0);
 	return true;
 }
 
@@ -52,7 +52,7 @@ bool ModuleSceneFirst::CleanUp()
 	App->collision->Disable();
 	App->particles->Disable();
 	App->aim->Disable();
-	
+	App->enemies->Disable();
 	return true;
 }
 
