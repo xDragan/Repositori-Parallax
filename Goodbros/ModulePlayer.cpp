@@ -188,14 +188,19 @@ ModulePlayer::ModulePlayer()
 	downbtumble.PushBack({ 511, 506, 46, 62 });
 	downbtumble.speed = 0.1f;
 
-	die.PushBack({ 1025, 187, 52, 70});
-	die.PushBack({ 1077, 187, 52, 70}); 
-	die.PushBack({ 1129, 187, 52, 70});
-	die.PushBack({1180 , 187, 52, 70});
-	die.PushBack({ 1233, 187, 52, 70});
+	//die animation//
+	die.PushBack({ 1025, 187, 52, 70 });
+	die.PushBack({ 1077, 187, 52, 70 });
+	die.PushBack({ 1129, 187, 52, 70 });
+	die.PushBack({ 1180, 187, 52, 70 });
+	die.PushBack({ 1233, 187, 52, 70 });
 	die.PushBack({ 1286, 187, 53, 70 });
 	die.speed = 0.05f;
+
+	//win animation// 
+
 }
+
 
 ModulePlayer::~ModulePlayer()
 {}
