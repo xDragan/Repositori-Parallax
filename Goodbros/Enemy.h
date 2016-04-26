@@ -3,6 +3,7 @@
 
 #include "p2Point.h"
 #include "Animation.h"
+#include "Path.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -15,6 +16,7 @@ protected:
 
 public:
 	iPoint position;
+	Path path;
 	uint fx = 0;
 	bool fx_played = false;
 
@@ -26,6 +28,7 @@ public:
 
 	virtual void Move() {};
 	virtual void Draw(SDL_Texture* sprites);
+	
 };
 
 #endif // __ENEMY_H__

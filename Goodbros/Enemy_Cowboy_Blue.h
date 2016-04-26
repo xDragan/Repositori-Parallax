@@ -7,14 +7,12 @@ class Enemy_CowBoy_Blue : public Enemy
 private:
 	bool going_forward = true;
 	bool stop = false;
-
-	int cont = position.x;
 	int original_y2 = 0;
 
 	Animation forward;
 	Animation backward;
 	Animation stop_shoot;
-
+	iPoint original_pos;
 public:
 
 	Enemy_CowBoy_Blue(int x, int y);
