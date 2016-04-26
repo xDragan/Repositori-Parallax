@@ -15,7 +15,9 @@ private:
 	Animation dieshot;
 	Animation dieexplotion;
 	Animation fwtumble;
+	Animation fwtumbleshoot;
 	Animation bwtumble;
+	Animation bwtumbleshoot;
 	Animation grenade;
 
 
