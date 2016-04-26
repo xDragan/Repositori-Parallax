@@ -187,6 +187,14 @@ ModulePlayer::ModulePlayer()
 	downbtumble.PushBack({ 564, 506, 46, 62 });
 	downbtumble.PushBack({ 511, 506, 46, 62 });
 	downbtumble.speed = 0.1f;
+
+	die.PushBack({ 1048, 177, 27, 51});
+	die.PushBack({ 1092, 181, 32, 47});
+	die.PushBack({ 1134, 194, 40, 31});
+	die.PushBack({1185 , 184, 42, 41});
+	die.PushBack({ 1242, 194, 50, 29});
+	die.PushBack({ 1308, 193, 50, 29});
+	die.speed = 0.05f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -355,6 +363,9 @@ update_status ModulePlayer::Update()
 				current_animation = &downbtumble;
 				Status = ROLLING;
 			}
+		}
+		if (App->input->keyboard[SDL_SCANCODE_X] == KEY_STATE::KEY_REPEAT){
+			current_animation = &die;
 		}
 		break;
 
