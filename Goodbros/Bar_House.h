@@ -6,7 +6,7 @@
 class Bar_House : public Enemy
 {
 public:
-	int hp = 100;
+	int hp = 4;
 private:
 	Animation destroy;
 public:
