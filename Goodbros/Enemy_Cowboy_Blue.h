@@ -12,6 +12,13 @@ private:
 	Animation forward;
 	Animation backward;
 	Animation stop_shoot;
+	Animation dieshot;
+	Animation dieexplotion;
+	Animation fwtumble;
+	Animation bwtumble;
+	Animation grenade;
+
+
 	iPoint original_pos;
 public:
 

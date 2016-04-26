@@ -195,6 +195,28 @@ ModulePlayer::ModulePlayer()
 	die.PushBack({ 1233, 187, 52, 70});
 	die.PushBack({ 1286, 187, 53, 70 });
 	die.speed = 0.05f;
+
+	//win animation// 
+
+	win.PushBack({ 1032, 54, 46, 72 });
+	win.PushBack({ 1084, 54, 46, 72 });
+	win.PushBack({ 1136, 54, 46, 72 });
+
+
+	//win dance animation//
+
+	windance.PushBack({ 1187, 54, 46, 72 });
+	windance.PushBack({ 1240, 57, 46, 72 });
+	windance.PushBack({ 1299, 57, 46, 72 });
+	windance.PushBack({ 1358, 57, 46, 72 });
+	windance.PushBack({ 1032, 126, 46, 72 });
+	windance.PushBack({ 1084, 126, 46, 72 });
+	windance.PushBack({ 1136, 126, 46, 72 });
+	windance.PushBack({ 1187, 126, 46, 72 });
+	windance.PushBack({ 1240, 126, 46, 72 });
+	windance.PushBack({ 1299, 126, 46, 72 });
+
+
 }
 
 ModulePlayer::~ModulePlayer()
