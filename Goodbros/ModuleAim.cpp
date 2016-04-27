@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleAim.h"
+#include "SDL/include/SDL_timer.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -46,8 +47,7 @@ bool ModuleAim::Start()
 	position.x = 110;
 	position.y = 75;
 
-	Aim = App->collision->AddCollider({ position.x + 3, position.y + 3, 22, 20 }, COLLIDER_PLAYER_SHOT);
-
+	Aim = App->collision->AddCollider({ position.x + 3, position.y + 3, 22, 20 }, COLLIDER_PLAYER_NOSHOT);
 	return true;
 }
 
@@ -65,6 +65,7 @@ bool ModuleAim::CleanUp()
 update_status ModuleAim::Update()
 {
 	int speed = 3;
+	
 	current_animation = &aim;
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT&&position.x>2)
@@ -81,19 +82,25 @@ update_status ModuleAim::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT&&position.y>2)
 	{
-	;
 		position.y -= speed;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT&&position.y<157)
 	{
 		position.y += speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_DOWN)
-	{
-		current_animation = &Aimshoot;
-		Aim->type = COLLIDER_PLAYER_SHOT;
-	}
-	else {
+	
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
+		{
+			if (SDL_GetTicks() > time){
+				Aim->type = COLLIDER_PLAYER_SHOT;
+				time = SDL_GetTicks() + 800;
+			}
+			else{
+				Aim->type = COLLIDER_PLAYER_NOSHOT;
+			}
+			current_animation = &Aimshoot;
+		}
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE){
 		Aim->type = COLLIDER_PLAYER_NOSHOT;
 	}
 

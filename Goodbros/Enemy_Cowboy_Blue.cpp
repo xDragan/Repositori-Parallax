@@ -110,11 +110,11 @@ void Enemy_CowBoy_Blue::Move()
 	}
 }
 
-void Enemy_CowBoy_Blue::OnCollision(Collider* c1, Collider* c2)
+void Enemy_CowBoy_Blue::Die()
 {
 	path.Erase();
 	path.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
 	path.loop = false;
-
+	finished = true;
 	isdead = true;
 }

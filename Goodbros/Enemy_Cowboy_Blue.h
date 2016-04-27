@@ -26,7 +26,7 @@ private:
 public:
 
 	Enemy_CowBoy_Blue(int x, int y);
-	void OnCollision(Collider* c1, Collider* c2);
+	void Die();
 	void Move();
 };
 

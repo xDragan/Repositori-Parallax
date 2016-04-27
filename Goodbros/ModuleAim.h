@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "p2Point.h"
+#include "SDL/include/SDL_timer.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -18,6 +19,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+
 public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect rearsight;
@@ -26,6 +28,7 @@ public:
 	Animation aim;
 	Animation idle;
 	Animation Aimshoot;
+	unsigned int time = 0;
 	iPoint position;
 };
 
