@@ -141,7 +141,7 @@ ModulePlayer::ModulePlayer()
 
 	// frontward tumble animation//
 	ftumble.PushBack({ 511, 436, 46, 62 });
-	ftumble.PushBack({ 564, 436, 97, 62 });
+	ftumble.PushBack({ 564, 436, 97, 70 });
 	ftumble.PushBack({ 668, 436, 46, 62 });
 	ftumble.PushBack({ 720, 436, 46, 62 });
 	ftumble.PushBack({ 774, 436, 46, 62 });
@@ -149,7 +149,7 @@ ModulePlayer::ModulePlayer()
 	ftumble.PushBack({ 875, 436, 46, 62 });
 	ftumble.PushBack({ 928, 436, 46, 62 });
 	ftumble.loop = true;
-	ftumble.speed = 0.1f;
+	ftumble.speed = 0.15f;
 
 	//down frontward tumble animation//
 	downftumble.PushBack({ 720, 436, 46, 62 });
@@ -157,7 +157,7 @@ ModulePlayer::ModulePlayer()
 	downftumble.PushBack({ 825, 436, 46, 62 });
 	downftumble.PushBack({ 875, 436, 46, 62 });
 	downftumble.PushBack({ 928, 436, 46, 62 });
-	downftumble.speed = 0.1f;
+	downftumble.speed = 0.15f;
 
 	//walk backward animation//
 	backward.PushBack({ 96, 508, 46, 60 });
@@ -178,7 +178,7 @@ ModulePlayer::ModulePlayer()
 	btumble.PushBack({ 564, 506, 46, 62 });
 	btumble.PushBack({ 511, 506, 46, 62 });
 	btumble.loop = true;
-	btumble.speed = 0.1f;
+	btumble.speed = 0.15f;
 
 	//down backward tumble animation//
 	downbtumble.PushBack({ 720, 506, 46, 62 });
@@ -186,7 +186,7 @@ ModulePlayer::ModulePlayer()
 	downbtumble.PushBack({ 615, 506, 46, 62 });
 	downbtumble.PushBack({ 564, 506, 46, 62 });
 	downbtumble.PushBack({ 511, 506, 46, 62 });
-	downbtumble.speed = 0.1f;
+	downbtumble.speed = 0.15f;
 
 	die.PushBack({ 1025, 187, 52, 70});
 	die.PushBack({ 1077, 187, 52, 70}); 
@@ -402,7 +402,7 @@ update_status ModulePlayer::Update()
 			}
 			else
 			{
-				position.x -= 1;
+				position.x -= 1.5;
 
 			}
 			if (current_animation->Finished() == true)
@@ -424,7 +424,7 @@ update_status ModulePlayer::Update()
 				}
 				else
 				{
-					position.x += 1;
+					position.x += 1.5;
 				}
 				if (current_animation->Finished() == true)
 				{
