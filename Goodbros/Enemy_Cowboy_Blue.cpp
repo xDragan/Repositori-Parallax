@@ -85,12 +85,7 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 	fwtumble.speed = 0.2f;
 	fwtumbleshoot.loop = true;
 
-
-
-
 	collider = App->collision->AddCollider({ 0, -20, 24, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
-
-
 
 	path.PushBack({ -1.0f, 0 }, 100, &forward);
 	path.PushBack({ 0, 0 }, 67, &stop_shoot);
@@ -112,8 +107,9 @@ void Enemy_CowBoy_Blue::Move()
 	if (path.GetFrame() == 237 && isdead == false){
 		App->particles->AddParticle(App->particles->enemyshot,position.x+10, position.y+20, COLLIDER_ENEMY_SHOT, 0);
 	}
-	if (isdead == true && dieshot.Finished() == true){
-		to_delete = true;
+	if (dieshot.Finished() == true)
+	{
+		finished = true;
 	}
 }
 
@@ -122,6 +118,4 @@ void Enemy_CowBoy_Blue::Die()
 	path.Erase();
 	path.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
 	path.loop = false;
-	finished = true;
-	isdead = true;
 }

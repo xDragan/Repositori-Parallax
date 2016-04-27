@@ -1,12 +1,13 @@
 #include"ModuleAudio.h"
 #include "SDL_mixer\include\SDL_mixer.h"
-#pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 #include "Globals.h"
 #include "Application.h"
 #include "SDL\include\SDL.h"
+
+#pragma comment(lib, "SDL_mixer/libx86/SDL2_mixer.lib")
+
 ModuleAudio::ModuleAudio(){ };
 ModuleAudio::~ModuleAudio(){ };
-
 
 bool ModuleAudio::Start() //receives int lvl that will load audio diferently depending on lvl
 {
@@ -34,14 +35,13 @@ Mix_Music* ModuleAudio::Load(const char*location){
 	return music;
 }
 
-
-
 bool ModuleAudio::Disable(){
 	LOG("music clean");
 	Mix_FreeMusic(music);
 	music = NULL;
 	return true;
 }
+
 bool ModuleAudio::CleanUp(){
 	LOG("Freeing textures and Audio library");
 	Mix_CloseAudio();

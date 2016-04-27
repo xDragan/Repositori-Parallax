@@ -1,10 +1,11 @@
 #ifndef _AUDIO0_H
 #define _AUDIO0_H
+
 #include "Globals.h"
 #include "Module.h"
 #include "SDL_mixer\include\SDL_mixer.h"
 
-#define MAX_FX 500
+#define MAX_FX 400
 
 class ModuleAudio :public Module
 {

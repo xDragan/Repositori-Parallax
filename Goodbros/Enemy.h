@@ -28,11 +28,11 @@ public:
 
 	const Collider* GetCollider() const;
 
+	bool finished = false;
+
 	virtual void Move() {};
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void Die();
-	bool finished = false;
-	
 };
 
 #endif // __ENEMY_H__

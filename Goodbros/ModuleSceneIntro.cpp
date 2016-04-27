@@ -6,7 +6,6 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneIntro.h"
 #include "ModuleAudio.h"
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneIntro::ModuleSceneIntro()
 {}

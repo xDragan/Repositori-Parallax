@@ -7,7 +7,6 @@
 #include "ModuleSceneFirst.h"
 #include "ModuleSceneWin.h"
 #include "ModuleAudio.h"
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneWin::ModuleSceneWin()
 {}

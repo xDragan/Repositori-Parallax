@@ -27,7 +27,7 @@ bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
 	sprites = App->textures->Load("bloodbros/enemy.png");
-	time = SDL_GetTicks();
+
 	return true;
 }
 
@@ -58,6 +58,15 @@ update_status ModuleEnemies::Update()
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	if (enemies[i] != nullptr) enemies[i]->Draw(sprites);
+
+	for (int i = 0; i < MAX_ENEMIES; i++)
+	{
+		if (enemies[i] != nullptr && enemies[i]->finished == true)
+		{
+			delete enemies[i];
+			enemies[i] = nullptr;
+		}
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -148,9 +157,6 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->Die();
-			delete enemies[i];
-			enemies[i] = nullptr;
-			break;
 		}
 	}
 }

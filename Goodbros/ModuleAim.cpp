@@ -2,11 +2,8 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
-#include "ModuleParticles.h"
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
-#include "ModuleFadeToBlack.h"
-#include "ModulePlayer.h"
 #include "ModuleAim.h"
 #include "SDL/include/SDL_timer.h"
 
@@ -29,9 +26,6 @@ ModuleAim::ModuleAim()
 	Aimshoot.PushBack({ 542, 289, 23, 21 });
 	Aimshoot.speed = 0.4f;
 	Aimshoot.loop = true;
-
-
-	
 }
 
 ModuleAim::~ModuleAim()
@@ -70,16 +64,12 @@ update_status ModuleAim::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT&&position.x>2)
 	{
-
 		position.x -= speed;
 	}
-
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT&&position.x<230)
 	{
-		
 		position.x += speed;
 	}
-
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT&&position.y>2)
 	{
 		position.y -= speed;
@@ -88,14 +78,15 @@ update_status ModuleAim::Update()
 	{
 		position.y += speed;
 	}
-	
 	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
 		{
-			if (SDL_GetTicks() > time){
+			if (SDL_GetTicks() > time)
+			{
 				Aim->type = COLLIDER_PLAYER_SHOT;
 				time = SDL_GetTicks() + 800;
 			}
-			else{
+			else
+			{
 				Aim->type = COLLIDER_PLAYER_NOSHOT;
 			}
 			current_animation = &Aimshoot;
@@ -106,10 +97,6 @@ update_status ModuleAim::Update()
 
 	Aim->rect.x = position.x + 1;
 	Aim->rect.y = position.y + 1;
-
-	/*if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-	&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)
-	current_animation = &idle;*/
 
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));

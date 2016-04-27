@@ -1,5 +1,4 @@
 #include "SDL\include\SDL.h"
-#include "Globals.h"
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
@@ -10,9 +9,8 @@
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
 #include "ModuleAim.h"
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
-int const ModulePlayer::looking_at()
+int ModulePlayer::looking_at() const
 {
 	int distance = (App->aim->position.x + 70 / 2) - (position.x + 80 / 2);
 	int portion = SCREEN_WIDTH / 7;
@@ -480,9 +478,4 @@ update_status ModulePlayer::Update()
 
 		return UPDATE_CONTINUE;
 
-	}
-
-	void ModulePlayer::OnCollision(COLLIDER_ENEMY_SHOT, COLLIDER_PLAYER)
-	{
-		current_animation = &die;
 	}

@@ -38,16 +38,11 @@ public:
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 
 	void OnCollision(Collider* c1, Collider* c2);
-
-	EnemyInfo pig;
-	EnemyInfo BlueCowboy;
-
 private:
 
 	void SpawnEnemy(const EnemyInfo& info);
 
 private:
-	int time = 0;
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
 	SDL_Texture* sprites;

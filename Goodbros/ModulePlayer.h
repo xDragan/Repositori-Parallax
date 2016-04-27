@@ -4,7 +4,6 @@
 #include "Module.h"
 #include "Animation.h"
 #include "p2Point.h"
-#include "SDL\include\SDL.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -18,6 +17,7 @@ public:
 		ROLLING,
 		DIE,
 	};
+
 	enum SCREEN_PORTION
 	{
 		far_left = 0,
@@ -28,17 +28,20 @@ public:
 		middle_right,
 		far_right,
 	};
+
 public:
 	ModulePlayer();
 	~ModulePlayer();
+
 public:
-	bool Start();
 	update_status Update();
 	bool CleanUp();
-	int const looking_at();
-	void OnCollision(Collider* c1, Collider* c2);
+	bool Start();
+	int looking_at() const;
+
 public:
 	Collider* player_coll;
+
 public:
 	type Status;
 	SDL_Texture* graphics = nullptr;

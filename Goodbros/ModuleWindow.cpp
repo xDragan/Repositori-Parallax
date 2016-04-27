@@ -56,7 +56,6 @@ bool ModuleWindow::Init()
 			screen_surface = SDL_GetWindowSurface(window);
 		}
 	}
-
 	return ret;
 }
 
