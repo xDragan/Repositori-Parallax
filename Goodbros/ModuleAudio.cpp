@@ -40,13 +40,13 @@ Mix_Music* ModuleAudio::Load(int lvl){
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 
 	switch (lvl){
-	case 0: music = Mix_LoadMUS("bloodbros/TittleScreen.wav");
+	case 0: music = Mix_LoadMUS("bloodbros/TittleScreen.ogg");
 		break;
-	case 1: music = Mix_LoadMUS("bloodbros/level1.wav");
+	case 1: music = Mix_LoadMUS("bloodbros/level1.ogg");
 		break;
-	case 2: music = Mix_LoadMUS("bloodbros/Victory.wav");
+	case 2: music = Mix_LoadMUS("bloodbros/Victory.ogg");
 		break;
-	case 3: music = Mix_LoadMUS("bloodbros/PreStage.wav");
+	case 3: music = Mix_LoadMUS("bloodbros/PreStage.ogg");
 		break;
 	}
 	Mix_PlayMusic(music, 0);
