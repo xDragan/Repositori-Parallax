@@ -41,7 +41,7 @@ bool ModuleSceneFirst::Start()
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 80);
 	App->structures->AddStructure(App->structures->bar, 145, 0);
 
 	return true;
