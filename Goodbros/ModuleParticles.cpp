@@ -20,7 +20,7 @@ ModuleParticles::ModuleParticles()
 	enemyshot.anim.PushBack({ 434, 492, 10, 10 });
 	
 	enemyshot.anim.loop = true;
-	enemyshot.anim.speed = 0.02f;
+	enemyshot.anim.speed = 0.035f;
 	enemyshot.speed.y = 1.5f;
 	enemyshot.life = 2000;
 

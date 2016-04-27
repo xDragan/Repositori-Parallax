@@ -37,6 +37,7 @@ bool ModuleSceneFirst::Start()
 	App->structures->AddStructure(App->structures->bar, 145, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 0, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY, 210, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
 
 	return true;

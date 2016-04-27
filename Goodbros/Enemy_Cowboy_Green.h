@@ -14,12 +14,7 @@ private:
 	Animation stop_shoot;
 	Animation dieshot;
 	Animation dieexplotion;
-	Animation fwtumble;
-	Animation fwtumbleshoot;
-	Animation bwtumble;
-	Animation bwtumbleshoot;
-	Animation grenade;
-
+	
 	bool isdead = false;
 	bool spawn = false;
 	iPoint original_pos;
