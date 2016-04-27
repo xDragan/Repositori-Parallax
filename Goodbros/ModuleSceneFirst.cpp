@@ -35,11 +35,11 @@ bool ModuleSceneFirst::Start()
 
 	// Colliders ---	
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
-
+	enemy = SDL_GetTicks();
 	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY, 260, 130);
 	App->structures->AddStructure(App->structures->bar, 145, 0);
-
 
 	return true;
 }
@@ -72,12 +72,7 @@ update_status ModuleSceneFirst::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0, NULL);
 
-	//PROVISIONAL WIN CONDITION HERE
-	/* if (App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN && App->fade->IsFading() == false)
-	{
-		App->fade->FadeToBlack(this, (Module*)App->scene_win);
-	}*/
-	if (App->player->win_condition == 2){
+	if (App->player->win_condition == 3){
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
 	}
 	if (App->player->lose == 1){

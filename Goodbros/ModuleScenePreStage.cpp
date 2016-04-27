@@ -6,7 +6,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleScenePreStage.h"
 #include "ModuleAudio.h"
-
+#include "ModuleSceneFirst.h"
 ModuleScenePreStage::ModuleScenePreStage()
 {}
 

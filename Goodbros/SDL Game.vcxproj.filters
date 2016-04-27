@@ -98,6 +98,9 @@
     <ClInclude Include="ModuleStructures.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_Cowboy_Green.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -165,6 +168,9 @@
     </ClCompile>
     <ClCompile Include="ModuleStructures.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Cowboy_Green.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

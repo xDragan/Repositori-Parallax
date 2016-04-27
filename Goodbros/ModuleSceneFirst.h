@@ -14,7 +14,8 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-
+	uint enemy;
+	bool spawn=false;
 public:
 	
 	SDL_Texture* background = nullptr;

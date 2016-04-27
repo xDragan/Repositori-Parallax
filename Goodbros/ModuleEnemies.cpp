@@ -7,7 +7,7 @@
 #include "Enemy.h"
 #include "Enemy_Pig.h"
 #include "Enemy_Cowboy_Blue.h"
-
+#include"Enemy_Cowboy_Green.h"
 #include "SDL/include/SDL_timer.h"
 
 #define SPAWN_MARGIN 40
@@ -141,7 +141,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::BLUE_COWBOY:
 			enemies[i] = new Enemy_CowBoy_Blue(info.x, info.y);
 			break;
-
+		case ENEMY_TYPES::GREEN_COWBOY:
+			enemies[i] = new Enemy_CowBoy_Green(info.x, info.y);
+			break;
 		case ENEMY_TYPES::PIG:
 			enemies[i] = new Enemy_Pig(info.x, info.y);
 			break;
