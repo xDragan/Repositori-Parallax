@@ -42,12 +42,14 @@ Enemy_CowBoy_Green::Enemy_CowBoy_Green(int x, int y) : Enemy(x, y)
 	 
 	
 	        
-	collider = App->collision->AddCollider({ 0, -20, 24, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ -1.0f, 0 }, 75, &backward);
+	path.PushBack({ -1.0f, 0 }, 95, &backward);
 	path.PushBack({ 0, 0 }, 67, &stop_shoot);
-	path.PushBack({ -1.0f, 0 }, 100, &backward);
-	path.PushBack({ 1.0f, 0 }, 175, &forward);
+	path.PushBack({ -1.0f, 0 }, 95, &backward);
+	path.PushBack({ 1.0f, 0 }, 95, &forward);
+	path.PushBack({ 0, 0 }, 67, &stop_shoot);
+	path.PushBack({ 1.0f, 0 }, 95, &forward);
 	path.loop = true;
 
 	original_pos.x = x;

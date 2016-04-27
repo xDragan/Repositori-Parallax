@@ -16,6 +16,9 @@ public:
 	bool CleanUp();
 	uint enemy;
 	bool spawn=false;
+	uint time = 0;
+	uint time2 = 0;
+	uint time3 = 0;
 public:
 	
 	SDL_Texture* background = nullptr;

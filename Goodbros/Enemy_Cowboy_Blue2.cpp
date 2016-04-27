@@ -91,10 +91,10 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(int x, int y) : Enemy(x, y)
 	fwtumble.speed = 0.2f;
 	fwtumbleshoot.loop = true;
 
-	collider = App->collision->AddCollider({ 0, -20, 24, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ +1.0f, 0 }, 100, &backward);
-	path.PushBack({ 0, +1.0 }, 50, &jump);
+	path.PushBack({ +1.0f, 0 }, 70, &backward);
+	path.PushBack({ 0, +1.0 }, 60, &jump);
 	path.PushBack({ 0, 0 }, 67, &stop_shoot);
 	path.PushBack({ -1.0f, 0 }, 100, &forward);
 

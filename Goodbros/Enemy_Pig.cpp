@@ -10,7 +10,7 @@ Enemy_Pig::Enemy_Pig(int x, int y) : Enemy(x, y)
 
 	animation = &run;
 
-	collider = App->collision->AddCollider({0, 0, 24, 24}, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({0, 0, 24, 24}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
 }
@@ -18,5 +18,11 @@ Enemy_Pig::Enemy_Pig(int x, int y) : Enemy(x, y)
 void Enemy_Pig::Move()
 {
 	position.y = original_y;
-	position.x -= 0.6;
+	if (hit == false){ position.x -= 1; }
+	if (hit == true) { position.x -= 3; }
+}
+
+void Enemy_Pig::Die()
+{
+	hit = true;
 }

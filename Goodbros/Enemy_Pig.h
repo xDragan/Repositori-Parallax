@@ -12,7 +12,8 @@ private:
 public:
 
 	Enemy_Pig(int x, int y);
-
+	void Die();
+	bool hit = false;
 	void Move();
 };
 

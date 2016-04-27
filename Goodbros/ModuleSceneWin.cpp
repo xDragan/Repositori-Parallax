@@ -53,8 +53,8 @@ update_status ModuleSceneWin::Update()
 
 	if (SDL_GetTicks() - ticks > 8000)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
-		App->player->win_condition = 0;
+		//App->fade->FadeToBlack(this, (Module*)App->scene_intro);
+		exit(0);
 	}
 	return UPDATE_CONTINUE;
 }

@@ -35,10 +35,11 @@ bool ModuleSceneFirst::Start()
 	// Colliders ---	
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
 	App->structures->AddStructure(App->structures->bar, 145, 0);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 0, 30);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY, 210, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
+	
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 170, 30);
+	time = SDL_GetTicks();
+	time2 = SDL_GetTicks();
+	time3 = SDL_GetTicks();
 
 	return true;
 }
@@ -67,18 +68,36 @@ update_status ModuleSceneFirst::Update()
 	App->player->position.x += 0;
 	App->render->camera.x -= 0;
 
+	if (SDL_GetTicks() > time)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 110);
+		time = SDL_GetTicks() + 5000;
+	}
+	if (SDL_GetTicks() > time2)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY, 210, 100);
+		time2 = SDL_GetTicks() + 7000;
+	}
+	
+	if (SDL_GetTicks() > time3)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 150);
+		time3 = SDL_GetTicks() + 10000;
+	}
+
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0, NULL);
 
-	if (App->player->win_condition == 3)
+	if (App->player->win_condition == 8)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
-		App->player->win_condition = 0;
+		
 	}
 	if (App->player->lose == 1)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
 		App->player->lose = 0;
+		App->player->win_condition = 0;
 	}
 	return UPDATE_CONTINUE;
 }
