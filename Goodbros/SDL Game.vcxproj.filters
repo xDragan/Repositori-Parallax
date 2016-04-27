@@ -1,59 +1,180 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Enemy_Cowboy_Blue.cpp" />
-    <ClCompile Include="Enemy_Cowboy_Green.cpp" />
-    <ClCompile Include="Globals.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="ModuleAim.cpp" />
-    <ClCompile Include="ModuleAudio.cpp" />
-    <ClCompile Include="ModuleCollision.cpp" />
-    <ClCompile Include="ModuleEnemies.cpp" />
-    <ClCompile Include="ModuleFadeToBlack.cpp" />
-    <ClCompile Include="ModuleInput.cpp" />
-    <ClCompile Include="ModuleParticles.cpp" />
-    <ClCompile Include="ModulePlayer.cpp" />
-    <ClCompile Include="ModuleRender.cpp" />
-    <ClCompile Include="ModuleSceneIntro.cpp" />
-    <ClCompile Include="ModuleSceneFirst.cpp" />
-    <ClCompile Include="ModuleSceneWin.cpp" />
-    <ClCompile Include="ModuleStructures.cpp" />
-    <ClCompile Include="ModuleTextures.cpp" />
-    <ClCompile Include="ModuleWindow.cpp" />
-    <ClCompile Include="Enemy_Pig.cpp" />
-    <ClCompile Include="ModuleScenePreStage.cpp" />
-    <ClCompile Include="Enemy_Cowboy_Blue2.cpp" />
+    <ClCompile Include="Application.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleAim.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleAudio.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleCollision.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemies.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFadeToBlack.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleParticles.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePlayer.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleRender.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleStructures.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleTextures.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleWindow.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Cowboy_Blue.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Cowboy_Blue2.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Cowboy_Green.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Pig.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneFirst.cpp">
+      <Filter>Modules\Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneIntro.cpp">
+      <Filter>Modules\Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleScenePreStage.cpp">
+      <Filter>Modules\Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneWin.cpp">
+      <Filter>Modules\Stages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h" />
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Enemy_Cowboy_Blue.h" />
-    <ClInclude Include="Enemy_Cowboy_Green.h" />
-    <ClInclude Include="Globals.h" />
-    <ClInclude Include="MemLeaks.h" />
-    <ClInclude Include="Module.h" />
-    <ClInclude Include="ModuleAim.h" />
-    <ClInclude Include="ModuleAudio.h" />
-    <ClInclude Include="ModuleCollision.h" />
-    <ClInclude Include="ModuleEnemies.h" />
-    <ClInclude Include="ModuleFadeToBlack.h" />
-    <ClInclude Include="ModuleInput.h" />
-    <ClInclude Include="ModuleParticles.h" />
-    <ClInclude Include="ModulePlayer.h" />
-    <ClInclude Include="ModuleRender.h" />
-    <ClInclude Include="ModuleSceneIntro.h" />
-    <ClInclude Include="ModuleSceneFirst.h" />
-    <ClInclude Include="ModuleScenePreStage.h" />
-    <ClInclude Include="ModuleSceneWin.h" />
-    <ClInclude Include="ModuleStructures.h" />
-    <ClInclude Include="ModuleTextures.h" />
-    <ClInclude Include="ModuleWindow.h" />
-    <ClInclude Include="p2Point.h" />
-    <ClInclude Include="Enemy_Pig.h" />
-    <ClInclude Include="Path.h" />
-    <ClInclude Include="Enemy_Cowboy_Blue2.h" />
+    <ClInclude Include="Application.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="MemLeaks.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Point.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Path.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleAim.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleAudio.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleCollision.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFadeToBlack.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleParticles.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePlayer.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleRender.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleStructures.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleTextures.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleWindow.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Cowboy_Blue.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Cowboy_Blue2.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Cowboy_Green.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Pig.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneFirst.h">
+      <Filter>Modules\Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneIntro.h">
+      <Filter>Modules\Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleScenePreStage.h">
+      <Filter>Modules\Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneWin.h">
+      <Filter>Modules\Stages</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{bd3ae097-b331-4ed5-9615-3c6489c8e1ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Containers">
+      <UniqueIdentifier>{415133e3-3d81-4cc6-82b3-37034dfc902c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{3e1bb12d-556c-4b1c-ab5f-e404c51894a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Enemies">
+      <UniqueIdentifier>{7807a48e-cee6-4df6-b911-409e51d7dd56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Stages">
+      <UniqueIdentifier>{769b97a6-1dd3-4d15-844e-8355dcdb5b30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
