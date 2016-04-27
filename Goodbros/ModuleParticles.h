@@ -51,6 +51,7 @@ public:
 	Particle explosion;
 	Particle shot;
 	Particle enemyshot;
+	Particle smoke;
 };
 
 #endif // __MODULEPARTICLES_H__

@@ -16,17 +16,60 @@ ModuleParticles::ModuleParticles()
 		active[i] = nullptr;
 
 	//shot.anim.PushBack({ 625, 288, 22, 14 });
-	enemyshot.anim.PushBack({ 471, 495, 3, 3});
-	enemyshot.anim.PushBack({ 487, 494, 5, 5 });
-	enemyshot.anim.PushBack({503, 493, 7, 7 });
-	enemyshot.anim.PushBack({ 519, 494, 9, 9 });
-	enemyshot.anim.PushBack({ 236, 294, 9, 9 });
-	enemyshot.anim.PushBack({ 236, 294, 9, 9 });
+	enemyshot.anim.PushBack({ 400, 492, 10, 10});
+	enemyshot.anim.PushBack({ 434, 492, 10, 10 });
+	
 	enemyshot.anim.loop = true;
-	enemyshot.anim.speed = 0.05f;
+	enemyshot.anim.speed = 0.02f;
 	enemyshot.speed.y = 1.5f;
 	enemyshot.life = 2000;
+
+
+	//smoke.anim.pushback;
+	smoke.anim.PushBack({ 27, 45, 127, 30 });
+	smoke.anim.PushBack({ 27, 77, 127, 30 });
+	smoke.anim.PushBack({ 27, 112, 127, 30 });
+	smoke.anim.PushBack({ 27, 153, 127, 30 });
+	smoke.anim.PushBack({ 27, 45, 127, 30 });
+	smoke.anim.PushBack({ 27, 77, 127, 30 });
+	smoke.anim.PushBack({ 27, 112, 127, 30 });
+	smoke.anim.PushBack({ 27, 153, 127, 30 });
+	smoke.anim.PushBack({ 27, 45, 127, 30 });
+	smoke.anim.PushBack({ 27, 77, 127, 30 });
+	smoke.anim.PushBack({ 27, 112, 127, 30 });
+	smoke.anim.PushBack({ 27, 153, 127, 30 });
+	smoke.anim.PushBack({ 27, 45, 127, 30 });
+	smoke.anim.PushBack({ 27, 77, 127, 30 });
+	smoke.anim.PushBack({ 27, 112, 127, 30 });
+	smoke.anim.PushBack({ 27, 153, 127, 30 });
+	smoke.anim.PushBack({ 27, 45, 127, 30 });
+	smoke.anim.PushBack({ 27, 77, 127, 30 });
+	smoke.anim.PushBack({ 27, 112, 127, 30 });
+	smoke.anim.PushBack({ 27, 153, 127, 30 });
+	smoke.anim.PushBack({ 27, 45, 127, 30 });
+	smoke.anim.PushBack({ 27, 77, 127, 30 });
+	smoke.anim.PushBack({ 27, 112, 127, 30 });
+	smoke.anim.PushBack({ 27, 153, 127, 30 });
+	smoke.anim.PushBack({ 27, 45, 127, 30 });
+	smoke.anim.PushBack({ 27, 77, 127, 30 });
+	smoke.anim.PushBack({ 27, 112, 127, 30 });
+	smoke.anim.PushBack({ 27, 153, 127, 30 });
+	smoke.anim.PushBack({ 27, 45, 127, 30 });
+	smoke.anim.PushBack({ 27, 77, 127, 30 });
+	smoke.anim.PushBack({ 27, 112, 127, 30 });
+	smoke.anim.PushBack({ 27, 153, 127, 30 });
+	smoke.anim.PushBack({ 27, 45, 127, 30 });
+	smoke.anim.PushBack({ 27, 77, 127, 30 });
+	smoke.anim.PushBack({ 27, 112, 127, 30 });
+	smoke.anim.PushBack({ 27, 153, 127, 30 });
+	smoke.anim.PushBack({ 27, 45, 127, 30 });
+	smoke.anim.PushBack({ 27, 77, 127, 30 });
+
+	smoke.anim.loop = true;
+	smoke.anim.speed = 0.14f;
+	smoke.life = 12000;
 }
+   
 
 ModuleParticles::~ModuleParticles()
 {}

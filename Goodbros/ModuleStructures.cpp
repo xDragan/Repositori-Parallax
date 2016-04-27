@@ -149,7 +149,7 @@ update_status ModuleStructures::Update()
 		}
 		else if (p->hits > 3){
 			App->collision->EraseCollider(p->collider);
-			App->render->Blit(graphics, p->position.x, p->position.y += 0.6f, &p->destroy.GetCurrentFrame());
+			App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
 			
 			/*p->collider->to_delete = true;
 			delete p;*/
@@ -216,6 +216,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
+				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_PLAYER_NOSHOT, 0);
 			}
 			/*delete[] active[i]->collider;
 			active[i]->collider = nullptr;//PROBLEM//*/
