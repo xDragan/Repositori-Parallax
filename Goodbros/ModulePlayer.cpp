@@ -9,6 +9,8 @@
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
 #include "ModuleAim.h"
+#include "ModuleTextures.h"
+#include "ModuleSceneFirst.h"
 
 int ModulePlayer::looking_at() const
 {
@@ -463,10 +465,12 @@ update_status ModulePlayer::Update()
 					break;
 				}
 			}
-		}
+		} break;
 	case DIE:
+		current_animation = &die;
 		if (current_animation == &die){
 			if (current_animation->Finished() == true){
+	
 				App->fade->FadeToBlack(this, (Module*)App->scene_win);
 			}
 		}

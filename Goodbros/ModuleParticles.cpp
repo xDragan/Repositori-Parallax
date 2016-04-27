@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -121,6 +122,11 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			active[i] = nullptr;
 			break;
 		}
+	}
+	if (c1 == App->player->player_coll || c2 == App->player->player_coll){
+		App->player->Status = DIE;
+		delete App->player->player_coll;
+		App->player->player_coll = nullptr;
 	}
 }
 

@@ -49,7 +49,6 @@ bool ModuleSceneFirst::CleanUp()
 	//App->audio->Disable();
  	App->textures->Unload(background);
 	App->player->Disable();
-	App->collision->Disable();
 	App->particles->Disable();
 	App->aim->Disable();
 	App->enemies->Disable();

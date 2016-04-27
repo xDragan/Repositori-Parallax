@@ -113,6 +113,7 @@ update_status ModuleCollision::Update()
 	return UPDATE_CONTINUE;
 }
 
+
 void ModuleCollision::DebugDraw()
 {
 	if(App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)

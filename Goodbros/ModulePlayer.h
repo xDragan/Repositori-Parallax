@@ -8,15 +8,15 @@
 struct SDL_Texture;
 struct Collider;
 
+enum type
+{
+	NORMAL,
+	ROLLING,
+	DIE,
+};
 class ModulePlayer : public Module
 {
 public:
-	enum type
-	{
-		NORMAL,
-		ROLLING,
-		DIE,
-	};
 
 	enum SCREEN_PORTION
 	{
