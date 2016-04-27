@@ -41,17 +41,16 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	void AddParticle(const Particle& particle, int x, int y);
-
+	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay);
 private:
 
 	SDL_Texture* graphics = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 
 public:
-
 	Particle explosion;
 	Particle shot;
+	Particle enemyshot;
 };
 
 #endif // __MODULEPARTICLES_H__

@@ -15,11 +15,16 @@ ModuleParticles::ModuleParticles()
 		active[i] = nullptr;
 
 	//shot.anim.PushBack({ 625, 288, 22, 14 });
-	shot.anim.PushBack({ 660, 290, 19, 12 });
-	shot.anim.PushBack({ 696, 289, 22, 14 });
-	shot.anim.speed = 0.01f;
-	shot.life = 40;
-	shot.anim.loop = true;
+	enemyshot.anim.PushBack({ 471, 495, 3, 3});
+	enemyshot.anim.PushBack({ 487, 494, 5, 5 });
+	enemyshot.anim.PushBack({503, 493, 7, 7 });
+	enemyshot.anim.PushBack({ 519, 494, 9, 9 });
+	enemyshot.anim.PushBack({ 236, 294, 9, 9 });
+	enemyshot.anim.PushBack({ 236, 294, 9, 9 });
+	enemyshot.anim.loop = true;
+	enemyshot.anim.speed = 0.05f;
+	enemyshot.speed.y = 1.5f;
+	enemyshot.life = 2000;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -32,7 +37,7 @@ bool ModuleParticles::Start()
 
 	shot.fx = App->audio->LoadFx("bloodbros/shot.wav");
 
-	//graphics = App->textures->Load("bloodbros/Stuff.png");
+	graphics = App->textures->Load("bloodbros/Stuff.png");
 
 	return true;
 }
@@ -86,7 +91,7 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -95,6 +100,9 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y)
 			Particle* p = new Particle(particle);
 			p->position.x = x;
 			p->position.y = y;
+			if (collider_type != COLLIDER_NONE)
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+
 			active[i] = p;
 			break;
 		}
@@ -143,11 +151,8 @@ bool Particle::Update()
 	if (anim.Finished())
 		ret = false;
 
-	//position.x += speed.x;
-	//position.y += speed.y;
-
-	position.x = 0;
-	position.y = 0;
+	position.x += speed.x;
+	position.y += speed.y;
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);

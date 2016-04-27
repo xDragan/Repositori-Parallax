@@ -378,9 +378,6 @@ update_status ModulePlayer::Update()
 				Status = ROLLING;
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_X] == KEY_STATE::KEY_REPEAT){
-			current_animation = &die;
-		}
 		break;
 
 	case ROLLING:
@@ -469,6 +466,13 @@ update_status ModulePlayer::Update()
 				}
 			}
 		}
+	case DIE:
+		if (current_animation == &die){
+			if (current_animation->Finished() == true){
+				App->fade->FadeToBlack(this, (Module*)App->scene_win);
+			}
+		}
+
 	}
 
 		// Draw everything --------------------------------------
@@ -476,4 +480,9 @@ update_status ModulePlayer::Update()
 
 		return UPDATE_CONTINUE;
 
+	}
+
+	void ModulePlayer::OnCollision(COLLIDER_ENEMY_SHOT, COLLIDER_PLAYER)
+	{
+		current_animation = &die;
 	}

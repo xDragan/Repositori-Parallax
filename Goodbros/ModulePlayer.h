@@ -16,6 +16,7 @@ public:
 	{
 		NORMAL,
 		ROLLING,
+		DIE,
 	};
 	enum SCREEN_PORTION
 	{
@@ -35,6 +36,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	int const looking_at();
+	void OnCollision(Collider* c1, Collider* c2);
 public:
 	Collider* player_coll;
 public:

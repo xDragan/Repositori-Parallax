@@ -7,7 +7,6 @@ class Enemy_CowBoy_Blue : public Enemy
 private:
 	bool going_forward = true;
 	bool stop = false;
-	int original_y2 = 0;
 
 	Animation forward;
 	Animation backward;

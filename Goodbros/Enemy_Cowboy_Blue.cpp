@@ -91,20 +91,27 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, -20, 24, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 
-	original_pos.x = x;
-	original_pos.y = y;
-	path.PushBack({ -1.0f, 0 }, 150, &forward);
+
+	path.PushBack({ -1.0f, 0 }, 100, &forward);
 	path.PushBack({ 0, 0 }, 67, &stop_shoot);
 	path.PushBack({ -1.0f, 0 }, 50, &bwtumbleshoot);
 	path.PushBack({ 0, 0 }, 67, &stop_shoot);
 	path.PushBack({ 1.0f, 0 }, 150, &backward);
+	path.loop = true;
 
-	original_y2 = y;
+	original_pos.x = x;
+	original_pos.y = y;
 }
 
 void Enemy_CowBoy_Blue::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
+	if (path.GetFrame() == 120 && isdead == false){
+		App->particles->AddParticle(App->particles->enemyshot, position.x+10, position.y+20, COLLIDER_ENEMY_SHOT, 0);
+	}
+	if (path.GetFrame() == 237 && isdead == false){
+		App->particles->AddParticle(App->particles->enemyshot,position.x+10, position.y+20, COLLIDER_ENEMY_SHOT, 0);
+	}
 	if (isdead == true && dieshot.Finished() == true){
 		to_delete = true;
 	}
