@@ -7,6 +7,7 @@
 #include "ModuleSceneFirst.h"
 #include "ModuleSceneWin.h"
 #include "ModuleAudio.h"
+#include "SDL\include\SDL.h"
 
 ModuleSceneWin::ModuleSceneWin()
 {}
@@ -18,7 +19,7 @@ ModuleSceneWin::~ModuleSceneWin()
 bool ModuleSceneWin::Start()
 {
 	LOG("Loading game intro");
-
+	ticks = SDL_GetTicks();
 	background = App->textures->Load("bloodbros/win_scene.png");
 	App->audio->Load("bloodbros/Victory.ogg");
 	App->render->camera.x = App->render->camera.y = 0;
@@ -40,10 +41,8 @@ update_status ModuleSceneWin::Update()
 {
 	App->render->Blit(background, 0, 0, NULL);
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->fade->IsFading() == false)
-	{
+	if (SDL_GetTicks() - ticks > 6000){
 		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
 	}
-
 	return UPDATE_CONTINUE;
 }

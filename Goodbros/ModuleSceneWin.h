@@ -16,7 +16,7 @@ public:
 	bool CleanUp();
 
 public:
-
+	uint ticks;
 	SDL_Texture* background = nullptr;
 	uint fx = 0;
 };

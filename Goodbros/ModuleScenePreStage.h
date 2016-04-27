@@ -2,6 +2,7 @@
 #define __MODULESCENEPRESTAGE_H__
 
 #include "Module.h"
+#include "SDL\include\SDL.h"
 
 struct SDL_Texture;
 
@@ -16,7 +17,7 @@ public:
 	bool CleanUp();
 
 public:
-
+	uint ticks;
 	SDL_Texture* background = nullptr;
 	SDL_Texture* lvls = nullptr;
 	uint fx = 0;

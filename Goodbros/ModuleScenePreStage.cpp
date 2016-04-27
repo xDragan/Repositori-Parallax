@@ -17,7 +17,7 @@ ModuleScenePreStage::~ModuleScenePreStage()
 bool ModuleScenePreStage::Start()
 {
 	LOG("Loading game intro");
-
+	ticks = SDL_GetTicks();
 	background = App->textures->Load("bloodbros/windows_page.png");
 	lvls = App->textures->Load("bloodbros/lvls_window_page.png");
 	App->audio->Load("bloodbros/PreStage.ogg");
@@ -32,7 +32,6 @@ bool ModuleScenePreStage::CleanUp()
 	LOG("Unloading game scene");
 	App->textures->Unload(lvls);
 	App->textures->Unload(background);
-	//App->audio->Disable();
 	return true;
 }
 
@@ -42,10 +41,16 @@ update_status ModuleScenePreStage::Update()
 	App->render->Blit(background, 0, 0, NULL);
 	App->render->Blit(lvls, 0, 0, NULL);
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->fade->IsFading() == false)
-	{
+	if (SDL_GetTicks() - ticks > 6000){
 		App->fade->FadeToBlack(this, (Module*)App->scene_space);
 	}
-
 	return UPDATE_CONTINUE;
 }
+
+
+	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->fade->IsFading() == false)
+	{
+		
+
+	return UPDATE_CONTINUE;
+}*/
