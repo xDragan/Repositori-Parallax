@@ -336,15 +336,12 @@ update_status ModulePlayer::Update()
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 		{
 			player_coll->SetPos(position.x + 10, position.y + 6);
-			if (isPlaying > 9)
+
+			if (SDL_GetTicks() > timeout)
 			{
 				App->audio->PlayFx(App->particles->shot.fx);
+				timeout = SDL_GetTicks() + 150;
 			}
-			if (isPlaying == 10)
-			{
-				isPlaying = 0;
-			}
-			isPlaying++;
 			current_animation = &shoot[Looking_at];
 		}
 
@@ -359,16 +356,11 @@ update_status ModulePlayer::Update()
 			}
 			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
 			{
-				if (isPlaying > 9)
+				if (SDL_GetTicks() > timeout)
 				{
 					App->audio->PlayFx(App->particles->shot.fx);
+					timeout = SDL_GetTicks() + 150;
 				}
-				if (isPlaying == 10)
-				{
-					isPlaying = 0;
-				}
-
-				isPlaying++;
 				current_animation = &shootdown[Looking_at];
 			}
 			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
