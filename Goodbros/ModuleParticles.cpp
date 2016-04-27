@@ -16,8 +16,8 @@ ModuleParticles::ModuleParticles()
 		active[i] = nullptr;
 
 	//shot.anim.PushBack({ 625, 288, 22, 14 });
-	enemyshot.anim.PushBack({ 400, 492, 10, 10});
-	enemyshot.anim.PushBack({ 434, 492, 10, 10 });
+	enemyshot.anim.PushBack({ 399, 494, 9, 9});
+	enemyshot.anim.PushBack({ 429, 494, 9, 9 });
 	
 	enemyshot.anim.loop = true;
 	enemyshot.anim.speed = 0.035f;
