@@ -83,7 +83,7 @@ update_status ModuleAim::Update()
 			if (SDL_GetTicks() > time)
 			{
 				Aim->type = COLLIDER_PLAYER_SHOT;
-				time = SDL_GetTicks() + 800;
+				time = SDL_GetTicks() + 500;
 			}
 			else
 			{

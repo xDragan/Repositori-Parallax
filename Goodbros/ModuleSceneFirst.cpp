@@ -30,14 +30,16 @@ bool ModuleSceneFirst::Start()
 	App->particles->Enable();
 	App->collision->Enable();
 	App->aim->Enable();
-	App->enemies->Enable();
 	App->structures->Enable();
-	// Colliders ---
+	App->enemies->Enable();
+
+	// Colliders ---	
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 110);
 	App->structures->AddStructure(App->structures->bar, 145, 0);
+
 
 	return true;
 }

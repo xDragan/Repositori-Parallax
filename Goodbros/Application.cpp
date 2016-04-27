@@ -27,8 +27,8 @@ Application::Application()
 	modules[i++] = scene_prestage = new ModuleScenePreStage();
 	modules[i++] = scene_space = new ModuleSceneFirst();
 	modules[i++] = scene_win = new ModuleSceneWin();
-	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = structures = new ModuleStructures();
+	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = aim = new ModuleAim();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
