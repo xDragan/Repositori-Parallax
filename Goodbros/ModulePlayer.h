@@ -61,7 +61,7 @@ public:
 	Animation die;
 	Animation win;
 	Animation windance;
-
+	bool lose = 0;
 	int timeout = 0;
 };
 

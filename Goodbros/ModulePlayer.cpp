@@ -470,8 +470,7 @@ update_status ModulePlayer::Update()
 		current_animation = &die;
 		if (current_animation == &die){
 			if (current_animation->Finished() == true){
-	
-				App->fade->FadeToBlack(this, (Module*)App->scene_win);
+				lose = 1;
 			}
 		}
 

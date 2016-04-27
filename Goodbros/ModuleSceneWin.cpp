@@ -24,8 +24,7 @@ ModuleSceneWin::~ModuleSceneWin()
 // Load assets
 bool ModuleSceneWin::Start()
 {
-	LOG("Loading game intro");
-	App->scene_space->background = nullptr;
+	LOG("Loading game intro");	
 	App->player->Disable();
 	App->particles->Disable();
 	App->aim->Disable();
@@ -53,7 +52,7 @@ update_status ModuleSceneWin::Update()
 {
 	App->render->Blit(background, 0, 0, NULL);
 
-	if (SDL_GetTicks() - ticks > 6000){
+	if (SDL_GetTicks() - ticks > 8000){
 		//App->fade->FadeToBlack(this, (Module*)App->scene_intro);
 		exit(0);
 	}

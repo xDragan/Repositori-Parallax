@@ -47,12 +47,13 @@ bool ModuleSceneFirst::CleanUp()
 {
 	LOG("Unloading space scene");
 	//App->audio->Disable();
- 	App->textures->Unload(background);
+	App->textures->Unload(background);
 	App->player->Disable();
 	App->particles->Disable();
 	App->aim->Disable();
 	App->enemies->Disable();
 	App->structures->Disable();
+	App->collision->Disable();
 	return true;
 }
 
@@ -75,5 +76,9 @@ update_status ModuleSceneFirst::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
 	}
 
+	if (App->player->lose == 1){
+		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
+		App->player->lose = 0;
+	}
 	return UPDATE_CONTINUE;
 }

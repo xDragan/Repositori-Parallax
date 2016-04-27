@@ -125,8 +125,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	}
 	if (c1 == App->player->player_coll || c2 == App->player->player_coll){
 		App->player->Status = DIE;
-		delete App->player->player_coll;
-		App->player->player_coll = nullptr;
+		
 	}
 }
 
