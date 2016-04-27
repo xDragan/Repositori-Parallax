@@ -21,7 +21,7 @@ bool ModuleSceneWin::Start()
 	LOG("Loading game intro");
 
 	background = App->textures->Load("bloodbros/win_scene.png");
-	App->audio->Enable(2);
+	App->audio->Load("bloodbros/Victory.ogg");
 	App->render->camera.x = App->render->camera.y = 0;
 
 	return true;
@@ -32,7 +32,7 @@ bool ModuleSceneWin::CleanUp()
 {
 	LOG("Unloading game scene");
 	App->textures->Unload(background);
-
+	//App->audio->Disable();
 	return true;
 }
 

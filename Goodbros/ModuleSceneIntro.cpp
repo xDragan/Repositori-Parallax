@@ -18,9 +18,8 @@ ModuleSceneIntro::~ModuleSceneIntro()
 bool ModuleSceneIntro::Start()
 {
 	LOG("Loading game intro");
-	
 	background = App->textures->Load("bloodbros/Welcomepage.png");
-	App->audio->Enable(0);
+	App->audio->Load("bloodbros/TittleScreen.ogg");
 	App->render->camera.x = App->render->camera.y = 0;
 	
 	return true;
@@ -30,9 +29,8 @@ bool ModuleSceneIntro::Start()
 bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading game scene");
-
 	App->textures->Unload(background);
-	
+	//App->audio->Disable();
 	return true;
 }
 

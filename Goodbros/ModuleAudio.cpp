@@ -7,16 +7,8 @@
 ModuleAudio::ModuleAudio(){ };
 ModuleAudio::~ModuleAudio(){ };
 
-void ModuleAudio::Enable(int lvl)
-{
-	if (enabled == false)
-	{
-		enabled = true;
-	}
-	Start(lvl);
-}
 
-bool ModuleAudio::Start(int lvl) //receives int lvl that will load audio diferently depending on lvl
+bool ModuleAudio::Start() //receives int lvl that will load audio diferently depending on lvl
 {
 	LOG("Init Audio library");
 	bool ret = true;
@@ -31,28 +23,25 @@ bool ModuleAudio::Start(int lvl) //receives int lvl that will load audio diferen
 		LOG("Could not initialize Audio lib. MIX_Init: %s", Mix_GetError());
 		ret = false;
 	}
-	Load(lvl);
 
 	return ret;
 }
 
-Mix_Music* ModuleAudio::Load(int lvl){
+Mix_Music* ModuleAudio::Load(const char*location){
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
-
-	switch (lvl){
-	case 0: music = Mix_LoadMUS("bloodbros/TittleScreen.ogg");
-		break;
-	case 1: music = Mix_LoadMUS("bloodbros/level1.ogg");
-		break;
-	case 2: music = Mix_LoadMUS("bloodbros/Victory.ogg");
-		break;
-	case 3: music = Mix_LoadMUS("bloodbros/PreStage.ogg");
-		break;
-	}
-	Mix_PlayMusic(music, 0);
+	music=Mix_LoadMUS(location);
+	Mix_PlayMusic(music, -1);
 	return music;
 }
 
+
+
+bool ModuleAudio::Disable(){
+	LOG("music clean");
+	Mix_FreeMusic(music);
+	music = NULL;
+	return true;
+}
 bool ModuleAudio::CleanUp(){
 	LOG("Freeing textures and Audio library");
 	Mix_CloseAudio();

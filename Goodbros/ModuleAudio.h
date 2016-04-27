@@ -12,12 +12,11 @@ public:
 	ModuleAudio();
 	~ModuleAudio();
 public:
-	void Enable(int lvl);
-	bool Start(int lvl);
+	bool Start();
 	bool CleanUp();
 	Mix_Music *music;
-	Mix_Music *Load(int lvl);
-
+	Mix_Music *Load(const char*location);
+	bool Disable();
 	// Load a WAV in memory
 	uint LoadFx(const char* path);
 	bool UnLoadFx(uint id);

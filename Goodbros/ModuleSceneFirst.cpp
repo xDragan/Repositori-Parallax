@@ -27,16 +27,15 @@ ModuleSceneFirst::~ModuleSceneFirst()
 bool ModuleSceneFirst::Start()
 {
 	LOG("Loading space scene");
-	
-	background = App->textures->Load("bloodbros/level1destroyed.png");
 
-	App->audio->Enable(1);
-	App->player->Enable(0);
-	App->particles->Enable(0);
-	App->collision->Enable(0);
-	App->aim->Enable(0);
-	App->enemies->Enable(0);
-	App->structures->Enable(0);
+	background = App->textures->Load("bloodbros/level1destroyed.png");
+	App->audio->Load("bloodbros/level1.ogg");
+	App->player->Enable();
+	App->particles->Enable();
+	App->collision->Enable();
+	App->aim->Enable();
+	App->enemies->Enable();
+	App->structures->Enable();
 	// Colliders ---
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
 
@@ -51,7 +50,7 @@ bool ModuleSceneFirst::Start()
 bool ModuleSceneFirst::CleanUp()
 {
 	LOG("Unloading space scene");
-
+	//App->audio->Disable();
  	App->textures->Unload(background);
 	App->player->Disable();
 	App->collision->Disable();

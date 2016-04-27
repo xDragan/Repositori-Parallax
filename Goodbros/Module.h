@@ -24,7 +24,7 @@ public:
 	// Module activation ---
 	bool IsEnabled() const				{ return enabled; }
 
-	virtual void Enable(int lvl)
+	void Enable()
 	{
 		if(enabled == false)
 		{
