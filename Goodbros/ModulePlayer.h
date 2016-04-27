@@ -41,7 +41,7 @@ public:
 
 public:
 	Collider* player_coll;
-
+	int win_condition=0;
 public:
 	type Status;
 	SDL_Texture* graphics = nullptr;

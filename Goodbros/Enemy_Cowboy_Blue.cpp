@@ -1,6 +1,7 @@
  #include "Application.h"
 #include "Enemy_CowBoy_Blue.h"
 #include "ModuleCollision.h"
+#include "ModulePlayer.h"
 
 Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 {
@@ -115,6 +116,7 @@ void Enemy_CowBoy_Blue::Move()
 
 void Enemy_CowBoy_Blue::Die()
 {
+	App->player->win_condition++;
 	path.Erase();
 	path.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
 	path.loop = false;

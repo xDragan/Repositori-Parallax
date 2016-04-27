@@ -148,14 +148,15 @@ update_status ModuleStructures::Update()
 			}
 		}
 		else if (p->hits > 3){
-
+			App->collision->EraseCollider(p->collider);
 			App->render->Blit(graphics, p->position.x, p->position.y += 0.6f, &p->destroy.GetCurrentFrame());
-
+			
 			/*p->collider->to_delete = true;
 			delete p;*/
 			if (p->destroy.Finished()){
 				delete active[i];
 				active[i] = nullptr;
+				App->player->win_condition++;
 			}
 		}
 	}

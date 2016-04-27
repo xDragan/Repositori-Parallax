@@ -71,11 +71,13 @@ update_status ModuleSceneFirst::Update()
 	App->render->Blit(background, 0, 0, NULL);
 
 	//PROVISIONAL WIN CONDITION HERE
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN && App->fade->IsFading() == false)
+	/* if (App->input->keyboard[SDL_SCANCODE_W] == KEY_DOWN && App->fade->IsFading() == false)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
+	}*/
+	if (App->player->win_condition == 2){
+		App->fade->FadeToBlack(this, (Module*)App->scene_win);
 	}
-
 	if (App->player->lose == 1){
 		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
 		App->player->lose = 0;
