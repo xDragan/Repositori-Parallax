@@ -92,11 +92,11 @@
     <ClInclude Include="ModuleSceneWin.h">
       <Filter>Modules\Stages</Filter>
     </ClInclude>
-    <ClInclude Include="Bar_House.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="Path.h">
       <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleStructures.h">
+      <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -163,8 +163,8 @@
     <ClCompile Include="ModuleSceneWin.cpp">
       <Filter>Modules\Stages</Filter>
     </ClCompile>
-    <ClCompile Include="Bar_House.cpp">
-      <Filter>Modules\Enemies</Filter>
+    <ClCompile Include="ModuleStructures.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

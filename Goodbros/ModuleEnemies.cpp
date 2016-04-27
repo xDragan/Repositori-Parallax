@@ -7,7 +7,6 @@
 #include "Enemy.h"
 #include "Enemy_Pig.h"
 #include "Enemy_Cowboy_Blue.h"
-#include "Bar_House.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -132,10 +131,6 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		{
 		case ENEMY_TYPES::BLUE_COWBOY:
 			enemies[i] = new Enemy_CowBoy_Blue(info.x, info.y);
-			break;
-
-		case ENEMY_TYPES::BAR_HOUSE:
-			enemies[i] = new Bar_House(info.x, info.y);
 			break;
 
 		case ENEMY_TYPES::PIG:

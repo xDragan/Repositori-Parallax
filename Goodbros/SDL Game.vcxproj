@@ -74,7 +74,6 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_Cowboy_Blue.h" />
     <ClInclude Include="Globals.h" />
-    <ClInclude Include="Bar_House.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleAim.h" />
@@ -90,6 +89,7 @@
     <ClInclude Include="ModuleSceneFirst.h" />
     <ClInclude Include="ModuleScenePreStage.h" />
     <ClInclude Include="ModuleSceneWin.h" />
+    <ClInclude Include="ModuleStructures.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />
@@ -101,7 +101,6 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_Cowboy_Blue.cpp" />
     <ClCompile Include="Globals.cpp" />
-    <ClCompile Include="Bar_House.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAim.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
@@ -115,6 +114,7 @@
     <ClCompile Include="ModuleSceneIntro.cpp" />
     <ClCompile Include="ModuleSceneFirst.cpp" />
     <ClCompile Include="ModuleSceneWin.cpp" />
+    <ClCompile Include="ModuleStructures.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="Enemy_Pig.cpp" />

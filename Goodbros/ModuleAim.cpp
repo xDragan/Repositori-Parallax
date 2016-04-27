@@ -88,14 +88,12 @@ update_status ModuleAim::Update()
 	{
 		position.y += speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_DOWN)
 	{
 		current_animation = &Aimshoot;
 		Aim->type = COLLIDER_PLAYER_SHOT;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE)
-	{
-		current_animation = &aim;
+	else {
 		Aim->type = COLLIDER_PLAYER_NOSHOT;
 	}
 

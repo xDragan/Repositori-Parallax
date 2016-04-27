@@ -14,6 +14,7 @@
 #include "ModuleAim.h"
 #include "ModuleAudio.h"
 #include "ModuleEnemies.h"
+#include "ModuleStructures.h"
 
 Application::Application()
 {
@@ -27,12 +28,14 @@ Application::Application()
 	modules[i++] = scene_space = new ModuleSceneFirst();
 	modules[i++] = scene_win = new ModuleSceneWin();
 	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = structures = new ModuleStructures();
 	modules[i++] = aim = new ModuleAim();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
+
 }	
 
 Application::~Application()

@@ -11,6 +11,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleStructures.h"
 
 #include "SDL/include/SDL.h"
 
@@ -35,12 +36,13 @@ bool ModuleSceneFirst::Start()
 	App->collision->Enable(0);
 	App->aim->Enable(0);
 	App->enemies->Enable(0);
+	App->structures->Enable(0);
 	// Colliders ---
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::BAR_HOUSE, 145, 0);
+	App->structures->AddStructure(App->structures->bar, 145, 0);
 
 	return true;
 }
@@ -56,6 +58,7 @@ bool ModuleSceneFirst::CleanUp()
 	App->particles->Disable();
 	App->aim->Disable();
 	App->enemies->Disable();
+	App->structures->Disable();
 	return true;
 }
 
