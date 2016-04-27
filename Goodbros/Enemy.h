@@ -17,7 +17,9 @@ protected:
 
 public:
 	iPoint position;
+	iPoint position2;
 	Path path;
+	Path path2;
 	uint fx = 0;
 	bool to_delete = false;
 	bool fx_played = false;

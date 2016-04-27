@@ -73,6 +73,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_Cowboy_Blue.h" />
+    <ClInclude Include="Enemy_Cowboy_Blue2.h" />
     <ClInclude Include="Enemy_Cowboy_Green.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
@@ -101,6 +102,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_Cowboy_Blue.cpp" />
+    <ClCompile Include="Enemy_Cowboy_Blue2.cpp" />
     <ClCompile Include="Enemy_Cowboy_Green.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />

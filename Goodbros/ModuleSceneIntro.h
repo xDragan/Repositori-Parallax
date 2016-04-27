@@ -16,7 +16,6 @@ public:
 	bool CleanUp();
 
 public:
-	
 	SDL_Texture* background = nullptr;
 	uint fx = 0;
 };

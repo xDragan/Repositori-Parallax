@@ -1,5 +1,6 @@
 #ifndef __ENEMY_COWBOY_GREEN_H__
 #define __ENEMY_COWBOY_GREEN_H__
+
 #include "Enemy.h"
 
 class Enemy_CowBoy_Green : public Enemy

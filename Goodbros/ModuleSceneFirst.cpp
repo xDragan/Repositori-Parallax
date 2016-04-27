@@ -23,7 +23,6 @@ ModuleSceneFirst::~ModuleSceneFirst()
 bool ModuleSceneFirst::Start()
 {
 	LOG("Loading space scene");
-
 	background = App->textures->Load("bloodbros/level1destroyed.png");
 	App->audio->Load("bloodbros/level1.ogg");
 	App->player->Enable();
@@ -35,11 +34,10 @@ bool ModuleSceneFirst::Start()
 
 	// Colliders ---	
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
-	enemy = SDL_GetTicks();
-	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 110);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY, 260, 130);
 	App->structures->AddStructure(App->structures->bar, 145, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 0, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 130);
 
 	return true;
 }
@@ -68,14 +66,16 @@ update_status ModuleSceneFirst::Update()
 	App->player->position.x += 0;
 	App->render->camera.x -= 0;
 
-
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0, NULL);
 
-	if (App->player->win_condition == 3){
+	if (App->player->win_condition == 3)
+	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
+		App->player->win_condition = 0;
 	}
-	if (App->player->lose == 1){
+	if (App->player->lose == 1)
+	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
 		App->player->lose = 0;
 	}

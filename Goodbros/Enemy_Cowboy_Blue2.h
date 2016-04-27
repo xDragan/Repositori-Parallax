@@ -1,9 +1,9 @@
-#ifndef __ENEMY_COWBOY_BLUE_H__
-#define __ENEMY_COWBOY_BLUE_H__
+#ifndef __ENEMY_COWBOY_BLUE2_H__
+#define __ENEMY_COWBOY_BLUE2_H__
 
 #include "Enemy.h"
 
-class Enemy_CowBoy_Blue : public Enemy
+class Enemy_CowBoy_Blue2 : public Enemy
 {
 private:
 	bool going_forward = true;
@@ -19,15 +19,16 @@ private:
 	Animation bwtumble;
 	Animation bwtumbleshoot;
 	Animation grenade;
+	Animation jump;
 
 	bool isdead = false;
 
 	iPoint original_pos;
-public:
 
-	Enemy_CowBoy_Blue(int x, int y);
+public:
+	Enemy_CowBoy_Blue2(int x, int y);
 	void Die();
 	void Move();
 };
 
-#endif // __ENEMY_COWBOY_BLUE_H__
+#endif // __ENEMY_COWBOY_BLUE2_H__

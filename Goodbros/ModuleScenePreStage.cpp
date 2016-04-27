@@ -46,11 +46,3 @@ update_status ModuleScenePreStage::Update()
 	}
 	return UPDATE_CONTINUE;
 }
-
-
-	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->fade->IsFading() == false)
-	{
-		
-
-	return UPDATE_CONTINUE;
-}*/

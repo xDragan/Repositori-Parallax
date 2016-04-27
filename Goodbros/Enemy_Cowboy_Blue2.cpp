@@ -1,9 +1,10 @@
 #include "Application.h"
-#include "Enemy_CowBoy_Blue.h"
+#include "Enemy_Cowboy_Blue2.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
+#include "Path.h"
 
-Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
+Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(int x, int y) : Enemy(x, y)
 {
 	forward.PushBack({ 117, 396, 30, 55 });
 	forward.PushBack({ 152, 396, 30, 55 });
@@ -12,6 +13,7 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 	forward.PushBack({ 261, 396, 30, 55 });
 	forward.PushBack({ 299, 396, 30, 55 });
 	forward.speed = 0.09f;
+	forward.loop = true;
 
 	backward.PushBack({ 117, 459, 30, 55 });
 	backward.PushBack({ 152, 459, 30, 55 });
@@ -20,6 +22,7 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 	backward.PushBack({ 261, 459, 30, 55 });
 	backward.PushBack({ 299, 459, 30, 55 });
 	backward.speed = 0.09f;
+	backward.loop = true;
 
 	stop_shoot.PushBack({ 353, 396, 30, 55 });
 	stop_shoot.PushBack({ 392, 396, 30, 55 });
@@ -27,20 +30,20 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 	stop_shoot.speed = 0.04f;
 	stop_shoot.loop = true;
 
-	dieshot.PushBack({507,397,35,54});
+	dieshot.PushBack({ 507, 397, 35, 54 });
 	dieshot.PushBack({ 549, 397, 35, 54 });
 	dieshot.PushBack({ 589, 397, 35, 54 });
 	dieshot.PushBack({ 632, 397, 35, 54 });
 	dieshot.speed = 0.09f;
 	dieshot.loop = false;
 
-	dieexplotion.PushBack({744,397,36,54});
+	dieexplotion.PushBack({ 744, 397, 36, 54 });
 	dieexplotion.PushBack({ 798, 397, 36, 54 });
 	dieexplotion.PushBack({ 844, 397, 36, 54 });
-	dieexplotion.PushBack({ 889, 397, 36, 54 }); 
+	dieexplotion.PushBack({ 889, 397, 36, 54 });
 	dieexplotion.speed = 0.3f;
 
-	grenade.PushBack({1014,397,36,54});
+	grenade.PushBack({ 1014, 397, 36, 54 });
 	grenade.PushBack({ 1055, 397, 36, 54 });
 	grenade.PushBack({ 1095, 397, 36, 54 });
 	grenade.PushBack({ 1134, 397, 36, 54 });
@@ -48,7 +51,7 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 	grenade.PushBack({ 1210, 397, 36, 54 });
 	grenade.speed = 0.2f;
 
-	bwtumble.PushBack({107,565,36,54});
+	bwtumble.PushBack({ 107, 565, 36, 54 });
 	bwtumble.PushBack({ 149, 565, 41, 54 });
 	bwtumble.PushBack({ 195, 565, 36, 54 });
 	bwtumble.PushBack({ 237, 565, 36, 54 });
@@ -56,7 +59,7 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 	bwtumble.PushBack({ 319, 565, 36, 54 });
 	bwtumble.speed = 0.2f;
 	bwtumble.loop = true;
- 
+
 	bwtumbleshoot.PushBack({ 107, 619, 36, 54 });
 	bwtumbleshoot.PushBack({ 149, 619, 41, 54 });
 	bwtumbleshoot.PushBack({ 195, 565, 36, 54 });
@@ -76,39 +79,57 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(int x, int y) : Enemy(x, y)
 	fwtumble.speed = 0.2f;
 	fwtumble.loop = true;
 
-	fwtumbleshoot.PushBack({ 107, 793 ,36, 54 });
-	fwtumbleshoot.PushBack({ 149, 793, 41, 54 });  
+	jump.PushBack({ 1179, 602, 17, 49 });
+
+	fwtumbleshoot.PushBack({ 107, 793, 36, 54 });
+	fwtumbleshoot.PushBack({ 149, 793, 41, 54 });
 	fwtumbleshoot.PushBack({ 195, 739, 36, 54 });
 	fwtumbleshoot.PushBack({ 237, 739, 36, 54 });
 	fwtumbleshoot.PushBack({ 278, 739, 36, 54 });
 	fwtumbleshoot.PushBack({ 319, 793, 36, 54 });
-	fwtumbleshoot.PushBack({ 319, 845 , 36, 54 });
+	fwtumbleshoot.PushBack({ 319, 845, 36, 54 });
 	fwtumble.speed = 0.2f;
 	fwtumbleshoot.loop = true;
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
+	path.PushBack({ +1.0f, 0 }, 100, &backward);
+	path.PushBack({ 0, +1.0 }, 50, &jump);
+	path.PushBack({ 0, 0 }, 67, &stop_shoot);
 	path.PushBack({ -1.0f, 0 }, 100, &forward);
-	path.PushBack({ 0, 0 }, 67, &stop_shoot);
-	path.PushBack({ -1.0f, 0 }, 50, &bwtumbleshoot);
-	path.PushBack({ 0, 0 }, 67, &stop_shoot);
-	path.PushBack({ 1.0f, 0 }, 150, &backward);
-	path.loop = true;
+
+	path2.PushBack({ -1.0f, 0 }, 60, &forward);
+	path2.PushBack({ 0, 0 }, 67, &stop_shoot);
+	path2.PushBack({ +1.0f, 0 }, 60, &backward);
+	path2.PushBack({ 0, 0 }, 67, &stop_shoot);
+	path2.loop = true;
 
 	original_pos.x = x;
 	original_pos.y = y;
 }
 
-void Enemy_CowBoy_Blue::Move()
+void Enemy_CowBoy_Blue2::Move()
 {
-	position = original_pos + path.GetCurrentSpeed(&animation);
-	if (path.GetFrame() == 120 && isdead == false)
+	if (path.GetFrame() < 250)
 	{
-		App->particles->AddParticle(App->particles->enemyshot, position.x+10, position.y+20, COLLIDER_ENEMY_SHOT, 0);
+		position = original_pos + path.GetCurrentSpeed(&animation);
+		position2 = position;
 	}
-	if (path.GetFrame() == 237 && isdead == false)
+	else
 	{
-		App->particles->AddParticle(App->particles->enemyshot,position.x+10, position.y+20, COLLIDER_ENEMY_SHOT, 0);
+		position = position2 + path2.GetCurrentSpeed(&animation);
+	}
+	if (path.GetFrame() == 183 && isdead == false)
+	{
+		App->particles->AddParticle(App->particles->enemyshot, position.x + 10, position.y + 20, COLLIDER_ENEMY_SHOT, 0);
+	}
+	if (path2.GetFrame() == 93 && isdead == false)
+	{
+		App->particles->AddParticle(App->particles->enemyshot, position.x + 10, position.y + 20, COLLIDER_ENEMY_SHOT, 0);
+	}
+	if (path2.GetFrame() == 192 && isdead == false)
+	{
+		App->particles->AddParticle(App->particles->enemyshot, position.x + 10, position.y + 20, COLLIDER_ENEMY_SHOT, 0);
 	}
 	if (dieshot.Finished() == true)
 	{
@@ -116,10 +137,10 @@ void Enemy_CowBoy_Blue::Move()
 	}
 }
 
-void Enemy_CowBoy_Blue::Die()
+void Enemy_CowBoy_Blue2::Die()
 {
 	App->player->win_condition++;
-	path.Erase();
-	path.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
-	path.loop = false;
+	path2.Erase();
+	path2.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
+	path2.loop = false;
 }

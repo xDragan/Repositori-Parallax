@@ -29,7 +29,6 @@ bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading game scene");
 	App->textures->Unload(background);
-	//App->audio->Disable();
 	return true;
 }
 

@@ -43,7 +43,6 @@ bool ModuleSceneWin::CleanUp()
 {
 	LOG("Unloading game scene");
 	App->textures->Unload(background);
-	//App->audio->Disable();
 	return true;
 }
 
@@ -52,9 +51,10 @@ update_status ModuleSceneWin::Update()
 {
 	App->render->Blit(background, 0, 0, NULL);
 
-	if (SDL_GetTicks() - ticks > 8000){
-		//App->fade->FadeToBlack(this, (Module*)App->scene_intro);
-		exit(0);
+	if (SDL_GetTicks() - ticks > 8000)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
+		App->player->win_condition = 0;
 	}
 	return UPDATE_CONTINUE;
 }
