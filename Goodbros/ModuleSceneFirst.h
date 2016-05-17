@@ -12,15 +12,17 @@ public:
 	~ModuleSceneFirst();
 
 	bool Start();
-	update_status Update();
 	bool CleanUp();
+	bool spawn = false;
+
+	update_status Update();
+	
 	uint enemy;
-	bool spawn=false;
 	uint time = 0;
 	uint time2 = 0;
 	uint time3 = 0;
+
 public:
-	
 	SDL_Texture* background = nullptr;
 	SDL_Texture* houses = nullptr;
 };

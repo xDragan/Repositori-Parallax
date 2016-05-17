@@ -7,8 +7,6 @@
 #include "ModuleAim.h"
 #include "SDL/include/SDL_timer.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
-
 ModuleAim::ModuleAim()
 {
 	idle.PushBack({ 542, 289, 23, 21 });

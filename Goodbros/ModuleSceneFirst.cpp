@@ -62,12 +62,6 @@ bool ModuleSceneFirst::CleanUp()
 // Update: draw background
 update_status ModuleSceneFirst::Update()
 {
-	// Move camera forward -----------------------------
-	int scroll_speed = 0;
-
-	App->player->position.x += 0;
-	App->render->camera.x -= 0;
-
 	if (SDL_GetTicks() > time)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 110);

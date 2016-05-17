@@ -153,7 +153,8 @@ update_status ModuleStructures::Update()
 			
 			/*p->collider->to_delete = true;
 			delete p;*/
-			if (p->destroy.Finished()){
+			if (p->destroy.Finished())
+			{
 				delete active[i];
 				active[i] = nullptr;
 				App->player->win_condition++;
@@ -177,9 +178,6 @@ const Collider* Structure::get_collider() const
 {
 	return collider;
 }
-
-// -------------------------------------------------------------
-// -------------------------------------------------------------
 
 
 void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
