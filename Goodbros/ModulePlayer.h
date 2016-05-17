@@ -13,6 +13,8 @@ enum type
 	NORMAL,
 	ROLLING,
 	DIE,
+	GODMODE,
+	ROLLINGGODMODE,
 };
 class ModulePlayer : public Module
 {

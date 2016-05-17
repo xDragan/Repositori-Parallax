@@ -25,7 +25,7 @@ private:
 	iPoint original_pos;
 public:
 
-	Enemy_CowBoy_Blue(int x, int y);
+	Enemy_CowBoy_Blue(float x, float y);
 	void Die();
 	void Move();
 };

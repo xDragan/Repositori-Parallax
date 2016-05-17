@@ -56,9 +56,9 @@ public:
 		if (need_loop && loop)
 			current_frame = 0;
 
-		return iPoint((int)accumulated_speed.x, (int)accumulated_speed.y);
+		return iPoint((const float)accumulated_speed.x, (const float)accumulated_speed.y);
 	}
-
+	
 	void Reset()
 	{
 		current_frame = 0;

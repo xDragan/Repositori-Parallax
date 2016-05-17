@@ -25,7 +25,7 @@ public:
 	bool fx_played = false;
 
 public:
-	Enemy(int x, int y);
+	Enemy(float x, float y);
 	virtual ~Enemy();
 
 	const Collider* GetCollider() const;

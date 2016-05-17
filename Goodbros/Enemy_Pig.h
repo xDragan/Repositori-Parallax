@@ -6,12 +6,12 @@
 class Enemy_Pig : public Enemy
 {
 private:
-	int original_y = 0;
+	float original_y = 0;
 	Animation run;
 
 public:
 
-	Enemy_Pig(int x, int y);
+	Enemy_Pig(float x, float y);
 	void Die();
 	bool hit = false;
 	void Move();

@@ -135,7 +135,7 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
+void ModuleParticles::AddParticle(const Particle& particle, float x, float y, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{

@@ -5,7 +5,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleSceneFirst.h"
 
-Enemy_CowBoy_Green::Enemy_CowBoy_Green(int x, int y) : Enemy(x, y)
+Enemy_CowBoy_Green::Enemy_CowBoy_Green(float x, float y) : Enemy(x, y)
 {
 	forward.PushBack({ 1095, 2797, 30, 55 });
 	forward.PushBack({ 1056, 2797, 30, 55 });

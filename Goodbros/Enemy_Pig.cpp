@@ -2,7 +2,7 @@
 #include "Enemy_Pig.h"
 #include "ModuleCollision.h"
 
-Enemy_Pig::Enemy_Pig(int x, int y) : Enemy(x, y)
+Enemy_Pig::Enemy_Pig(float x, float y) : Enemy(x, y)
 {
 	run.PushBack({ 81, 127, 32, 24 });
 	run.PushBack({ 127, 127, 32, 24 });

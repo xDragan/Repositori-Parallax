@@ -4,7 +4,7 @@
 #include "ModulePlayer.h"
 #include "Path.h"
 
-Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(int x, int y) : Enemy(x, y)
+Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 {
 	forward.PushBack({ 117, 396, 30, 55 });
 	forward.PushBack({ 152, 396, 30, 55 });
