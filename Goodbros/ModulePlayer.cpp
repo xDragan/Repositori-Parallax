@@ -258,7 +258,7 @@ update_status ModulePlayer::Update()
 	switch (Status)
 	{
 	case NORMAL:
-		player_coll->type = COLLIDER_NONE;
+		player_coll->type = COLLIDER_PLAYER;
 
 		if (looking_at() == far_left)
 		{
@@ -291,7 +291,7 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN)
 		{
-			Status = NORMAL;
+			Status = GODMODE;
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE ||

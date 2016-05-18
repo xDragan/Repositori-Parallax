@@ -187,7 +187,7 @@ bool ModuleCollision::EraseCollider(Collider* collider)
 	{
 		if(colliders[i] == collider)
 		{
-			delete colliders[i];
+			
 			colliders[i] = nullptr;
 			return true;
 		}
