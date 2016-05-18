@@ -6,10 +6,13 @@
 #include "Globals.h"
 #include "p2Point.h"
 
-
 #define MAX_BUILDINGS 8
 
-enum buildingtype{ BAR, };
+enum buildingtype
+{ 
+	BAR,
+	INN,
+};
 
 struct SDL_Texture;
 
@@ -18,31 +21,30 @@ struct Structure
 	SDL_Rect Coll_Struct;
 	Animation destroy;
 	uint fx = 0;
+	uint hits = 0;
+	uint INN_hits = 0;
 	fPoint position;
 	bool fx_played = false;
+	bool Update();
 	Collider* collider = nullptr;
 	buildingtype mytype;
-	uint hits = 0;
 	Structure();
 	Structure(const Structure& p);
 	~Structure();
-	bool Update();
+
 	const Collider* get_collider()const;
 };
-
 
 class ModuleStructures : public Module
 {
 public:
 	ModuleStructures();
 	~ModuleStructures();
-
-	bool Start();
 	update_status Update();
+	bool Start();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 	void AddStructure(const Structure& particle, int x, int y);
-
 
 private:
 
@@ -51,9 +53,8 @@ private:
 	uint last_building = 0;
 
 public:
-
-
 	Structure bar, bar2, bar3, bar4, bar5;
+	Structure inn, inn2, inn3, inn4, inn5;
 
 };
 

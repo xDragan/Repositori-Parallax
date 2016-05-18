@@ -36,11 +36,16 @@ bool ModuleSceneFirst::Start()
 
 	App->player->die.Reset();
 
-	//Colliders	
+	// Colliders	
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
+
+	// Buildings
 	App->structures->AddStructure(App->structures->bar, 145, 0);
-	
+	App->structures->AddStructure(App->structures->inn, 0, 28);
+
+	// Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 170, 30);
+
 	time = SDL_GetTicks();
 	time2 = SDL_GetTicks();
 	time3 = SDL_GetTicks();

@@ -29,13 +29,12 @@ ModuleUI::ModuleUI()
 	credit = 0;
 	score = 0;
 	dynamite = 10;
-
-
-
 }
+
 ModuleUI::~ModuleUI()
 {
 }
+
 bool ModuleUI::Start()
 {
 	LOG("Loading intro");

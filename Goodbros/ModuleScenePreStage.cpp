@@ -41,7 +41,13 @@ update_status ModuleScenePreStage::Update()
 	App->render->Blit(background, 0, 0, NULL);
 	App->render->Blit(lvls, 0, 0, NULL);
 
-	if (SDL_GetTicks() - ticks > 6000){
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->fade->IsFading() == false)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene_space);
+	}
+
+	if (SDL_GetTicks() - ticks > 6000)
+	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_space);
 	}
 	return UPDATE_CONTINUE;
