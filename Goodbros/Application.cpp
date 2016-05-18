@@ -15,6 +15,8 @@
 #include "ModuleAudio.h"
 #include "ModuleEnemies.h"
 #include "ModuleStructures.h"
+#include "ModuleUI.h"
+#include "ModuleText.h"
 
 Application::Application()
 {
@@ -31,6 +33,8 @@ Application::Application()
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = aim = new ModuleAim();
 	modules[i++] = player = new ModulePlayer();
+	modules[i++] = UserUI = new ModuleUI();
+	modules[i++] = text = new ModuleText();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
@@ -54,6 +58,7 @@ bool Application::Init()
 	scene_win->Disable();
 	player->Disable();
 	collision->Disable();
+	UserUI->Disable();
 	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

@@ -92,7 +92,9 @@
     <ClInclude Include="ModuleScenePreStage.h" />
     <ClInclude Include="ModuleSceneWin.h" />
     <ClInclude Include="ModuleStructures.h" />
+    <ClInclude Include="ModuleText.h" />
     <ClInclude Include="ModuleTextures.h" />
+    <ClInclude Include="ModuleUI.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="Enemy_Pig.h" />
@@ -119,7 +121,9 @@
     <ClCompile Include="ModuleSceneFirst.cpp" />
     <ClCompile Include="ModuleSceneWin.cpp" />
     <ClCompile Include="ModuleStructures.cpp" />
+    <ClCompile Include="ModuleText.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
+    <ClCompile Include="ModuleUI.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="Enemy_Pig.cpp" />
     <ClCompile Include="ModuleScenePreStage.cpp" />

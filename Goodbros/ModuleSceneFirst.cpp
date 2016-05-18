@@ -12,6 +12,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleStructures.h"
+#include "ModuleUI.h"
 
 ModuleSceneFirst::ModuleSceneFirst()
 {}
@@ -31,6 +32,7 @@ bool ModuleSceneFirst::Start()
 	App->aim->Enable();
 	App->structures->Enable();
 	App->enemies->Enable();
+	App->UserUI->Enable();
 
 	App->player->die.Reset();
 
@@ -58,6 +60,7 @@ bool ModuleSceneFirst::CleanUp()
 	App->enemies->Disable();
 	App->structures->Disable();
 	App->collision->Disable();
+	App->UserUI->Disable();
 	return true;
 }
 
