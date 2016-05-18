@@ -47,6 +47,7 @@ public:
 	ModuleStructures* structures;
 	ModuleUI* UserUI;
 	ModuleText* text;
+
 public:
 
 	Application();

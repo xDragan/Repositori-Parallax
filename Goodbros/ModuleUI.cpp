@@ -9,6 +9,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleUI.h"
 #include "ModuleText.h"
+
 ModuleUI::ModuleUI()
 {
 	insert_coins.PushBack({ 137, 3, 200, 25 });
@@ -29,9 +30,6 @@ ModuleUI::ModuleUI()
 	credit = 0;
 	score = 0;
 	dynamite = 10;
-
-
-
 }
 ModuleUI::~ModuleUI()
 {
@@ -74,6 +72,7 @@ update_status ModuleUI::Update()
 
 	Uint32 position = TILE * 2 + 80;
 	Uint32 count = 0;
+
 	while (enemygauge - 2 > -1)
 	{
 		App->render->Blit(UserInterface, TILE / 2 + 56, SCREEN_HEIGHT - (TILE), &(foe_bar.GetCurrentFrame()), 0.5);
@@ -81,23 +80,21 @@ update_status ModuleUI::Update()
 		position += 20;
 		++count;
 	}
+
 	App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - TILE - 25, &(dynamite_image.GetCurrentFrame()), 0.6);
 
 	if (hitpoints >= 2)
 	{
 		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - (TILE), &(life_ball.GetCurrentFrame()), 0.6);
+
 		if (hitpoints == 3)
+		{
 			App->render->Blit(UserInterface, 9, SCREEN_HEIGHT - (TILE), &(life_ball.GetCurrentFrame()), 0.6);
+		}		
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
 		++credit;
-
-
-
-	/*
-	App->render->Blit(UserUInterface, SCREEN_WIDTH - SCREEN_WIDTH/3, SCREEN_HEIGHT - 25, &(insert_coins.GetCurrentFrame()));
-	App->render->Blit(UserUInterface, (SCREEN_WIDTH / 2) - 50, SCREEN_HEIGHT - 25, &credits, 1.0f);*/
 
 	return UPDATE_CONTINUE;
 }

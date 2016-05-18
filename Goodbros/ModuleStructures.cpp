@@ -25,7 +25,8 @@ fx(p.fx), mytype(p.mytype), destroy(p.destroy)
 {}
 
 Structure::~Structure(){
-	if (collider != nullptr){
+	if (collider != nullptr)
+	{
 		App->collision->EraseCollider(collider);
 	}
 }
@@ -45,13 +46,16 @@ ModuleStructures::ModuleStructures()
 
 ModuleStructures::~ModuleStructures()
 {
-	if (bar.collider != nullptr){
+	if (bar.collider != nullptr)
+	{
 		App->collision->EraseCollider(bar.collider);
 	}
-	if (inn.collider != nullptr){
+	if (inn.collider != nullptr)
+	{
 		App->collision->EraseCollider(inn.collider);
 	}
-	if (barrel.collider != nullptr){
+	if (barrel.collider != nullptr)
+	{
 		App->collision->EraseCollider(barrel.collider);
 	}
 }
@@ -130,22 +134,13 @@ bool ModuleStructures::Start()
 	inn5.Coll_Struct.w = 105;
 	inn5.Coll_Struct.h = 92;
 
-	inn.destroy.PushBack({ 638, 2266, 115, 147 });
-	inn.destroy.PushBack({ 638, 2266, 115, 132 });
-	inn.destroy.PushBack({ 638, 2266, 115, 121 });
-	inn.destroy.PushBack({ 638, 2266, 115, 110 });
-	inn.destroy.PushBack({ 638, 2266, 115, 99 });
-	inn.destroy.PushBack({ 638, 2266, 115, 87 });
-	inn.destroy.PushBack({ 638, 2266, 115, 74 });
-	inn.destroy.PushBack({ 638, 2266, 115, 60 });
-	inn.destroy.PushBack({ 638, 2266, 115, 49 });
-	inn.destroy.PushBack({ 638, 2266, 115, 32 });
-	inn.destroy.PushBack({ 638, 2266, 115, 20 });
-	inn.destroy.PushBack({ 638, 2266, 115, 12 });
-	inn.destroy.PushBack({ 638, 2266, 115, 4 });
+	inn.destroy.PushBack({ 91, 2150, 105, 92 });
+	inn.destroy.PushBack({ 91, 2150, 105, 82 });
+	inn.destroy.PushBack({ 91, 2150, 105, 72 });
+	inn.destroy.PushBack({ 91, 2150, 105, 62 });
+	inn.destroy.PushBack({ 91, 2150, 105, 52 });
 	inn.destroy.loop = false;
 	inn.destroy.speed = 0.05f;
-
 
 	///BARRELS
 	barrel.Coll_Struct.x = 0;
@@ -190,8 +185,7 @@ update_status ModuleStructures::Update()
 	{
 		Structure* p = active[i];
 
-		// BAR
-
+		// STRUCTURES
 		if (p == nullptr)
 			continue;
 
@@ -200,67 +194,20 @@ update_status ModuleStructures::Update()
 			p->collider->to_delete = true;
 			delete p;
 			active[i] = nullptr;
-
 		}
-		else if (p->hits <= 3)
+
+		if (p->hits <= 3 || p->INN_hits <= 3 || p->BARREL_hits <= 2)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
 			if (p->fx_played == false)
 			{
 				// Play particle fx here
-				p->fx_played = true;	
-			}
-		}
-		else if (p->hits > 3)
-		{
-			App->collision->EraseCollider(p->collider);
-			App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
-			
-			if (p->destroy.Finished())
-			{
-				delete active[i];
-				active[i] = nullptr;
-				App->player->win_condition++;
-			}
-		}
-
-		// INN
-
-		if (p->INN_hits <= 3)
-		{
-			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
-			if (p->fx_played == false)
-			{
-				
 				p->fx_played = true;
 			}
 		}
-		else if (p->INN_hits > 3)
+
+		if (p->hits > 3 || p->INN_hits > 3 || p->BARREL_hits > 2)
 		{
-			App->collision->EraseCollider(p->collider);
-			App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
-
-			if (p->destroy.Finished())
-			{
-				delete active[i];
-				active[i] = nullptr;
-				App->player->win_condition++;
-			}
-		}
-
-		//BARREL
-
-		if (p->BARREL_hits <= 2)
-		{
-			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
-			if (p->fx_played == false)
-			{
-
-				p->fx_played = true;
-			}
-		}
-		else if (p->BARREL_hits > 2){
-
 			App->collision->EraseCollider(p->collider);
 			App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
 
@@ -334,49 +281,47 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 		}
 			// INN
-
-			if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == INN)
+		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == INN)
+		{
+			if (active[i]->INN_hits == 0)
 			{
-				if (active[i]->INN_hits == 0)
-				{
-					active[i]->Coll_Struct.x = inn2.Coll_Struct.x;
-					active[i]->Coll_Struct.y = inn2.Coll_Struct.y;
-					active[i]->Coll_Struct.w = inn2.Coll_Struct.w;
-					active[i]->Coll_Struct.h = inn2.Coll_Struct.h;
-					active[i]->hits++;
-					break;
-				}
-				else if (active[i]->INN_hits == 1)
-				{
-					active[i]->Coll_Struct.x = inn3.Coll_Struct.x;
-					active[i]->Coll_Struct.y = inn3.Coll_Struct.y;
-					active[i]->Coll_Struct.w = inn3.Coll_Struct.w;
-					active[i]->Coll_Struct.h = inn3.Coll_Struct.h;
-					active[i]->hits++;
-					break;
-				}
-				else if (active[i]->INN_hits == 2)
-				{
-					active[i]->Coll_Struct.x = inn4.Coll_Struct.x;
-					active[i]->Coll_Struct.y = inn4.Coll_Struct.y;
-					active[i]->Coll_Struct.w = inn4.Coll_Struct.w;
-					active[i]->Coll_Struct.h = inn4.Coll_Struct.h;
-					active[i]->hits++;
-					break;
-				}
-				else if (active[i]->INN_hits == 3)
-				{
-					active[i]->Coll_Struct.x = 0;
-					active[i]->Coll_Struct.y = 0;
-					active[i]->Coll_Struct.w = 0;
-					active[i]->Coll_Struct.h = 0;
-					active[i]->hits++;
-					App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_PLAYER_NOSHOT, 0);
-				}
+				active[i]->Coll_Struct.x = inn2.Coll_Struct.x;
+				active[i]->Coll_Struct.y = inn2.Coll_Struct.y;
+				active[i]->Coll_Struct.w = inn2.Coll_Struct.w;
+				active[i]->Coll_Struct.h = inn2.Coll_Struct.h;
+				active[i]->hits++;
+				break;
 			}
+			else if (active[i]->INN_hits == 1)
+			{
+				active[i]->Coll_Struct.x = inn3.Coll_Struct.x;
+				active[i]->Coll_Struct.y = inn3.Coll_Struct.y;
+				active[i]->Coll_Struct.w = inn3.Coll_Struct.w;
+				active[i]->Coll_Struct.h = inn3.Coll_Struct.h;
+				active[i]->hits++;
+				break;
+			}
+			else if (active[i]->INN_hits == 2)
+			{
+				active[i]->Coll_Struct.x = inn4.Coll_Struct.x;
+				active[i]->Coll_Struct.y = inn4.Coll_Struct.y;
+				active[i]->Coll_Struct.w = inn4.Coll_Struct.w;
+				active[i]->Coll_Struct.h = inn4.Coll_Struct.h;
+				active[i]->hits++;
+				break;
+			}
+			else if (active[i]->INN_hits == 3)
+			{
+				active[i]->Coll_Struct.x = 0;
+				active[i]->Coll_Struct.y = 0;
+				active[i]->Coll_Struct.w = 0;
+				active[i]->Coll_Struct.h = 0;
+				active[i]->hits++;
+				//App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_PLAYER_NOSHOT, 0);
+			}
+		}
 
 			//BARREL
-
 			if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == BARREL)
 			{
 				if (active[i]->BARREL_hits == 0)

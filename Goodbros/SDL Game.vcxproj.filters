@@ -189,4 +189,7 @@
       <UniqueIdentifier>{769b97a6-1dd3-4d15-844e-8355dcdb5b30}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Windows\System32\user32.dll" />
+  </ItemGroup>
 </Project>

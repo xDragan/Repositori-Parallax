@@ -128,6 +128,9 @@
     <ClCompile Include="Enemy_Pig.cpp" />
     <ClCompile Include="ModuleScenePreStage.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\..\Windows\System32\user32.dll" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
