@@ -23,9 +23,12 @@ ModuleSceneFirst::~ModuleSceneFirst()
 // Load assets
 bool ModuleSceneFirst::Start()
 {
-	LOG("Loading space scene");
+	// Loading textures
+	LOG("Loading first stage scene");
 	background = App->textures->Load("bloodbros/level1destroyed.png");
 	App->audio->Load("bloodbros/level1.ogg");
+
+	// Loading various modules
 	App->player->Enable();
 	App->particles->Enable();
 	App->collision->Enable();
@@ -34,7 +37,10 @@ bool ModuleSceneFirst::Start()
 	App->enemies->Enable();
 	App->UserUI->Enable();
 
+	// Player reset position & death animation
 	App->player->die.Reset();
+	App->player->position.x = 120;
+	App->player->position.y = 150;
 
 	// Colliders	
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
@@ -46,6 +52,7 @@ bool ModuleSceneFirst::Start()
 	// Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 170, 30);
 
+	// Time counters
 	time = SDL_GetTicks();
 	time2 = SDL_GetTicks();
 	time3 = SDL_GetTicks();
