@@ -48,6 +48,12 @@ ModuleStructures::~ModuleStructures()
 	if (bar.collider != nullptr){
 		App->collision->EraseCollider(bar.collider);
 	}
+	if (inn.collider != nullptr){
+		App->collision->EraseCollider(inn.collider);
+	}
+	if (barrel.collider != nullptr){
+		App->collision->EraseCollider(barrel.collider);
+	}
 }
 
 // Load assets
@@ -55,7 +61,7 @@ bool ModuleStructures::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("bloodbros/enemy.png");
-
+	///BAR
 	bar.Coll_Struct.x = 80;
 	bar.Coll_Struct.y = 2266;
 	bar.Coll_Struct.w = 115;
@@ -97,7 +103,7 @@ bool ModuleStructures::Start()
 	bar.destroy.PushBack({ 638, 2266, 115, 4 });
 	bar.destroy.loop = false;
 	bar.destroy.speed = 0.05f;
-
+	///GREY BUILDING
 	inn.Coll_Struct.x = 91;
 	inn.Coll_Struct.y = 2150;
 	inn.Coll_Struct.w = 105;
@@ -140,6 +146,24 @@ bool ModuleStructures::Start()
 	inn.destroy.loop = false;
 	inn.destroy.speed = 0.05f;
 
+
+	///BARRELS
+	barrel.Coll_Struct.x = 0;
+	barrel.Coll_Struct.y = 0;
+	barrel.Coll_Struct.w = 22;
+	barrel.Coll_Struct.h = 36;
+	barrel.mytype = BARREL;
+
+	barrel2.Coll_Struct.x = 32;
+	barrel2.Coll_Struct.y = 0;
+	barrel2.Coll_Struct.w = 22;
+	barrel2.Coll_Struct.h = 36;
+
+	barrel3.Coll_Struct.x = 63;
+	barrel3.Coll_Struct.y = 0;
+	barrel3.Coll_Struct.w = 21;
+	barrel3.Coll_Struct.h = 36;
+
 	return true;
 }
 
@@ -153,7 +177,6 @@ bool ModuleStructures::CleanUp()
 	{
 		if (active[i] != nullptr)
 		{
-			delete active[i];
 			active[i] = nullptr;
 		}
 	}
@@ -203,17 +226,41 @@ update_status ModuleStructures::Update()
 
 		// INN
 
-		else if (p->INN_hits <= 3)
+		if (p->INN_hits <= 3)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
 			if (p->fx_played == false)
 			{
-				// Play particle fx here
+				
 				p->fx_played = true;
 			}
 		}
 		else if (p->INN_hits > 3)
 		{
+			App->collision->EraseCollider(p->collider);
+			App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
+
+			if (p->destroy.Finished())
+			{
+				delete active[i];
+				active[i] = nullptr;
+				App->player->win_condition++;
+			}
+		}
+
+		//BARREL
+
+		if (p->BARREL_hits <= 2)
+		{
+			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
+			if (p->fx_played == false)
+			{
+
+				p->fx_played = true;
+			}
+		}
+		else if (p->BARREL_hits > 2){
+
 			App->collision->EraseCollider(p->collider);
 			App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
 
@@ -327,5 +374,38 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 					App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_PLAYER_NOSHOT, 0);
 				}
 			}
+
+			//BARREL
+
+			if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == BARREL)
+			{
+				if (active[i]->BARREL_hits == 0)
+				{
+					active[i]->Coll_Struct.x = barrel2.Coll_Struct.x;
+					active[i]->Coll_Struct.y = barrel2.Coll_Struct.y;
+					active[i]->Coll_Struct.w = barrel2.Coll_Struct.w;
+					active[i]->Coll_Struct.h = barrel2.Coll_Struct.h;
+					active[i]->BARREL_hits++;
+					break;
+				}
+				else if (active[i]->BARREL_hits == 1)
+				{
+					active[i]->Coll_Struct.x = barrel3.Coll_Struct.x;
+					active[i]->Coll_Struct.y = barrel3.Coll_Struct.y;
+					active[i]->Coll_Struct.w = barrel3.Coll_Struct.w;
+					active[i]->Coll_Struct.h = barrel3.Coll_Struct.h;
+					active[i]->BARREL_hits++;
+					break;
+				}
+				else if (active[i]->BARREL_hits == 2){
+					active[i]->Coll_Struct.x = 0;
+					active[i]->Coll_Struct.y = 0;
+					active[i]->Coll_Struct.w = 0;
+					active[i]->Coll_Struct.h = 0;
+					active[i]->BARREL_hits++;
+					//App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 145, COLLIDER_PLAYER_NOSHOT, 0);
+					break;
+				}
+			}
 		}
-}
+	}
