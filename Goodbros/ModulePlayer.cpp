@@ -194,7 +194,8 @@ ModulePlayer::ModulePlayer()
 	die.PushBack({1180 , 187, 52, 70});
 	die.PushBack({ 1233, 187, 52, 70});
 	die.PushBack({ 1286, 187, 53, 70 });
-	die.speed = 0.05f;
+	die.speed = 0.07f;
+	die.loop = false;
 
 	//win animation// 
 	win.PushBack({ 1032, 54, 46, 72 });

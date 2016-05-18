@@ -32,7 +32,9 @@ bool ModuleSceneFirst::Start()
 	App->structures->Enable();
 	App->enemies->Enable();
 
-	// Colliders ---	
+	App->player->die.Reset();
+
+	//Colliders	
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
 	App->structures->AddStructure(App->structures->bar, 145, 0);
 	
@@ -82,9 +84,10 @@ update_status ModuleSceneFirst::Update()
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0, NULL);
 
-	if (App->player->win_condition == 8)
+	if (App->player->win_condition >= 8)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
+		App->player->win_condition = 0;
 		
 	}
 	if (App->player->lose == 1)

@@ -171,7 +171,7 @@ void ModuleStructures::AddStructure(const Structure& particle, int x, int y)
 	p->position.x = x;
 	p->position.y = y;
 	p->collider = App->collision->AddCollider({ p->position.x, p->position.y, particle.Coll_Struct.w, particle.Coll_Struct.h }, COLLIDER_STRUCTURE, this);
-	active[last_building++] = p;
+  	active[last_building++] = p;
 }
 
 const Collider* Structure::get_collider() const
