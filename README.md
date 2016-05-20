@@ -16,6 +16,7 @@ You can move with the arrows, (right, left, down).
 You can roll pressing c while you're running or not (but pressing a direction).
 You can also roll when you're you're hanged.
 you can shoot pressing z.
+To activate GODMODE press G.
 
 
 Game done for:
