@@ -33,7 +33,7 @@ ModuleText::~ModuleText()
 
 bool ModuleText::Start()
 {
-	uitexture = App->textures->Load("sprites/ui-rearranged.png");
+	uitexture = App->textures->Load("bloodbros/ui-rearranged.png");
 	for (int i = 0; i < MAX_TEXT; ++i)
 		texts[i] = nullptr;
 
