@@ -69,23 +69,11 @@ ModuleParticles::ModuleParticles()
 	smoke.anim.speed = 0.14f;
 	smoke.life = 12000;
 
-	barrel1.anim.PushBack({ 77, 3358, 23, 41 });
-	barrel1.anim.loop = true;
-	barrel1.anim.speed = 0.1f;
-	barrel1.life = 1200;
-
-	barrel2.anim.PushBack({ 77, 3358, 23, 41 });
-	barrel2.anim.PushBack({ 112, 3357, 47, 45 });
-	barrel2.anim.loop = true;
-	barrel2.anim.speed = 0.1f;
-	barrel2.life = 1200;
-
-	barrel3.anim.PushBack({ 77, 3358, 23, 41 });
-	barrel3.anim.PushBack({ 112, 3357, 47, 45 });
-	barrel3.anim.PushBack({ 164, 3359, 62, 59 });
-	barrel3.anim.loop = true;
-	barrel3.anim.speed = 0.1f;
-	barrel3.life = 1200;
+	barrel.anim.PushBack({ 25, 443, 23, 41 });
+	barrel.anim.PushBack({ 60, 442, 47, 45 });
+	barrel.anim.PushBack({ 112, 444, 62, 59 });
+	barrel.anim.speed = 0.24f;
+	barrel.life = 150;
 }
    
 
@@ -186,8 +174,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 	}
 	if (c1 == App->player->player_coll || c2 == App->player->player_coll){
 		App->player->Status = DIE;
-		
 	}
+
 }
 
 // -------------------------------------------------------------

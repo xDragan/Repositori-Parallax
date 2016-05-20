@@ -280,7 +280,7 @@ update_status ModuleStructures::Update()
 		if (p->BARREL_hits == 1)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
-			p->collider->SetPos(p->position.x, p->position.y + 7);
+			p->collider->SetPos(p->position.x, p->position.y + 8);
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
@@ -289,7 +289,7 @@ update_status ModuleStructures::Update()
 		if (p->BARREL_hits == 2)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
-			p->collider->SetPos(p->position.x, p->position.y + 15);
+			p->collider->SetPos(p->position.x, p->position.y + 23);
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
@@ -354,7 +354,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
-				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_PLAYER_NOSHOT, 0);
+				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 			}
 		}
 			// INN
@@ -434,7 +434,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
 				active[i]->FABTEN_hits++;
-				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_PLAYER_NOSHOT, 0);
+				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 			}
 		}
 
