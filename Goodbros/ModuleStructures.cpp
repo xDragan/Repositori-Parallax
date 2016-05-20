@@ -65,6 +65,7 @@ bool ModuleStructures::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("bloodbros/enemy.png");
+
 	///BAR
 	bar.Coll_Struct.x = 80;
 	bar.Coll_Struct.y = 2266;
@@ -107,6 +108,7 @@ bool ModuleStructures::Start()
 	bar.destroy.PushBack({ 638, 2266, 115, 4 });
 	bar.destroy.loop = false;
 	bar.destroy.speed = 0.05f;
+
 	///GREY BUILDING
 	inn.Coll_Struct.x = 91;
 	inn.Coll_Struct.y = 2150;
@@ -134,30 +136,65 @@ bool ModuleStructures::Start()
 	inn5.Coll_Struct.w = 105;
 	inn5.Coll_Struct.h = 92;
 
-	inn.destroy.PushBack({ 91, 2150, 105, 92 });
-	inn.destroy.PushBack({ 91, 2150, 105, 82 });
-	inn.destroy.PushBack({ 91, 2150, 105, 72 });
-	inn.destroy.PushBack({ 91, 2150, 105, 62 });
-	inn.destroy.PushBack({ 91, 2150, 105, 52 });
-	inn.destroy.loop = false;
-	inn.destroy.speed = 0.05f;
+	// FABTEN
+	fabten.Coll_Struct.x = 76;
+	fabten.Coll_Struct.y = 2548;
+	fabten.Coll_Struct.w = 105;
+	fabten.Coll_Struct.h = 138;
+	fabten.mytype = FABTEN;
 
-	///BARRELS
-	barrel.Coll_Struct.x = 0;
-	barrel.Coll_Struct.y = 0;
-	barrel.Coll_Struct.w = 22;
-	barrel.Coll_Struct.h = 36;
+	fabten2.Coll_Struct.x = 197;
+	fabten2.Coll_Struct.y = 2548;
+	fabten2.Coll_Struct.w = 105;
+	fabten2.Coll_Struct.h = 138;
+
+	fabten3.Coll_Struct.x = 331;
+	fabten3.Coll_Struct.y = 2548;
+	fabten3.Coll_Struct.w = 105;
+	fabten3.Coll_Struct.h = 138;
+
+	fabten4.Coll_Struct.x = 468;
+	fabten4.Coll_Struct.y = 2548;
+	fabten4.Coll_Struct.w = 105;
+	fabten4.Coll_Struct.h = 138;
+
+	fabten5.Coll_Struct.x = 585;
+	fabten5.Coll_Struct.y = 2548;
+	fabten5.Coll_Struct.w = 105;
+	fabten5.Coll_Struct.h = 138;
+
+	fabten.destroy.PushBack({ 585, 2548, 105, 138 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 128 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 118 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 108 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 98 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 88 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 78 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 68 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 58 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 48 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 38 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 28 });
+	fabten.destroy.PushBack({ 585, 2548, 105, 18 });
+	fabten.destroy.loop = false;
+	fabten.destroy.speed = 0.05f;
+
+	// BARREL
+	barrel.Coll_Struct.x = 69;
+	barrel.Coll_Struct.y = 2710;
+	barrel.Coll_Struct.w = 31;
+	barrel.Coll_Struct.h = 49;
 	barrel.mytype = BARREL;
 
-	barrel2.Coll_Struct.x = 32;
-	barrel2.Coll_Struct.y = 0;
-	barrel2.Coll_Struct.w = 22;
-	barrel2.Coll_Struct.h = 36;
+	barrel2.Coll_Struct.x = 105;
+	barrel2.Coll_Struct.y = 2710;
+	barrel2.Coll_Struct.w = 31;
+	barrel2.Coll_Struct.h = 49;
 
-	barrel3.Coll_Struct.x = 63;
-	barrel3.Coll_Struct.y = 0;
-	barrel3.Coll_Struct.w = 21;
-	barrel3.Coll_Struct.h = 36;
+	barrel3.Coll_Struct.x = 139;
+	barrel3.Coll_Struct.y = 2710;
+	barrel3.Coll_Struct.w = 31;
+	barrel3.Coll_Struct.h = 49;
 
 	return true;
 }
@@ -196,7 +233,7 @@ update_status ModuleStructures::Update()
 			active[i] = nullptr;
 		}
 
-		if (p->hits <= 3 || p->INN_hits <= 3 || p->BARREL_hits <= 2)
+		if (p->hits <= 3 || p->INN_hits <= 3 || p->BARREL_hits <= 2 || p->FABTEN_hits <= 3)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
 			if (p->fx_played == false)
@@ -206,7 +243,7 @@ update_status ModuleStructures::Update()
 			}
 		}
 
-		if (p->hits > 3 || p->INN_hits > 3 || p->BARREL_hits > 2)
+		if (p->hits > 3 || p->INN_hits > 3 || p->BARREL_hits > 2 || p->FABTEN_hits > 3)
 		{
 			App->collision->EraseCollider(p->collider);
 			App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
@@ -289,7 +326,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.y = inn2.Coll_Struct.y;
 				active[i]->Coll_Struct.w = inn2.Coll_Struct.w;
 				active[i]->Coll_Struct.h = inn2.Coll_Struct.h;
-				active[i]->hits++;
+				active[i]->INN_hits++;
 				break;
 			}
 			else if (active[i]->INN_hits == 1)
@@ -298,7 +335,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.y = inn3.Coll_Struct.y;
 				active[i]->Coll_Struct.w = inn3.Coll_Struct.w;
 				active[i]->Coll_Struct.h = inn3.Coll_Struct.h;
-				active[i]->hits++;
+				active[i]->INN_hits++;;
 				break;
 			}
 			else if (active[i]->INN_hits == 2)
@@ -307,7 +344,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.y = inn4.Coll_Struct.y;
 				active[i]->Coll_Struct.w = inn4.Coll_Struct.w;
 				active[i]->Coll_Struct.h = inn4.Coll_Struct.h;
-				active[i]->hits++;
+				active[i]->INN_hits++;
 				break;
 			}
 			else if (active[i]->INN_hits == 3)
@@ -316,11 +353,50 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
-				active[i]->hits++;
-				//App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_PLAYER_NOSHOT, 0);
+				active[i]->INN_hits++;
 			}
 		}
 
+		// FABTEN
+		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == FABTEN)
+		{
+			if (active[i]->FABTEN_hits == 0)
+			{
+				active[i]->Coll_Struct.x = fabten2.Coll_Struct.x;
+				active[i]->Coll_Struct.y = fabten2.Coll_Struct.y;
+				active[i]->Coll_Struct.w = fabten2.Coll_Struct.w;
+				active[i]->Coll_Struct.h = fabten2.Coll_Struct.h;
+				active[i]->FABTEN_hits++;
+				break;
+			}
+			else if (active[i]->FABTEN_hits == 1)
+			{
+				active[i]->Coll_Struct.x = fabten3.Coll_Struct.x;
+				active[i]->Coll_Struct.y = fabten3.Coll_Struct.y;
+				active[i]->Coll_Struct.w = fabten3.Coll_Struct.w;
+				active[i]->Coll_Struct.h = fabten3.Coll_Struct.h;
+				active[i]->FABTEN_hits++;
+				break;
+			}
+			else if (active[i]->FABTEN_hits == 2)
+			{
+				active[i]->Coll_Struct.x = fabten4.Coll_Struct.x;
+				active[i]->Coll_Struct.y = fabten4.Coll_Struct.y;
+				active[i]->Coll_Struct.w = fabten4.Coll_Struct.w;
+				active[i]->Coll_Struct.h = fabten4.Coll_Struct.h;
+				active[i]->FABTEN_hits++;
+				break;
+			}
+			else if (active[i]->FABTEN_hits == 3)
+			{
+				active[i]->Coll_Struct.x = 0;
+				active[i]->Coll_Struct.y = 0;
+				active[i]->Coll_Struct.w = 0;
+				active[i]->Coll_Struct.h = 0;
+				active[i]->FABTEN_hits++;
+				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_PLAYER_NOSHOT, 0);
+			}
+		}
 			//BARREL
 			if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == BARREL)
 			{
@@ -342,13 +418,13 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 					active[i]->BARREL_hits++;
 					break;
 				}
-				else if (active[i]->BARREL_hits == 2){
+				else if (active[i]->BARREL_hits == 2)
+				{
 					active[i]->Coll_Struct.x = 0;
 					active[i]->Coll_Struct.y = 0;
 					active[i]->Coll_Struct.w = 0;
 					active[i]->Coll_Struct.h = 0;
 					active[i]->BARREL_hits++;
-					//App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 145, COLLIDER_PLAYER_NOSHOT, 0);
 					break;
 				}
 			}

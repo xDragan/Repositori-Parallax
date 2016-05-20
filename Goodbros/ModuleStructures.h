@@ -12,6 +12,7 @@ enum buildingtype
 { 
 	BAR,
 	INN,
+	FABTEN,
 	BARREL,
 };
 
@@ -22,9 +23,13 @@ struct Structure
 	SDL_Rect Coll_Struct;
 	Animation destroy;
 	uint fx = 0;
+
+	// Structures HP
 	uint hits = 0;
 	uint INN_hits = 0;
+	uint FABTEN_hits = 0;
 	uint BARREL_hits = 0;
+
 	fPoint position;
 	bool fx_played = false;
 	bool Update();
@@ -57,6 +62,7 @@ private:
 public:
 	Structure bar, bar2, bar3, bar4, bar5;
 	Structure inn, inn2, inn3, inn4, inn5;
+	Structure fabten, fabten2, fabten3, fabten4, fabten5;
 	Structure barrel, barrel2, barrel3;
 };
 
