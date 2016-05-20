@@ -50,8 +50,9 @@ bool ModuleSceneFirst::Start()
 	App->structures->AddStructure(App->structures->bar, 145, 0);
 	App->structures->AddStructure(App->structures->inn, 0, 28);
 	App->structures->AddStructure(App->structures->fabten, 0, 8);
-	App->structures->AddStructure(App->structures->barrel, 7, 144);
-
+	App->structures->AddStructure(App->structures->barrel, 6, 144);
+	App->structures->AddStructure(App->structures->barrel, 38, 144);
+	App->structures->AddStructure(App->structures->barrel, 198, 144);
 	// Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 170, 30);
 

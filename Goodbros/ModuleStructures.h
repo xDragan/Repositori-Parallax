@@ -6,7 +6,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 
-#define MAX_BUILDINGS 8
+#define MAX_BUILDINGS 80
 
 enum buildingtype
 { 

@@ -68,6 +68,24 @@ ModuleParticles::ModuleParticles()
 	smoke.anim.loop = true;
 	smoke.anim.speed = 0.14f;
 	smoke.life = 12000;
+
+	barrel1.anim.PushBack({ 77, 3358, 23, 41 });
+	barrel1.anim.loop = true;
+	barrel1.anim.speed = 0.1f;
+	barrel1.life = 1200;
+
+	barrel2.anim.PushBack({ 77, 3358, 23, 41 });
+	barrel2.anim.PushBack({ 112, 3357, 47, 45 });
+	barrel2.anim.loop = true;
+	barrel2.anim.speed = 0.1f;
+	barrel2.life = 1200;
+
+	barrel3.anim.PushBack({ 77, 3358, 23, 41 });
+	barrel3.anim.PushBack({ 112, 3357, 47, 45 });
+	barrel3.anim.PushBack({ 164, 3359, 62, 59 });
+	barrel3.anim.loop = true;
+	barrel3.anim.speed = 0.1f;
+	barrel3.life = 1200;
 }
    
 

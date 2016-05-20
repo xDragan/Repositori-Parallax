@@ -255,7 +255,7 @@ update_status ModuleStructures::Update()
 			active[i] = nullptr;
 		}
 
-		if (p->hits <= 3 || p->INN_hits <= 3 || p->BARREL_hits <= 2 || p->FABTEN_hits <= 3 || p->HOTEL_hits <= 3)
+		if (p->hits <= 3 || p->INN_hits <= 3 || p->FABTEN_hits <= 3 || p->HOTEL_hits <= 3)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
 			if (p->fx_played == false)
@@ -275,6 +275,24 @@ update_status ModuleStructures::Update()
 				delete active[i];
 				active[i] = nullptr;
 				App->player->win_condition++;
+			}
+		}
+		if (p->BARREL_hits == 1)
+		{
+			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
+			p->collider->SetPos(p->position.x, p->position.y + 7);
+			if (p->fx_played == false)
+			{
+				p->fx_played = true;
+			}
+		}
+		if (p->BARREL_hits == 2)
+		{
+			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
+			p->collider->SetPos(p->position.x, p->position.y + 15);
+			if (p->fx_played == false)
+			{
+				p->fx_played = true;
 			}
 		}
 	}
