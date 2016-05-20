@@ -19,7 +19,7 @@ Structure::Structure()
 	position.SetToZero();
 }
 
-Structure::Structure(const Structure& p) :
+Structure::Structure(const Structure& p):
 Coll_Struct(p.Coll_Struct), position(p.position),
 fx(p.fx), mytype(p.mytype), destroy(p.destroy)
 {}
@@ -131,10 +131,32 @@ bool ModuleStructures::Start()
 	inn4.Coll_Struct.w = 105;
 	inn4.Coll_Struct.h = 92;
 
-	inn5.Coll_Struct.x = 91;
-	inn5.Coll_Struct.y = 2150;
-	inn5.Coll_Struct.w = 105;
-	inn5.Coll_Struct.h = 92;
+	// HOTEL
+	hotel.Coll_Struct.x = 203;
+	hotel.Coll_Struct.y = 2151;
+	hotel.Coll_Struct.w = 72;
+	hotel.Coll_Struct.h = 90;
+	hotel.mytype = HOTEL;
+
+	hotel2.Coll_Struct.x = 203;
+	hotel2.Coll_Struct.y = 2151;
+	hotel2.Coll_Struct.w = 72;
+	hotel2.Coll_Struct.h = 90;
+
+	hotel3.Coll_Struct.x = 203;
+	hotel3.Coll_Struct.y = 2151;
+	hotel3.Coll_Struct.w = 72;
+	hotel3.Coll_Struct.h = 90;
+
+	hotel4.Coll_Struct.x = 203;
+	hotel4.Coll_Struct.y = 2151;
+	hotel4.Coll_Struct.w = 72;
+	hotel4.Coll_Struct.h = 90;
+
+	hotel4.Coll_Struct.x = 203;
+	hotel4.Coll_Struct.y = 2151;
+	hotel4.Coll_Struct.w = 72;
+	hotel4.Coll_Struct.h = 90;
 
 	// FABTEN
 	fabten.Coll_Struct.x = 76;
@@ -233,7 +255,7 @@ update_status ModuleStructures::Update()
 			active[i] = nullptr;
 		}
 
-		if (p->hits <= 3 || p->INN_hits <= 3 || p->BARREL_hits <= 2 || p->FABTEN_hits <= 3)
+		if (p->hits <= 3 || p->INN_hits <= 3 || p->BARREL_hits <= 2 || p->FABTEN_hits <= 3 || p->HOTEL_hits <= 3)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
 			if (p->fx_played == false)
@@ -243,7 +265,7 @@ update_status ModuleStructures::Update()
 			}
 		}
 
-		if (p->hits > 3 || p->INN_hits > 3 || p->BARREL_hits > 2 || p->FABTEN_hits > 3)
+		if (p->hits > 3 || p->INN_hits > 3 || p->BARREL_hits > 2 || p->FABTEN_hits > 3 || p->HOTEL_hits > 3)
 		{
 			App->collision->EraseCollider(p->collider);
 			App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
@@ -397,36 +419,77 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_PLAYER_NOSHOT, 0);
 			}
 		}
-			//BARREL
-			if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == BARREL)
+
+		// HOTEL
+		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == HOTEL)
+		{
+			if (active[i]->HOTEL_hits == 0)
 			{
-				if (active[i]->BARREL_hits == 0)
-				{
-					active[i]->Coll_Struct.x = barrel2.Coll_Struct.x;
-					active[i]->Coll_Struct.y = barrel2.Coll_Struct.y;
-					active[i]->Coll_Struct.w = barrel2.Coll_Struct.w;
-					active[i]->Coll_Struct.h = barrel2.Coll_Struct.h;
-					active[i]->BARREL_hits++;
-					break;
-				}
-				else if (active[i]->BARREL_hits == 1)
-				{
-					active[i]->Coll_Struct.x = barrel3.Coll_Struct.x;
-					active[i]->Coll_Struct.y = barrel3.Coll_Struct.y;
-					active[i]->Coll_Struct.w = barrel3.Coll_Struct.w;
-					active[i]->Coll_Struct.h = barrel3.Coll_Struct.h;
-					active[i]->BARREL_hits++;
-					break;
-				}
-				else if (active[i]->BARREL_hits == 2)
-				{
-					active[i]->Coll_Struct.x = 0;
-					active[i]->Coll_Struct.y = 0;
-					active[i]->Coll_Struct.w = 0;
-					active[i]->Coll_Struct.h = 0;
-					active[i]->BARREL_hits++;
-					break;
-				}
+				active[i]->Coll_Struct.x = hotel2.Coll_Struct.x;
+				active[i]->Coll_Struct.y = hotel2.Coll_Struct.y;
+				active[i]->Coll_Struct.w = hotel2.Coll_Struct.w;
+				active[i]->Coll_Struct.h = hotel2.Coll_Struct.h;
+				active[i]->HOTEL_hits++;
+				break;
+			}
+			else if (active[i]->HOTEL_hits == 1)
+			{
+				active[i]->Coll_Struct.x = hotel3.Coll_Struct.x;
+				active[i]->Coll_Struct.y = hotel3.Coll_Struct.y;
+				active[i]->Coll_Struct.w = hotel3.Coll_Struct.w;
+				active[i]->Coll_Struct.h = hotel3.Coll_Struct.h;
+				active[i]->HOTEL_hits++;
+				break;
+			}
+			else if (active[i]->HOTEL_hits == 2)
+			{
+				active[i]->Coll_Struct.x = hotel4.Coll_Struct.x;
+				active[i]->Coll_Struct.y = hotel4.Coll_Struct.y;
+				active[i]->Coll_Struct.w = hotel4.Coll_Struct.w;
+				active[i]->Coll_Struct.h = hotel4.Coll_Struct.h;
+				active[i]->HOTEL_hits++;
+				break;
+			}
+			else if (active[i]->HOTEL_hits == 3)
+			{
+				active[i]->Coll_Struct.x = 0;
+				active[i]->Coll_Struct.y = 0;
+				active[i]->Coll_Struct.w = 0;
+				active[i]->Coll_Struct.h = 0;
+				active[i]->HOTEL_hits++;
+			}
+		}
+
+		// BARREL
+		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == BARREL)
+		{
+			if (active[i]->BARREL_hits == 0)
+			{
+				active[i]->Coll_Struct.x = barrel2.Coll_Struct.x;
+				active[i]->Coll_Struct.y = barrel2.Coll_Struct.y;
+				active[i]->Coll_Struct.w = barrel2.Coll_Struct.w;
+				active[i]->Coll_Struct.h = barrel2.Coll_Struct.h;
+				active[i]->BARREL_hits++;
+				break;
+			}
+			else if (active[i]->BARREL_hits == 1)
+			{
+				active[i]->Coll_Struct.x = barrel3.Coll_Struct.x;
+				active[i]->Coll_Struct.y = barrel3.Coll_Struct.y;
+				active[i]->Coll_Struct.w = barrel3.Coll_Struct.w;
+				active[i]->Coll_Struct.h = barrel3.Coll_Struct.h;
+				active[i]->BARREL_hits++;
+				break;
+			}
+			else if (active[i]->BARREL_hits == 2)
+			{
+				active[i]->Coll_Struct.x = 0;
+				active[i]->Coll_Struct.y = 0;
+				active[i]->Coll_Struct.w = 0;
+				active[i]->Coll_Struct.h = 0;
+				active[i]->BARREL_hits++;
+				break;
 			}
 		}
 	}
+}

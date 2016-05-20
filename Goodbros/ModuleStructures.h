@@ -13,6 +13,7 @@ enum buildingtype
 	BAR,
 	INN,
 	FABTEN,
+	HOTEL,
 	BARREL,
 };
 
@@ -28,6 +29,7 @@ struct Structure
 	uint hits = 0;
 	uint INN_hits = 0;
 	uint FABTEN_hits = 0;
+	uint HOTEL_hits = 0;
 	uint BARREL_hits = 0;
 
 	fPoint position;
@@ -61,8 +63,9 @@ private:
 
 public:
 	Structure bar, bar2, bar3, bar4, bar5;
-	Structure inn, inn2, inn3, inn4, inn5;
+	Structure inn, inn2, inn3, inn4;
 	Structure fabten, fabten2, fabten3, fabten4, fabten5;
+	Structure hotel, hotel2, hotel3, hotel4;
 	Structure barrel, barrel2, barrel3;
 };
 

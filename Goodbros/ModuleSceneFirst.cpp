@@ -46,6 +46,7 @@ bool ModuleSceneFirst::Start()
 	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
 
 	// Buildings
+	App->structures->AddStructure(App->structures->hotel, 105, 30);
 	App->structures->AddStructure(App->structures->bar, 145, 0);
 	App->structures->AddStructure(App->structures->inn, 0, 28);
 	App->structures->AddStructure(App->structures->fabten, 0, 8);
@@ -65,8 +66,8 @@ bool ModuleSceneFirst::Start()
 // UnLoad assets
 bool ModuleSceneFirst::CleanUp()
 {
-	LOG("Unloading space scene");
-	//App->audio->Disable();
+	LOG("Unloading first scene");
+	
 	App->textures->Unload(background);
 	App->player->Disable();
 	App->particles->Disable();
