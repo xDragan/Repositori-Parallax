@@ -38,12 +38,8 @@ bool ModuleSceneFirst::Start()
 	App->UserUI->Enable();
 
 	// Player reset position & death animation
-	App->player->die.Reset();
 	App->player->position.x = 120;
 	App->player->position.y = 150;
-
-	// Colliders	
-	//App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
 	 
 	// Buildings
 	App->structures->AddStructure(App->structures->hotel, 105, 30);
@@ -111,7 +107,7 @@ update_status ModuleSceneFirst::Update()
 		App->player->win_condition = 0;
 		
 	}
-	if (App->player->lose == 3)
+	if (App->player->lose >= 3)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
 		App->player->lose = 0;

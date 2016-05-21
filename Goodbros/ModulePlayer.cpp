@@ -228,7 +228,7 @@ bool ModulePlayer::Start()
 	position.x = 120;
 	position.y = 150;
 
-	Status = NORMAL;
+	Status = IDLE;
 
 	player_coll = App->collision->AddCollider({ 128, 153, 22, 27 }, COLLIDER_PLAYER);//cowboy collider
 
@@ -250,16 +250,90 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	float speed = 1.8;
-	int AimSpeed = 2;
-	int xcorrection = 0;
-	int ycorrection = 0;
-	int Looking_at = looking_at();
+	speed = 1.8;
+	AimSpeed = 2;
+	c_time = SDL_GetTicks();
+	Looking_at = looking_at();
 
+	if (c_time >= blink_t)
+	{
+		blink = !blink;
+		blink_t = c_time + 100;
+	}
+	if (c_time > dmg_cd)
+	{
+		player_coll->type = COLLIDER_PLAYER;
+	}
+	else
+	{
+		player_coll->type = COLLIDER_NONE;
+	}
+	
 	switch (Status)
 	{
-	case NORMAL:
-		player_coll->type = COLLIDER_PLAYER;
+	case IDLE:
+		current_animation = &idle[Looking_at];
+
+		if (godmode == false && c_time > dmg_cd)
+		{
+			player_coll->type = COLLIDER_PLAYER;
+		}
+		else
+		{
+			player_coll->type = COLLIDER_NONE;
+		}
+		if (looking_at() == far_left)
+		{
+			player_coll->SetPos(position.x + 20, position.y + 8);
+		}
+		if (looking_at() == Middle_left)
+		{
+			player_coll->SetPos(position.x + 18, position.y + 8);
+		}
+		if (looking_at() == near_left)
+		{
+			player_coll->SetPos(position.x + 10, position.y + 8);
+		}
+		if (looking_at() == middle)
+		{
+			player_coll->SetPos(position.x + 15, position.y + 8);
+		}
+		if (looking_at() == near_right)
+		{
+			player_coll->SetPos(position.x + 15, position.y + 8);
+		}
+		if (looking_at() == middle_right)
+		{
+			player_coll->SetPos(position.x + 15, position.y + 8);
+		}
+		if (looking_at() == far_right)
+		{
+			player_coll->SetPos(position.x + 6, position.y + 8);
+		}
+		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN)
+		{
+			godmode = !godmode;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		{
+			Status = LEFT;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+		{
+			Status = RIGHT;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+		{
+			Status = DOWN;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
+		{
+			Status = SHOOTING;
+		}
+		break;
+
+	case SHOOTING:
+		current_animation = &shoot[Looking_at];
 
 		if (looking_at() == far_left)
 		{
@@ -289,206 +363,182 @@ update_status ModulePlayer::Update()
 		{
 			player_coll->SetPos(position.x + 6, position.y + 8);
 		}
+		if (SDL_GetTicks() > timeout)
+		{
+			App->audio->PlayFx(App->particles->shot.fx);
+			timeout = SDL_GetTicks() + 150;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_UP)
+		{
+			Status = IDLE;
+		}
+		break;
 
+	case LEFT:
+		current_animation = &backward;
+		player_coll->SetPos(position.x + 8, position.y);
+
+		if (position.x > 0)
+		{
+			position.x -= speed;
+
+		}
+		if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		{
+			btumble.loops = 0;
+			btumble.Reset();
+			current_animation = &btumble;
+			Status = ROLLING;
+		}
 		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN)
 		{
-			Status = GODMODE;
+			godmode = !godmode;
 		}
-
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE ||
-			(App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT) ||
-			(App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
-		{
-			current_animation = &idle[Looking_at];
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-		{
-			current_animation = &backward;
-			if (position.x > 0)
-			{
-				position.x -= speed;
-				player_coll->SetPos(position.x + 8, position.y);
-			}
-			if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-			{
-				current_animation = &idle[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN)
-			{
-				btumble.loops = 0;
-				btumble.Reset();
-				current_animation = &btumble;
-				Status = ROLLING;
-			}
-			if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-			{
-				position.x += speed;
-				current_animation = &down[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
-			{
-				if (looking_at() == far_left)
-				{
-					player_coll->SetPos(position.x + 22, position.y + 8);
-				}
-				if (looking_at() == Middle_left)
-				{
-					player_coll->SetPos(position.x + 20, position.y + 8);
-				}
-				if (looking_at() == near_left)
-				{
-					player_coll->SetPos(position.x + 10, position.y + 8);
-				}
-				if (looking_at() == middle)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == near_right)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == middle_right)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == far_right)
-				{
-					player_coll->SetPos(position.x + 6, position.y + 8);
-				}
-				position.x += speed;
-				current_animation = &shoot[Looking_at];
-			}
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-		{
-			current_animation = &forward;
-			if (position.x < 220)
-			{
-				position.x += speed;
-				player_coll->SetPos(position.x + 12, position.y);
-			}
-			if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-			{
-				current_animation = &idle[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN)
-			{
-				ftumble.loops = 0;
-				ftumble.Reset();
-				current_animation = &ftumble;
-				Status = ROLLING;
-			}
-			if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-			{
-				position.x -= speed;
-				current_animation = &down[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
-			{
-				if (looking_at() == far_left)
-				{
-					player_coll->SetPos(position.x + 20, position.y + 8);
-				}
-				if (looking_at() == Middle_left)
-				{
-					player_coll->SetPos(position.x + 18, position.y + 8);
-				}
-				if (looking_at() == near_left)
-				{
-					player_coll->SetPos(position.x + 10, position.y + 8);
-				}
-				if (looking_at() == middle)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == near_right)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == middle_right)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == far_right)
-				{
-					player_coll->SetPos(position.x + 5, position.y + 8);
-				}
-				position.x -= speed;
-				current_animation = &shoot[Looking_at];
-			}
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
-		{
-			if (SDL_GetTicks() > timeout)
-			{
-				App->audio->PlayFx(App->particles->shot.fx);
-				timeout = SDL_GetTicks() + 150;
-			}
-			current_animation = &shoot[Looking_at];
-		}
-
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
-			current_animation = &down[Looking_at];
-			if (looking_at() == far_left)
-			{
-				player_coll->SetPos(position.x + 20, position.y + 24);
-			}
-			if (looking_at() == Middle_left)
-			{
-				player_coll->SetPos(position.x + 18, position.y + 24);
-			}
-			if (looking_at() == near_left)
-			{
-				player_coll->SetPos(position.x + 10, position.y + 24);
-			}
-			if (looking_at() == middle)
-			{
-				player_coll->SetPos(position.x + 14, position.y + 24);
-			}
-			if (looking_at() == near_right)
-			{
-				player_coll->SetPos(position.x + 15, position.y + 24);
-			}
-			if (looking_at() == middle_right)
-			{
-				player_coll->SetPos(position.x + 12, position.y + 24);
-			}
-			if (looking_at() == far_right)
-			{
-				player_coll->SetPos(position.x + 12, position.y + 24);
-			}
+			Status = DOWN;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_UP)
+		{
+			Status = IDLE;
+		}
+		break;
 
-			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
-			{
-				current_animation = &shootdown[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
-			{
-				if (SDL_GetTicks() > timeout)
-				{
-					App->audio->PlayFx(App->particles->shot.fx);
-					timeout = SDL_GetTicks() + 150;
-				}
-				current_animation = &shootdown[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-			{
-				downftumble.loops = 0;
-				downftumble.Reset();
-				current_animation = &downftumble;
-				Status = ROLLING;
-			}
-			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-			{
-				downbtumble.loops = 0;
-				downbtumble.Reset();
-				current_animation = &downbtumble;
-				Status = ROLLING;
-			}
+	case RIGHT:
+		current_animation = &forward;
+		player_coll->SetPos(position.x + 16, position.y);
+
+		if (position.x < 220)
+		{
+			position.x += speed;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN)
+		{
+			ftumble.loops = 0;
+			ftumble.Reset();
+			current_animation = &ftumble;
+			Status = ROLLING;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN)
+		{
+			godmode = !godmode;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+		{
+			Status = DOWN;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_UP)
+		{
+			Status = IDLE;
+		}
+		break;
+
+	case DOWN:
+		current_animation = &down[Looking_at];
+
+		if (godmode == false)
+		{
+			player_coll->type = COLLIDER_PLAYER;
+		}
+		else
+		{
+			player_coll->type = COLLIDER_NONE;
+		}
+		if (looking_at() == far_left)
+		{
+			player_coll->SetPos(position.x + 20, position.y + 24);
+		}
+		if (looking_at() == Middle_left)
+		{
+			player_coll->SetPos(position.x + 18, position.y + 24);
+		}
+		if (looking_at() == near_left)
+		{
+			player_coll->SetPos(position.x + 10, position.y + 24);
+		}
+		if (looking_at() == middle)
+		{
+			player_coll->SetPos(position.x + 14, position.y + 24);
+		}
+		if (looking_at() == near_right)
+		{
+			player_coll->SetPos(position.x + 15, position.y + 24);
+		}
+		if (looking_at() == middle_right)
+		{
+			player_coll->SetPos(position.x + 12, position.y + 24);
+		}
+		if (looking_at() == far_right)
+		{
+			player_coll->SetPos(position.x + 12, position.y + 24);
+		}
+		if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+		{
+			downftumble.loops = 0;
+			downftumble.Reset();
+			current_animation = &downftumble;
+			Status = ROLLING;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		{
+			downbtumble.loops = 0;
+			downbtumble.Reset();
+			current_animation = &downbtumble;
+			Status = ROLLING;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN)
+		{
+			godmode = !godmode;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
+		{
+			Status = SHOOTING_DOWN;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP)
+		{
+			Status = IDLE;
+		}
+		break;
+
+	case SHOOTING_DOWN:
+		current_animation = &shootdown[Looking_at];
+
+		if (looking_at() == far_left)
+		{
+			player_coll->SetPos(position.x + 20, position.y + 24);
+		}
+		if (looking_at() == Middle_left)
+		{
+			player_coll->SetPos(position.x + 18, position.y + 24);
+		}
+		if (looking_at() == near_left)
+		{
+			player_coll->SetPos(position.x + 10, position.y + 24);
+		}
+		if (looking_at() == middle)
+		{
+			player_coll->SetPos(position.x + 14, position.y + 24);
+		}
+		if (looking_at() == near_right)
+		{
+			player_coll->SetPos(position.x + 15, position.y + 24);
+		}
+		if (looking_at() == middle_right)
+		{
+			player_coll->SetPos(position.x + 12, position.y + 24);
+		}
+		if (looking_at() == far_right)
+		{
+			player_coll->SetPos(position.x + 12, position.y + 24);
+		}
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP)
+		{
+			Status = IDLE;
+		}
+		if (SDL_GetTicks() > timeout)
+		{
+			App->audio->PlayFx(App->particles->shot.fx);
+			timeout = SDL_GetTicks() + 150;
 		}
 		break;
 
@@ -508,11 +558,10 @@ update_status ModulePlayer::Update()
 			}
 			if (current_animation->Finished() == true)
 			{
-				Status = NORMAL;
+				Status = IDLE;
 				break;
 			}
 		}
-
 		if (current_animation == &ftumble)
 		{
 			current_animation = &ftumble;
@@ -529,12 +578,11 @@ update_status ModulePlayer::Update()
 				}
 				if (current_animation->Finished() == true)
 				{
-					Status = NORMAL;
+					Status = IDLE;
 					break;
 				}
 			}
 		}
-
 		if (current_animation == &downftumble)
 		{
 			current_animation = &downftumble;
@@ -551,12 +599,11 @@ update_status ModulePlayer::Update()
 				}
 				if (current_animation->Finished() == true)
 				{
-					Status = NORMAL;
+					Status = IDLE;
 					break;
 				}
 			}
 		}
-
 		if (current_animation == &downbtumble)
 		{
 			current_animation = &downbtumble;
@@ -573,351 +620,35 @@ update_status ModulePlayer::Update()
 				}
 				if (current_animation->Finished() == true)
 				{
-					Status = NORMAL;
+					Status = IDLE;
 					break;
 				}
 			}
-		} 
+		}
 		break;
-	case GODMODE:
+		
+	case DIE:
 		player_coll->type = COLLIDER_NONE;
+		current_animation = &die;
 
-		if (looking_at() == far_left)
+		if (current_animation->Finished() == true)
 		{
-			player_coll->SetPos(position.x + 20, position.y + 8);
-		}
-		if (looking_at() == Middle_left)
-		{
-			player_coll->SetPos(position.x + 18, position.y + 8);
-		}
-		if (looking_at() == near_left)
-		{
-			player_coll->SetPos(position.x + 10, position.y + 8);
-		}
-		if (looking_at() == middle)
-		{
-			player_coll->SetPos(position.x + 15, position.y + 8);
-		}
-		if (looking_at() == near_right)
-		{
-			player_coll->SetPos(position.x + 15, position.y + 8);
-		}
-		if (looking_at() == middle_right)
-		{
-			player_coll->SetPos(position.x + 15, position.y + 8);
-		}
-		if (looking_at() == far_right)
-		{
-			player_coll->SetPos(position.x + 6, position.y + 8);
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN)
-		{
-			Status = NORMAL;
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE && App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE ||
-			(App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT) ||
-			(App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
-		{
-			current_animation = &idle[Looking_at];
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-		{
-			current_animation = &backward;
-			if (position.x > 0)
-			{
-				position.x -= speed;
-				player_coll->SetPos(position.x + 8, position.y);
-			}
-			if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-			{
-				current_animation = &idle[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN)
-			{
-				btumble.loops = 0;
-				btumble.Reset();
-				current_animation = &btumble;
-				Status = ROLLINGGODMODE;
-			}
-			if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-			{
-				position.x += speed;
-				current_animation = &down[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
-			{
-				if (looking_at() == far_left)
-				{
-					player_coll->SetPos(position.x + 22, position.y + 8);
-				}
-				if (looking_at() == Middle_left)
-				{
-					player_coll->SetPos(position.x + 18, position.y + 8);
-				}
-				if (looking_at() == near_left)
-				{
-					player_coll->SetPos(position.x + 10, position.y + 8);
-				}
-				if (looking_at() == middle)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == near_right)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == middle_right)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == far_right)
-				{
-					player_coll->SetPos(position.x + 6, position.y + 8);
-				}
-				position.x += speed;
-				current_animation = &shoot[Looking_at];
-			}
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-		{
-			current_animation = &forward;
-			if (position.x < 220)
-			{
-				position.x += speed;
-				player_coll->SetPos(position.x + 12, position.y);
-			}
-			if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-			{
-				current_animation = &idle[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN)
-			{
-				ftumble.loops = 0;
-				ftumble.Reset();
-				current_animation = &ftumble;
-				Status = ROLLINGGODMODE;
-			}
-			if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-			{
-				position.x -= speed;
-				current_animation = &down[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
-			{
-				if (looking_at() == far_left)
-				{
-					player_coll->SetPos(position.x + 22, position.y + 8);
-				}
-				if (looking_at() == Middle_left)
-				{
-					player_coll->SetPos(position.x + 20, position.y + 8);
-				}
-				if (looking_at() == near_left)
-				{
-					player_coll->SetPos(position.x + 10, position.y + 8);
-				}
-				if (looking_at() == middle)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == near_right)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == middle_right)
-				{
-					player_coll->SetPos(position.x + 15, position.y + 8);
-				}
-				if (looking_at() == far_right)
-				{
-					player_coll->SetPos(position.x + 6, position.y + 8);
-				}
-				position.x -= speed;
-				current_animation = &shoot[Looking_at];
-			}
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
-		{
-			if (SDL_GetTicks() > timeout)
-			{
-				App->audio->PlayFx(App->particles->shot.fx);
-				timeout = SDL_GetTicks() + 150;
-			}
-			current_animation = &shoot[Looking_at];
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-		{
-			current_animation = &down[Looking_at];
-			if (looking_at() == far_left)
-			{
-				player_coll->SetPos(position.x + 20, position.y + 24);
-			}
-			if (looking_at() == Middle_left)
-			{
-				player_coll->SetPos(position.x + 18, position.y + 24);
-			}
-			if (looking_at() == near_left)
-			{
-				player_coll->SetPos(position.x + 10, position.y + 24);
-			}
-			if (looking_at() == middle)
-			{
-				player_coll->SetPos(position.x + 14, position.y + 24);
-			}
-			if (looking_at() == near_right)
-			{
-				player_coll->SetPos(position.x + 15, position.y + 24);
-			}
-			if (looking_at() == middle_right)
-			{
-				player_coll->SetPos(position.x + 12, position.y + 24);
-			}
-			if (looking_at() == far_right)
-			{
-				player_coll->SetPos(position.x + 12, position.y + 24);
-			}
-
-
-			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
-			{
-				current_animation = &shootdown[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
-			{
-				if (SDL_GetTicks() > timeout)
-				{
-					App->audio->PlayFx(App->particles->shot.fx);
-					timeout = SDL_GetTicks() + 150;
-				}
-				current_animation = &shootdown[Looking_at];
-			}
-			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-			{
-				downftumble.loops = 0;
-				downftumble.Reset();
-				current_animation = &downftumble;
-				Status = ROLLINGGODMODE;
-			}
-			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-			{
-				downbtumble.loops = 0;
-				downbtumble.Reset();
-				current_animation = &downbtumble;
-				Status = ROLLINGGODMODE;
-			}
+			dmg_cd = SDL_GetTicks() + 3000;
+			App->player->lose++;
+			Status = IDLE;
 		}
 		break;
-		case ROLLINGGODMODE:
-			player_coll->type = COLLIDER_NONE;
-
-			if (current_animation == &btumble)
-			{
-				if (position.x < 5)
-				{
-					speed = 0;
-				}
-				else
-				{
-					position.x -= 1.5;
-
-				}
-				if (current_animation->Finished() == true)
-				{
-					Status = GODMODE;
-					break;
-				}
-			}
-
-			if (current_animation == &ftumble)
-			{
-				current_animation = &ftumble;
-
-				if (current_animation == &ftumble)
-				{
-					if (position.x > 210)
-					{
-						speed = 0;
-					}
-					else
-					{
-						position.x += 1.5;
-					}
-					if (current_animation->Finished() == true)
-					{
-						Status = GODMODE;
-						break;
-					}
-				}
-			}
-
-			if (current_animation == &downftumble)
-			{
-				current_animation = &downftumble;
-
-				if (current_animation == &downftumble)
-				{
-					if (position.x > 210)
-					{
-						speed = 0;
-					}
-					else
-					{
-						position.x += 1;
-					}
-					if (current_animation->Finished() == true)
-					{
-						Status = GODMODE;
-						break;
-					}
-				}
-			}
-
-			if (current_animation == &downbtumble)
-			{
-				current_animation = &downbtumble;
-
-				if (current_animation == &downbtumble)
-				{
-					if (position.x < 5)
-					{
-						speed = 0;
-					}
-					else
-					{
-						position.x -= 1;
-					}
-					if (current_animation->Finished() == true)
-					{
-						Status = GODMODE;
-						break;
-					}
-				}
-			}
-			break;
-
-		case DIE:
-			current_animation = &die;
-			if (current_animation == &die)
-			{
-				if (current_animation->Finished() == true)
-				{
-					lose++;
-					die.Reset();
-					Status = NORMAL;
-				}
-			}
-			break;
 	}
 
-		// Draw everything --------------------------------------
-		App->render->Blit(graphics, position.x + xcorrection, position.y + ycorrection, &(current_animation->GetCurrentFrame()));
-
-		return UPDATE_CONTINUE;
-
+	// Draw everything
+	if (c_time >= dmg_cd || blink)
+	{
+		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	}
+	else
+	{
+		current_animation->GetCurrentFrame();
+	}
+
+	return UPDATE_CONTINUE;
+}

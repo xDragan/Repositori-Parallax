@@ -172,14 +172,14 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 	}
-	if (c1 == App->player->player_coll || c2 == App->player->player_coll){
+	if (c1 == App->player->player_coll || c2 == App->player->player_coll)
+	{
+		App->player->die.loops = 0;
+		App->player->die.Reset();
 		App->player->Status = DIE;
 	}
 
 }
-
-// -------------------------------------------------------------
-// -------------------------------------------------------------
 
 Particle::Particle()
 {

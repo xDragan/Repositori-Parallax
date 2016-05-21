@@ -10,11 +10,14 @@ struct Collider;
 
 enum type
 {
-	NORMAL,
+	IDLE,
+	LEFT,
+	RIGHT,
+	DOWN,
+	SHOOTING,
+	SHOOTING_DOWN,
 	ROLLING,
 	DIE,
-	GODMODE,
-	ROLLINGGODMODE,
 };
 class ModulePlayer : public Module
 {
@@ -64,7 +67,17 @@ public:
 	Animation win;
 	Animation windance;
 
-	bool lose = 0;
+	bool godmode = false;
+	bool blink = true;
+
+	float speed = 0;
+
+	int blink_t = 0;
+	int Looking_at = 0;
+	int AimSpeed = 0;
+	int c_time = 0;
+	int dmg_cd = 0;
+	int lose = 0;
 	int timeout = 0;
 };
 
