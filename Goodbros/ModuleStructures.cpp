@@ -212,11 +212,13 @@ bool ModuleStructures::Start()
 	barrel2.Coll_Struct.y = 2710;
 	barrel2.Coll_Struct.w = 31;
 	barrel2.Coll_Struct.h = 49;
+	barrel2.mytype = BARREL;
 
 	barrel3.Coll_Struct.x = 139;
 	barrel3.Coll_Struct.y = 2710;
 	barrel3.Coll_Struct.w = 31;
 	barrel3.Coll_Struct.h = 49;
+	barrel3.mytype = BARREL;
 
 	return true;
 }
@@ -244,6 +246,7 @@ update_status ModuleStructures::Update()
 	{
 		Structure* p = active[i];
 
+
 		// STRUCTURES
 		if (p == nullptr)
 			continue;
@@ -265,11 +268,11 @@ update_status ModuleStructures::Update()
 			}
 		}
 
-		if (p->hits > 3 || p->INN_hits > 3 || p->BARREL_hits > 2 || p->FABTEN_hits > 3 || p->HOTEL_hits > 3)
+		if (p->hits > 3 || p->INN_hits > 3 || p->BARREL_hits > 2 || p->FABTEN_hits > 3 || p->HOTEL_hits > 3 )
 		{
 			App->collision->EraseCollider(p->collider);
 			App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
-
+			
 			if (p->destroy.Finished())
 			{
 				delete active[i];

@@ -14,6 +14,7 @@ enum ENEMY_TYPES
 	BLUE_COWBOY2,
 	GREEN_COWBOY,
 	BAR_HOUSE,
+	BARREL_ROLL
 };
 
 class Enemy;

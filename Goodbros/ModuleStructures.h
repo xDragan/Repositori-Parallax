@@ -15,6 +15,7 @@ enum buildingtype
 	FABTEN,
 	HOTEL,
 	BARREL,
+	BARRELROL
 };
 
 struct SDL_Texture;

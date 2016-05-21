@@ -48,10 +48,12 @@ bool ModuleSceneFirst::Start()
 	App->structures->AddStructure(App->structures->fabten, 0, 8);
 	// Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 170, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130);
 	//Barrels
 	App->structures->AddStructure(App->structures->barrel, 6, 144);
 	App->structures->AddStructure(App->structures->barrel, 38, 144);
 	App->structures->AddStructure(App->structures->barrel, 198, 144);
+
 
 
 	// Time counters

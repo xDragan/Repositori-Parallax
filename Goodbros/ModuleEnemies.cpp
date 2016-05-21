@@ -9,7 +9,7 @@
 #include "Enemy_Cowboy_Blue.h"
 #include "Enemy_Cowboy_Blue2.h"
 #include "Enemy_Cowboy_Green.h"
-
+#include "Enemy_Barrel_Roll.h"
 #include "SDL/include/SDL_timer.h"
 
 #define SPAWN_MARGIN 40
@@ -154,6 +154,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 		case ENEMY_TYPES::GREEN_COWBOY:
 			enemies[i] = new Enemy_CowBoy_Green(info.x, info.y);
+			break;
+		case ENEMY_TYPES::BARREL_ROLL:
+			enemies[i] = new Enemy_Barrel_Roll(info.x, info.y);
 			break;
 		}
 	}
