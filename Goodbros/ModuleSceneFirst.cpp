@@ -43,18 +43,20 @@ bool ModuleSceneFirst::Start()
 	App->player->position.y = 150;
 
 	// Colliders	
-	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
-
+	//App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_STRUCTURE);
+	 
 	// Buildings
 	App->structures->AddStructure(App->structures->hotel, 105, 30);
 	App->structures->AddStructure(App->structures->bar, 145, 0);
 	App->structures->AddStructure(App->structures->inn, 0, 28);
 	App->structures->AddStructure(App->structures->fabten, 0, 8);
+	// Enemies
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 170, 30);
+	//Barrels
 	App->structures->AddStructure(App->structures->barrel, 6, 144);
 	App->structures->AddStructure(App->structures->barrel, 38, 144);
 	App->structures->AddStructure(App->structures->barrel, 198, 144);
-	// Enemies
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 170, 30);
+
 
 	// Time counters
 	time = SDL_GetTicks();

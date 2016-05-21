@@ -53,7 +53,7 @@ public:
 	bool Start();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
-	void AddStructure(const Structure& particle, int x, int y);
+	void AddStructure(Structure& particle, int x, int y);
 
 private:
 
@@ -66,7 +66,7 @@ public:
 	Structure inn, inn2, inn3, inn4;
 	Structure fabten, fabten2, fabten3, fabten4, fabten5;
 	Structure hotel, hotel2, hotel3, hotel4;
-	Structure barrel, barrel2, barrel3;
+	Structure barrel,barrel2, barrel3;
 };
 
 #endif // __MODULESTRUCTURES_H__

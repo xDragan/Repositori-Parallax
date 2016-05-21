@@ -299,13 +299,18 @@ update_status ModuleStructures::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleStructures::AddStructure(const Structure& particle, int x, int y)
+void ModuleStructures::AddStructure(Structure& particle, int x, int y)
 {
 	Structure* p = new Structure(particle);
 	p->position.x = x;
 	p->position.y = y;
-	p->collider = App->collision->AddCollider({ p->position.x, p->position.y, particle.Coll_Struct.w, particle.Coll_Struct.h }, COLLIDER_STRUCTURE, this);
-  	active[last_building++] = p;
+	if (particle.mytype==BARREL){
+		p->collider = App->collision->AddCollider({ p->position.x, p->position.y, particle.Coll_Struct.w, particle.Coll_Struct.h }, COLLIDER_DESTRUCT, this);
+	}
+	else{
+		p->collider = App->collision->AddCollider({ p->position.x, p->position.y, particle.Coll_Struct.w, particle.Coll_Struct.h }, COLLIDER_STRUCTURE, this);
+	}
+	active[last_building++] = p;
 }
 
 const Collider* Structure::get_collider() const
@@ -508,7 +513,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
 				active[i]->BARREL_hits++;
-				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y + 10 , COLLIDER_PLAYER_NOSHOT, 0);
+				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y + 10 , COLLIDER_NONE, 0);
 				break;
 			}
 		}

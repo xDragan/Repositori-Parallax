@@ -72,8 +72,8 @@ ModuleParticles::ModuleParticles()
 	barrel.anim.PushBack({ 25, 443, 23, 41 });
 	barrel.anim.PushBack({ 60, 442, 47, 45 });
 	barrel.anim.PushBack({ 112, 444, 62, 59 });
-	barrel.anim.speed = 0.24f;
-	barrel.life = 150;
+	barrel.anim.speed = 0.26f;
+	barrel.life = 250;
 }
    
 
