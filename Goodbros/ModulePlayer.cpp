@@ -264,7 +264,7 @@ update_status ModulePlayer::Update()
 	{
 		player_coll->type = COLLIDER_PLAYER;
 	}
-	else
+	if (godmode == true)
 	{
 		player_coll->type = COLLIDER_NONE;
 	}
@@ -274,14 +274,6 @@ update_status ModulePlayer::Update()
 	case IDLE:
 		current_animation = &idle[Looking_at];
 
-		if (godmode == false && c_time > dmg_cd)
-		{
-			player_coll->type = COLLIDER_PLAYER;
-		}
-		else
-		{
-			player_coll->type = COLLIDER_NONE;
-		}
 		if (looking_at() == far_left)
 		{
 			player_coll->SetPos(position.x + 20, position.y + 8);
@@ -378,14 +370,6 @@ update_status ModulePlayer::Update()
 		current_animation = &backward;
 		player_coll->SetPos(position.x + 8, position.y);
 
-		if (godmode == false && c_time > dmg_cd)
-		{
-			player_coll->type = COLLIDER_PLAYER;
-		}
-		else
-		{
-			player_coll->type = COLLIDER_NONE;
-		}
 		if (position.x > 0)
 		{
 			position.x -= speed;
@@ -416,14 +400,6 @@ update_status ModulePlayer::Update()
 		current_animation = &forward;
 		player_coll->SetPos(position.x + 16, position.y);
 
-		if (godmode == false && c_time > dmg_cd)
-		{
-			player_coll->type = COLLIDER_PLAYER;
-		}
-		else
-		{
-			player_coll->type = COLLIDER_NONE;
-		}
 		if (position.x < 220)
 		{
 			position.x += speed;
@@ -452,14 +428,6 @@ update_status ModulePlayer::Update()
 	case DOWN:
 		current_animation = &down[Looking_at];
 
-		if (godmode == false && c_time > dmg_cd)
-		{
-			player_coll->type = COLLIDER_PLAYER;
-		}
-		else
-		{
-			player_coll->type = COLLIDER_NONE;
-		}
 		if (looking_at() == far_left)
 		{
 			player_coll->SetPos(position.x + 20, position.y + 24);
