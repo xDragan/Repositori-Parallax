@@ -488,7 +488,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = barrel2.Coll_Struct.w;
 				active[i]->Coll_Struct.h = barrel2.Coll_Struct.h;
 				active[i]->BARREL_hits++;
-				App->particles->AddParticle(App->particles->barrel, active[i]->position.x+3, active[i]->position.y+6 , COLLIDER_NONE, 0);
+				App->particles->AddParticle(App->particles->barrel, active[i]->position.x -12, active[i]->position.y -20 , COLLIDER_NONE, 0);
 				break;
 			}
 			else if (active[i]->BARREL_hits == 1)
@@ -498,7 +498,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = barrel3.Coll_Struct.w;
 				active[i]->Coll_Struct.h = barrel3.Coll_Struct.h;
 				active[i]->BARREL_hits++;
-				App->particles->AddParticle(App->particles->barrel, active[i]->position.x, active[i]->position.y, COLLIDER_NONE, 0);
+				App->particles->AddParticle(App->particles->barrel, active[i]->position.x -12, active[i]->position.y -5, COLLIDER_NONE, 0);
 				break;
 			}
 			else if (active[i]->BARREL_hits == 2)
@@ -508,7 +508,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
 				active[i]->BARREL_hits++;
-				App->particles->AddParticle(App->particles->barrel, active[i]->position.x, active[i]->position.y, COLLIDER_PLAYER_NOSHOT, 0);
+				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y + 10 , COLLIDER_PLAYER_NOSHOT, 0);
 				break;
 			}
 		}
