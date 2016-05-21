@@ -378,6 +378,14 @@ update_status ModulePlayer::Update()
 		current_animation = &backward;
 		player_coll->SetPos(position.x + 8, position.y);
 
+		if (godmode == false && c_time > dmg_cd)
+		{
+			player_coll->type = COLLIDER_PLAYER;
+		}
+		else
+		{
+			player_coll->type = COLLIDER_NONE;
+		}
 		if (position.x > 0)
 		{
 			position.x -= speed;
@@ -408,6 +416,14 @@ update_status ModulePlayer::Update()
 		current_animation = &forward;
 		player_coll->SetPos(position.x + 16, position.y);
 
+		if (godmode == false && c_time > dmg_cd)
+		{
+			player_coll->type = COLLIDER_PLAYER;
+		}
+		else
+		{
+			player_coll->type = COLLIDER_NONE;
+		}
 		if (position.x < 220)
 		{
 			position.x += speed;
@@ -436,7 +452,7 @@ update_status ModulePlayer::Update()
 	case DOWN:
 		current_animation = &down[Looking_at];
 
-		if (godmode == false)
+		if (godmode == false && c_time > dmg_cd)
 		{
 			player_coll->type = COLLIDER_PLAYER;
 		}
