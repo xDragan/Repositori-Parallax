@@ -109,7 +109,7 @@ update_status ModuleSceneFirst::Update()
 		App->player->win_condition = 0;
 		
 	}
-	if (App->player->lose == 1)
+	if (App->player->lose == 3)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
 		App->player->lose = 0;

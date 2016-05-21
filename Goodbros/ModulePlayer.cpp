@@ -579,17 +579,6 @@ update_status ModulePlayer::Update()
 			}
 		} 
 		break;
-	case DIE:
-		current_animation = &die;
-		if (current_animation == &die)
-		{
-			if (current_animation->Finished() == true)
-			{
-				lose = 1;
-			}
-		}
-		break;
-
 	case GODMODE:
 		player_coll->type = COLLIDER_NONE;
 
@@ -908,6 +897,19 @@ update_status ModulePlayer::Update()
 						Status = GODMODE;
 						break;
 					}
+				}
+			}
+			break;
+
+		case DIE:
+			current_animation = &die;
+			if (current_animation == &die)
+			{
+				if (current_animation->Finished() == true)
+				{
+					lose++;
+					die.Reset();
+					Status = NORMAL;
 				}
 			}
 			break;
