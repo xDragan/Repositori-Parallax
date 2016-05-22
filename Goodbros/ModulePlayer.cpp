@@ -223,6 +223,8 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
+	deathsound.fx = App->audio->LoadFx("bloodbros/Player_death_fx.wav");
+
 	graphics = App->textures->Load("bloodbros/character.png");
 
 	position.x = 120;
@@ -619,6 +621,11 @@ update_status ModulePlayer::Update()
 		player_coll->type = COLLIDER_NONE;
 		current_animation = &die;
 
+		if (played == false)
+		{
+			App->audio->PlayFx(App->player->deathsound.fx);
+			played = true;
+		}
 		if (current_animation->Finished() == true)
 		{
 			dmg_cd = SDL_GetTicks() + 3000;

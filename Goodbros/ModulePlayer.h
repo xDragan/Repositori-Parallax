@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "ModuleParticles.h"
 #include "p2Point.h"
 
 struct SDL_Texture;
@@ -62,13 +63,16 @@ public:
 	Animation btumble;
 	Animation downftumble;
 	Animation downbtumble;
-	iPoint position;
 	Animation die;
 	Animation win;
 	Animation windance;
+	iPoint position;
+	
+	Particle deathsound;
 
 	bool godmode = false;
 	bool blink = true;
+	bool played = false;
 
 	float speed = 0;
 
