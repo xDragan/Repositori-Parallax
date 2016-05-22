@@ -18,7 +18,7 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)
 		path.PushBack({ 0, 1.4f }, 10, &p1000);
 		path.PushBack({ 0, 1.8f }, 25, &p1000);
 		path.loop = false;
-		collider = App->collision->AddCollider({ 0, 0, 20, 12 }, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ 0, 0, 20, 12 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	case 5000:
 		p5000.PushBack({ 55, 9, 26, 14 });
@@ -32,7 +32,7 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)
 		path.PushBack({ 0, 1.8f }, 30, &p5000);
 		path.PushBack({ 0, 2.1f }, 39, &p5000);
 		path.loop = false;
-		collider = App->collision->AddCollider({ 0, 0, 26, 14 }, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ 0, 0, 26, 14 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	case 7000:
 		p7000.PushBack({ 112, 9, 26, 14 });
@@ -46,7 +46,7 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)
 		path.PushBack({ 0, 1.8f }, 30, &p7000);
 		path.PushBack({ 0, 2.1f }, 39, &p7000);
 		path.loop = false;
-		collider = App->collision->AddCollider({ 0, 0, 26, 14 }, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ 0, 0, 26, 14 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	case 10000:
 		p10000.PushBack({ 173, 7, 39, 16 });
@@ -60,7 +60,7 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)
 		path.PushBack({ 0, 1.8f }, 30, &p10000);
 		path.PushBack({ 0, 2.1f }, 39, &p10000);
 		path.loop = false;
-		collider = App->collision->AddCollider({ 0, 0, 39, 16 }, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ 0, 0, 39, 16 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	}
 

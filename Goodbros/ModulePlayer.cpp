@@ -233,7 +233,7 @@ bool ModulePlayer::Start()
 
 	Status = IDLE;
 
-	player_coll = App->collision->AddCollider({ 128, 153, 22, 27 }, COLLIDER_PLAYER);//cowboy collider
+	player_coll = App->collision->AddCollider({ 128, 153, 22, 33 }, COLLIDER_PLAYER);//cowboy collider
 
 	current_animation = &idle[0];
 
