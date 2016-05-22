@@ -12,19 +12,19 @@
 
 ModuleUI::ModuleUI()
 {
-	insert_coins.PushBack({ 137, 3, 200, 25 });
-	insert_coins.PushBack({ 137, 230, 200, 25 });
+	insert_coins.PushBack({ 18, 55, 59, 8 });
+	insert_coins.PushBack({ 18, 55, 59, 8 });
 	insert_coins.loop = true;
 	insert_coins.speed = 0.1f;
 
-	life_ball.PushBack({ 240, 9, 8, 8 });
+	life_ball.PushBack({ 94 ,73, 8, 8 });
 
-	dynamite_image.PushBack({ 288, 0, 16, 17 });
+	dynamite_image.PushBack({ 0, 55, 16, 16 });
 
-	foe.PushBack({ 198, 9, 30, 8 });
+	foe.PushBack({ 52, 73, 30, 8 });
 
-	foe_bar.PushBack({ 230, 9, 4, 8 });
-	foe_bar.PushBack({ 135, 9, 4, 8 });
+	foe_bar.PushBack({ 84, 73, 4, 8 });
+	foe_bar.PushBack({ 89 , 73, 4, 8 });
 
 	hitpoints = 3;
 	credit = 0;
