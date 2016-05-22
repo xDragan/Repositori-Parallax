@@ -10,6 +10,7 @@
 #include "ModuleAudio.h"
 #include "ModuleAim.h"
 #include "ModuleTextures.h"
+#include "ModuleUI.h"
 #include "ModuleSceneFirst.h"
 
 int ModulePlayer::looking_at() const
@@ -632,6 +633,7 @@ update_status ModulePlayer::Update()
 		}
 		if (current_animation->Finished() == true)
 		{
+			App->UserUI->score = 0;
 			dmg_cd = SDL_GetTicks() + 3000;
 			App->player->lose++;
 			Status = IDLE;

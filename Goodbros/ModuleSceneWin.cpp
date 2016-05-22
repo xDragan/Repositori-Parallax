@@ -13,6 +13,7 @@
 #include "ModuleAim.h"
 #include "ModuleEnemies.h"
 #include "ModuleStructures.h"
+#include "moduleUI.h"
 #include "SDL\include\SDL.h"
 
 ModuleSceneWin::ModuleSceneWin()
@@ -43,6 +44,7 @@ bool ModuleSceneWin::CleanUp()
 {
 	LOG("Unloading game scene");
 	App->textures->Unload(background);
+	App->UserUI->score = 0;
 	return true;
 }
 

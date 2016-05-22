@@ -10,6 +10,7 @@
 #include "Enemy_Cowboy_Blue2.h"
 #include "Enemy_Cowboy_Green.h"
 #include "Enemy_Barrel_Roll.h"
+#include "ModuleUI.h"
 #include "SDL/include/SDL_timer.h"
 
 #define SPAWN_MARGIN 40
@@ -168,6 +169,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
+			App->UserUI->score += 100;
 			enemies[i]->Die();
 		}
 	}

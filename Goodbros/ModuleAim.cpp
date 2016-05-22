@@ -76,7 +76,7 @@ update_status ModuleAim::Update()
 	{
 		position.y += speed;
 	}
-	if (App->player->Status != DIE)
+	if (App->player->Status != DIE && App->player->Status != ROLLING)
 	{
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
 		{
