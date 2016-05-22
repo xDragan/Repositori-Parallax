@@ -360,6 +360,10 @@ update_status ModulePlayer::Update()
 			App->audio->PlayFx(App->particles->shot.fx);
 			timeout = SDL_GetTicks() + 150;
 		}
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+		{
+			Status = SHOOTING_DOWN;
+		}
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_UP)
 		{
 			Status = IDLE;
