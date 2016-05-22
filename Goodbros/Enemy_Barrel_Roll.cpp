@@ -15,7 +15,7 @@ Enemy_Barrel_Roll::Enemy_Barrel_Roll(float x, float y) : Enemy(x, y)
 	backward.PushBack({ 241, 2711, 48, 48 });
 	backward.speed = 0.1f;
 
-	collider = App->collision->AddCollider({ 0, 0, 48, 48 }, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
+	//collider = App->collision->AddCollider({ 0, 0, 48, 48 }, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;

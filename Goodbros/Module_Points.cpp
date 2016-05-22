@@ -2,9 +2,11 @@
 #include "Module_Points.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
+#include "ModuleUI.h"
 
 Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)
 {
+	to_score = points;
 	switch (points){
 	case 1000:
 		p1000.PushBack({ 8, 11, 20, 12 });
@@ -76,4 +78,21 @@ void Module_Points::Move()
 
 	position = original_pos + path.GetCurrentSpeed(&animation);
 
+}
+
+void Module_Points::Die()
+{
+	App->UserUI->score += to_score;
+	path.Erase();
+	p1000.PushBack({ 0, 0, 0, 0 });
+	p1000.loop = false;
+	p5000.PushBack({ 0, 0, 0, 0 });
+	p5000.loop = false;
+	p7000.PushBack({ 0, 0, 0, 0 });
+	p7000.loop = false;
+	p10000.PushBack({ 0, 0, 0, 0 });
+	p10000.loop = false;
+	collider->to_delete = false;
+	delete collider;
+	collider = nullptr;
 }

@@ -118,7 +118,6 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_POINTS][COLLIDER_DYNAMITE] = false;
 	matrix[COLLIDER_POINTS][COLLIDER_DESTRUCT] = false;
 	matrix[COLLIDER_POINTS][COLLIDER_POINTS] = false;
-	matrix[COLLIDER_POINTS][COLLIDER_NONE] = false;
 
 }
 
