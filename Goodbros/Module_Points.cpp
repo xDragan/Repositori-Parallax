@@ -10,8 +10,11 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)
 		p1000.PushBack({ 8, 11, 20, 12 });
 		p1000.PushBack({ 32, 11, 20, 12 });
 		p1000.speed = 0.15f;
-		path.PushBack({ 0, -1.2f }, 22, &p1000);
-		path.PushBack({ 0, 1.2f }, 10, &p1000);
+		path.PushBack({ 0, -1.6f }, 12, &p1000);
+		path.PushBack({ 0, -1.0f }, 7, &p1000);
+		path.PushBack({ 0, 0 }, 5.5, &p1000);
+		path.PushBack({ 0, 0.8f }, 5, &p1000);
+		path.PushBack({ 0, 1.2f }, 5, &p1000);
 		path.PushBack({ 0, 1.4f }, 10, &p1000);
 		path.PushBack({ 0, 1.8f }, 25, &p1000);
 		path.loop = false;
