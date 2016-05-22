@@ -8,6 +8,9 @@
 #include "Globals.h"
 #include <math.h>
 
+#define HALF_PLAYER_WIDTH 16
+#define HALF_PLAYER_HEIGHT 26
+
 template<class TYPE>
 class p2Point
 {
@@ -114,6 +117,28 @@ public:
 		return (TYPE)sqrtf(float(fx*fx) + float(fy*fy));
 	}
 
+	p2Point<float> GetDirection(float base_speed, p2Point dst){
+
+		p2Point<float> direction;
+
+		direction.y = 0.6;
+		direction.x = (((dst.x + HALF_PLAYER_WIDTH) - x) / ((dst.y - HALF_PLAYER_HEIGHT) - y)) * 0.3 ;
+
+		if ((abs(direction.x) + abs(direction.y)) > 5){
+			direction.x *= 0.9;
+			direction.y *= 2;
+
+		}
+
+		if ((abs(direction.x) + abs(direction.y)) < 4){
+			direction.x *= 1.1;
+			direction.y *= 2;
+
+		}
+
+
+		return(direction);
+	}
 	TYPE DistanceNoSqrt(const p2Point& v) const
 	{
 		TYPE fx = x - v.x;

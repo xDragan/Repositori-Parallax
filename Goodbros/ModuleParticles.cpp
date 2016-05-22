@@ -22,7 +22,7 @@ ModuleParticles::ModuleParticles()
 	enemyshot.anim.loop = true;
 	enemyshot.anim.speed = 0.035f;
 	enemyshot.speed.y = 1.5f;
-	enemyshot.life = 2000;
+	enemyshot.life = 10000;
 
 
 	//smoke.anim.pushback;
@@ -152,7 +152,9 @@ void ModuleParticles::AddParticle(const Particle& particle, float x, float y, CO
 			p->position.y = y;
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
-
+			
+			if (collider_type == COLLIDER_ENEMY_SHOT)
+				p->speed = p->position.GetDirection(2, App->player->position);
 			active[i] = p;
 			break;
 		}
