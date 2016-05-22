@@ -10,6 +10,8 @@
 
 #define HALF_PLAYER_WIDTH 16
 #define HALF_PLAYER_HEIGHT 26
+#define DYNAMITE_FRAMES 40
+#define CONST_GRAVITY -1
 
 template<class TYPE>
 class p2Point
@@ -150,6 +152,13 @@ public:
 	TYPE DistanceManhattan(const p2Point& v) const
 	{
 		return abs(v.x - x) + abs(v.y - y);
+	}
+
+	p2Point<float> GetSpeed(p2Point<float> dst)
+	{
+		p2Point<float> speed{ (0.2f), (-17.0f) };
+
+		return(speed);
 	}
 };
 

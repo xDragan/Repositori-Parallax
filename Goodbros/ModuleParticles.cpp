@@ -7,6 +7,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
+#include "ModuleAim.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -24,6 +25,15 @@ ModuleParticles::ModuleParticles()
 	enemyshot.speed.y = 1.5f;
 	enemyshot.life = 10000;
 
+	dynamite.anim.PushBack({ 505, 330, 17, 17 });
+	dynamite.anim.PushBack({ 505, 330, 17, 17 });
+	dynamite.anim.PushBack({ 505, 330, 17, 17 });
+	dynamite.anim.PushBack({ 505, 330, 17, 17 });
+	dynamite.anim.PushBack({ 505, 330, 17, 17 });
+	dynamite.anim.PushBack({ 505, 330, 17, 17 });
+	dynamite.anim.PushBack({ 505, 330, 17, 17 });
+	dynamite.anim.PushBack({ 505, 330, 17, 17 });
+	dynamite.anim.speed = 0.2f;
 
 	//smoke.anim.pushback;
 	smoke.anim.PushBack({ 27, 45, 127, 30 });
@@ -154,7 +164,13 @@ void ModuleParticles::AddParticle(const Particle& particle, float x, float y, CO
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			
 			if (collider_type == COLLIDER_ENEMY_SHOT)
+			{
 				p->speed = p->position.GetDirection(2, App->player->position);
+			}
+			else if (collider_type == COLLIDER_DYNAMITE)
+			{
+				p->speed = App->player->position.GetSpeed(App->aim->position);
+			}
 			active[i] = p;
 			break;
 		}
@@ -211,7 +227,11 @@ bool Particle::Update()
 	position.y += speed.y;
 
 	if (collider != nullptr)
+	{
 		collider->SetPos(position.x, position.y);
+		if (collider->type == COLLIDER_DYNAMITE)
+			speed.y -= CONST_GRAVITY;
+	}
 
 	return ret;
 }
