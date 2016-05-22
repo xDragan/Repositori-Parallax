@@ -11,7 +11,8 @@
 #include "ModuleScenefirst.h"
 #include "ModuleAudio.h"
 #include "ModuleStructures.h"
-
+#include "Module_Points.h"
+#include "ModuleEnemies.h"
 #include "SDL/include/SDL_timer.h"
 
 Structure::Structure()
@@ -357,6 +358,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 28, 10000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
@@ -397,6 +399,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->INN_hits == 3)
 			{
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 7000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
@@ -437,6 +440,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->FABTEN_hits == 3)
 			{
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 20, 10000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
@@ -459,8 +463,9 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 		
-			else if (active[i]->HOTEL_hits == 30)
+			else if (active[i]->HOTEL_hits >= 10)
 			{
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
@@ -494,6 +499,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->BARREL_hits == 2)
 			{
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 3, active[i]->position.y, 1000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;

@@ -14,7 +14,8 @@ enum ENEMY_TYPES
 	BLUE_COWBOY2,
 	GREEN_COWBOY,
 	BAR_HOUSE,
-	BARREL_ROLL
+	BARREL_ROLL,
+	POINTS
 };
 
 class Enemy;
@@ -23,6 +24,7 @@ struct EnemyInfo
 {
 	ENEMY_TYPES type = ENEMY_TYPES::NO_TYPE;
 	int x, y;
+	uint points;
 };
 
 class ModuleEnemies : public Module
@@ -38,7 +40,7 @@ public:
 
 	bool Start();
 	bool CleanUp();
-	bool AddEnemy(ENEMY_TYPES type, int x, int y);
+	bool AddEnemy(ENEMY_TYPES type, int x, int y, uint points);
 
 	void OnCollision(Collider* c1, Collider* c2);
 private:

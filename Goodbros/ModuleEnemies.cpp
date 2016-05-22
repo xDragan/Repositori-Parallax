@@ -11,6 +11,7 @@
 #include "Enemy_Cowboy_Green.h"
 #include "Enemy_Barrel_Roll.h"
 #include "ModuleUI.h"
+#include "Module_Points.h"
 #include "SDL/include/SDL_timer.h"
 
 #define SPAWN_MARGIN 40
@@ -112,7 +113,7 @@ bool ModuleEnemies::CleanUp()
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
+bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, uint points)
 {
 	bool ret = false;
 
@@ -120,6 +121,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
 	{
 		if (queue[i].type == ENEMY_TYPES::NO_TYPE)
 		{
+			queue[i].points = points;
 			queue[i].type = type;
 			queue[i].x = x;
 			queue[i].y = y;
@@ -158,6 +160,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::BARREL_ROLL:
 			enemies[i] = new Enemy_Barrel_Roll(info.x, info.y);
+			break;
+		case ENEMY_TYPES::POINTS:
+			enemies[i] = new Module_Points(info.x, info.y, info.points);
 			break;
 		}
 	}

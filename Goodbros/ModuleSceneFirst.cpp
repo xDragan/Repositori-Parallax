@@ -47,8 +47,8 @@ bool ModuleSceneFirst::Start()
 	App->structures->AddStructure(App->structures->inn, 0, 28);
 	App->structures->AddStructure(App->structures->fabten, 0, 8);
 	// Enemies
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 170, 30);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 170, 30,NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130,NULL);
 	//Barrels
 	App->structures->AddStructure(App->structures->barrel, 6, 144);
 	App->structures->AddStructure(App->structures->barrel, 38, 144);
@@ -85,18 +85,18 @@ update_status ModuleSceneFirst::Update()
 {
 	if (SDL_GetTicks() > time)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 110);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 110,NULL);
 		time = SDL_GetTicks() + 5000;
 	}
 	if (SDL_GetTicks() > time2)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY, 210, 100);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY, 210, 100,NULL);
 		time2 = SDL_GetTicks() + 7000;
 	}
 	
 	if (SDL_GetTicks() > time3)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 150);
+		App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 150,NULL);
 		time3 = SDL_GetTicks() + 10000;
 	}
 

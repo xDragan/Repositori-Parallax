@@ -97,6 +97,7 @@
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleUI.h" />
     <ClInclude Include="ModuleWindow.h" />
+    <ClInclude Include="Module_Points.h" />
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="Enemy_Pig.h" />
     <ClInclude Include="Path.h" />
@@ -129,6 +130,7 @@
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="Enemy_Pig.cpp" />
     <ClCompile Include="ModuleScenePreStage.cpp" />
+    <ClCompile Include="Module_Points.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\Windows\System32\user32.dll" />
