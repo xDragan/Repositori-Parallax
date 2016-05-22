@@ -258,7 +258,7 @@ update_status ModuleStructures::Update()
 			active[i] = nullptr;
 		}
 
-		if (p->hits <= 3 || p->INN_hits <= 3 || p->FABTEN_hits <= 3 || p->HOTEL_hits <= 3)
+		if (p->hits <= 3 || p->INN_hits <= 3 || p->FABTEN_hits <= 3 || p->HOTEL_hits <= 30)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
 			if (p->fx_played == false)
@@ -268,7 +268,7 @@ update_status ModuleStructures::Update()
 			}
 		}
 
-		if (p->hits > 3 || p->INN_hits > 3 || p->BARREL_hits > 2 || p->FABTEN_hits > 3 || p->HOTEL_hits > 3 )
+		if (p->hits > 3 || p->INN_hits > 3 || p->BARREL_hits > 2 || p->FABTEN_hits > 3 || p->HOTEL_hits > 30 )
 		{
 			App->collision->EraseCollider(p->collider);
 			App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
@@ -449,7 +449,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 		// HOTEL
 		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == HOTEL)
 		{
-			if (active[i]->HOTEL_hits == 0)
+			if (active[i]->HOTEL_hits >= 0)
 			{
 				active[i]->Coll_Struct.x = hotel2.Coll_Struct.x;
 				active[i]->Coll_Struct.y = hotel2.Coll_Struct.y;
@@ -458,25 +458,8 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->HOTEL_hits++;
 				break;
 			}
-			else if (active[i]->HOTEL_hits == 1)
-			{
-				active[i]->Coll_Struct.x = hotel3.Coll_Struct.x;
-				active[i]->Coll_Struct.y = hotel3.Coll_Struct.y;
-				active[i]->Coll_Struct.w = hotel3.Coll_Struct.w;
-				active[i]->Coll_Struct.h = hotel3.Coll_Struct.h;
-				active[i]->HOTEL_hits++;
-				break;
-			}
-			else if (active[i]->HOTEL_hits == 2)
-			{
-				active[i]->Coll_Struct.x = hotel4.Coll_Struct.x;
-				active[i]->Coll_Struct.y = hotel4.Coll_Struct.y;
-				active[i]->Coll_Struct.w = hotel4.Coll_Struct.w;
-				active[i]->Coll_Struct.h = hotel4.Coll_Struct.h;
-				active[i]->HOTEL_hits++;
-				break;
-			}
-			else if (active[i]->HOTEL_hits == 3)
+		
+			else if (active[i]->HOTEL_hits == 30)
 			{
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
