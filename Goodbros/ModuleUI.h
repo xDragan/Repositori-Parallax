@@ -29,6 +29,9 @@ public:
 	Animation dynamite_image;
 	Animation foe;
 	Animation foe_bar;
+	Animation foe_bar_white;
+	Animation Credit;
+	Animation characterone;
 	Uint32 hitpoints;
 	Uint32 credit;
 	Uint32 score;

@@ -8,6 +8,7 @@
 #include "ModuleSceneFirst.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleUI.h"
+#include "ModulePlayer.h"
 #include "ModuleText.h"
 
 ModuleUI::ModuleUI()
@@ -17,15 +18,19 @@ ModuleUI::ModuleUI()
 	insert_coins.loop = true;
 	insert_coins.speed = 0.1f;
 
-	life_ball.PushBack({ 240, 9, 8, 8 });
+	life_ball.PushBack({ 93, 73, 8, 8 });
 
-	dynamite_image.PushBack({ 249, 9, 16, 16 });
+	dynamite_image.PushBack({ 0, 55, 15, 16 });
 
-	foe.PushBack({ 198, 9, 30, 8 });
+	foe.PushBack({ 51, 73, 30, 8 });
 
-	foe_bar.PushBack({ 0, 0, 4, 8 });
-	foe_bar.PushBack({ 135, 9, 4, 8 });
+	foe_bar.PushBack({ 83, 72, 4, 9 });
+	foe_bar_white.PushBack({ 88, 73, 4, 9 });
 
+	Credit.PushBack({ 79, 55, 35, 7});
+
+	characterone.PushBack({ 17, 73, 16, 8});
+	
 	hitpoints = 3;
 	credit = 0;
 	score = 0;
@@ -39,9 +44,9 @@ bool ModuleUI::Start()
 	LOG("Loading intro");
 
 	UserInterface = App->textures->Load("bloodbros/HUDandFONTS2.png");
-	credit_counter = App->text->AddNumber(SCREEN_WIDTH / 2 + TILE / 2 + 20, SCREEN_HEIGHT - TILE, credit, 2);
-	score_counter = App->text->AddNumber(0, 0, score, 8);
-	dynamite_counter = App->text->AddNumber(0, SCREEN_HEIGHT - 30, dynamite, 2);
+	credit_counter = App->text->AddNumber(SCREEN_WIDTH / 2 + 3, SCREEN_HEIGHT - 7, credit, 2);
+	score_counter = App->text->AddNumber(18, 0, score, 8);
+	dynamite_counter = App->text->AddNumber(1, SCREEN_HEIGHT - 28, dynamite, 2);
 
 	return true;
 }
@@ -61,35 +66,29 @@ update_status ModuleUI::Update()
 {
 	credit_counter->ChangeNumber(credit);
 	score_counter->ChangeNumber(score);
-
-	int enemygauge = ((ENEMY_GAUGE - killcount) * 12) / ENEMY_GAUGE;
-
-	if (enemygauge == 0 && killcount != ENEMY_GAUGE)
-		enemygauge = 1;
-
-	App->render->Blit(UserInterface, 35, 205, &(foe.GetCurrentFrame()), 0.5);
-
-	Uint32 position = TILE * 2 + 80;
-	Uint32 count = 0;
-
-	while (enemygauge - 2 > -1)
-	{
-		App->render->Blit(UserInterface, 60, 205, &(foe_bar.GetCurrentFrame()), 0.5);
-		enemygauge -= 2;
-		position += 20;
-		++count;
+	if (true){
+		App->render->Blit(UserInterface, 69, 202, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 73, 202, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 77, 202, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 81, 202, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 85, 202, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 89, 202, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 93, 202, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 97, 202, &(foe_bar.GetCurrentFrame()), 0.5);
 	}
 
-	App->render->Blit(UserInterface, 0, 190, &(dynamite_image.GetCurrentFrame()), 0.6);
-
-	if (hitpoints >= 2)
+	App->render->Blit(UserInterface, 90, SCREEN_HEIGHT-7, &(Credit.GetCurrentFrame()), 0.5);
+	
+	App->render->Blit(UserInterface, 35, 203, &(foe.GetCurrentFrame()), 0.5);
+	App->render->Blit(UserInterface, 0, 0, &(characterone.GetCurrentFrame()), 0.5);
+	App->render->Blit(UserInterface, 1, SCREEN_HEIGHT- 44,  &(dynamite_image.GetCurrentFrame()), 0.6);
+	if (App->player->lose == 0){
+		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 20, &(life_ball.GetCurrentFrame()), 0.6);
+		App->render->Blit(UserInterface, 8, SCREEN_HEIGHT - 20, &(life_ball.GetCurrentFrame()), 0.6);
+	}
+	if (App->player->lose == 1)
 	{
 		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 20, &(life_ball.GetCurrentFrame()), 0.6);
-
-		if (hitpoints == 3)
-		{
-			App->render->Blit(UserInterface, 9, SCREEN_HEIGHT - 20, &(life_ball.GetCurrentFrame()), 0.6);
-		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
