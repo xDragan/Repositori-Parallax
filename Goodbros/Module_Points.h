@@ -7,7 +7,7 @@ class Module_Points : public Enemy
 {
 private:
 	bool going_forward = true;
-	bool stop = false;;
+	bool stop = false;
 	uint to_score;
 	Animation p1000, p5000, p7000, p10000;
 

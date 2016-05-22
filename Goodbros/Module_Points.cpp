@@ -92,7 +92,5 @@ void Module_Points::Die()
 	p7000.loop = false;
 	p10000.PushBack({ 0, 0, 0, 0 });
 	p10000.loop = false;
-	collider->to_delete = false;
-	delete collider;
-	collider = nullptr;
+	finished = true; 
 }
