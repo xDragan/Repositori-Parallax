@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "p2Point.h"
+#include "ModulePlayer.h"
 #include "SDL/include/SDL_timer.h"
 
 struct SDL_Texture;
