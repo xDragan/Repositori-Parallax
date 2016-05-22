@@ -525,6 +525,10 @@ update_status ModulePlayer::Update()
 		{
 			Status = IDLE;
 		}
+		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_UP)
+		{
+			Status = DOWN;
+		}
 		if (SDL_GetTicks() > timeout)
 		{
 			App->audio->PlayFx(App->particles->shot.fx);

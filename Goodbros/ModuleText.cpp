@@ -18,8 +18,7 @@ void Text::Draw()
 			position.y = ((*text - ' ') / 16) * TILE;
 			position.x = ((*text - ' ') % 16) * TILE;
 		}
-
-		App->render->Blit(_font, _x + letter * (TILE / 2 - 5), _y, &position, 0.5);
+		App->render->Blit(_font, _x + letter * (TILE), _y, &position, 0.5);
 		letter++;
 		text++;
 	}
@@ -33,7 +32,7 @@ ModuleText::~ModuleText()
 
 bool ModuleText::Start()
 {
-	uitexture = App->textures->Load("bloodbros/ui-rearranged.png");
+	uitexture = App->textures->Load("bloodbros/HUDandFONTS2.png");
 	for (int i = 0; i < MAX_TEXT; ++i)
 		texts[i] = nullptr;
 
@@ -127,3 +126,6 @@ bool ModuleText::EraseText(Text* text)
 
 	return false;
 }
+
+
+
