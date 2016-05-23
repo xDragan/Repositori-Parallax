@@ -127,7 +127,7 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	path.PushBack({ 0, 0 }, 60, &grenadeSm);
 	path.PushBack({ 0, 0}, 20, &falld);
 	path.PushBack({ 0, -1.0 }, 15, &jumpSm);
-	path.PushBack({ 0, +1.0 }, 60, &jump);
+	path.PushBack({ 0, +1.0 }, 20, &jump);
 	
 
 	path2.PushBack({ +1.0f, 0 }, 60, &backward);
@@ -142,7 +142,7 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 
 void Enemy_CowBoy_Blue2::Move()
 {
-	if (path.GetFrame() < 210)
+	if (path.GetFrame() < 215)
 	{
 		position = original_pos + path.GetCurrentSpeed(&animation);
 		position2 = position;
