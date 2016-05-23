@@ -274,7 +274,7 @@ update_status ModuleStructures::Update()
 			App->collision->EraseCollider(p->collider);
 			if (p->position.y >= 140)
 			{
-				App->structuresmiddle->fabten.destroy.GetCurrentFrame();
+				App->structures->fabten.destroy.GetCurrentFrame();
 			}
 			else
 			{
@@ -364,13 +364,13 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 27, 10000);
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 27, 10000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
-				App->particlesmiddle->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
+				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 			}
 		}
 			// INN
@@ -405,7 +405,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->INN_hits == 3)
 			{
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 7000);
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 7000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
@@ -446,13 +446,13 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->FABTEN_hits == 3)
 			{
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000);
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
 				active[i]->FABTEN_hits++;
-				App->particlesmiddle->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
+				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 			}
 		}
 
@@ -471,7 +471,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 		
 			else if (active[i]->HOTEL_hits >= 10)
 			{
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000);
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
@@ -505,7 +505,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->BARREL_hits == 2)
 			{
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 3, active[i]->position.y, 1000);
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 3, active[i]->position.y, 1000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;

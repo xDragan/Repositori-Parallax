@@ -30,9 +30,7 @@ bool ModuleSceneWin::Start()
 	App->particles->Disable();
 	App->aim->Disable();
 	App->enemies->Disable();
-	App->structuresback->Disable();
-	App->structuresmiddle->Disable();
-	App->structuresfront->Disable();
+	App->structures->Disable();
 	ticks = SDL_GetTicks();
 	background = App->textures->Load("bloodbros/win_scene.png");
 	App->audio->Load("bloodbros/Victory.ogg");
