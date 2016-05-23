@@ -15,10 +15,11 @@ Enemy_CowBoy_Blue3::Enemy_CowBoy_Blue3(float x, float y) : Enemy(x, y)
 	forward.speed = 0.09f;
 	forward.loop = true;
 
-	dieshot.PushBack({ 507, 397, 35, 54 });
-	dieshot.PushBack({ 549, 397, 35, 54 });
-	dieshot.PushBack({ 589, 397, 35, 54 });
-	dieshot.PushBack({ 632, 397, 35, 54 });
+	dieshot.PushBack({ 507, 400, 35, 54 });
+	dieshot.PushBack({ 549, 400, 35, 54 });
+	dieshot.PushBack({ 589, 400, 35, 54 });
+	dieshot.PushBack({ 632, 400, 35, 54 });
+	
 	dieshot.speed = 0.09f;
 	dieshot.loop = false;
 
@@ -93,7 +94,7 @@ void Enemy_CowBoy_Blue3::Move()
 void Enemy_CowBoy_Blue3::Die()
 {
 	App->player->win_condition++;
-	path2.Erase();
-	path2.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
-	path2.loop = false;
+	path.Erase();
+	path.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
+	path.loop = false;
 }

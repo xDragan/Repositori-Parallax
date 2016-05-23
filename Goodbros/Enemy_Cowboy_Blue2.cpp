@@ -30,12 +30,12 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	stop_shoot.speed = 0.04f;
 	stop_shoot.loop = true;
 
-	dieshot.PushBack({ 507, 397, 35, 54 });
-	dieshot.PushBack({ 549, 397, 35, 54 });
-	dieshot.PushBack({ 589, 397, 35, 54 });
-	dieshot.PushBack({ 632, 397, 35, 54 });
+	dieshot.PushBack({ 507, 400, 35, 54 });
+	dieshot.PushBack({ 549, 400, 35, 54 });
+	dieshot.PushBack({ 589, 400, 35, 54 });
+	dieshot.PushBack({ 632, 400, 35, 54 });
 	dieshot.speed = 0.09f;
-	dieshot.loop = false;
+	dieshot.loop = true;
 
 	dieexplotion.PushBack({ 744, 397, 36, 54 });
 	dieexplotion.PushBack({ 798, 397, 36, 54 });
@@ -62,7 +62,7 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	grenadeSm.PushBack({ 717, 1058, 25, 40 });
 	grenadeSm.PushBack({ 742, 1058, 25, 40 });
 	grenadeSm.speed = 0.1f;
-	grenadeSm.loop = false;
+	grenadeSm.loop = true;
 
 
 
@@ -119,7 +119,7 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	spawnn.PushBack({ 1039 , 581, 25, 40 });
 	spawnn.PushBack({ 591, 1018, 25, 40 });
 	spawnn.speed = 0.05f;
-	
+	spawnn.loop = true;
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -171,8 +171,18 @@ void Enemy_CowBoy_Blue2::Move()
 
 void Enemy_CowBoy_Blue2::Die()
 {
+
 	App->player->win_condition++;
-	path2.Erase();
-	path2.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
-	path2.loop = false;
+	if (path.GetFrame() < 215)
+	{
+		path.Erase();
+		path.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
+		path.loop = false;
+	}
+	else{
+		path2.Erase();
+		path2.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
+		path2.loop = false;
+	}
+	
 }
