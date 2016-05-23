@@ -46,16 +46,16 @@ bool ModuleSceneFirst::Start()
 	App->structures->AddStructure(App->structures->bar, 145, 0);
 	App->structures->AddStructure(App->structures->inn, 0, 28);
 	App->structures->AddStructure(App->structures->fabten, 0, 8);
+
 	// Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101 ,NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130,NULL);
+
 	//Barrels
 	App->structures->AddStructure(App->structures->barrel, 6, 144);
 	App->structures->AddStructure(App->structures->barrel, 38, 144);
 	App->structures->AddStructure(App->structures->barrel, 198, 144);
-
-
 
 	// Time counters
 	time = SDL_GetTicks();
@@ -71,6 +71,7 @@ bool ModuleSceneFirst::CleanUp()
 	LOG("Unloading first scene");
 	
 	App->textures->Unload(background);
+	App->structures->CleanUp();
 	App->player->Disable();
 	App->particles->Disable();
 	App->aim->Disable();
@@ -101,10 +102,10 @@ update_status ModuleSceneFirst::Update()
 		time3 = SDL_GetTicks() + 10000;
 	}
 
-	// Draw everything --------------------------------------
+	// Draw everything
 	App->render->Blit(background, 0, 0, NULL);
 
-	if (App->player->win_condition >= 40)
+	if (App->player->win_condition >= 15)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
 		App->player->win_condition = 0;

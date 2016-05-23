@@ -272,9 +272,15 @@ update_status ModuleStructures::Update()
 		if (p->hits > 3 || p->INN_hits > 3 || p->BARREL_hits > 2 || p->FABTEN_hits > 3 || p->HOTEL_hits > 30 )
 		{
 			App->collision->EraseCollider(p->collider);
-			App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
-			
-			if (p->destroy.Finished())
+			if (p->position.y >= 140)
+			{
+				App->structures->fabten.destroy.GetCurrentFrame();
+			}
+			else
+			{
+				App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
+			}
+			if (p->destroy.Finished() == true)
 			{
 				delete active[i];
 				active[i] = nullptr;

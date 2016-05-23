@@ -273,9 +273,7 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
 	{
-		
-			App->particles->AddParticle(App->particles->dynamite, position.x , position.y, COLLIDER_DYNAMITE, 0);
-		
+		App->particles->AddParticle(App->particles->dynamite, position.x, position.y, COLLIDER_DYNAMITE, 0);
 	}
 	switch (Status)
 	{
@@ -402,6 +400,10 @@ update_status ModulePlayer::Update()
 		{
 			Status = DOWN;
 		}
+		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
+		{
+			Status = SHOOTING;
+		}
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_UP)
 		{
 			Status = IDLE;
@@ -430,6 +432,10 @@ update_status ModulePlayer::Update()
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			Status = DOWN;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
+		{
+			Status = SHOOTING;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_UP)
 		{

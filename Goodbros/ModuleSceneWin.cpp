@@ -25,7 +25,7 @@ ModuleSceneWin::~ModuleSceneWin()
 // Load assets
 bool ModuleSceneWin::Start()
 {
-	LOG("Loading game intro");	
+	LOG("Loading win scene");	
 	App->player->Disable();
 	App->particles->Disable();
 	App->aim->Disable();
@@ -42,7 +42,7 @@ bool ModuleSceneWin::Start()
 // UnLoad assets
 bool ModuleSceneWin::CleanUp()
 {
-	LOG("Unloading game scene");
+	LOG("Unloading win scene");
 	App->textures->Unload(background);
 	App->UserUI->score = 0;
 	return true;
