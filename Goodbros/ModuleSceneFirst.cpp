@@ -85,14 +85,18 @@ bool ModuleSceneFirst::CleanUp()
 // Update: draw background
 update_status ModuleSceneFirst::Update()
 {
-	if (SDL_GetTicks() > time)
+	if (SDL_GetTicks() > time + 1000)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 110,NULL);
-		time = SDL_GetTicks() + 5000;
+
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, SCREEN_WIDTH, 110, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 90, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, SCREEN_WIDTH, 90, NULL);
+		time = SDL_GetTicks() + 30000;
 	}
 	if (SDL_GetTicks() > time2)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY, 210, 100,NULL);
+	
 		time2 = SDL_GetTicks() + 7000;
 	}
 	

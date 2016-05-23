@@ -1,9 +1,9 @@
-#ifndef __ENEMY_COWBOY_GREEN_H__
-#define __ENEMY_COWBOY_GREEN_H__
+#ifndef __ENEMY_COWBOY_GREEN_BIG_RIGHT_H__
+#define __ENEMY_COWBOY_GREEN_BIG_RIGHT_H__
 
 #include "Enemy.h"
 
-class Enemy_CowBoy_Green : public Enemy
+class Enemy_CowBoy_Green_Big_Right : public Enemy
 {
 private:
 	bool going_forward = true;
@@ -20,7 +20,7 @@ private:
 	iPoint original_pos;
 public:
 
-	Enemy_CowBoy_Green(float x, float y);
+	Enemy_CowBoy_Green_Big_Right(float x, float y);
 	void Die();
 	void Move();
 };
