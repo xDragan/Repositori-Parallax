@@ -12,6 +12,7 @@ You can also roll when you're you're hanged.
 you can shoot pressing z.
 To activate GODMODE press G.
 
+https://docs.google.com/document/d/1K-VrUWBbR4nnkExs_ooXRPzrOtSBx4APVlgG-u9j8ds/edit
 
 Game done by:
 
