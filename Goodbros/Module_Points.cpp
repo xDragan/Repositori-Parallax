@@ -4,95 +4,95 @@
 #include "ModulePlayer.h"
 #include "ModuleUI.h"
 
-Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)
+Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)  //Y=5,, DF 6
 {
 	to_score = points;
 	switch (points){
 	case 1000:
-		p1000.PushBack({ 8, 11, 20, 12 });
-		p1000.PushBack({ 32, 11, 20, 12 });
-		p1000.speed = 0.15f;
-		path.PushBack({ 0, -1.6f }, 12, &p1000);
-		path.PushBack({ 0, -1.0f }, 7, &p1000);
-		path.PushBack({ 0, 0 }, 5.5, &p1000);
-		path.PushBack({ 0, 0.8f }, 5, &p1000);
-		path.PushBack({ 0, 1.2f }, 5, &p1000);
-		path.PushBack({ 0, 1.4f }, 10, &p1000);
-		path.PushBack({ 0, 1.8f }, 25, &p1000);
+		point.PushBack({ 8, 0, 20, 23 });
+		point.PushBack({ 32, 0, 20, 23 });
+		point.speed = 0.15f;
+		path.PushBack({ 0, -1.6f }, 12, &point);
+		path.PushBack({ 0, -1.0f }, 7, &point);
+		path.PushBack({ 0, 0 }, 5.5, &point);
+		path.PushBack({ 0, 0.8f }, 4, &point);
+		path.PushBack({ 0, 1.2f }, 5, &point);
+		path.PushBack({ 0, 1.4f }, 8, &point);
+		path.PushBack({ 0, 1.8f }, 23, &point);
 		path.loop = false;
-		collider = App->collision->AddCollider({ 0, 0, 20, 12 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ 0, 0, 20, 23 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	case 5000:
-		p5000.PushBack({ 55, 9, 26, 14 });
-		p5000.PushBack({ 83, 9, 26, 14 });
-		p5000.speed = 0.15f;
-		path.PushBack({ 0, -1.0f }, 15, &p5000);
-		path.PushBack({ 0, -0.4f }, 4, &p5000);
-		path.PushBack({ 0, 0 }, 3.5, &p5000);
-		path.PushBack({ 0, 1.2f }, 10, &p5000);
-		path.PushBack({ 0, 1.4f }, 20, &p5000);
-		path.PushBack({ 0, 1.8f }, 30, &p5000);
-		path.PushBack({ 0, 2.1f }, 39, &p5000);
+		point.PushBack({ 55, 0, 26, 23 });
+		point.PushBack({ 83, 0, 26, 23 });
+		point.speed = 0.15f;
+		path.PushBack({ 0, -1.0f }, 15, &point);
+		path.PushBack({ 0, -0.4f }, 4, &point);
+		path.PushBack({ 0, 0 }, 3.5, &point);
+		path.PushBack({ 0, 1.2f }, 11, &point);
+		path.PushBack({ 0, 1.4f }, 19, &point);
+		path.PushBack({ 0, 1.8f }, 29, &point);
+		path.PushBack({ 0, 2.1f }, 37, &point);
 		path.loop = false;
-		collider = App->collision->AddCollider({ 0, 0, 26, 14 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ 0, 0, 26, 23 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	case 7000:
-		p7000.PushBack({ 112, 9, 26, 14 });
-		p7000.PushBack({ 145, 9, 26, 14 });
-		p7000.speed = 0.15f;
-		path.PushBack({ 0, -1.0f }, 15, &p7000);
-		path.PushBack({ 0, -0.4f }, 4, &p7000);
-		path.PushBack({ 0, 0 }, 3.5, &p7000);
-		path.PushBack({ 0, 1.2f }, 10, &p7000);
-		path.PushBack({ 0, 1.4f }, 20, &p7000);
-		path.PushBack({ 0, 1.8f }, 30, &p7000);
-		path.PushBack({ 0, 2.1f }, 39, &p7000);
+		point.PushBack({ 112, 0, 26, 23 });
+		point.PushBack({ 145, 0, 26, 23 });
+		point.speed = 0.15f;
+		path.PushBack({ 0, -1.0f }, 15, &point);
+		path.PushBack({ 0, -0.4f }, 4, &point);
+		path.PushBack({ 0, 0 }, 3.5, &point);
+		path.PushBack({ 0, 1.2f }, 11, &point);
+		path.PushBack({ 0, 1.4f }, 19, &point);
+		path.PushBack({ 0, 1.8f }, 29, &point);
+		path.PushBack({ 0, 2.1f }, 37, &point);
 		path.loop = false;
-		collider = App->collision->AddCollider({ 0, 0, 26, 14 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ 0, 0, 26, 23 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	case 10000:
-		p10000.PushBack({ 173, 7, 39, 16 });
-		p10000.PushBack({ 213, 7, 39, 16 });
-		p10000.speed = 0.15f;
-		path.PushBack({ 0, -1.0f }, 15, &p10000);
-		path.PushBack({ 0, -0.4f }, 4, &p10000);
-		path.PushBack({ 0, 0 }, 3.5, &p10000);
-		path.PushBack({ 0, 1.2f }, 10, &p10000);
-		path.PushBack({ 0, 1.4f }, 20, &p10000);
-		path.PushBack({ 0, 1.8f }, 30, &p10000);
-		path.PushBack({ 0, 2.1f }, 39, &p10000);
+		point.PushBack({ 173, 0, 39, 23 });
+		point.PushBack({ 213, 0, 39, 23 });
+		point.speed = 0.15f;
+		path.PushBack({ 0, -1.0f }, 15, &point);
+		path.PushBack({ 0, -0.4f }, 4, &point);
+		path.PushBack({ 0, 0 }, 3.5, &point);
+		path.PushBack({ 0, 1.2f }, 11, &point);
+		path.PushBack({ 0, 1.4f }, 19, &point);
+		path.PushBack({ 0, 1.8f }, 29, &point);
+		path.PushBack({ 0, 2.1f }, 37, &point);
 		path.loop = false;
-		collider = App->collision->AddCollider({ 0, 0, 39, 16 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ 0, 0, 39, 23 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	case 1: //1==grenade pop
 		to_score = 1;
-		grenade_pop.PushBack({ 197, 33, 16, 16 });
-		grenade_pop.PushBack({ 217, 33, 16, 16 });
-		grenade_pop.speed = 0.2f;
-		path.PushBack({ 0, -1.6f }, 15, &grenade_pop);
-		path.PushBack({ 0, -1.0f }, 7, &grenade_pop);
-		path.PushBack({ 0, 0 }, 5.5, &grenade_pop);
-		path.PushBack({ 0, 0.8f }, 5, &grenade_pop);
-		path.PushBack({ 0, 1.2f }, 5, &grenade_pop);
-		path.PushBack({ 0, 1.4f }, 10, &grenade_pop);
-		path.PushBack({ 0, 1.8f }, 25.5, &grenade_pop);
+		point.PushBack({ 197, 23, 16, 26 });
+		point.PushBack({ 217, 23, 16, 26 });
+		point.speed = 0.18f;
+		path.PushBack({ 0, -1.6f }, 15, &point);
+		path.PushBack({ 0, -1.0f }, 7, &point);
+		path.PushBack({ 0, 0 }, 5.5, &point);
+		path.PushBack({ 0, 0.8f }, 4, &point);
+		path.PushBack({ 0, 1.2f }, 4, &point);
+		path.PushBack({ 0, 1.4f }, 9, &point);
+		path.PushBack({ 0, 1.8f }, 21.5, &point);
 		path.loop = false;
-		collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ 0, 0, 16, 26 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	case 2: //2==1up
 		to_score = 2;
-		up1.PushBack({239, 33, 16, 16 });
-		up1.PushBack({ 261, 33, 16, 16 });
-		up1.speed = 0.2f;
-		path.PushBack({ 0, -1.6f }, 15, &up1);
-		path.PushBack({ 0, -1.0f }, 7, &up1);
-		path.PushBack({ 0, 0 }, 5.5, &up1);
-		path.PushBack({ 0, 0.8f }, 5, &up1);
-		path.PushBack({ 0, 1.2f }, 5, &up1);
-		path.PushBack({ 0, 1.4f }, 10, &up1);
-		path.PushBack({ 0, 1.8f }, 25.5, &up1);
+		point.PushBack({ 239, 23, 16, 26 });
+		point.PushBack({ 261, 23, 16, 26 });
+		point.speed = 0.12f;
+		path.PushBack({ 0, -1.6f }, 15, &point);
+		path.PushBack({ 0, -1.0f }, 7, &point);
+		path.PushBack({ 0, 0 }, 5.5, &point);
+		path.PushBack({ 0, 0.8f }, 4, &point);
+		path.PushBack({ 0, 1.2f }, 4, &point);
+		path.PushBack({ 0, 1.4f }, 9, &point);
+		path.PushBack({ 0, 1.8f }, 21.5, &point);
 		path.loop = false;
-		collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
+		collider = App->collision->AddCollider({ 0, 0, 16, 26 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	}
 
@@ -114,35 +114,20 @@ void Module_Points::Die()
 	
 	path.Erase();
 	switch (to_score){
-	case 1000:
-		App->UserUI->score += to_score - 100;
-		p1000.PushBack({ 0, 0, 0, 0 });
-		p1000.loop = false;
-		break;
-	case 5000:
-		App->UserUI->score += to_score - 100;
-		p5000.PushBack({ 0, 0, 0, 0 });
-		p5000.loop = false;
-		break;
-	case 10000:
-		App->UserUI->score += to_score - 100;
-		p10000.PushBack({ 0, 0, 0, 0 });
-		p10000.loop = false;
-		break;
-	case 7000:
-		App->UserUI->score += to_score - 100;
-		p7000.PushBack({ 0, 0, 0, 0 });
-		p7000.loop = false;
-		break;
 	case 1:
 		App->UserUI->dynamite++;
-		grenade_pop.PushBack({ 0, 0, 0, 0 });
-		grenade_pop.loop = false;
+		point.PushBack({ 0, 0, 0, 0 });
+		point.loop = false;
 		break;
 	case 2:
 		App->UserUI->hitpoints--;
-		up1.PushBack({ 0, 0, 0, 0 });
-		up1.loop = false;
+		point.PushBack({ 0, 0, 0, 0 });
+		point.loop = false;
+		break;
+	default:
+		App->UserUI->score += to_score - 100;
+		point.PushBack({ 0, 0, 0, 0 });
+		point.loop = false;
 		break;
 	}
 
