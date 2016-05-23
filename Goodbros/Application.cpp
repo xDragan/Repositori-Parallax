@@ -29,13 +29,19 @@ Application::Application()
 	modules[i++] = scene_prestage = new ModuleScenePreStage();
 	modules[i++] = scene_space = new ModuleSceneFirst();
 	modules[i++] = scene_win = new ModuleSceneWin();
-	modules[i++] = structures = new ModuleStructures();
+	modules[i++] = structuresback = new ModuleStructures();
+	modules[i++] = structuresmiddle = new ModuleStructures();
+	modules[i++] = particlesmiddle = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = barrelroll = new ModuleEnemies();
+	modules[i++] = structuresfront = new ModuleStructures();
 	modules[i++] = aim = new ModuleAim();
+	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = points = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = UserUI = new ModuleUI();
 	modules[i++] = text = new ModuleText();
-	modules[i++] = particles = new ModuleParticles();
+	
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
