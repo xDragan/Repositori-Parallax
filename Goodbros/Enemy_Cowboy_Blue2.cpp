@@ -171,7 +171,7 @@ void Enemy_CowBoy_Blue2::Move()
 
 void Enemy_CowBoy_Blue2::Die()
 {
-
+	collider->type = COLLIDER_NONE;
 	App->player->win_condition++;
 	if (path.GetFrame() < 215)
 	{

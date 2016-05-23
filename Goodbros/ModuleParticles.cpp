@@ -231,8 +231,7 @@ bool Particle::Update()
 		ret = false;
 		if (collider != nullptr && collider->type == COLLIDER_DYNAMITE)
 		{
-			App->particles->AddParticle(App->particles->dynamite_exp, position.x, position.y, COLLIDER_NONE, 0);
-			App->enemies->check_explosion(position);
+			App->particles->AddParticle(App->particles->dynamite_exp, position.x, position.y, COLLIDER_PLAYER_SHOT, 0);
 		}
 
 	}

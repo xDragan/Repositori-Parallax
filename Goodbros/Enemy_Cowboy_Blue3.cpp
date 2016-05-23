@@ -93,6 +93,7 @@ void Enemy_CowBoy_Blue3::Move()
 
 void Enemy_CowBoy_Blue3::Die()
 {
+	collider->type = COLLIDER_NONE;
 	App->player->win_condition++;
 	path.Erase();
 	path.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
