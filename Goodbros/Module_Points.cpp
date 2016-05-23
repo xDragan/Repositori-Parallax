@@ -79,6 +79,21 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)
 		path.loop = false;
 		collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
+	case 2: //2==1up
+		to_score = 2;
+		up1.PushBack({239, 33, 16, 16 });
+		up1.PushBack({ 261, 33, 16, 16 });
+		up1.speed = 0.2f;
+		path.PushBack({ 0, -1.6f }, 15, &up1);
+		path.PushBack({ 0, -1.0f }, 7, &up1);
+		path.PushBack({ 0, 0 }, 5.5, &up1);
+		path.PushBack({ 0, 0.8f }, 5, &up1);
+		path.PushBack({ 0, 1.2f }, 5, &up1);
+		path.PushBack({ 0, 1.4f }, 10, &up1);
+		path.PushBack({ 0, 1.8f }, 25.5, &up1);
+		path.loop = false;
+		collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
+		break;
 	}
 
 
@@ -123,6 +138,12 @@ void Module_Points::Die()
 		App->UserUI->dynamite++;
 		grenade_pop.PushBack({ 0, 0, 0, 0 });
 		grenade_pop.loop = false;
+		break;
+	case 2:
+		App->UserUI->hitpoints--;
+		up1.PushBack({ 0, 0, 0, 0 });
+		up1.loop = false;
+		break;
 	}
 
 	
