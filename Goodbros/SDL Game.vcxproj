@@ -78,6 +78,7 @@
     <ClInclude Include="Enemy_Cowboy_Blue3.h" />
     <ClInclude Include="Enemy_Cowboy_Green_Big_Left.h" />
     <ClInclude Include="Enemy_Cowboy_Green_Big_Right.h" />
+    <ClInclude Include="Enemy_Cowboy_Green_Medium_Left.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
@@ -113,6 +114,7 @@
     <ClCompile Include="Enemy_Cowboy_Blue3.cpp" />
     <ClCompile Include="Enemy_Cowboy_Green_Big_Left.cpp" />
     <ClCompile Include="Enemy_Cowboy_Green_Big_Right.cpp" />
+    <ClCompile Include="Enemy_Cowboy_Green_Medium_Left.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAim.cpp" />

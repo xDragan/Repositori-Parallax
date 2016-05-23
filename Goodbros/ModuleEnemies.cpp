@@ -11,6 +11,7 @@
 #include "Enemy_Cowboy_Blue3.h"
 #include "Enemy_Cowboy_Green_Big_Left.h"
 #include "Enemy_Cowboy_Green_Big_Right.h"
+#include "Enemy_Cowboy_Green_Medium_Left.h"
 #include "Enemy_Barrel_Roll.h"
 #include "ModuleUI.h"
 #include "Module_Points.h"
@@ -164,6 +165,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT:
 			enemies[i] = new Enemy_CowBoy_Green_Big_Right(info.x, info.y);
+			break;
+		case ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT:
+			enemies[i] = new Enemy_CowBoy_Green_Medium_Left(info.x, info.y);
 			break;
 		case ENEMY_TYPES::BARREL_ROLL:
 			enemies[i] = new Enemy_Barrel_Roll(info.x, info.y);
