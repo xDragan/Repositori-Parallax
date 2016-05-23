@@ -70,7 +70,6 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)
 
 	original_pos.x = x;
 	original_pos.y = y;
-	//path.loop = true;
 }
 
 void Module_Points::Move()
@@ -82,7 +81,7 @@ void Module_Points::Move()
 
 void Module_Points::Die()
 {
-	App->UserUI->score += to_score;
+	App->UserUI->score += to_score-100;
 	path.Erase();
 	p1000.PushBack({ 0, 0, 0, 0 });
 	p1000.loop = false;
