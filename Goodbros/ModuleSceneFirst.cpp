@@ -88,11 +88,12 @@ update_status ModuleSceneFirst::Update()
 	if (SDL_GetTicks() > time)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 110,NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, 50, 110, NULL);
 		time = SDL_GetTicks() + 5000;
 	}
 	if (SDL_GetTicks() > time2)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY, 210, 100,NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, 210, 100,NULL);
 		time2 = SDL_GetTicks() + 7000;
 	}
 	
