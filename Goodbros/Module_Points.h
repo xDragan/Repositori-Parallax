@@ -9,7 +9,7 @@ private:
 	bool going_forward = true;
 	bool stop = false;
 	uint to_score;
-	Animation p1000, p5000, p7000, p10000;
+	Animation p1000, p5000, p7000, p10000, grenade_pop;
 
 	iPoint original_pos;
 public:

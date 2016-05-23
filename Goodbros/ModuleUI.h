@@ -35,7 +35,7 @@ public:
 	Uint32 hitpoints;
 	Uint32 credit;
 	Uint32 score;
-	Uint32 dynamite = 30;
+	Uint32 dynamite = 10;
 	Uint32 killcount;
 	Text* credit_text;
 	Text* credit_counter;

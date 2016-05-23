@@ -1,5 +1,8 @@
 #include "Application.h"
 #include "Enemy_Pig.h"
+#include "Module_Points.h"
+#include "Enemy.h"
+#include "ModuleEnemies.h"
 #include "ModuleCollision.h"
 
 Enemy_Pig::Enemy_Pig(float x, float y) : Enemy(x, y)
@@ -24,5 +27,6 @@ void Enemy_Pig::Move()
 
 void Enemy_Pig::Die()
 {
+	App->enemies->AddEnemy(ENEMY_TYPES::POINTS, position.x, position.y , 1);
 	hit = true;
 }

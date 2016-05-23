@@ -64,6 +64,21 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)
 		path.loop = false;
 		collider = App->collision->AddCollider({ 0, 0, 39, 16 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
+	case 1: //1==grenade pop
+		to_score = 1;
+		grenade_pop.PushBack({ 197, 33, 16, 16 });
+		grenade_pop.PushBack({ 217, 33, 16, 16 });
+		grenade_pop.speed = 0.2f;
+		path.PushBack({ 0, -1.6f }, 15, &grenade_pop);
+		path.PushBack({ 0, -1.0f }, 7, &grenade_pop);
+		path.PushBack({ 0, 0 }, 5.5, &grenade_pop);
+		path.PushBack({ 0, 0.8f }, 5, &grenade_pop);
+		path.PushBack({ 0, 1.2f }, 5, &grenade_pop);
+		path.PushBack({ 0, 1.4f }, 10, &grenade_pop);
+		path.PushBack({ 0, 1.8f }, 25.5, &grenade_pop);
+		path.loop = false;
+		collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
+		break;
 	}
 
 
@@ -81,15 +96,35 @@ void Module_Points::Move()
 
 void Module_Points::Die()
 {
-	App->UserUI->score += to_score-100;
+	
 	path.Erase();
-	p1000.PushBack({ 0, 0, 0, 0 });
-	p1000.loop = false;
-	p5000.PushBack({ 0, 0, 0, 0 });
-	p5000.loop = false;
-	p7000.PushBack({ 0, 0, 0, 0 });
-	p7000.loop = false;
-	p10000.PushBack({ 0, 0, 0, 0 });
-	p10000.loop = false;
+	switch (to_score){
+	case 1000:
+		App->UserUI->score += to_score - 100;
+		p1000.PushBack({ 0, 0, 0, 0 });
+		p1000.loop = false;
+		break;
+	case 5000:
+		App->UserUI->score += to_score - 100;
+		p5000.PushBack({ 0, 0, 0, 0 });
+		p5000.loop = false;
+		break;
+	case 10000:
+		App->UserUI->score += to_score - 100;
+		p10000.PushBack({ 0, 0, 0, 0 });
+		p10000.loop = false;
+		break;
+	case 7000:
+		App->UserUI->score += to_score - 100;
+		p7000.PushBack({ 0, 0, 0, 0 });
+		p7000.loop = false;
+		break;
+	case 1:
+		App->UserUI->dynamite++;
+		grenade_pop.PushBack({ 0, 0, 0, 0 });
+		grenade_pop.loop = false;
+	}
+
+	
 	finished = true; 
 }

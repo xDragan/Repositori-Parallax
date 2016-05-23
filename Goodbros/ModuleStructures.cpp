@@ -364,7 +364,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
-				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 28, 10000);
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 27, 10000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
@@ -446,7 +446,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->FABTEN_hits == 3)
 			{
-				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 20, 10000);
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
