@@ -312,11 +312,11 @@ update_status ModulePlayer::Update()
 		{
 			godmode = !godmode;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
 		{
 			Status = LEFT;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE)
 		{
 			Status = RIGHT;
 		}
@@ -370,7 +370,7 @@ update_status ModulePlayer::Update()
 		{
 			Status = SHOOTING_DOWN;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_UP)
+		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_UP || App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE)
 		{
 			Status = IDLE;
 		}
@@ -396,6 +396,10 @@ update_status ModulePlayer::Update()
 		{
 			godmode = !godmode;
 		}
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		{
+			Status = IDLE;
+		}
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			Status = DOWN;
@@ -404,7 +408,7 @@ update_status ModulePlayer::Update()
 		{
 			Status = SHOOTING;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_UP)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_UP || App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE)
 		{
 			Status = IDLE;
 		}
@@ -429,6 +433,10 @@ update_status ModulePlayer::Update()
 		{
 			godmode = !godmode;
 		}
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		{
+			Status = IDLE;
+		}
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			Status = DOWN;
@@ -437,7 +445,7 @@ update_status ModulePlayer::Update()
 		{
 			Status = SHOOTING;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_UP)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_UP || App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)
 		{
 			Status = IDLE;
 		}
@@ -496,7 +504,7 @@ update_status ModulePlayer::Update()
 		{
 			Status = SHOOTING_DOWN;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP)
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP || App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE)
 		{
 			Status = IDLE;
 		}
@@ -533,7 +541,7 @@ update_status ModulePlayer::Update()
 		{
 			player_coll->SetPos(position.x + 12, position.y + 24);
 		}
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP)
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP || App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_UP)
 		{
 			Status = IDLE;
 		}

@@ -271,7 +271,7 @@ update_status ModuleStructures::Update()
 		if (active[i]->hits >= 4 && active[i]->mytype != BARREL)
 		{
 			App->collision->EraseCollider(p->collider);
-			if (p->position.y >= 140)
+			if (p->position.y >= 120)
 			{
 				App->structures->fabten.destroy.GetCurrentFrame();
 			}
