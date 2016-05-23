@@ -179,3 +179,21 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 }
+
+// PLACEHOLDER still not working with buildings
+void ModuleEnemies::check_explosion(iPoint location)
+{
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			if ((enemies[i]->position.x >(location.x - 100) && enemies[i]->position.x < (location.x + 60)) &&
+				(enemies[i]->position.y - 30 >(location.y - 100) && enemies[i]->position.y - 30 < (location.y + 60)))
+			{
+				enemies[i]->Die();
+				enemies[i]->finished = true;
+				App->UserUI->score += 100;
+			}
+		}
+	}
+}

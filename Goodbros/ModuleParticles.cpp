@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 #include "ModulePlayer.h"
 #include "ModuleAim.h"
 
@@ -16,26 +17,34 @@ ModuleParticles::ModuleParticles()
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
 
-	//shot.anim.PushBack({ 625, 288, 22, 14 });
+	// Enemy shot
 	enemyshot.anim.PushBack({ 399, 494, 9, 9});
 	enemyshot.anim.PushBack({ 429, 494, 9, 9 });
-	
 	enemyshot.anim.loop = true;
 	enemyshot.anim.speed = 0.035f;
 	enemyshot.speed.y = 1.5f;
 	enemyshot.life = 10000;
 
+	// Dynamite
 	dynamite.anim.PushBack({ 505, 330, 17, 17 });
-	dynamite.anim.PushBack({ 505, 330, 17, 17 });
-	dynamite.anim.PushBack({ 505, 330, 17, 17 });
-	dynamite.anim.PushBack({ 505, 330, 17, 17 });
-	dynamite.anim.PushBack({ 505, 330, 17, 17 });
-	dynamite.anim.PushBack({ 505, 330, 17, 17 });
-	dynamite.anim.PushBack({ 505, 330, 17, 17 });
-	dynamite.anim.PushBack({ 505, 330, 17, 17 });
-	dynamite.anim.speed = 0.2f;
+	dynamite.anim.PushBack({ 528, 330, 17, 17 });
+	dynamite.anim.PushBack({ 540, 330, 17, 17 });
+	dynamite.anim.PushBack({ 559, 330, 17, 17 });
+	dynamite.anim.PushBack({ 578, 330, 17, 17 });
+	dynamite.anim.PushBack({ 596, 330, 17, 17 });
+	dynamite.anim.PushBack({ 611, 330, 17, 17 });
+	dynamite.anim.PushBack({ 627, 330, 17, 17 });
+	dynamite.anim.loop = false;
+	dynamite.anim.speed = 0.1f;
 
-	//smoke.anim.pushback;
+	dynamite_exp.anim.PushBack({ 19, 376, 42, 45 });
+	dynamite_exp.anim.PushBack({ 73, 376, 42, 45 });
+	dynamite_exp.anim.PushBack({ 116, 376, 42, 45 });
+	dynamite_exp.anim.PushBack({ 156, 376, 42, 45 });
+	dynamite_exp.anim.loop = false;
+	dynamite_exp.anim.speed = 0.1f;
+
+	// Smoke animation
 	smoke.anim.PushBack({ 27, 45, 127, 30 });
 	smoke.anim.PushBack({ 27, 77, 127, 30 });
 	smoke.anim.PushBack({ 27, 112, 127, 30 });
@@ -109,7 +118,6 @@ bool ModuleParticles::CleanUp()
 	App->textures->Unload(graphics);
 
 	// Unload fx
-
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		if (active[i] != nullptr)
@@ -167,7 +175,7 @@ void ModuleParticles::AddParticle(const Particle& particle, float x, float y, CO
 			{
 				p->speed = p->position.GetDirection(2, App->player->position);
 			}
-			else if (collider_type == COLLIDER_DYNAMITE)
+			if (collider_type == COLLIDER_DYNAMITE)
 			{
 				p->speed = App->player->position.GetSpeed(App->aim->position);
 			}
@@ -219,7 +227,15 @@ bool Particle::Update()
 	bool ret = true;
 
 	if (anim.Finished())
+	{
 		ret = false;
+		if (collider != nullptr && collider->type == COLLIDER_DYNAMITE)
+		{
+			App->particles->AddParticle(App->particles->dynamite_exp, position.x, position.y, COLLIDER_NONE, 0);
+			App->enemies->check_explosion(position);
+		}
+
+	}
 
 	position.x += speed.x;
 	position.y += speed.y;

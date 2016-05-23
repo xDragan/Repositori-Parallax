@@ -11,7 +11,7 @@
 #define HALF_PLAYER_WIDTH 16
 #define HALF_PLAYER_HEIGHT 26
 #define DYNAMITE_FRAMES 40
-#define CONST_GRAVITY -1
+#define CONST_GRAVITY -0.1
 
 template<class TYPE>
 class p2Point
@@ -90,7 +90,7 @@ public:
 		return (x != v.x || y != v.y);
 	}
 
-	// Utils ------------------------------------------------
+	// Utils
 	bool IsZero() const
 	{
 		return (x == 0 && y == 0);
@@ -110,7 +110,7 @@ public:
 		return(*this);
 	}
 
-	// Distances ---------------------------------------------
+	// Distances
 	TYPE DistanceTo(const p2Point& v) const
 	{
 		TYPE fx = x - v.x;
@@ -156,7 +156,7 @@ public:
 
 	p2Point<float> GetSpeed(p2Point<float> dst)
 	{
-		p2Point<float> speed{ (0.2f), (-17.0f) };
+		p2Point<float> speed{ (+ dst.x - x) / 100, (-400 + dst.y - y) / 100 };
 
 		return(speed);
 	}

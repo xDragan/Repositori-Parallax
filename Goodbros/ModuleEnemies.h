@@ -38,6 +38,8 @@ public:
 	update_status Update();
 	update_status PostUpdate();
 
+	void check_explosion(fPoint location);
+
 	bool Start();
 	bool CleanUp();
 	bool AddEnemy(ENEMY_TYPES type, int x, int y, uint points);

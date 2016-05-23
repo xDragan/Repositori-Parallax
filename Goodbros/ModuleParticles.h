@@ -23,6 +23,7 @@ struct Particle
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;
+	iPoint dst;
 
 	Particle();
 	Particle(const Particle& p);
@@ -42,14 +43,14 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 	void AddParticle(const Particle& particle, float x, float y, COLLIDER_TYPE collider_type, Uint32 delay);
-private:
 
+private:
 	SDL_Texture* graphics = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 
 public:
 	Particle dynamite;
-	Particle dynamite_explosion;
+	Particle dynamite_exp;
 	Particle explosion;
 	Particle shot;
 	Particle enemyshot;

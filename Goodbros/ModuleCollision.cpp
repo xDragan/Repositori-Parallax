@@ -25,7 +25,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_STRUCTURE][COLLIDER_ENEMY_SHOT] = false;
 	matrix[COLLIDER_STRUCTURE][COLLIDER_PLAYER_NOSHOT] = false;
 	matrix[COLLIDER_STRUCTURE][COLLIDER_DESTRUCT] = false;
-	matrix[COLLIDER_STRUCTURE][COLLIDER_DYNAMITE] = true;
+	matrix[COLLIDER_STRUCTURE][COLLIDER_DYNAMITE] = false;
 	matrix[COLLIDER_STRUCTURE][COLLIDER_POINTS] = false;
 	matrix[COLLIDER_STRUCTURE][COLLIDER_NONE] = false;
 
@@ -99,10 +99,10 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_DYNAMITE][COLLIDER_NONE] = false;
 	matrix[COLLIDER_DYNAMITE][COLLIDER_PLAYER_NOSHOT] = false;
 	matrix[COLLIDER_DYNAMITE][COLLIDER_PLAYER] = false;
-	matrix[COLLIDER_DYNAMITE][COLLIDER_ENEMY] = true;
+	matrix[COLLIDER_DYNAMITE][COLLIDER_ENEMY] = false;
 	matrix[COLLIDER_DYNAMITE][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_DYNAMITE][COLLIDER_ENEMY_SHOT] = false;
-	matrix[COLLIDER_DYNAMITE][COLLIDER_STRUCTURE] = true;
+	matrix[COLLIDER_DYNAMITE][COLLIDER_STRUCTURE] = false;
 	matrix[COLLIDER_DYNAMITE][COLLIDER_DYNAMITE] = false;
 	matrix[COLLIDER_DYNAMITE][COLLIDER_DESTRUCT] = false;
 	matrix[COLLIDER_DYNAMITE][COLLIDER_POINTS] = false;
@@ -214,13 +214,13 @@ void ModuleCollision::DebugDraw()
 			case COLLIDER_ENEMY_SHOT: // magenta
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 			break;
-			case COLLIDER_DESTRUCT: // rosa?¿
+			case COLLIDER_DESTRUCT: // Pink
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 255, alpha);
 			break;
-			case COLLIDER_DYNAMITE: // dunno?¿
-			App->render->DrawQuad(colliders[i]->rect, 100, 100, 255, alpha);
+			case COLLIDER_DYNAMITE: // Gray
+				App->render->DrawQuad(colliders[i]->rect, 125, 125, 125, alpha);
 			break;
-			case COLLIDER_POINTS: // dunno?¿
+			case COLLIDER_POINTS: // Dark green
 			App->render->DrawQuad(colliders[i]->rect, 100, 155, 100, alpha);
 			break;
 		}
