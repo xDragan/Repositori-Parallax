@@ -6,22 +6,22 @@
 
 Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 {
-	forward.PushBack({ 117, 396, 30, 55 });
-	forward.PushBack({ 152, 396, 30, 55 });
-	forward.PushBack({ 188, 396, 30, 55 });
-	forward.PushBack({ 224, 396, 30, 55 });
-	forward.PushBack({ 261, 396, 30, 55 });
-	forward.PushBack({ 299, 396, 30, 55 });
+	forward.PushBack({ 117, 396, 36, 55 });
+	forward.PushBack({ 152, 396, 36, 55 });
+	forward.PushBack({ 188, 396, 36, 55 });
+	forward.PushBack({ 224, 396, 36, 55 });
+	forward.PushBack({ 261, 396, 36, 55 });
+	forward.PushBack({ 299, 396, 36, 55 });
 	forward.speed = 0.09f;
 	forward.loop = true;
 
-	backward.PushBack({ 117, 459, 30, 55 });
-	backward.PushBack({ 152, 459, 30, 55 });
-	backward.PushBack({ 188, 459, 30, 55 });
-	backward.PushBack({ 224, 459, 30, 55 });
-	backward.PushBack({ 261, 459, 30, 55 });
-	backward.PushBack({ 299, 459, 30, 55 });
-	backward.speed = 0.09f;
+	backward.PushBack({ 117, 459, 36, 55 });
+	backward.PushBack({ 152, 459, 36, 55 });
+	backward.PushBack({ 188, 459, 36, 55 });
+	backward.PushBack({ 224, 459, 36, 55 });
+	backward.PushBack({ 261, 459, 36, 55 });
+	backward.PushBack({ 299, 459, 36, 55 });
+	backward.speed = 0.15f;
 	backward.loop = true;
 
 	stop_shoot.PushBack({ 353, 396, 30, 55 });
@@ -47,9 +47,24 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	grenade.PushBack({ 1055, 397, 36, 54 });
 	grenade.PushBack({ 1095, 397, 36, 54 });
 	grenade.PushBack({ 1134, 397, 36, 54 });
+	grenade.PushBack({ 1095, 397, 36, 54 });
+	grenade.PushBack({ 1055, 397, 36, 54 });
+	grenade.PushBack({ 1095, 397, 36, 54 });
+	grenade.PushBack({ 1134, 397, 36, 54 });
 	grenade.PushBack({ 1172, 397, 36, 54 });
 	grenade.PushBack({ 1210, 397, 36, 54 });
 	grenade.speed = 0.2f;
+
+	grenadeSm.PushBack({ 591, 1058, 25, 40 });
+	grenadeSm.PushBack({ 624, 1058, 25, 40 });
+	grenadeSm.PushBack({ 655, 1058, 25, 40 });
+	grenadeSm.PushBack({ 687, 1058, 25, 40 });
+	grenadeSm.PushBack({ 717, 1058, 25, 40 });
+	grenadeSm.PushBack({ 742, 1058, 25, 40 });
+	grenadeSm.speed = 0.1f;
+	grenadeSm.loop = false;
+
+
 
 	bwtumble.PushBack({ 107, 565, 36, 54 });
 	bwtumble.PushBack({ 149, 565, 41, 54 });
@@ -79,7 +94,14 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	fwtumble.speed = 0.2f;
 	fwtumble.loop = true;
 
-	jump.PushBack({ 1179, 602, 17, 49 });
+	 falld.PushBack({ 1064, 581, 25, 40 });
+
+	jumpSm.PushBack({ 1089, 581, 25, 40 });
+	jumpSm.loop = true;
+	    
+	jump.PushBack({ 1203, 685, 33, 49 });
+	jump.loop = true;
+	
 
 	fwtumbleshoot.PushBack({ 107, 793, 36, 54 });
 	fwtumbleshoot.PushBack({ 149, 793, 41, 54 });
@@ -89,18 +111,28 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	fwtumbleshoot.PushBack({ 319, 793, 36, 54 });
 	fwtumbleshoot.PushBack({ 319, 845, 36, 54 });
 	fwtumble.speed = 0.2f;
-	fwtumbleshoot.loop = true;
+	fwtumbleshoot.loop = true; 
+
+	spawnn.PushBack({ 964, 581, 25, 40 });
+	spawnn.PushBack({ 989, 581, 25, 40 });
+	spawnn.PushBack({ 1014, 581, 25, 40 });
+	spawnn.PushBack({ 1039 , 581, 25, 40 });
+	spawnn.PushBack({ 591, 1018, 25, 40 });
+	spawnn.speed = 0.05f;
+	
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ +1.0f, 0 }, 70, &backward);
+	path.PushBack({ 0, 0 }, 100, &spawnn);
+	path.PushBack({ 0, 0 }, 60, &grenadeSm);
+	path.PushBack({ 0, 0}, 20, &falld);
+	path.PushBack({ 0, -1.0 }, 15, &jumpSm);
 	path.PushBack({ 0, +1.0 }, 60, &jump);
-	path.PushBack({ 0, 0 }, 67, &stop_shoot);
-	path.PushBack({ -1.0f, 0 }, 100, &forward);
+	
 
-	path2.PushBack({ -1.0f, 0 }, 60, &forward);
-	path2.PushBack({ 0, 0 }, 67, &stop_shoot);
 	path2.PushBack({ +1.0f, 0 }, 60, &backward);
+	path2.PushBack({ 0, 0 }, 67, &stop_shoot);
+	path2.PushBack({ +1.0f, 0 }, 30, &fwtumble);
 	path2.PushBack({ 0, 0 }, 67, &stop_shoot);
 	path2.loop = true;
 
@@ -110,7 +142,7 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 
 void Enemy_CowBoy_Blue2::Move()
 {
-	if (path.GetFrame() < 250)
+	if (path.GetFrame() < 210)
 	{
 		position = original_pos + path.GetCurrentSpeed(&animation);
 		position2 = position;

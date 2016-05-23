@@ -19,8 +19,11 @@ private:
 	Animation bwtumble;
 	Animation bwtumbleshoot;
 	Animation grenade;
+	Animation grenadeSm;
+	Animation falld;
+	Animation jumpSm;
 	Animation jump;
-
+	Animation spawnn;
 	bool isdead = false;
 
 	iPoint original_pos;

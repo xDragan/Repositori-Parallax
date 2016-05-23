@@ -7,12 +7,12 @@
 
 Enemy_CowBoy_Green::Enemy_CowBoy_Green(float x, float y) : Enemy(x, y)
 {
-	forward.PushBack({ 1095, 2797, 30, 55 });
-	forward.PushBack({ 1056, 2797, 30, 55 });
-	forward.PushBack({ 1008, 2797, 30, 55 });
-	forward.PushBack({ 968, 2797, 30, 55 });
-	forward.PushBack({ 931, 2797, 30, 55 });
-	forward.PushBack({ 880, 2797, 30, 55 });
+	forward.PushBack({ 1095, 2800, 30, 53 });
+	forward.PushBack({ 1056, 2800, 30, 53 });
+	forward.PushBack({ 1008, 2800, 30, 53 });
+	forward.PushBack({ 968, 2800, 30, 53 });
+	forward.PushBack({ 931, 2800, 30, 53 });
+	forward.PushBack({ 880, 2800, 30, 53 });
 	forward.speed = 0.09f;
 
 	backward.PushBack({ 110, 2848, 30, 55 });
