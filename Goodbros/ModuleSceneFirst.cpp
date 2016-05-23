@@ -33,27 +33,31 @@ bool ModuleSceneFirst::Start()
 	App->particles->Enable();
 	App->collision->Enable();
 	App->aim->Enable();
-	App->structures->Enable();
+	App->structuresfront->Enable();
+	App->structuresmiddle->Enable();
+	App->structuresback->Enable();
 	App->enemies->Enable();
 	App->UserUI->Enable();
 
 	// Player reset position & death animation
 	App->player->position.x = 120;
 	App->player->position.y = 150;
-	 
+
 	// Buildings
-	App->structures->AddStructure(App->structures->hotel, 105, 30);
-	App->structures->AddStructure(App->structures->bar, 145, 0);
-	App->structures->AddStructure(App->structures->inn, 0, 28);
-	App->structures->AddStructure(App->structures->fabten, 0, 8);
+	App->structuresback->AddStructure(App->structuresback->hotel, 105, 30);
+	App->structuresmiddle->AddStructure(App->structuresmiddle->bar, 145, 0);
+	App->structuresback->AddStructure(App->structuresback->inn, 0, 28);
+	App->structuresmiddle->AddStructure(App->structuresmiddle->fabten, 0, 8);
 
 	// Enemies
-
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101, NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL);
+	App->barrelroll->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL);
 
 	//Barrels
-	App->structures->AddStructure(App->structures->barrel, 6, 144);
-	App->structures->AddStructure(App->structures->barrel, 38, 144);
-	App->structures->AddStructure(App->structures->barrel, 198, 144);
+	App->structuresfront->AddStructure(App->structuresfront->barrel, 6, 144);
+	App->structuresfront->AddStructure(App->structuresfront->barrel, 38, 144);
+	App->structuresfront->AddStructure(App->structuresfront->barrel, 198, 144);
 
 	// Time counters
 	time = SDL_GetTicks();
@@ -67,14 +71,18 @@ bool ModuleSceneFirst::Start()
 bool ModuleSceneFirst::CleanUp()
 {
 	LOG("Unloading first scene");
-	
+
 	App->textures->Unload(background);
-	App->structures->CleanUp();
+	App->structuresfront->CleanUp();
+	App->structuresmiddle->CleanUp();
+	App->structuresback->CleanUp();
 	App->player->Disable();
 	App->particles->Disable();
 	App->aim->Disable();
 	App->enemies->Disable();
-	App->structures->Disable();
+	App->structuresback->Disable();
+	App->structuresmiddle->Disable();
+	App->structuresfront->Disable();
 	App->collision->Disable();
 	App->UserUI->Disable();
 	return true;
@@ -83,24 +91,20 @@ bool ModuleSceneFirst::CleanUp()
 // Update: draw background
 update_status ModuleSceneFirst::Update()
 {
-	if (SDL_GetTicks() > time+5000)
+	if (SDL_GetTicks() > time)
 	{
-		
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, SCREEN_WIDTH, 110, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 110, NULL);
-		time = SDL_GetTicks()+30000;
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, 210, 110, NULL);
+		time = SDL_GetTicks() + 5000;
 	}
-
-	if (SDL_GetTicks() > time2)
+	/*if (SDL_GetTicks() > time2)
 	{
-		
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY, 210, 100, NULL);
 		time2 = SDL_GetTicks() + 7000;
-	}
-	
+	}*/
+
 	if (SDL_GetTicks() > time3)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 150,NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 150, NULL);
 		time3 = SDL_GetTicks() + 10000;
 	}
 
@@ -111,7 +115,7 @@ update_status ModuleSceneFirst::Update()
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
 		App->player->win_condition = 0;
-		
+
 	}
 	if (App->player->lose >= 3)
 	{
