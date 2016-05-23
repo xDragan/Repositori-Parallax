@@ -11,6 +11,7 @@
 #include "Enemy_Cowboy_Blue3.h"
 #include "Enemy_Cowboy_Green.h"
 #include "Enemy_Barrel_Roll.h"
+#include "ModuleStructures.h"
 #include "ModuleUI.h"
 #include "Module_Points.h"
 #include "SDL/include/SDL_timer.h"
@@ -194,7 +195,6 @@ void ModuleEnemies::check_explosion(iPoint location)
 				(enemies[i]->position.y - 30 >(location.y - 100) && enemies[i]->position.y - 30 < (location.y + 60)))
 			{
 				enemies[i]->Die();
-				enemies[i]->finished = true;
 				App->UserUI->score += 100;
 			}
 		}

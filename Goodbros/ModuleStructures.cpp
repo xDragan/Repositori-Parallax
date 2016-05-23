@@ -247,7 +247,6 @@ update_status ModuleStructures::Update()
 	{
 		Structure* p = active[i];
 
-
 		// STRUCTURES
 		if (p == nullptr)
 			continue;
@@ -259,7 +258,7 @@ update_status ModuleStructures::Update()
 			active[i] = nullptr;
 		}
 
-		if (p->hits <= 3 || p->INN_hits <= 3 || p->FABTEN_hits <= 3 || p->HOTEL_hits <= 30)
+		if (active[i]->hits < 4)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
 			if (p->fx_played == false)
@@ -269,7 +268,7 @@ update_status ModuleStructures::Update()
 			}
 		}
 
-		if (p->hits > 3 || p->INN_hits > 3 || p->BARREL_hits > 2 || p->FABTEN_hits > 3 || p->HOTEL_hits > 30 )
+		if (active[i]->hits >= 4 && active[i]->mytype != BARREL)
 		{
 			App->collision->EraseCollider(p->collider);
 			if (p->position.y >= 140)
@@ -280,14 +279,13 @@ update_status ModuleStructures::Update()
 			{
 				App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
 			}
-			if (p->destroy.Finished() == true)
+			if (p->destroy.Finished() == true && active[i]->destroyed == false)
 			{
-				delete active[i];
-				active[i] = nullptr;
 				App->player->win_condition++;
+				active[i]->destroyed = true;
 			}
 		}
-		if (p->BARREL_hits == 1)
+		if (active[i]->hits == 2 && active[i]->mytype == BARREL)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
 			p->collider->SetPos(p->position.x, p->position.y + 8);
@@ -296,7 +294,7 @@ update_status ModuleStructures::Update()
 				p->fx_played = true;
 			}
 		}
-		if (p->BARREL_hits == 2)
+		if (active[i]->hits == 3 && active[i]->mytype == BARREL)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
 			p->collider->SetPos(p->position.x, p->position.y + 23);
@@ -304,6 +302,7 @@ update_status ModuleStructures::Update()
 			{
 				p->fx_played = true;
 			}
+			App->collision->EraseCollider(p->collider);
 		}
 	}
 	return UPDATE_CONTINUE;
@@ -314,10 +313,12 @@ void ModuleStructures::AddStructure(Structure& particle, int x, int y)
 	Structure* p = new Structure(particle);
 	p->position.x = x;
 	p->position.y = y;
-	if (particle.mytype==BARREL){
+	if (particle.mytype==BARREL)
+	{
 		p->collider = App->collision->AddCollider({ p->position.x, p->position.y, particle.Coll_Struct.w, particle.Coll_Struct.h }, COLLIDER_DESTRUCT, this);
 	}
-	else{
+	else
+{
 		p->collider = App->collision->AddCollider({ p->position.x, p->position.y, particle.Coll_Struct.w, particle.Coll_Struct.h }, COLLIDER_STRUCTURE, this);
 	}
 	active[last_building++] = p;
@@ -342,7 +343,6 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = bar2.Coll_Struct.w;
 				active[i]->Coll_Struct.h = bar2.Coll_Struct.h;
 				active[i]->hits++;
-				break;
 			}
 			else if (active[i]->hits == 1)
 			{
@@ -351,7 +351,6 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = bar3.Coll_Struct.w;
 				active[i]->Coll_Struct.h = bar3.Coll_Struct.h;
 				active[i]->hits++;
-				break;
 			}
 			else if (active[i]->hits == 2)
 			{
@@ -360,7 +359,6 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = bar4.Coll_Struct.w;
 				active[i]->Coll_Struct.h = bar4.Coll_Struct.h;
 				active[i]->hits++;
-				break;
 			}
 			else if (active[i]->hits == 3)
 			{
@@ -376,82 +374,76 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			// INN
 		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == INN)
 		{
-			if (active[i]->INN_hits == 0)
+			if (active[i]->hits == 0)
 			{
 				active[i]->Coll_Struct.x = inn2.Coll_Struct.x;
 				active[i]->Coll_Struct.y = inn2.Coll_Struct.y;
 				active[i]->Coll_Struct.w = inn2.Coll_Struct.w;
 				active[i]->Coll_Struct.h = inn2.Coll_Struct.h;
-				active[i]->INN_hits++;
-				break;
+				active[i]->hits++;
 			}
-			else if (active[i]->INN_hits == 1)
+			else if (active[i]->hits == 1)
 			{
 				active[i]->Coll_Struct.x = inn3.Coll_Struct.x;
 				active[i]->Coll_Struct.y = inn3.Coll_Struct.y;
 				active[i]->Coll_Struct.w = inn3.Coll_Struct.w;
 				active[i]->Coll_Struct.h = inn3.Coll_Struct.h;
-				active[i]->INN_hits++;;
-				break;
+				active[i]->hits++;;
 			}
-			else if (active[i]->INN_hits == 2)
+			else if (active[i]->hits == 2)
 			{
 				active[i]->Coll_Struct.x = inn4.Coll_Struct.x;
 				active[i]->Coll_Struct.y = inn4.Coll_Struct.y;
 				active[i]->Coll_Struct.w = inn4.Coll_Struct.w;
 				active[i]->Coll_Struct.h = inn4.Coll_Struct.h;
-				active[i]->INN_hits++;
-				break;
+				active[i]->hits++;
 			}
-			else if (active[i]->INN_hits == 3)
+			else if (active[i]->hits == 3)
 			{
 				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 7000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
-				active[i]->INN_hits++;
+				active[i]->hits++;
 			}
 		}
 
 		// FABTEN
 		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == FABTEN)
 		{
-			if (active[i]->FABTEN_hits == 0)
+			if (active[i]->hits == 0)
 			{
 				active[i]->Coll_Struct.x = fabten2.Coll_Struct.x;
 				active[i]->Coll_Struct.y = fabten2.Coll_Struct.y;
 				active[i]->Coll_Struct.w = fabten2.Coll_Struct.w;
 				active[i]->Coll_Struct.h = fabten2.Coll_Struct.h;
-				active[i]->FABTEN_hits++;
-				break;
+				active[i]->hits++;
 			}
-			else if (active[i]->FABTEN_hits == 1)
+			else if (active[i]->hits == 1)
 			{
 				active[i]->Coll_Struct.x = fabten3.Coll_Struct.x;
 				active[i]->Coll_Struct.y = fabten3.Coll_Struct.y;
 				active[i]->Coll_Struct.w = fabten3.Coll_Struct.w;
 				active[i]->Coll_Struct.h = fabten3.Coll_Struct.h;
-				active[i]->FABTEN_hits++;
-				break;
+				active[i]->hits++;
 			}
-			else if (active[i]->FABTEN_hits == 2)
+			else if (active[i]->hits == 2)
 			{
 				active[i]->Coll_Struct.x = fabten4.Coll_Struct.x;
 				active[i]->Coll_Struct.y = fabten4.Coll_Struct.y;
 				active[i]->Coll_Struct.w = fabten4.Coll_Struct.w;
 				active[i]->Coll_Struct.h = fabten4.Coll_Struct.h;
-				active[i]->FABTEN_hits++;
-				break;
+				active[i]->hits++;
 			}
-			else if (active[i]->FABTEN_hits == 3)
+			else if (active[i]->hits == 3)
 			{
 				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
-				active[i]->FABTEN_hits++;
+				active[i]->hits++;
 				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 			}
 		}
@@ -459,60 +451,56 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 		// HOTEL
 		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == HOTEL)
 		{
-			if (active[i]->HOTEL_hits >= 0)
+			if (active[i]->hits >= 0)
 			{
 				active[i]->Coll_Struct.x = hotel2.Coll_Struct.x;
 				active[i]->Coll_Struct.y = hotel2.Coll_Struct.y;
 				active[i]->Coll_Struct.w = hotel2.Coll_Struct.w;
 				active[i]->Coll_Struct.h = hotel2.Coll_Struct.h;
-				active[i]->HOTEL_hits++;
-				break;
+				active[i]->hits++;
 			}
 		
-			else if (active[i]->HOTEL_hits >= 10)
+			else if (active[i]->hits >= 10)
 			{
 				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
-				active[i]->HOTEL_hits++;
+				active[i]->hits++;
 			}
 		}
 
 		// BARREL
 		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == BARREL)
 		{
-			if (active[i]->BARREL_hits == 0)
+			if (active[i]->hits == 0)
 			{
 				active[i]->Coll_Struct.x = barrel2.Coll_Struct.x;
 				active[i]->Coll_Struct.y = barrel2.Coll_Struct.y;
 				active[i]->Coll_Struct.w = barrel2.Coll_Struct.w;
 				active[i]->Coll_Struct.h = barrel2.Coll_Struct.h;
-				active[i]->BARREL_hits++;
+				active[i]->hits++;
 				App->particles->AddParticle(App->particles->barrel, active[i]->position.x -12, active[i]->position.y -20 , COLLIDER_NONE, 0);
-				break;
 			}
-			else if (active[i]->BARREL_hits == 1)
+			else if (active[i]->hits == 1)
 			{
 				active[i]->Coll_Struct.x = barrel3.Coll_Struct.x;
 				active[i]->Coll_Struct.y = barrel3.Coll_Struct.y;
 				active[i]->Coll_Struct.w = barrel3.Coll_Struct.w;
 				active[i]->Coll_Struct.h = barrel3.Coll_Struct.h;
-				active[i]->BARREL_hits++;
+				active[i]->hits++;
 				App->particles->AddParticle(App->particles->barrel, active[i]->position.x -12, active[i]->position.y -5, COLLIDER_NONE, 0);
-				break;
 			}
-			else if (active[i]->BARREL_hits == 2)
+			else if (active[i]->hits == 2)
 			{
 				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 3, active[i]->position.y, 1000);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
-				active[i]->BARREL_hits++;
+				active[i]->hits++;
 				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y + 10 , COLLIDER_NONE, 0);
-				break;
 			}
 		}
 	}

@@ -28,14 +28,11 @@ struct Structure
 
 	// Structures HP
 	uint hits = 0;
-	uint INN_hits = 0;
-	uint FABTEN_hits = 0;
-	uint HOTEL_hits = 0;
-	uint BARREL_hits = 0;
 
 	fPoint position;
 	bool fx_played = false;
 	bool Update();
+	bool destroyed = false;
 	Collider* collider = nullptr;
 	buildingtype mytype;
 	Structure();
