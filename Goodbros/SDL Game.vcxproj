@@ -80,6 +80,7 @@
     <ClInclude Include="Enemy_CowBoy_Green_Big_Left.h" />
     <ClInclude Include="Enemy_CowBoy_Green_Medium_Left.h" />
     <ClInclude Include="Enemy_CowBoy_Green_Medium_Right.h" />
+    <ClInclude Include="Enemy_Girl.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
@@ -117,6 +118,7 @@
     <ClCompile Include="Enemy_CowBoy_Green_Big_Left.cpp" />
     <ClCompile Include="Enemy_CowBoy_Green_Medium_Left.cpp" />
     <ClCompile Include="Enemy_CowBoy_Green_Medium_Right.cpp" />
+    <ClCompile Include="Enemy_Girl.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAim.cpp" />

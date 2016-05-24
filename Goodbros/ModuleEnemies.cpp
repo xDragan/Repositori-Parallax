@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_Pig.h"
+#include "Enemy_Girl.h"
 #include "Enemy_Cowboy_Blue.h"
 #include "Enemy_Cowboy_Blue2.h"
 #include "Enemy_Cowboy_Blue3.h"
@@ -151,6 +152,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::PIG:
 			enemies[i] = new Enemy_Pig(info.x, info.y);
 			break;
+		case ENEMY_TYPES::GIRL:
+			enemies[i] = new Enemy_Girl(info.x, info.y);
+			break;
+			
 
 		case ENEMY_TYPES::BLUE_COWBOY:
 			enemies[i] = new Enemy_CowBoy_Blue(info.x, info.y);

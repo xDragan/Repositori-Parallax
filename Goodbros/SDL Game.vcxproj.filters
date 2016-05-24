@@ -97,6 +97,9 @@
     <ClCompile Include="Enemy_CowBoy_Green_Medium_Right.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_Girl.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -205,6 +208,9 @@
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_CowBoy_Green_Medium_Right.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Girl.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

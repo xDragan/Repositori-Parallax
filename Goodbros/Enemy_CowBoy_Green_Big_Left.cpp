@@ -13,7 +13,7 @@ Enemy_CowBoy_Green_Big_Left::Enemy_CowBoy_Green_Big_Left(float x, float y) : Ene
 	forward.PushBack({ 968, 2800, 30, 53 });
 	forward.PushBack({ 931, 2800, 30, 53 });
 	forward.PushBack({ 880, 2800, 30, 53 });
-	forward.speed = 0.09f;
+	forward.speed = 0.15f;
 
 	backward.PushBack({ 110, 2848, 30, 55 });
 	backward.PushBack({ 149, 2848, 30, 55 });
@@ -21,7 +21,7 @@ Enemy_CowBoy_Green_Big_Left::Enemy_CowBoy_Green_Big_Left(float x, float y) : Ene
 	backward.PushBack({ 242, 2848, 30, 55 });
 	backward.PushBack({ 278, 2848, 30, 55 });
 	backward.PushBack({ 328, 2848, 30, 55 });
-	backward.speed = 0.09f;
+	backward.speed = 0.15f;
 
 	stop_shoot.PushBack({ 374, 2848, 30, 55 });
 	stop_shoot.speed = 0.04f;
