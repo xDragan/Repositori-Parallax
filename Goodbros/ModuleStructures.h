@@ -6,14 +6,15 @@
 #include "Globals.h"
 #include "p2Point.h"
 
-#define MAX_BUILDINGS 80
+#define MAX_BUILDINGS 10
 
 enum buildingtype
-{ 
+{
 	BAR,
 	INN,
 	FABTEN,
 	HOTEL,
+	SMALLEST_B,
 	BARREL,
 	BARRELROL
 };
@@ -61,11 +62,10 @@ private:
 	uint last_building = 0;
 
 public:
-	Structure bar, bar2, bar3, bar4, bar5;
-	Structure inn, inn2, inn3, inn4;
-	Structure fabten, fabten2, fabten3, fabten4, fabten5;
-	Structure hotel, hotel2, hotel3, hotel4;
-	Structure barrel,barrel2, barrel3;
+	Structure bar, bar2, bar3, bar4;
+	Structure inn, hotel, smallest_b;
+	Structure fabten, fabten2, fabten3, fabten4;
+	Structure barrel, barrel2, barrel3;
 };
 
 #endif // __MODULESTRUCTURES_H__

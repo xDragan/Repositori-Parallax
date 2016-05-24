@@ -7,7 +7,8 @@
 Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)  //Y=5,, DF 6
 {
 	to_score = points;
-	switch (points){
+	switch (points)
+	{
 	case 1000:
 		point.PushBack({ 8, 0, 20, 23 });
 		point.PushBack({ 32, 0, 20, 23 });
@@ -95,9 +96,6 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)  //Y=5,
 		collider = App->collision->AddCollider({ 0, 0, 16, 26 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	}
-
-
-
 	original_pos.x = x;
 	original_pos.y = y;
 }
@@ -111,7 +109,7 @@ void Module_Points::Move()
 
 void Module_Points::Die()
 {
-	
+
 	path.Erase();
 	switch (to_score){
 	case 1:
@@ -130,7 +128,5 @@ void Module_Points::Die()
 		point.loop = false;
 		break;
 	}
-
-	
-	finished = true; 
+	finished = true;
 }

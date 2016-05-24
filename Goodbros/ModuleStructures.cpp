@@ -20,7 +20,7 @@ Structure::Structure()
 	position.SetToZero();
 }
 
-Structure::Structure(const Structure& p):
+Structure::Structure(const Structure& p) :
 Coll_Struct(p.Coll_Struct), position(p.position),
 fx(p.fx), mytype(p.mytype), destroy(p.destroy)
 {}
@@ -64,10 +64,10 @@ ModuleStructures::~ModuleStructures()
 // Load assets
 bool ModuleStructures::Start()
 {
-	LOG("Loading particles");
+	LOG("Loading buildings");
 	graphics = App->textures->Load("bloodbros/enemy.png");
 
-	///BAR
+	// BAR
 	bar.Coll_Struct.x = 80;
 	bar.Coll_Struct.y = 2266;
 	bar.Coll_Struct.w = 115;
@@ -89,11 +89,6 @@ bool ModuleStructures::Start()
 	bar4.Coll_Struct.w = 115;
 	bar4.Coll_Struct.h = 147;
 
-	bar5.Coll_Struct.x = 638;
-	bar5.Coll_Struct.y = 2266;
-	bar5.Coll_Struct.w = 115;
-	bar5.Coll_Struct.h = 147;
-
 	bar.destroy.PushBack({ 638, 2266, 115, 147 });
 	bar.destroy.PushBack({ 638, 2266, 115, 132 });
 	bar.destroy.PushBack({ 638, 2266, 115, 121 });
@@ -110,27 +105,12 @@ bool ModuleStructures::Start()
 	bar.destroy.loop = false;
 	bar.destroy.speed = 0.05f;
 
-	///GREY BUILDING
+	// GREY BUILDING
 	inn.Coll_Struct.x = 91;
 	inn.Coll_Struct.y = 2150;
 	inn.Coll_Struct.w = 105;
 	inn.Coll_Struct.h = 92;
 	inn.mytype = INN;
-
-	inn2.Coll_Struct.x = 91;
-	inn2.Coll_Struct.y = 2150;
-	inn2.Coll_Struct.w = 105;
-	inn2.Coll_Struct.h = 92;
-
-	inn3.Coll_Struct.x = 91;
-	inn3.Coll_Struct.y = 2150;
-	inn3.Coll_Struct.w = 105;
-	inn3.Coll_Struct.h = 92;
-
-	inn4.Coll_Struct.x = 91;
-	inn4.Coll_Struct.y = 2150;
-	inn4.Coll_Struct.w = 105;
-	inn4.Coll_Struct.h = 92;
 
 	// HOTEL
 	hotel.Coll_Struct.x = 203;
@@ -138,26 +118,6 @@ bool ModuleStructures::Start()
 	hotel.Coll_Struct.w = 72;
 	hotel.Coll_Struct.h = 90;
 	hotel.mytype = HOTEL;
-
-	hotel2.Coll_Struct.x = 203;
-	hotel2.Coll_Struct.y = 2151;
-	hotel2.Coll_Struct.w = 72;
-	hotel2.Coll_Struct.h = 90;
-
-	hotel3.Coll_Struct.x = 203;
-	hotel3.Coll_Struct.y = 2151;
-	hotel3.Coll_Struct.w = 72;
-	hotel3.Coll_Struct.h = 90;
-
-	hotel4.Coll_Struct.x = 203;
-	hotel4.Coll_Struct.y = 2151;
-	hotel4.Coll_Struct.w = 72;
-	hotel4.Coll_Struct.h = 90;
-
-	hotel4.Coll_Struct.x = 203;
-	hotel4.Coll_Struct.y = 2151;
-	hotel4.Coll_Struct.w = 72;
-	hotel4.Coll_Struct.h = 90;
 
 	// FABTEN
 	fabten.Coll_Struct.x = 77;
@@ -181,11 +141,6 @@ bool ModuleStructures::Start()
 	fabten4.Coll_Struct.w = 105;
 	fabten4.Coll_Struct.h = 138;
 
-	fabten5.Coll_Struct.x = 586;
-	fabten5.Coll_Struct.y = 2548;
-	fabten5.Coll_Struct.w = 105;
-	fabten5.Coll_Struct.h = 138;
-
 	fabten.destroy.PushBack({ 586, 2548, 105, 138 });
 	fabten.destroy.PushBack({ 586, 2548, 105, 128 });
 	fabten.destroy.PushBack({ 586, 2548, 105, 118 });
@@ -201,6 +156,13 @@ bool ModuleStructures::Start()
 	fabten.destroy.PushBack({ 586, 2548, 105, 18 });
 	fabten.destroy.loop = false;
 	fabten.destroy.speed = 0.05f;
+
+	// Smallest building
+	smallest_b.Coll_Struct.x = 289;
+	smallest_b.Coll_Struct.y = 2159;
+	smallest_b.Coll_Struct.w = 71;
+	smallest_b.Coll_Struct.y = 82;
+	smallest_b.mytype = SMALLEST_B;
 
 	// BARREL
 	barrel.Coll_Struct.x = 69;
@@ -246,8 +208,6 @@ update_status ModuleStructures::Update()
 	for (uint i = 0; i < MAX_BUILDINGS; ++i)
 	{
 		Structure* p = active[i];
-
-		
 
 		// STRUCTURES
 		if (p == nullptr)
@@ -309,10 +269,15 @@ update_status ModuleStructures::Update()
 			p->collider = App->collision->AddCollider({ p->position.x, p->position.y, p->Coll_Struct.w, p->Coll_Struct.h }, COLLIDER_STRUCTURE, this);
 			inn.created = true;
 		}
-		if (active[i]->mytype == HOTEL && cd1 == 1 && hotel.created == false) 
+		if (active[i]->mytype == HOTEL && cd1 == 1 && hotel.created == false)
 		{
 			p->collider = App->collision->AddCollider({ p->position.x, p->position.y, p->Coll_Struct.w, p->Coll_Struct.h }, COLLIDER_STRUCTURE, this);
 			hotel.created = true;
+		}
+		if (active[i]->mytype == SMALLEST_B && cd1 == 1 && smallest_b.created == false)
+		{
+			p->collider = App->collision->AddCollider({ p->position.x, p->position.y, p->Coll_Struct.w, p->Coll_Struct.h }, COLLIDER_STRUCTURE, this);
+			smallest_b.created = true;
 		}
 	}
 	return UPDATE_CONTINUE;
@@ -323,11 +288,11 @@ void ModuleStructures::AddStructure(Structure& particle, int x, int y)
 	Structure* p = new Structure(particle);
 	p->position.x = x;
 	p->position.y = y;
-	if (particle.mytype==BARREL)
+	if (particle.mytype == BARREL)
 	{
 		p->collider = App->collision->AddCollider({ p->position.x, p->position.y, particle.Coll_Struct.w, particle.Coll_Struct.h }, COLLIDER_DESTRUCT, this);
 	}
-	else if ((particle.mytype == INN || particle.mytype == HOTEL) && fabten.destroyed == false)
+	else if ((particle.mytype == INN || particle.mytype == HOTEL || particle.mytype == SMALLEST_B) && fabten.destroyed == false)
 	{
 	}
 	else if (particle.mytype != INN)
@@ -347,6 +312,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_BUILDINGS; ++i)
 	{
+		// Bar
 		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == BAR)
 		{
 			if (active[i]->hits == 0)
@@ -376,50 +342,21 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			else if (active[i]->hits == 3)
 			{
 				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 27, 10000);
-				active[i]->Coll_Struct.x = 0;
-				active[i]->Coll_Struct.y = 0;
-				active[i]->Coll_Struct.w = 0;
-				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
 				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 				cd1 += 0.5;
-
 			}
 		}
-			// INN
-		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == INN && fabten.destroyed == true)
+		// INN
+		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == INN)
 		{
-			if (active[i]->hits == 0)
+			if (active[i]->hits >= 0 && active[i]->hits < 3)
 			{
-				active[i]->Coll_Struct.x = inn2.Coll_Struct.x;
-				active[i]->Coll_Struct.y = inn2.Coll_Struct.y;
-				active[i]->Coll_Struct.w = inn2.Coll_Struct.w;
-				active[i]->Coll_Struct.h = inn2.Coll_Struct.h;
-				active[i]->hits++;
-			}
-			else if (active[i]->hits == 1)
-			{
-				active[i]->Coll_Struct.x = inn3.Coll_Struct.x;
-				active[i]->Coll_Struct.y = inn3.Coll_Struct.y;
-				active[i]->Coll_Struct.w = inn3.Coll_Struct.w;
-				active[i]->Coll_Struct.h = inn3.Coll_Struct.h;
-				active[i]->hits++;;
-			}
-			else if (active[i]->hits == 2)
-			{
-				active[i]->Coll_Struct.x = inn4.Coll_Struct.x;
-				active[i]->Coll_Struct.y = inn4.Coll_Struct.y;
-				active[i]->Coll_Struct.w = inn4.Coll_Struct.w;
-				active[i]->Coll_Struct.h = inn4.Coll_Struct.h;
 				active[i]->hits++;
 			}
 			else if (active[i]->hits == 3)
 			{
 				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 7000);
-				active[i]->Coll_Struct.x = 0;
-				active[i]->Coll_Struct.y = 0;
-				active[i]->Coll_Struct.w = 0;
-				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
 			}
 		}
@@ -454,10 +391,6 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			else if (active[i]->hits == 3)
 			{
 				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000);
-				active[i]->Coll_Struct.x = 0;
-				active[i]->Coll_Struct.y = 0;
-				active[i]->Coll_Struct.w = 0;
-				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
 				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 				cd1 += 0.5;
@@ -467,22 +400,27 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 		// HOTEL
 		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == HOTEL)
 		{
-			if (active[i]->hits >= 0)
+			if (active[i]->hits >= 0 && active[i]->hits < 3)
 			{
-				active[i]->Coll_Struct.x = hotel2.Coll_Struct.x;
-				active[i]->Coll_Struct.y = hotel2.Coll_Struct.y;
-				active[i]->Coll_Struct.w = hotel2.Coll_Struct.w;
-				active[i]->Coll_Struct.h = hotel2.Coll_Struct.h;
 				active[i]->hits++;
 			}
-		
-			else if (active[i]->hits >= 10)
+			else if (active[i]->hits == 3)
 			{
 				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000);
-				active[i]->Coll_Struct.x = 0;
-				active[i]->Coll_Struct.y = 0;
-				active[i]->Coll_Struct.w = 0;
-				active[i]->Coll_Struct.h = 0;
+				active[i]->hits++;
+			}
+		}
+
+		// Smallest building
+		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == SMALLEST_B)
+		{
+			if (active[i]->hits >= 0 && active[i]->hits < 3)
+			{
+				active[i]->hits++;
+			}
+			else if (active[i]->hits == 3)
+			{
+				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000);
 				active[i]->hits++;
 			}
 		}
@@ -497,7 +435,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = barrel2.Coll_Struct.w;
 				active[i]->Coll_Struct.h = barrel2.Coll_Struct.h;
 				active[i]->hits++;
-				App->particles->AddParticle(App->particles->barrel, active[i]->position.x -12, active[i]->position.y -20 , COLLIDER_NONE, 0);
+				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y - 20, COLLIDER_NONE, 0);
 			}
 			else if (active[i]->hits == 1)
 			{
@@ -506,17 +444,13 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = barrel3.Coll_Struct.w;
 				active[i]->Coll_Struct.h = barrel3.Coll_Struct.h;
 				active[i]->hits++;
-				App->particles->AddParticle(App->particles->barrel, active[i]->position.x -12, active[i]->position.y -5, COLLIDER_NONE, 0);
+				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y - 5, COLLIDER_NONE, 0);
 			}
 			else if (active[i]->hits == 2)
 			{
 				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 3, active[i]->position.y, 1000);
-				active[i]->Coll_Struct.x = 0;
-				active[i]->Coll_Struct.y = 0;
-				active[i]->Coll_Struct.w = 0;
-				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
-				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y + 10 , COLLIDER_NONE, 0);
+				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y + 10, COLLIDER_NONE, 0);
 			}
 		}
 	}

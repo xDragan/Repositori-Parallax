@@ -40,19 +40,19 @@ bool ModuleSceneFirst::Start()
 	// Player reset position & death animation
 	App->player->position.x = 120;
 	App->player->position.y = 150;
-	 
+
 	// Buildings
-	App->structures->AddStructure(App->structures->hotel, 105, 30);
-	App->structures->AddStructure(App->structures->bar, 145, 0);
 	App->structures->AddStructure(App->structures->inn, 0, 28);
+	App->structures->AddStructure(App->structures->hotel, 105, 30);
+	App->structures->AddStructure(App->structures->smallest_b, 150, 8);
 	App->structures->AddStructure(App->structures->fabten, 0, 8);
+	App->structures->AddStructure(App->structures->bar, 145, 0);
 
 	// Enemies
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101 ,NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130,NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 130, NULL);
-	
 
 	//Barrels
 	App->structures->AddStructure(App->structures->barrel, 6, 144);
@@ -71,7 +71,7 @@ bool ModuleSceneFirst::Start()
 bool ModuleSceneFirst::CleanUp()
 {
 	LOG("Unloading first scene");
-	
+
 	App->textures->Unload(background);
 	App->structures->CleanUp();
 	App->player->Disable();
@@ -99,13 +99,13 @@ update_status ModuleSceneFirst::Update()
 	}
 	if (SDL_GetTicks() > time2)
 	{
-	
+
 		time2 = SDL_GetTicks() + 1000;
 	}
-	
+
 	if (SDL_GetTicks() > time3)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 150,NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 150, NULL);
 		time3 = SDL_GetTicks() + 10000;
 	}
 
@@ -116,7 +116,7 @@ update_status ModuleSceneFirst::Update()
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
 		App->player->win_condition = 0;
-		
+
 	}
 	if (App->player->lose >= 3)
 	{
