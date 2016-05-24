@@ -51,7 +51,7 @@ bool ModuleSceneFirst::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101 ,NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130,NULL);
-	App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 130, NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 105, NULL);
 	
 
 	//Barrels
