@@ -44,7 +44,7 @@ bool ModuleSceneFirst::Start()
 	// Buildings
 	App->structures->AddStructure(App->structures->inn, 0, 28);
 	App->structures->AddStructure(App->structures->hotel, 105, 30);
-	App->structures->AddStructure(App->structures->smallest_b, 150, 8);
+	App->structures->AddStructure(App->structures->smallest_b, 175, 29);
 	App->structures->AddStructure(App->structures->fabten, 0, 8);
 	App->structures->AddStructure(App->structures->bar, 145, 0);
 
@@ -99,7 +99,6 @@ update_status ModuleSceneFirst::Update()
 	}
 	if (SDL_GetTicks() > time2)
 	{
-
 		time2 = SDL_GetTicks() + 1000;
 	}
 
