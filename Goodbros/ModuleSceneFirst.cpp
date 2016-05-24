@@ -48,8 +48,8 @@ bool ModuleSceneFirst::Start()
 	App->structures->AddStructure(App->structures->fabten, 0, 8);
 
 	// Enemies
-	/*App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101 ,NULL);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL);*/
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101 ,NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130,NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 130, NULL);
 	
@@ -89,17 +89,18 @@ update_status ModuleSceneFirst::Update()
 {
 	if (SDL_GetTicks() > time + 1000)
 	{
-
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, -14, 110, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, -14, 110, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, SCREEN_WIDTH, 110, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 100, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, SCREEN_WIDTH, 100, NULL);
-		time = SDL_GetTicks() + 30000;
+		time = SDL_GetTicks() + 5000;
 	}
 	if (SDL_GetTicks() > time2)
 	{
 	
-		time2 = SDL_GetTicks() + 7000;
+		time2 = SDL_GetTicks() + 1000;
 	}
 	
 	if (SDL_GetTicks() > time3)

@@ -33,6 +33,7 @@ struct Structure
 	bool fx_played = false;
 	bool Update();
 	bool destroyed = false;
+	bool created = false;
 	Collider* collider = nullptr;
 	buildingtype mytype;
 	Structure();
@@ -52,7 +53,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 	void AddStructure(Structure& particle, int x, int y);
-
+	float cd1 = 0.0;
 private:
 
 	SDL_Texture* graphics = nullptr;

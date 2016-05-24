@@ -160,45 +160,45 @@ bool ModuleStructures::Start()
 	hotel4.Coll_Struct.h = 90;
 
 	// FABTEN
-	fabten.Coll_Struct.x = 76;
+	fabten.Coll_Struct.x = 77;
 	fabten.Coll_Struct.y = 2548;
 	fabten.Coll_Struct.w = 105;
 	fabten.Coll_Struct.h = 138;
 	fabten.mytype = FABTEN;
 
-	fabten2.Coll_Struct.x = 197;
+	fabten2.Coll_Struct.x = 198;
 	fabten2.Coll_Struct.y = 2548;
 	fabten2.Coll_Struct.w = 105;
 	fabten2.Coll_Struct.h = 138;
 
-	fabten3.Coll_Struct.x = 331;
+	fabten3.Coll_Struct.x = 332;
 	fabten3.Coll_Struct.y = 2548;
 	fabten3.Coll_Struct.w = 105;
 	fabten3.Coll_Struct.h = 138;
 
-	fabten4.Coll_Struct.x = 468;
+	fabten4.Coll_Struct.x = 469;
 	fabten4.Coll_Struct.y = 2548;
 	fabten4.Coll_Struct.w = 105;
 	fabten4.Coll_Struct.h = 138;
 
-	fabten5.Coll_Struct.x = 585;
+	fabten5.Coll_Struct.x = 586;
 	fabten5.Coll_Struct.y = 2548;
 	fabten5.Coll_Struct.w = 105;
 	fabten5.Coll_Struct.h = 138;
 
-	fabten.destroy.PushBack({ 585, 2548, 105, 138 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 128 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 118 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 108 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 98 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 88 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 78 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 68 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 58 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 48 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 38 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 28 });
-	fabten.destroy.PushBack({ 585, 2548, 105, 18 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 138 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 128 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 118 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 108 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 98 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 88 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 78 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 68 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 58 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 48 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 38 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 28 });
+	fabten.destroy.PushBack({ 586, 2548, 105, 18 });
 	fabten.destroy.loop = false;
 	fabten.destroy.speed = 0.05f;
 
@@ -247,6 +247,8 @@ update_status ModuleStructures::Update()
 	{
 		Structure* p = active[i];
 
+		
+
 		// STRUCTURES
 		if (p == nullptr)
 			continue;
@@ -257,7 +259,6 @@ update_status ModuleStructures::Update()
 			delete p;
 			active[i] = nullptr;
 		}
-
 		if (active[i]->hits < 4)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
@@ -267,7 +268,6 @@ update_status ModuleStructures::Update()
 				p->fx_played = true;
 			}
 		}
-
 		if (active[i]->hits >= 4 && active[i]->mytype != BARREL)
 		{
 			App->collision->EraseCollider(p->collider);
@@ -304,6 +304,16 @@ update_status ModuleStructures::Update()
 			}
 			App->collision->EraseCollider(p->collider);
 		}
+		if (active[i]->mytype == INN && cd1 == 1 && inn.created == false)
+		{
+			p->collider = App->collision->AddCollider({ p->position.x, p->position.y, p->Coll_Struct.w, p->Coll_Struct.h }, COLLIDER_STRUCTURE, this);
+			inn.created = true;
+		}
+		if (active[i]->mytype == HOTEL && cd1 == 1 && hotel.created == false) 
+		{
+			p->collider = App->collision->AddCollider({ p->position.x, p->position.y, p->Coll_Struct.w, p->Coll_Struct.h }, COLLIDER_STRUCTURE, this);
+			hotel.created = true;
+		}
 	}
 	return UPDATE_CONTINUE;
 }
@@ -317,8 +327,11 @@ void ModuleStructures::AddStructure(Structure& particle, int x, int y)
 	{
 		p->collider = App->collision->AddCollider({ p->position.x, p->position.y, particle.Coll_Struct.w, particle.Coll_Struct.h }, COLLIDER_DESTRUCT, this);
 	}
-	else
-{
+	else if ((particle.mytype == INN || particle.mytype == HOTEL) && fabten.destroyed == false)
+	{
+	}
+	else if (particle.mytype != INN)
+	{
 		p->collider = App->collision->AddCollider({ p->position.x, p->position.y, particle.Coll_Struct.w, particle.Coll_Struct.h }, COLLIDER_STRUCTURE, this);
 	}
 	active[last_building++] = p;
@@ -369,10 +382,12 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
 				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
+				cd1 += 0.5;
+
 			}
 		}
 			// INN
-		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == INN)
+		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == INN && fabten.destroyed == true)
 		{
 			if (active[i]->hits == 0)
 			{
@@ -445,6 +460,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
 				App->particles->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
+				cd1 += 0.5;
 			}
 		}
 

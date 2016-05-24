@@ -271,7 +271,7 @@ update_status ModulePlayer::Update()
 	{
 		player_coll->type = COLLIDER_NONE;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN && Status != DIE && Status != ROLLING)
 	{
 		App->particles->AddParticle(App->particles->dynamite, position.x, position.y, COLLIDER_DYNAMITE, 0);
 	}

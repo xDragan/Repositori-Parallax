@@ -212,7 +212,6 @@ void ModuleEnemies::check_explosion(iPoint location)
 				(enemies[i]->position.y - 30 >(location.y - 100) && enemies[i]->position.y - 30 < (location.y + 60)))
 			{
 				enemies[i]->Die();
-				
 				App->UserUI->score += 100;
 			}
 		}
