@@ -12,7 +12,7 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	forward.PushBack({ 224, 396, 36, 55 });
 	forward.PushBack({ 261, 396, 36, 55 });
 	forward.PushBack({ 299, 396, 36, 55 });
-	forward.speed = 0.20f;
+	forward.speed = 0.09f;
 	forward.loop = true;
 
 	backward.PushBack({ 117, 459, 36, 55 });
@@ -21,7 +21,7 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	backward.PushBack({ 224, 459, 36, 55 });
 	backward.PushBack({ 261, 459, 36, 55 });
 	backward.PushBack({ 299, 459, 36, 55 });
-	backward.speed = 0.20f;
+	backward.speed = 0.15f;
 	backward.loop = true;
 
 	stop_shoot.PushBack({ 353, 396, 30, 55 });
@@ -34,7 +34,7 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	dieshot.PushBack({ 549, 400, 35, 54 });
 	dieshot.PushBack({ 589, 400, 35, 54 });
 	dieshot.PushBack({ 632, 400, 35, 54 });
-	dieshot.speed = 0.15f;
+	dieshot.speed = 0.09f;
 	dieshot.loop = true;
 
 	dieexplotion.PushBack({ 744, 397, 36, 54 });

@@ -89,19 +89,19 @@ bool ModuleStructures::Start()
 	bar4.Coll_Struct.w = 115;
 	bar4.Coll_Struct.h = 147;
 
-	bar.destroy.PushBack({ 490, 2266, 115, 147 });
-	bar.destroy.PushBack({ 490, 2266, 115, 132 });
-	bar.destroy.PushBack({ 490, 2266, 115, 121 });
-	bar.destroy.PushBack({ 490, 2266, 115, 110 });
-	bar.destroy.PushBack({ 490, 2266, 115, 99 });
-	bar.destroy.PushBack({ 490, 2266, 115, 87 });
-	bar.destroy.PushBack({ 490, 2266, 115, 74 });
-	bar.destroy.PushBack({ 490, 2266, 115, 60 });
-	bar.destroy.PushBack({ 490, 2266, 115, 49 });
-	bar.destroy.PushBack({ 490, 2266, 115, 32 });
-	bar.destroy.PushBack({ 490, 2266, 115, 20 });
-	bar.destroy.PushBack({ 490, 2266, 115, 12 });
-	bar.destroy.PushBack({ 490, 2266, 115, 4 });
+	bar.destroy.PushBack({ 638, 2266, 115, 147 });
+	bar.destroy.PushBack({ 638, 2266, 115, 132 });
+	bar.destroy.PushBack({ 638, 2266, 115, 121 });
+	bar.destroy.PushBack({ 638, 2266, 115, 110 });
+	bar.destroy.PushBack({ 638, 2266, 115, 99 });
+	bar.destroy.PushBack({ 638, 2266, 115, 87 });
+	bar.destroy.PushBack({ 638, 2266, 115, 74 });
+	bar.destroy.PushBack({ 638, 2266, 115, 60 });
+	bar.destroy.PushBack({ 638, 2266, 115, 49 });
+	bar.destroy.PushBack({ 638, 2266, 115, 32 });
+	bar.destroy.PushBack({ 638, 2266, 115, 20 });
+	bar.destroy.PushBack({ 638, 2266, 115, 12 });
+	bar.destroy.PushBack({ 638, 2266, 115, 4 });
 	bar.destroy.loop = false;
 	bar.destroy.speed = 0.05f;
 

@@ -13,7 +13,7 @@ Enemy_CowBoy_Green_Medium_Right::Enemy_CowBoy_Green_Medium_Right(float x, float 
 	backward.PushBack({ 1227 , 2860, 25, 40 });
 	backward.PushBack({ 1185, 2860, 25, 40 });
 	backward.PushBack({ 1144, 2860, 25, 40 });
-	backward.speed = 0.20f;
+	backward.speed = 0.15f;
 
 	stop_shoot.PushBack({ 374, 2848, 25, 40 });
 	stop_shoot.PushBack({ 374, 2848, 25, 40 });
@@ -24,7 +24,7 @@ Enemy_CowBoy_Green_Medium_Right::Enemy_CowBoy_Green_Medium_Right(float x, float 
 	dieshot.PushBack({ 1435, 2860, 25, 40 });
 	dieshot.PushBack({ 1482, 2860, 25, 40 });
 	dieshot.PushBack({ 1531, 2860, 25, 40 });
-	dieshot.speed = 0.15f;
+	dieshot.speed = 0.09f;
 	dieshot.loop = false;
 
 	dieexplotion.PushBack({ 1576, 2971, 25, 40 });

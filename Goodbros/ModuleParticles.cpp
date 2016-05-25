@@ -88,9 +88,9 @@ ModuleParticles::ModuleParticles()
 	smoke.anim.speed = 0.14f;
 	smoke.life = 12000;
 
-	barrel.anim.PushBack({ 22, 444, 23, 41 });
-	barrel.anim.PushBack({ 87, 444, 47, 45 });
-	barrel.anim.PushBack({ 148, 444, 62, 59 });
+	barrel.anim.PushBack({ 25, 443, 23, 41 });
+	barrel.anim.PushBack({ 60, 442, 47, 45 });
+	barrel.anim.PushBack({ 112, 444, 62, 59 });
 	barrel.anim.speed = 0.26f;
 	barrel.life = 250;
 }
