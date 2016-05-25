@@ -2,7 +2,7 @@
 #include "Enemy_wheelbarrow.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
-
+#include "ModuleEnemies.h"
 Enemy_wheelbarrow::Enemy_wheelbarrow(float x, float y, int direction) : Enemy(x, y)
 {
 
@@ -27,7 +27,7 @@ Enemy_wheelbarrow::Enemy_wheelbarrow(float x, float y, int direction) : Enemy(x,
 		break;
 	}
 
-	//collider = App->collision->AddCollider({ 0, 0, 48, 48 }, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 48, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -40,4 +40,10 @@ void Enemy_wheelbarrow::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
 
+}
+
+void Enemy_wheelbarrow::Die()
+{
+	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x, position.y, 3);
+	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 20, position.y, 4);
 }

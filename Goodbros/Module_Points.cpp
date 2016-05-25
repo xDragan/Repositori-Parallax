@@ -95,6 +95,36 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)  //Y=5,
 		path.loop = false;
 		collider = App->collision->AddCollider({ 0, 0, 16, 26 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
+	case 3: //3==escopeta
+		to_score = 2;
+		point.PushBack({ 339, 7, 32, 16 });
+		point.PushBack({ 373, 7, 32, 16 });
+		point.speed = 0.12f;
+		path.PushBack({ 0, -1.6f }, 15, &point);
+		path.PushBack({ 0, -1.0f }, 7, &point);
+		path.PushBack({ 0, 0 }, 8.5, &point);
+		path.PushBack({ 0, 0.8f }, 14, &point);
+		path.PushBack({ 0, 1.2f }, 14, &point);
+		path.PushBack({ 0, 1.4f }, 19, &point);
+		path.PushBack({ 0, 1.8f }, 28.5, &point);
+		path.loop = false;
+		collider = App->collision->AddCollider({ 0, 0, 32, 16 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
+		break;
+	case 4: //4==metralleta
+		to_score = 2;
+		point.PushBack({ 407, 7, 32, 16 });
+		point.PushBack({ 457, 7, 32, 16 });
+		point.speed = 0.12f;
+		path.PushBack({ 0, -1.6f }, 15, &point);
+		path.PushBack({ 0, -1.0f }, 7, &point);
+		path.PushBack({ 0, 0 }, 8.5, &point);
+		path.PushBack({ 0, 0.8f }, 14, &point);
+		path.PushBack({ 0, 1.2f }, 14, &point);
+		path.PushBack({ 0, 1.4f }, 19, &point);
+		path.PushBack({ 0, 1.8f }, 28.5, &point);
+		path.loop = false;
+		collider = App->collision->AddCollider({ 0, 0, 16, 26 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
+		break;
 	}
 	original_pos.x = x;
 	original_pos.y = y;
@@ -114,19 +144,21 @@ void Module_Points::Die()
 	switch (to_score){
 	case 1:
 		App->UserUI->dynamite++;
-		point.PushBack({ 0, 0, 0, 0 });
-		point.loop = false;
 		break;
 	case 2:
 		App->UserUI->hitpoints--;
-		point.PushBack({ 0, 0, 0, 0 });
-		point.loop = false;
+		break;
+	case 3:
+
+		break;
+	case 4:
+
 		break;
 	default:
 		App->UserUI->score += to_score - 100;
-		point.PushBack({ 0, 0, 0, 0 });
-		point.loop = false;
 		break;
 	}
+	point.PushBack({ 0, 0, 0, 0 });
+	point.loop = false;
 	finished = true;
 }

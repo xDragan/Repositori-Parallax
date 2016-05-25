@@ -16,6 +16,7 @@ public:
 
 	Enemy_wheelbarrow(float x, float y, int direction);
 	void Move();
+	void Die();
 };
 
 #endif // __ENEMY_wheelbarrow_H__
