@@ -109,6 +109,9 @@
     <ClCompile Include="Enemy_Horse_Right.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_Horse_Small_Right.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -229,6 +232,9 @@
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Horse_Right.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Horse_Small_Right.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

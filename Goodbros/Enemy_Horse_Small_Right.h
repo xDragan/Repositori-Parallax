@@ -1,18 +1,18 @@
-#ifndef __ENEMY__HORSE_RIGHT_H__
-#define __ENEMY__HORSE_RIGHT_H__
+#ifndef __ENEMY__HORSE_SMALL_RIGHT_H__
+#define __ENEMY__HORSE_SMALL_RIGHT_H__
 
 #include "Enemy.h"
 
-class Enemy_Horse_Right: public Enemy
+class Enemy_Horse_Small_Right : public Enemy
 {
 private:
 	bool going_forward = true;
 	bool stop = false;
 
 	
-	Animation backward;	
+	Animation backward;
 	Animation dieshot;
-	
+
 
 
 	bool isdead = false;
@@ -20,7 +20,7 @@ private:
 	iPoint original_pos;
 public:
 
-	Enemy_Horse_Right(float x, float y);
+	Enemy_Horse_Small_Right(float x, float y);
 	void Die();
 	void Move();
 };

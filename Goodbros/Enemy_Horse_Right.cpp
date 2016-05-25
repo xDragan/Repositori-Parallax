@@ -9,6 +9,7 @@ Enemy_Horse_Right::Enemy_Horse_Right(float x, float y) : Enemy(x, y)
 {
 	backward.PushBack({ 764, 1173, 46, 57 });
 	backward.PushBack({ 864, 1173, 46, 57 });
+	backward.PushBack({ 864, 1173, 46, 57 });
 	backward.PushBack({ 1012, 1173, 46, 57 });
 	backward.PushBack({ 1082, 1173, 46, 57 });
 	backward.PushBack({ 1154, 1173, 46, 57 });
