@@ -19,6 +19,7 @@ public:
 	void Die();
 	bool hit = false;
 	void Move();
+
 };
 
 #endif // __ENEMY_GIRL_H__

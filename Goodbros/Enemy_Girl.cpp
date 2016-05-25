@@ -32,7 +32,7 @@ Enemy_Girl::Enemy_Girl(float x, float y) : Enemy(x, y)
 
 	path.PushBack({ 0.3f, 0 },300, &walk);
 
-	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 26, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -61,7 +61,10 @@ void Enemy_Girl::Move()
 
 void Enemy_Girl::Die()
 {
-	
+	if (hit == false){
+		App->collision->EraseCollider(collider);
+		collider = App->collision->AddCollider({ 0, 0, 34, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	}
 	path.Erase(); 
 	path.PushBack({ 1.0f, 0 }, 100, &run);	
 	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x+5, position.y, 1);
