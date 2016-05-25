@@ -159,9 +159,9 @@ bool ModuleStructures::Start()
 
 	// Smallest building
 	smallest_b.Coll_Struct.x = 289;
-	smallest_b.Coll_Struct.y = 2151;
-	smallest_b.Coll_Struct.w = 72;
-	smallest_b.Coll_Struct.h = 90;
+	smallest_b.Coll_Struct.y = 2159;
+	smallest_b.Coll_Struct.w = 71;
+	smallest_b.Coll_Struct.y = 82;
 	smallest_b.mytype = SMALLEST_B;
 
 	// BARREL
@@ -256,13 +256,13 @@ update_status ModuleStructures::Update()
 		}
 		if (active[i]->hits == 3 && active[i]->mytype == BARREL)
 		{
-			App->render->Blit(graphics, p->position.x, p->position.y, &p->destroy.GetCurrentFrame());
+			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
+			p->collider->SetPos(p->position.x, p->position.y + 23);
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
 			}
 			App->collision->EraseCollider(p->collider);
-			active[i]->destroyed = true;
 		}
 		if (active[i]->mytype == INN && cd1 == 1 && inn.created == false)
 		{
@@ -449,10 +449,6 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			else if (active[i]->hits == 2)
 			{
 				App->enemies->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 3, active[i]->position.y, 1000);
-				active[i]->Coll_Struct.x = 0;
-				active[i]->Coll_Struct.y = 0;
-				active[i]->Coll_Struct.w = 0;
-				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
 				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y + 10, COLLIDER_NONE, 0);
 			}
