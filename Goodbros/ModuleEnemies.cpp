@@ -18,6 +18,7 @@
 #include "ModuleStructures.h"
 #include "ModuleUI.h"
 #include "Module_Points.h"
+#include "Enemy_wheelbarrow.h"
 #include "SDL/include/SDL_timer.h"
 
 #define SPAWN_MARGIN 40
@@ -178,6 +179,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::BARREL_ROLL:
 			enemies[i] = new Enemy_Barrel_Roll(info.x, info.y);
+			break;
+		case ENEMY_TYPES::WHEELBARROW:
+			enemies[i] = new Enemy_wheelbarrow(info.x, info.y, info.points);
 			break;
 		case ENEMY_TYPES::POINTS:
 			enemies[i] = new Module_Points(info.x, info.y, info.points);

@@ -100,6 +100,9 @@
     <ClCompile Include="Enemy_Girl.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_wheelbarrow.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -211,6 +214,9 @@
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Girl.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_wheelbarrow.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

@@ -121,6 +121,7 @@ update_status ModuleSceneFirst::Update()
 	if (SDL_GetTicks() > time3)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 150, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::WHEELBARROW, 200, 110, 1);
 		time3 = SDL_GetTicks() + 10000;
 	}
 
