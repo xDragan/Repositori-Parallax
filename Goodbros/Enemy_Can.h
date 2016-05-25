@@ -18,6 +18,7 @@ public:
 	Enemy_Can(float x, float y);
 	void Die();
 	bool hit = false;
+	uint fly = 0;
 	void Move();
 };
 
