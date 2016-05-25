@@ -51,7 +51,7 @@ private:
 public:
 	Particle dynamite;
 	Particle dynamite_exp;
-	Particle explosion;
+	Particle building_explosion;
 	Particle shot;
 	Particle enemyshot;
 	Particle smoke;

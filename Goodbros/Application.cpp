@@ -32,6 +32,7 @@ Application::Application()
 	modules[i++] = structuresback = new ModuleStructures();
 	modules[i++] = structuresmiddle = new ModuleStructures();
 	modules[i++] = smoke = new ModuleParticles();
+	modules[i++] = building_explosion = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = barrelroll = new ModuleEnemies();
 	modules[i++] = structuresfront = new ModuleStructures();

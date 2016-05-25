@@ -25,6 +25,16 @@ ModuleParticles::ModuleParticles()
 	enemyshot.speed.y = 1.5f;
 	enemyshot.life = 10000;
 
+	// Building explosion
+	building_explosion.anim.PushBack({ 19, 239, 26, 26 });
+	building_explosion.anim.PushBack({ 62, 236, 32, 32 });
+	building_explosion.anim.PushBack({ 111, 227, 47, 47 });
+	building_explosion.anim.PushBack({ 174, 228, 48, 48 });
+	building_explosion.anim.PushBack({ 244, 230, 50, 50 });
+	building_explosion.anim.PushBack({ 300, 230, 52, 52 });
+	building_explosion.anim.loop = false;
+	building_explosion.anim.speed = 0.15f;
+
 	// Dynamite
 	dynamite.anim.PushBack({ 505, 330, 17, 17 });
 	dynamite.anim.PushBack({ 528, 330, 17, 17 });
@@ -152,7 +162,6 @@ update_status ModuleParticles::Update()
 			{
 				p->fx_played = true;
 				App->audio->PlayFx(p->fx);
-				
 			}
 		}
 	}
@@ -166,6 +175,7 @@ void ModuleParticles::AddParticle(const Particle& particle, float x, float y, CO
 		if (active[i] == nullptr)
 		{
 			Particle* p = new Particle(particle);
+			p->born = SDL_GetTicks() + delay;
 			p->position.x = x;
 			p->position.y = y;
 			if (collider_type != COLLIDER_NONE)

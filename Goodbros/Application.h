@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 23
+#define NUM_MODULES 24
 
 class ModuleWindow;
 class ModuleInput;
@@ -50,18 +50,17 @@ public:
 	ModuleStructures* structuresfront;
 	ModuleEnemies* points;
 	ModuleParticles* smoke;
+	ModuleParticles* building_explosion;
 	ModuleUI* UserUI;
 	ModuleText* text;
 
 public:
-
 	Application();
 	~Application();
 
 	bool Init();
 	update_status Update();
 	bool CleanUp();
-
 };
 
 // Global var made extern for Application ---

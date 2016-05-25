@@ -89,19 +89,19 @@ bool ModuleStructures::Start()
 	bar4.Coll_Struct.w = 115;
 	bar4.Coll_Struct.h = 147;
 
-	bar.destroy.PushBack({ 638, 2266, 115, 147 });
-	bar.destroy.PushBack({ 638, 2266, 115, 132 });
-	bar.destroy.PushBack({ 638, 2266, 115, 121 });
-	bar.destroy.PushBack({ 638, 2266, 115, 110 });
-	bar.destroy.PushBack({ 638, 2266, 115, 99 });
-	bar.destroy.PushBack({ 638, 2266, 115, 87 });
-	bar.destroy.PushBack({ 638, 2266, 115, 74 });
-	bar.destroy.PushBack({ 638, 2266, 115, 60 });
-	bar.destroy.PushBack({ 638, 2266, 115, 49 });
-	bar.destroy.PushBack({ 638, 2266, 115, 32 });
-	bar.destroy.PushBack({ 638, 2266, 115, 20 });
-	bar.destroy.PushBack({ 638, 2266, 115, 12 });
-	bar.destroy.PushBack({ 638, 2266, 115, 4 });
+	bar.destroy.PushBack({ 490, 2266, 115, 147 });
+	bar.destroy.PushBack({ 490, 2266, 115, 132 });
+	bar.destroy.PushBack({ 490, 2266, 115, 121 });
+	bar.destroy.PushBack({ 490, 2266, 115, 110 });
+	bar.destroy.PushBack({ 490, 2266, 115, 99 });
+	bar.destroy.PushBack({ 490, 2266, 115, 87 });
+	bar.destroy.PushBack({ 490, 2266, 115, 74 });
+	bar.destroy.PushBack({ 490, 2266, 115, 60 });
+	bar.destroy.PushBack({ 490, 2266, 115, 49 });
+	bar.destroy.PushBack({ 490, 2266, 115, 32 });
+	bar.destroy.PushBack({ 490, 2266, 115, 20 });
+	bar.destroy.PushBack({ 490, 2266, 115, 12 });
+	bar.destroy.PushBack({ 490, 2266, 115, 4 });
 	bar.destroy.loop = false;
 	bar.destroy.speed = 0.05f;
 
@@ -141,19 +141,19 @@ bool ModuleStructures::Start()
 	fabten4.Coll_Struct.w = 105;
 	fabten4.Coll_Struct.h = 138;
 
-	fabten.destroy.PushBack({ 586, 2548, 105, 138 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 128 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 118 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 108 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 98 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 88 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 78 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 68 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 58 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 48 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 38 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 28 });
-	fabten.destroy.PushBack({ 586, 2548, 105, 18 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 138 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 128 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 118 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 108 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 98 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 88 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 78 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 68 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 58 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 48 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 38 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 28 });
+	fabten.destroy.PushBack({ 469, 2548, 105, 18 });
 	fabten.destroy.loop = false;
 	fabten.destroy.speed = 0.05f;
 
@@ -228,7 +228,7 @@ update_status ModuleStructures::Update()
 				p->fx_played = true;
 			}
 		}
-		if (active[i]->hits >= 4 && active[i]->mytype != BARREL)
+		if (active[i]->hits >= 4 && active[i]->mytype != BARREL && active[i]->mytype != INN)
 		{
 			App->collision->EraseCollider(p->collider);
 			if (p->position.y >= 120)
@@ -239,6 +239,16 @@ update_status ModuleStructures::Update()
 			{
 				App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
 			}
+			if (p->destroy.Finished() == true && active[i]->destroyed == false)
+			{
+				App->player->win_condition++;
+				active[i]->destroyed = true;
+			}
+		}
+		if (active[i]->hits >= 4 && active[i]->mytype == INN)
+		{
+			App->collision->EraseCollider(p->collider);
+			App->render->Blit(graphics, p->position.x, p->position.y, &p->destroy.GetCurrentFrame());
 			if (p->destroy.Finished() == true && active[i]->destroyed == false)
 			{
 				App->player->win_condition++;
@@ -356,6 +366,12 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 5, active[i]->position.y + 45, COLLIDER_NONE, 0);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 35, active[i]->position.y + 45, COLLIDER_NONE, 0);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 70, active[i]->position.y + 45, COLLIDER_NONE, 0);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 5, active[i]->position.y, COLLIDER_NONE, 300);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 35, active[i]->position.y, COLLIDER_NONE, 300);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 70, active[i]->position.y, COLLIDER_NONE, 300);
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 7000);
 				active[i]->hits++;
 			}
@@ -406,6 +422,11 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 3, active[i]->position.y + 45, COLLIDER_NONE, 0);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 38, active[i]->position.y + 45, COLLIDER_NONE, 0);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 3, active[i]->position.y + 20, COLLIDER_NONE, 300);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 38, active[i]->position.y + 20, COLLIDER_NONE, 300);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 15, active[i]->position.y - 20, COLLIDER_NONE, 500);
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000);
 				active[i]->hits++;
 			}
@@ -420,6 +441,11 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 3, active[i]->position.y + 40, COLLIDER_NONE, 0);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 38, active[i]->position.y + 40, COLLIDER_NONE, 0);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 3, active[i]->position.y + 15, COLLIDER_NONE, 300);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 38, active[i]->position.y + 15, COLLIDER_NONE, 300);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 10, active[i]->position.y - 20, COLLIDER_NONE, 500);
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000);
 				active[i]->hits++;
 			}
