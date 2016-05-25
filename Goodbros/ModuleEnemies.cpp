@@ -8,6 +8,7 @@
 #include "Enemy_Pig.h"
 #include "Enemy_Girl.h"
 #include "Enemy_Cowboy_Blue.h"
+#include "Enemy_Can.h"
 #include "Enemy_Cowboy_Blue2.h"
 #include "Enemy_Cowboy_Blue3.h"
 #include "Enemy_Cowboy_Green_Big_Left.h"
@@ -156,6 +157,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::GIRL:
 			enemies[i] = new Enemy_Girl(info.x, info.y);
 			break;
+		case ENEMY_TYPES::CAN:
+			enemies[i] = new Enemy_Can(info.x, info.y);
+			break;
 		case ENEMY_TYPES::BLUE_COWBOY:
 			enemies[i] = new Enemy_CowBoy_Blue(info.x, info.y);
 			break;
@@ -181,7 +185,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_Barrel_Roll(info.x, info.y);
 			break;
 		case ENEMY_TYPES::WHEELBARROW:
-			enemies[i] = new Enemy_wheelbarrow(info.x, info.y, info.points);
+			enemies[i] = new Enemy_wheelbarrow(info.x, info.y,info.points);
 			break;
 		case ENEMY_TYPES::POINTS:
 			enemies[i] = new Module_Points(info.x, info.y, info.points);
