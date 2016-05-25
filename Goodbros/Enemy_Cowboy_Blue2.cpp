@@ -64,8 +64,6 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	grenadeSm.speed = 0.1f;
 	grenadeSm.loop = true;
 
-
-
 	bwtumble.PushBack({ 107, 565, 36, 54 });
 	bwtumble.PushBack({ 149, 565, 41, 54 });
 	bwtumble.PushBack({ 195, 565, 36, 54 });
@@ -94,14 +92,13 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	fwtumble.speed = 0.2f;
 	fwtumble.loop = true;
 
-	 falld.PushBack({ 1064, 581, 25, 40 });
+	falld.PushBack({ 1064, 581, 25, 40 });
 
 	jumpSm.PushBack({ 1089, 581, 25, 40 });
 	jumpSm.loop = true;
 	    
 	jump.PushBack({ 1203, 685, 33, 49 });
 	jump.loop = true;
-	
 
 	fwtumbleshoot.PushBack({ 107, 793, 36, 54 });
 	fwtumbleshoot.PushBack({ 149, 793, 41, 54 });
@@ -142,6 +139,10 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 
 void Enemy_CowBoy_Blue2::Move()
 {
+	if (path.GetFrame() == 50 || path.GetFrame() == 150 || path.GetFrame() == 250 || path.GetFrame() == 300 || path.GetFrame() == 350)
+	{
+		App->particles->AddParticle(App->particles->enemyDynamite, position.x + 10, position.y + 20, COLLIDER_BOMB, 0);
+	}
 	if (path.GetFrame() < 215)
 	{
 		position = original_pos + path.GetCurrentSpeed(&animation);
@@ -179,7 +180,8 @@ void Enemy_CowBoy_Blue2::Die()
 		path.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
 		path.loop = false;
 	}
-	else{
+	else
+	{
 		path2.Erase();
 		path2.PushBack({ 0.0f, 0.0f }, 40, &dieshot);
 		path2.loop = false;

@@ -119,7 +119,8 @@ public:
 		return (TYPE)sqrtf(float(fx*fx) + float(fy*fy));
 	}
 
-	p2Point<float> GetDirection(float base_speed, p2Point dst){
+	p2Point<float> GetDirection(float base_speed, p2Point dst)
+	{
 
 		p2Point<float> direction;
 
@@ -143,6 +144,18 @@ public:
 
 
 		return(direction);
+	}
+	p2Point<float> GetDirectionbomb(p2Point<float> dst)
+	{
+		p2Point<float> speed{ (40 + dst.x - x) / 100, (-400 + dst.y - y) / 100 };
+
+		return(speed);
+	}
+	p2Point<float> bombExplosion()
+	{
+		p2Point<float> speed{ (0), (0)};
+
+		return(speed);
 	}
 	TYPE DistanceNoSqrt(const p2Point& v) const
 	{

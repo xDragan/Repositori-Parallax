@@ -54,6 +54,19 @@ ModuleParticles::ModuleParticles()
 	dynamite_exp.anim.loop = false;
 	dynamite_exp.anim.speed = 0.1f;
 
+	// Enemy dynamite
+	enemyDynamite.anim.PushBack({ 642, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 659, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 676, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 693, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 710, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 727, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 744, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 761, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 778, 330, 17, 17 });
+	enemyDynamite.anim.loop = false;
+	enemyDynamite.anim.speed = 0.1f;
+
 	// Smoke animation
 	smoke.anim.PushBack({ 27, 45, 127, 30 });
 	smoke.anim.PushBack({ 27, 77, 127, 30 });
@@ -185,6 +198,14 @@ void ModuleParticles::AddParticle(const Particle& particle, float x, float y, CO
 			{
 				p->speed = p->position.GetDirection(2, App->player->position);
 			}
+			if (collider_type == COLLIDER_BOMB)
+			{
+				p->speed = p->position.GetDirectionbomb(App->player->position);
+			}
+			if (collider_type == COLLIDER_BOMB_EXPLOSION)
+			{
+				p->speed = p->position.bombExplosion();
+			}
 			if (collider_type == COLLIDER_DYNAMITE)
 			{
 				p->speed = App->player->position.GetSpeed(App->aim->position);
@@ -243,6 +264,10 @@ bool Particle::Update()
 		{
 			App->particles->AddParticle(App->particles->dynamite_exp, position.x, position.y, COLLIDER_PLAYER_SHOT, 0);
 		}
+		if (collider != nullptr && collider->type == COLLIDER_BOMB)
+		{
+			App->particles->AddParticle(App->particles->dynamite_exp, position.x-10, position.y-10, COLLIDER_BOMB_EXPLOSION, 0);
+		}
 
 	}
 
@@ -253,7 +278,13 @@ bool Particle::Update()
 	{
 		collider->SetPos(position.x, position.y);
 		if (collider->type == COLLIDER_DYNAMITE)
+		{
 			speed.y -= CONST_GRAVITY;
+		}
+		if (collider->type == COLLIDER_BOMB)
+		{
+			speed.y -= CONST_GRAVITY;
+		}
 	}
 
 	return ret;

@@ -275,6 +275,10 @@ update_status ModulePlayer::Update()
 	{
 		App->particles->AddParticle(App->particles->dynamite, position.x, position.y, COLLIDER_DYNAMITE, 0);
 	}
+	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN && Status != DIE && Status != ROLLING)
+	{
+		App->particles->AddParticle(App->particles->enemyDynamite, position.x, position.y, COLLIDER_BOMB, 0);
+	}
 	switch (Status)
 	{
 	case IDLE:
