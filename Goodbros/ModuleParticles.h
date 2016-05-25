@@ -50,6 +50,7 @@ private:
 
 public:
 	Particle dynamite;
+	Particle EnemyDynamite;
 	Particle dynamite_exp;
 	Particle building_explosion;
 	Particle shot;
