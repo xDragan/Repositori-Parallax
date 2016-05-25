@@ -33,7 +33,14 @@ bool ModuleSceneFirst::Start()
 	App->particles->Enable();
 	App->collision->Enable();
 	App->aim->Enable();
-	App->structures->Enable();
+	App->structuresfront->Enable();
+	App->structuresmiddle->Enable();
+	App->structuresback->Enable();
+	App->enemies->Enable();
+	App->UserUI->Enable();
+	App->barrelroll->Enable();
+	App->points->Enable();
+	App->smoke->Enable();
 	App->enemies->Enable();
 	App->UserUI->Enable();
 
@@ -42,22 +49,22 @@ bool ModuleSceneFirst::Start()
 	App->player->position.y = 150;
 
 	// Buildings
-	App->structures->AddStructure(App->structures->inn, 0, 28);
-	App->structures->AddStructure(App->structures->hotel, 105, 30);
-	App->structures->AddStructure(App->structures->smallest_b, 150, 8);
-	App->structures->AddStructure(App->structures->fabten, 0, 8);
-	App->structures->AddStructure(App->structures->bar, 145, 0);
+	App->structuresback->AddStructure(App->structuresback->inn, 0, 32);
+	App->structuresback->AddStructure(App->structuresback->hotel, 105, 35);
+	App->structuresback->AddStructure(App->structuresback->smallest_b, 175, 42);
+	App->structuresmiddle->AddStructure(App->structuresmiddle->fabten, 0, 8);
+	App->structuresmiddle->AddStructure(App->structuresmiddle->bar, 145, 0);
 
 	// Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL);
-	App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 130, NULL);
+	App->barrelroll->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 105, NULL);
 
 	//Barrels
-	App->structures->AddStructure(App->structures->barrel, 6, 144);
-	App->structures->AddStructure(App->structures->barrel, 38, 144);
-	App->structures->AddStructure(App->structures->barrel, 198, 144);
+	App->structuresfront->AddStructure(App->structuresfront->barrel, 6, 144);
+	App->structuresfront->AddStructure(App->structuresfront->barrel, 38, 144);
+	App->structuresfront->AddStructure(App->structuresfront->barrel, 198, 144);
 
 	// Time counters
 	time = SDL_GetTicks();
@@ -73,12 +80,20 @@ bool ModuleSceneFirst::CleanUp()
 	LOG("Unloading first scene");
 
 	App->textures->Unload(background);
-	App->structures->CleanUp();
+	
 	App->player->Disable();
 	App->particles->Disable();
 	App->aim->Disable();
+	App->structuresfront->CleanUp();
+	App->structuresmiddle->CleanUp();
+	App->structuresback->CleanUp();
 	App->enemies->Disable();
-	App->structures->Disable();
+	App->structuresfront->Disable();
+	App->structuresmiddle->Disable();
+	App->structuresback->Disable();
+	App->barrelroll->Disable();
+	App->points->Disable();
+	App->smoke->Disable();
 	App->collision->Disable();
 	App->UserUI->Disable();
 	return true;
