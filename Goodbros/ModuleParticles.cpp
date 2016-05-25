@@ -54,18 +54,6 @@ ModuleParticles::ModuleParticles()
 	dynamite_exp.anim.loop = false;
 	dynamite_exp.anim.speed = 0.1f;
 
-	//Enemy Dynamite
-	
-	EnemyDynamite.anim.PushBack({ 642, 330, 17, 17 });
-	EnemyDynamite.anim.PushBack({ 659, 330, 17, 17 });
-	EnemyDynamite.anim.PushBack({ 676, 330, 17, 17 });
-	EnemyDynamite.anim.PushBack({ 693, 330, 17, 17 });
-	EnemyDynamite.anim.PushBack({ 710, 330, 17, 17 });
-	EnemyDynamite.anim.PushBack({ 727, 330, 17, 17 });
-	EnemyDynamite.anim.PushBack({ 744, 330, 17, 17 });
-	EnemyDynamite.anim.PushBack({ 761, 330, 17, 17 });
-	EnemyDynamite.anim.PushBack({ 778, 330, 17, 17 });
-	
 	// Smoke animation
 	smoke.anim.PushBack({ 27, 45, 127, 30 });
 	smoke.anim.PushBack({ 27, 77, 127, 30 });
