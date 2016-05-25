@@ -62,19 +62,9 @@ void Enemy_Girl::Move()
 void Enemy_Girl::Die()
 {
 	
-	 path.Erase(); 
-	path.PushBack({ 1.0f, 0 }, 100, &run);
-
-	
-	
-	App->enemies->AddEnemy(ENEMY_TYPES::POINTS, position.x, position.y, 1);
-	App->enemies->AddEnemy(ENEMY_TYPES::POINTS, position.x + 20, position.y, 2);
-	
+	path.Erase(); 
+	path.PushBack({ 1.0f, 0 }, 100, &run);	
+	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x+5, position.y, 1);
 	hit = true;
 
-	
-	
-	
-	
-	
 }

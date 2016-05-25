@@ -449,6 +449,10 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			else if (active[i]->hits == 2)
 			{
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 3, active[i]->position.y, 1000);
+				active[i]->Coll_Struct.x = 0;
+				active[i]->Coll_Struct.y = 0;
+				active[i]->Coll_Struct.w = 0;
+				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
 				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y + 10, COLLIDER_NONE, 0);
 			}

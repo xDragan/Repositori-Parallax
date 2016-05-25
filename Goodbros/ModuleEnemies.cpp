@@ -155,12 +155,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::GIRL:
 			enemies[i] = new Enemy_Girl(info.x, info.y);
 			break;
-			
-
 		case ENEMY_TYPES::BLUE_COWBOY:
 			enemies[i] = new Enemy_CowBoy_Blue(info.x, info.y);
 			break;
-
 		case ENEMY_TYPES::BLUE_COWBOY2:
 			enemies[i] = new Enemy_CowBoy_Blue2(info.x, info.y);
 			break;
@@ -197,6 +194,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->UserUI->score += 100;
 			enemies[i]->Die();
+		}
+		else if (App->points->enemies[i] != nullptr && App->points->enemies[i]->GetCollider() == c1){
+			App->UserUI->score += 100;
+			App->points->enemies[i]->Die();
 		}
 	}
 }

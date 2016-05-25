@@ -61,7 +61,7 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)  //Y=5,
 		path.PushBack({ 0, 1.2f }, 11, &point);
 		path.PushBack({ 0, 1.4f }, 19, &point);
 		path.PushBack({ 0, 1.8f }, 29, &point);
-		path.PushBack({ 0, 2.1f }, 37, &point);
+		path.PushBack({ 0, 2.1f }, 36, &point);
 		path.loop = false;
 		collider = App->collision->AddCollider({ 0, 0, 39, 23 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
@@ -72,11 +72,11 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)  //Y=5,
 		point.speed = 0.18f;
 		path.PushBack({ 0, -1.6f }, 15, &point);
 		path.PushBack({ 0, -1.0f }, 7, &point);
-		path.PushBack({ 0, 0 }, 5.5, &point);
-		path.PushBack({ 0, 0.8f }, 4, &point);
-		path.PushBack({ 0, 1.2f }, 4, &point);
-		path.PushBack({ 0, 1.4f }, 9, &point);
-		path.PushBack({ 0, 1.8f }, 21.5, &point);
+		path.PushBack({ 0, 0 }, 9.5, &point);
+		path.PushBack({ 0, 0.8f }, 13, &point);
+		path.PushBack({ 0, 1.2f }, 13, &point);
+		path.PushBack({ 0, 1.4f }, 20, &point);
+		path.PushBack({ 0, 1.8f }, 28.5, &point);
 		path.loop = false;
 		collider = App->collision->AddCollider({ 0, 0, 16, 26 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
