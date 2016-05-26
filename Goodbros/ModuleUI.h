@@ -32,15 +32,18 @@ public:
 	Animation foe_bar_white;
 	Animation Credit;
 	Animation characterone;
+	Animation top;
 	Uint32 hitpoints;
 	Uint32 credit;
 	Uint32 score;
 	Uint32 dynamite = 10;
 	Uint32 killcount;
+	Uint32 topscori;
 	Text* credit_text;
 	Text* credit_counter;
 	Text* score_counter;
 	Text* dynamite_counter;
+	Text* topscore;
 
 };
 

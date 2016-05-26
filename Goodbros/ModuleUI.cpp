@@ -31,9 +31,12 @@ ModuleUI::ModuleUI()
 
 	characterone.PushBack({ 17, 73, 16, 8});
 	
+	top.PushBack({ 34, 73, 16, 8 });
+
 	hitpoints = 3;
 	credit = 0;
 	score = 0;
+	topscori = 2000;
 	dynamite = 10;
 }
 ModuleUI::~ModuleUI()
@@ -44,8 +47,9 @@ bool ModuleUI::Start()
 	LOG("Loading intro");
 
 	UserInterface = App->textures->Load("bloodbros/HUDandFONTS2.png");
-	credit_counter = App->text->AddNumber(SCREEN_WIDTH / 2 + 3, SCREEN_HEIGHT - 7, credit, 2);
+	credit_counter = App->text->AddNumber(144, SCREEN_HEIGHT - 7, credit, 2);
 	score_counter = App->text->AddNumber(18, 0, score, 8);
+	topscore = App->text->AddNumber(SCREEN_WIDTH/2 -25, 0, score, 8);
 	dynamite_counter = App->text->AddNumber(1, SCREEN_HEIGHT - 28, dynamite, 2);
 
 	return true;
@@ -67,6 +71,8 @@ update_status ModuleUI::Update()
 	dynamite_counter->ChangeNumber(dynamite);
 	credit_counter->ChangeNumber(credit);
 	score_counter->ChangeNumber(score);
+	topscore->ChangeNumber(topscori);
+	if (score >=topscori) topscori = score;
 	if (true){
 		App->render->Blit(UserInterface, 69, 202, &(foe_bar.GetCurrentFrame()), 0.5);
 		App->render->Blit(UserInterface, 73, 202, &(foe_bar.GetCurrentFrame()), 0.5);
@@ -78,9 +84,9 @@ update_status ModuleUI::Update()
 		App->render->Blit(UserInterface, 97, 202, &(foe_bar.GetCurrentFrame()), 0.5);
 	}
 
-	App->render->Blit(UserInterface, 90, SCREEN_HEIGHT-7, &(Credit.GetCurrentFrame()), 0.5);
-	
+	App->render->Blit(UserInterface, 105, SCREEN_HEIGHT-7, &(Credit.GetCurrentFrame()), 0.5);
 	App->render->Blit(UserInterface, 35, 203, &(foe.GetCurrentFrame()), 0.5);
+	App->render->Blit(UserInterface, SCREEN_WIDTH/2 -43, 0, &(top.GetCurrentFrame()), 0.5);
 	App->render->Blit(UserInterface, 0, 0, &(characterone.GetCurrentFrame()), 0.5);
 	App->render->Blit(UserInterface, 1, SCREEN_HEIGHT- 44,  &(dynamite_image.GetCurrentFrame()), 0.6);
 	if (App->player->lose == 0){
