@@ -66,6 +66,7 @@ bool ModuleStructures::Start()
 {
 	LOG("Loading buildings");
 	graphics = App->textures->Load("bloodbros/enemy.png");
+	collapse.fx = App->audio->LoadFx("bloodbros/building_collapse.wav");
 
 	// BAR
 	bar.Coll_Struct.x = 80;
@@ -352,28 +353,10 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			else if (active[i]->hits == 3)
 			{
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 27, 10000);
+				//App->audio->PlayFx(collapse.fx);
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 				App->structuresback->cd1 += 0.5;
-			}
-		}
-		// INN
-		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == INN)
-		{
-			if (active[i]->hits >= 0 && active[i]->hits < 3)
-			{
-				active[i]->hits++;
-			}
-			else if (active[i]->hits == 3)
-			{
-				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 5, active[i]->position.y + 45, COLLIDER_NONE, 0);
-				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 35, active[i]->position.y + 45, COLLIDER_NONE, 0);
-				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 70, active[i]->position.y + 45, COLLIDER_NONE, 0);
-				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 5, active[i]->position.y, COLLIDER_NONE, 300);
-				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 35, active[i]->position.y, COLLIDER_NONE, 300);
-				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 70, active[i]->position.y, COLLIDER_NONE, 300);
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 7000);
-				active[i]->hits++;
 			}
 		}
 
@@ -407,9 +390,34 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			else if (active[i]->hits == 3)
 			{
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000);
+				//App->audio->PlayFx(collapse.fx);
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 				App->structuresback->cd1 += 0.5;
+			}
+		}
+
+		// INN
+		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == INN)
+		{
+			if (active[i]->hits >= 0 && active[i]->hits < 3)
+			{
+				active[i]->hits++;
+			}
+			else if (active[i]->hits == 3)
+			{
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 5, active[i]->position.y + 45, COLLIDER_NONE, 0);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 35, active[i]->position.y + 45, COLLIDER_NONE, 0);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 70, active[i]->position.y + 45, COLLIDER_NONE, 0);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 5, active[i]->position.y - 20, COLLIDER_NONE, 500);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 35, active[i]->position.y - 20, COLLIDER_NONE, 500);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 70, active[i]->position.y - 20, COLLIDER_NONE, 500);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 5, active[i]->position.y, COLLIDER_NONE, 300);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 35, active[i]->position.y, COLLIDER_NONE, 300);
+				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 70, active[i]->position.y, COLLIDER_NONE, 300);
+
+				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 7000);
+				active[i]->hits++;
 			}
 		}
 

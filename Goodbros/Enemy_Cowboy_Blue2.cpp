@@ -113,8 +113,8 @@ Enemy_CowBoy_Blue2::Enemy_CowBoy_Blue2(float x, float y) : Enemy(x, y)
 	spawnn.PushBack({ 964, 581, 25, 40 });
 	spawnn.PushBack({ 989, 581, 25, 40 });
 	spawnn.PushBack({ 1014, 581, 25, 40 });
-	spawnn.PushBack({ 1039 , 581, 25, 40 });
-	spawnn.PushBack({ 591, 1018, 25, 40 });
+	spawnn.PushBack({ 1039, 581, 25, 40 });
+	spawnn.PushBack({ 591, 1018, 25, 40 }); // ?
 	spawnn.speed = 0.05f;
 	spawnn.loop = true;
 

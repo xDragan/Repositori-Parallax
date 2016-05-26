@@ -21,8 +21,9 @@ ModuleSceneIntro::~ModuleSceneIntro()
 bool ModuleSceneIntro::Start()
 {
 	ticks = SDL_GetTicks();
-	LOG("Loading game intro");
+	LOG("Loading Parallax intro");
 	background = App->textures->Load("bloodbros/tribute.png");
+	App->audio->Load("bloodbros/Parallax_Theme.ogg");
 	return true;
 }
 
@@ -38,7 +39,7 @@ bool ModuleSceneIntro::CleanUp()
 update_status ModuleSceneIntro::Update()
 {
 	App->render->Blit(background, 0, 0, NULL);
-	if (SDL_GetTicks() - ticks > 6000)
+	if (SDL_GetTicks() - ticks > 9800)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->intro2);
 	}

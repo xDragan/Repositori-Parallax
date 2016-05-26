@@ -30,7 +30,7 @@ bool ModuleSceneIntro2::Start()
 // UnLoad assets
 bool ModuleSceneIntro2::CleanUp()
 {
-	LOG("Unloading game scene");
+	LOG("Unloading game intro");
 	App->textures->Unload(background);
 	App->introUI->Disable();
 	return true;
@@ -40,7 +40,6 @@ bool ModuleSceneIntro2::CleanUp()
 update_status ModuleSceneIntro2::Update()
 {
 	App->render->Blit(background, 0, 0, NULL);
-
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->fade->IsFading() == false && App->introUI->credit >= 1)
 	{

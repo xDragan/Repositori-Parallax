@@ -47,21 +47,19 @@ void Enemy_Girl::Move()
 		finished = true;
 	}
 
-	if (position.x >= SCREEN_WIDTH - 34){
-
+	if (position.x >= SCREEN_WIDTH - 34)
+	{
 		collider->type = COLLIDER_NONE;
 		path.Erase();
 		path.PushBack({ 0, 0 }, 40, &dead);
 		path.loop = false;
-
-
-
 	}
 }
 
 void Enemy_Girl::Die()
 {
-	if (hit == false){
+	if (hit == false)
+	{
 		App->collision->EraseCollider(collider);
 		collider = App->collision->AddCollider({ 0, 0, 34, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	}

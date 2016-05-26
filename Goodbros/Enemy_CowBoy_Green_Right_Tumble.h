@@ -1,5 +1,5 @@
-#ifndef __ENEMY_COWBOY_GREEN_BIG_RIGHT_H__
-#define __ENEMY_COWBOY_GREEN_BIG_RIGHT_H__
+#ifndef __ENEMY_COWBOY_GREEN_RIGHT_TUMBLE_H__
+#define __ENEMY_COWBOY_GREEN_RIGHT_TUMBLE_H__
 
 #include "Enemy.h"
 
@@ -14,6 +14,7 @@ private:
 	Animation stop_shoot;
 	Animation dieshot;
 	Animation dieexplotion;
+	Animation spawnani;
 
 	bool isdead = false;
 	bool spawn = false;
@@ -25,4 +26,4 @@ public:
 	void Move();
 };
 
-#endif // __ENEMY_COWBOY_GREEN_H__
+#endif //  __ENEMY_COWBOY_GREEN_RIGHT_TUMBLE_H__

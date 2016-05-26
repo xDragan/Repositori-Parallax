@@ -66,6 +66,7 @@ public:
 	Structure inn, hotel, smallest_b;
 	Structure fabten, fabten2, fabten3, fabten4;
 	Structure barrel, barrel2, barrel3;
+	Particle collapse;
 };
 
 #endif // __MODULESTRUCTURES_H__

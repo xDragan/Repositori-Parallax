@@ -23,7 +23,6 @@ enum type
 class ModulePlayer : public Module
 {
 public:
-
 	enum SCREEN_PORTION
 	{
 		far_left = 0,

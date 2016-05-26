@@ -15,6 +15,7 @@
 #include "Enemy_Cowboy_Green_Big_Right.h"
 #include "Enemy_Cowboy_Green_Medium_Left.h"
 #include "Enemy_CowBoy_Green_Medium_Right.h"
+#include "Enemy_CowBoy_Green_Right_Tumble.h"
 #include "Enemy_Barrel_Roll.h"
 #include "Enemy_Horse_Right.h"
 #include "Enemy_Horse_Small_Right.h"
@@ -188,6 +189,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT:
 			enemies[i] = new Enemy_CowBoy_Green_Medium_Right(info.x, info.y);
+			break;
+		case ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE:
+			enemies[i] = new Enemy_CowBoy_Green_Right_Tumble(info.x, info.y);
 			break;
 		case ENEMY_TYPES::BARREL_ROLL:
 			enemies[i] = new Enemy_Barrel_Roll(info.x, info.y);

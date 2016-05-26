@@ -5,7 +5,7 @@
 #include "Module.h"
 #include "SDL_mixer\include\SDL_mixer.h"
 
-#define MAX_FX 400
+#define MAX_FX 200
 
 class ModuleAudio :public Module
 {

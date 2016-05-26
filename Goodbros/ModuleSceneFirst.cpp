@@ -57,10 +57,10 @@ bool ModuleSceneFirst::Start()
 	// Enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL);
-	App->barrelroll->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 210, 107, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::CAN, SCREEN_WIDTH/2 + 5, 130, NULL);
-	
 	App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 105, NULL);
+	App->barrelroll->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL);
 
 	//Barrels
 	App->structuresfront->AddStructure(App->structuresfront->barrel, 6, 144);
@@ -147,6 +147,10 @@ update_status ModuleSceneFirst::Update()
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_RIGHT, SCREEN_WIDTH, 100, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, SCREEN_WIDTH, 100, NULL);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 210, 107, NULL);
 	}
 
 	// Draw everything
