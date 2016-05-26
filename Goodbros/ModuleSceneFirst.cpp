@@ -106,8 +106,6 @@ update_status ModuleSceneFirst::Update()
 {
 	if (SDL_GetTicks() > time + 1000)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, -14, 110, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, -14, 110, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, SCREEN_WIDTH, 110, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 100, NULL);
@@ -126,7 +124,30 @@ update_status ModuleSceneFirst::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, SCREEN_WIDTH, 100, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 150, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::WHEELBARROW, 200, 110, 1);
-		time3 = SDL_GetTicks() + 10000;
+		time3 = SDL_GetTicks() + 6000;
+	}
+	
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
+	{
+		App->barrelroll->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::CAN, SCREEN_WIDTH / 2 + 5, 130, NULL);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, SCREEN_WIDTH, 110, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 100, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, SCREEN_WIDTH, 100, NULL);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_RIGHT, SCREEN_WIDTH, 100, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, SCREEN_WIDTH, 100, NULL);
 	}
 
 	// Draw everything
