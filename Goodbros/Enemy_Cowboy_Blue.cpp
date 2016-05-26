@@ -48,7 +48,7 @@ Enemy_CowBoy_Blue::Enemy_CowBoy_Blue(float x, float y) : Enemy(x, y)
 	grenade.PushBack({ 1210, 397, 36, 54 });
 	grenade.speed = 0.2f;
 
-	bwtumble.PushBack({107,565,36,54});
+	bwtumble.PushBack({ 107, 565, 36, 54 });
 	bwtumble.PushBack({ 149, 565, 41, 54 });
 	bwtumble.PushBack({ 195, 565, 36, 54 });
 	bwtumble.PushBack({ 237, 565, 36, 54 });

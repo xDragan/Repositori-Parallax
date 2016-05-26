@@ -268,7 +268,6 @@ bool Particle::Update()
 		{
 			App->particles->AddParticle(App->particles->dynamite_exp, position.x-10, position.y-10, COLLIDER_BOMB_EXPLOSION, 0);
 		}
-
 	}
 
 	position.x += speed.x;

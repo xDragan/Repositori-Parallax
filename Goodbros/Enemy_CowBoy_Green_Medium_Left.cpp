@@ -33,8 +33,6 @@ Enemy_CowBoy_Green_Medium_Left::Enemy_CowBoy_Green_Medium_Left(float x, float y)
 	dieexplotion.PushBack({ 156, 2971, 25, 40 });
 	dieexplotion.speed = 0.3f;
 
-
-
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	path.PushBack({ 1.0f, 0 }, 95, &forward);

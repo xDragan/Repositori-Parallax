@@ -1,11 +1,11 @@
 #include "Application.h"
-#include "Enemy_CowBoy_Green_Big_Left.h"
+#include "Enemy_CowBoy_Green_Right_Tumble.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "ModuleSceneFirst.h"
 
-Enemy_CowBoy_Green_Big_Left::Enemy_CowBoy_Green_Big_Left(float x, float y) : Enemy(x, y)
+Enemy_CowBoy_Green_Right_Tumble::Enemy_CowBoy_Green_Right_Tumble(float x, float y) : Enemy(x, y)
 {
 	forward.PushBack({ 1095, 2800, 30, 53 });
 	forward.PushBack({ 1056, 2800, 30, 53 });
@@ -42,8 +42,9 @@ Enemy_CowBoy_Green_Big_Left::Enemy_CowBoy_Green_Big_Left(float x, float y) : Ene
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ 1.0f, 0 }, 95, &forward);
+	path.PushBack({ -1.0f, 0 }, 95, &backward);
 	path.PushBack({ 0, 0 }, 67, &stop_shoot);
+	path.PushBack({ -1.0f, 0 }, 95, &backward);
 	path.PushBack({ 1.0f, 0 }, 95, &forward);
 	path.PushBack({ 0, 0 }, 67, &stop_shoot);
 	path.PushBack({ 1.0f, 0 }, 95, &forward);
@@ -53,7 +54,7 @@ Enemy_CowBoy_Green_Big_Left::Enemy_CowBoy_Green_Big_Left(float x, float y) : Ene
 	original_pos.y = y;
 }
 
-void Enemy_CowBoy_Green_Big_Left::Move()
+void Enemy_CowBoy_Green_Right_Tumble::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
 
@@ -63,7 +64,7 @@ void Enemy_CowBoy_Green_Big_Left::Move()
 	}
 }
 
-void Enemy_CowBoy_Green_Big_Left::Die()
+void Enemy_CowBoy_Green_Right_Tumble::Die()
 {
 	collider->type = COLLIDER_NONE;
 	App->player->win_condition++;

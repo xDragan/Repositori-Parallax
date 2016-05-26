@@ -38,7 +38,6 @@ Enemy_CowBoy_Blue3::Enemy_CowBoy_Blue3(float x, float y) : Enemy(x, y)
 	grenadeSm.speed = 0.1f;
 	grenadeSm.loop = false;
 
-
 	falld.PushBack({ 1064, 581, 25, 40 });
 
 	jumpSm.PushBack({ 1089, 581, 25, 40 });
@@ -46,17 +45,13 @@ Enemy_CowBoy_Blue3::Enemy_CowBoy_Blue3(float x, float y) : Enemy(x, y)
 
 	jump.PushBack({ 1203, 685, 33, 49 });
 	jump.loop = true;
-
-
 	
-
 	spawnn.PushBack({ 964, 581, 25, 40 });
 	spawnn.PushBack({ 989, 581, 25, 40 });
 	spawnn.PushBack({ 1014, 581, 25, 40 });
 	spawnn.PushBack({ 1039, 581, 25, 40 });
 	spawnn.PushBack({ 591, 1018, 25, 40 });
 	spawnn.speed = 0.05f;
-
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -65,7 +60,6 @@ Enemy_CowBoy_Blue3::Enemy_CowBoy_Blue3(float x, float y) : Enemy(x, y)
 	path.PushBack({ 0, 0 }, 20, &falld);
 	path.PushBack({ 0, -1.0 }, 15, &jumpSm);
 	path.PushBack({ 0, +1.0 }, 20, &jump);
-
 
 	path.PushBack({ -1.0f, 0 }, 90, &forward);
 	

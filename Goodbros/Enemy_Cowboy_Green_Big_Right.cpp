@@ -39,8 +39,6 @@ Enemy_CowBoy_Green_Big_Right::Enemy_CowBoy_Green_Big_Right(float x, float y) : E
 	dieexplotion.PushBack({ 759, 2848, 36, 54 });
 	dieexplotion.PushBack({ 807, 2848, 36, 54 });
 	dieexplotion.speed = 0.3f;
-	 
-	
 	        
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
