@@ -64,6 +64,7 @@ bool ModuleUI::CleanUp()
 }
 update_status ModuleUI::Update()
 {
+	dynamite_counter->ChangeNumber(dynamite);
 	credit_counter->ChangeNumber(credit);
 	score_counter->ChangeNumber(score);
 	if (true){
