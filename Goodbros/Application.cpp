@@ -17,7 +17,8 @@
 #include "ModuleStructures.h"
 #include "ModuleUI.h"
 #include "ModuleText.h"
-
+#include "ModuleUIntro.h"
+#include "ModuleSceneIntro2.h"
 Application::Application()
 {
 	int i = 0;
@@ -26,6 +27,7 @@ Application::Application()
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = scene_intro = new ModuleSceneIntro();
+	modules[i++] = intro2 = new ModuleSceneIntro2();
 	modules[i++] = scene_prestage = new ModuleScenePreStage();
 	modules[i++] = scene_space = new ModuleSceneFirst();
 	modules[i++] = scene_win = new ModuleSceneWin();
@@ -40,6 +42,7 @@ Application::Application()
 	modules[i++] = points = new ModuleEnemies();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = player = new ModulePlayer();
+	modules[i++] = introUI = new ModuleUIntro();
 	modules[i++] = UserUI = new ModuleUI();
 	modules[i++] = text = new ModuleText();
 	modules[i++] = collision = new ModuleCollision();
@@ -59,6 +62,7 @@ bool Application::Init()
 	bool ret = true;
 
 	// Deactivate modules here ----
+	intro2->Disable();
 	scene_space->Disable();
 	scene_prestage->Disable();
 	scene_win->Disable();

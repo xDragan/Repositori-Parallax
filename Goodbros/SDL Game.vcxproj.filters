@@ -115,6 +115,12 @@
     <ClCompile Include="Enemy_CowBoy_Green_Right_Tumble.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleUIntro.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSceneIntro2.cpp">
+      <Filter>Modules\Stages</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -242,6 +248,12 @@
     </ClInclude>
     <ClInclude Include="Enemy_CowBoy_Green_Right_Tumble.h">
       <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleUIntro.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSceneIntro2.h">
+      <Filter>Modules\Stages</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -50,7 +50,10 @@ void Enemy_Horse_Small_Right::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
 
-	if (dieshot.Finished() == true)
+	if (dieshot.Finished() == true){
+		path.PushBack({ -2.50f, 0.0f }, 200, &backward);
+	}
+	if (position.x == -10)
 	{
 		finished = true;
 	}
@@ -61,8 +64,12 @@ void Enemy_Horse_Small_Right::Die()
 	collider->type = COLLIDER_NONE;
 	App->player->win_condition++;
 	path.Erase();
-	path.PushBack({ 0.0f, 0.0f }, 150, &dieshot);
-	path.PushBack({ -2.50f, 0.0f }, 200, &backward);
+	if (hit == false){
+		path.PushBack({ 0.0f, 0.0f }, 130, &dieshot);
+		path.loop = false;
+	}
+
+	hit = true;
 
 
 }

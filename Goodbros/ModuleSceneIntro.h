@@ -2,7 +2,7 @@
 #define __MODULESCENEINTRO_H__
 
 #include "Module.h"
-
+#include "SDL\include\SDL.h"
 struct SDL_Texture;
 
 class ModuleSceneIntro : public Module
@@ -17,6 +17,7 @@ public:
 
 public:
 	SDL_Texture* background = nullptr;
+	uint ticks;
 	uint fx = 0;
 };
 

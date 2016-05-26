@@ -37,7 +37,6 @@ bool ModuleSceneFirst::Start()
 	App->structuresmiddle->Enable();
 	App->structuresback->Enable();
 	App->enemies->Enable();
-	App->UserUI->Enable();
 	App->barrelroll->Enable();
 	App->points->Enable();
 	App->smoke->Enable();

@@ -10,7 +10,7 @@
 #include "ModuleUI.h"
 #include "ModulePlayer.h"
 #include "ModuleText.h"
-
+#include "ModuleUIntro.h"
 ModuleUI::ModuleUI()
 {
 	insert_coins.PushBack({ 137, 3, 200, 25 });
@@ -48,7 +48,7 @@ bool ModuleUI::Start()
 
 	UserInterface = App->textures->Load("bloodbros/HUDandFONTS2.png");
 	credit_counter = App->text->AddNumber(144, SCREEN_HEIGHT - 7, credit, 2);
-	score_counter = App->text->AddNumber(18, 0, score, 8);
+	score_counter = App->text->AddNumber(18, 0, topscori, 8);
 	topscore = App->text->AddNumber(SCREEN_WIDTH/2 -25, 0, score, 8);
 	dynamite_counter = App->text->AddNumber(1, SCREEN_HEIGHT - 28, dynamite, 2);
 

@@ -23,6 +23,7 @@ public:
 	Enemy_Horse_Small_Right(float x, float y);
 	void Die();
 	void Move();
+	bool hit = false;
 };
 
 #endif // __ENEMY_COWBOY_GREEN_H__

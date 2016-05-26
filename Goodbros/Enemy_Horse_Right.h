@@ -8,7 +8,7 @@ class Enemy_Horse_Right: public Enemy
 private:
 	bool going_forward = true;
 	bool stop = false;
-
+	bool hit = false;
 	
 	Animation backward;	
 	Animation dieshot;
