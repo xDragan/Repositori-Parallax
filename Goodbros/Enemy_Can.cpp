@@ -33,6 +33,7 @@ Enemy_Can::Enemy_Can(float x, float y) : Enemy(x, y)
 
 	
 
+
 	collider = App->collision->AddCollider({ 0, 0, 15, 17 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_pos.x = x;
