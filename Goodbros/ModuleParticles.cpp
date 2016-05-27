@@ -33,7 +33,7 @@ ModuleParticles::ModuleParticles()
 	building_explosion.anim.PushBack({ 244, 230, 50, 50 });
 	building_explosion.anim.PushBack({ 300, 230, 52, 52 });
 	building_explosion.anim.loop = false;
-	building_explosion.anim.speed = 0.15f;
+	building_explosion.anim.speed = 0.25f;
 
 	// Dynamite
 	dynamite.anim.PushBack({ 505, 330, 17, 17 });
@@ -47,12 +47,12 @@ ModuleParticles::ModuleParticles()
 	dynamite.anim.loop = false;
 	dynamite.anim.speed = 0.1f;
 
-	dynamite_exp.anim.PushBack({ 19, 376, 42, 45 });
-	dynamite_exp.anim.PushBack({ 73, 376, 42, 45 });
-	dynamite_exp.anim.PushBack({ 116, 376, 42, 45 });
-	dynamite_exp.anim.PushBack({ 156, 376, 42, 45 });
+	dynamite_exp.anim.PushBack({ 19, 376, 32, 45 });
+	dynamite_exp.anim.PushBack({ 74, 376, 29, 39 });
+	dynamite_exp.anim.PushBack({ 116, 376, 31, 26 });
+	dynamite_exp.anim.PushBack({ 156, 375, 30, 31 });
 	dynamite_exp.anim.loop = false;
-	dynamite_exp.anim.speed = 0.1f;
+	dynamite_exp.anim.speed = 0.2f;
 
 	// Enemy dynamite
 	enemyDynamite.anim.PushBack({ 778, 330, 17, 17 });
@@ -111,9 +111,9 @@ ModuleParticles::ModuleParticles()
 	smoke.anim.speed = 0.14f;
 	smoke.life = 12000;
 
-	barrel.anim.PushBack({ 25, 443, 23, 41 });
-	barrel.anim.PushBack({ 60, 442, 47, 45 });
-	barrel.anim.PushBack({ 112, 444, 62, 59 });
+	barrel.anim.PushBack({ 42, 452, 23, 41 });
+	barrel.anim.PushBack({ 94, 449, 47, 45 });
+	barrel.anim.PushBack({ 148, 444, 62, 59 });
 	barrel.anim.speed = 0.26f;
 	barrel.life = 250;
 }
