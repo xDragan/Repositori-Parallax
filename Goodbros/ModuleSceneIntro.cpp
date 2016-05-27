@@ -10,6 +10,7 @@
 #include "ModuleUI.h"
 #include "ModuleText.h"
 #include "ModuleUIntro.h"
+#include "ModuleEnemies.h"
 
 ModuleSceneIntro::ModuleSceneIntro()
 {}
@@ -24,6 +25,8 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Parallax intro");
 	background = App->textures->Load("bloodbros/tribute2.png");
 	App->audio->Load("bloodbros/Parallax_Theme.ogg");
+	App->points->Enable();
+	App->smoke->Enable();
 	return true;
 }
 

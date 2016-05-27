@@ -30,17 +30,13 @@ bool ModuleSceneFirst::Start()
 
 	// Loading various modules
 	App->player->Enable();
-	App->particles->Enable();
+
 	App->collision->Enable();
 	App->aim->Enable();
 	App->structuresfront->Enable();
-	App->structuresmiddle->Enable();
-	App->structuresback->Enable();
-	App->enemies->Enable();
-	App->barrelroll->Enable();
-	App->points->Enable();
-	App->smoke->Enable();
-	App->enemies->Enable();
+
+	
+
 	App->UserUI->Enable();
 
 

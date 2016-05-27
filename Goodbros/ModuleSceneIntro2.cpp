@@ -8,6 +8,9 @@
 #include "ModuleAudio.h"
 #include "ModuleSceneFirst.h"
 #include "ModuleUIntro.h"
+#include "ModuleEnemies.h"
+#include "ModuleParticles.h"
+#include "ModuleStructures.h"
 ModuleSceneIntro2::ModuleSceneIntro2()
 {}
 
@@ -22,6 +25,9 @@ bool ModuleSceneIntro2::Start()
 	background = App->textures->Load("bloodbros/window inic.png");
 	App->audio->Load("bloodbros/TittleScreen.ogg");
 	App->introUI->Enable();
+	App->barrelroll->Enable();
+	App->particles->Enable();
+	App->enemies->Enable();
 	App->render->camera.x = App->render->camera.y = 0;
 
 	return true;

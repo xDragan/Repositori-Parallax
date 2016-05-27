@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "ModuleParticles.h"
 
 #define MAX_BUILDINGS 10
 
@@ -68,5 +69,4 @@ public:
 	Structure barrel, barrel2, barrel3;
 	Particle collapse;
 };
-
 #endif // __MODULESTRUCTURES_H__

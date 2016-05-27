@@ -8,6 +8,7 @@
 #include "ModuleAudio.h"
 #include "ModuleSceneFirst.h"
 #include "ModuleUIntro.h"
+#include "ModuleStructures.h"
 ModuleScenePreStage::ModuleScenePreStage()
 {}
 
@@ -23,6 +24,9 @@ bool ModuleScenePreStage::Start()
 	lvls = App->textures->Load("bloodbros/lvls_window_page.png");
 	App->audio->Load("bloodbros/PreStage.ogg");
 	App->introUI->Enable();
+	App->structuresmiddle->Enable();
+	App->structuresback->Enable();
+
 	App->render->camera.x = App->render->camera.y = 0;
 
 	return true;
