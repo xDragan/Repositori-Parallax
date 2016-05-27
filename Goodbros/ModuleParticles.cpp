@@ -55,15 +55,15 @@ ModuleParticles::ModuleParticles()
 	dynamite_exp.anim.speed = 0.1f;
 
 	// Enemy dynamite
-	enemyDynamite.anim.PushBack({ 642, 330, 17, 17 });
-	enemyDynamite.anim.PushBack({ 659, 330, 17, 17 });
-	enemyDynamite.anim.PushBack({ 676, 330, 17, 17 });
-	enemyDynamite.anim.PushBack({ 693, 330, 17, 17 });
-	enemyDynamite.anim.PushBack({ 710, 330, 17, 17 });
-	enemyDynamite.anim.PushBack({ 727, 330, 17, 17 });
-	enemyDynamite.anim.PushBack({ 744, 330, 17, 17 });
-	enemyDynamite.anim.PushBack({ 761, 330, 17, 17 });
 	enemyDynamite.anim.PushBack({ 778, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 761, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 744, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 727, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 710, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 693, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 676, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 659, 330, 17, 17 });
+	enemyDynamite.anim.PushBack({ 642, 330, 17, 17 });
 	enemyDynamite.anim.loop = false;
 	enemyDynamite.anim.speed = 0.1f;
 

@@ -13,6 +13,7 @@ private:
 	Animation backward;
 	Animation stop_shoot;
 	Animation dieshot;
+	Animation crouched;
 	Animation dieexplotion;
 	Animation spawnani;
 

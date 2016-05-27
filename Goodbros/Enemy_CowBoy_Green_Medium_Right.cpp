@@ -27,6 +27,9 @@ Enemy_CowBoy_Green_Medium_Right::Enemy_CowBoy_Green_Medium_Right(float x, float 
 	dieshot.speed = 0.09f;
 	dieshot.loop = false;
 
+	
+
+
 	dieexplotion.PushBack({ 1576, 2971, 25, 40 });
 	dieexplotion.PushBack({ 1629, 2971, 25, 40 });
 	dieexplotion.PushBack({ 1671, 2860, 25, 40 });

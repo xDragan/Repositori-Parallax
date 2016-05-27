@@ -47,11 +47,16 @@ Enemy_CowBoy_Green_Right_Tumble::Enemy_CowBoy_Green_Right_Tumble(float x, float 
 	dieexplotion.PushBack({ 759, 2848, 36, 54 });
 	dieexplotion.PushBack({ 807, 2848, 36, 54 });
 	dieexplotion.speed = 0.3f;
+	
+	crouched.PushBack({ 791, 2816, 36, 37 });
+	crouched.PushBack({827,2816,36,37});
+	crouched.speed = 0.05f;
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 40 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	path.PushBack({ 0, 0 }, 90, &spawnani);
 	path.PushBack({ -1.0f, 0 }, 45, &backward);
+	path.PushBack({ 0, 0 }, 45, &crouched);
 	path.PushBack({ 1.0f, 0 }, 80, &forward);
 	path.loop = false;
 
