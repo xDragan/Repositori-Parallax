@@ -51,7 +51,6 @@ bool ModuleUI::Start()
 	score_counter = App->text->AddNumber(18, 0, topscori, 8);
 	topscore = App->text->AddNumber(SCREEN_WIDTH/2 -25, 0, score, 8);
 	dynamite_counter = App->text->AddNumber(1, SCREEN_HEIGHT - 28, dynamite, 2);
-
 	return true;
 }
 bool ModuleUI::CleanUp()
@@ -59,11 +58,10 @@ bool ModuleUI::CleanUp()
 	LOG("Unloading intro");
 
 	App->textures->Unload(UserInterface);
-	App->text->EraseText(credit_text);
 	App->text->EraseText(credit_counter);
 	App->text->EraseText(score_counter);
+	App->text->EraseText(topscore);
 	App->text->EraseText(dynamite_counter);
-
 	return true;
 }
 update_status ModuleUI::Update()
@@ -71,8 +69,10 @@ update_status ModuleUI::Update()
 	dynamite_counter->ChangeNumber(dynamite);
 	credit_counter->ChangeNumber(credit);
 	score_counter->ChangeNumber(score);
+	if (score >= topscori) topscori = score;
 	topscore->ChangeNumber(topscori);
-	if (score >=topscori) topscori = score;
+
+
 	if (true){
 		App->render->Blit(UserInterface, 69, 202, &(foe_bar.GetCurrentFrame()), 0.5);
 		App->render->Blit(UserInterface, 73, 202, &(foe_bar.GetCurrentFrame()), 0.5);

@@ -34,6 +34,7 @@ bool ModuleScenePreStage::CleanUp()
 	LOG("Unloading game scene");
 	App->textures->Unload(lvls);
 	App->textures->Unload(background);
+	App->introUI->CleanUp();
 	App->introUI->Disable();
 	return true;
 }

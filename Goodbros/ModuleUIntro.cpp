@@ -55,8 +55,7 @@ bool ModuleUIntro::CleanUp()
 	App->text->EraseText(credit_text);
 	App->text->EraseText(credit_counter);
 	App->text->EraseText(score_counter);
-
-
+	App->text->EraseText(topscore);
 	return true;
 }
 update_status ModuleUIntro::Update()

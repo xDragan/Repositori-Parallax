@@ -43,6 +43,7 @@ bool ModuleSceneFirst::Start()
 	App->enemies->Enable();
 	App->UserUI->Enable();
 
+
 	// Player reset position & death animation
 	App->player->position.x = 120;
 	App->player->position.y = 150;

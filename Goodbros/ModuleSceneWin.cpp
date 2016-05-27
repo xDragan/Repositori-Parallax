@@ -34,6 +34,8 @@ bool ModuleSceneWin::Start()
 	App->structuresmiddle->Disable();
 	App->structuresback->Disable();
 	ticks = SDL_GetTicks();
+	App->building_explosion->Disable();
+	App->UserUI->Disable();
 	background = App->textures->Load("bloodbros/win_scene.png");
 	App->audio->Load("bloodbros/Victory.ogg");
 	App->render->camera.x = App->render->camera.y = 0;
