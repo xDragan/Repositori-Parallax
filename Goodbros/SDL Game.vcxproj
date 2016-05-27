@@ -74,7 +74,6 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_Barrel_Roll.h" />
     <ClInclude Include="Enemy_Can.h" />
-    <ClInclude Include="Enemy_Couple_Girl.h" />
     <ClInclude Include="Enemy_Couple_Guy.h" />
     <ClInclude Include="Enemy_Cowboy_Blue.h" />
     <ClInclude Include="Enemy_Cowboy_Blue2.h" />
@@ -123,7 +122,6 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_Barrel_Roll.cpp" />
     <ClCompile Include="Enemy_Can.cpp" />
-    <ClCompile Include="Enemy_Couple_Girl.cpp" />
     <ClCompile Include="Enemy_Couple_Guy.cpp" />
     <ClCompile Include="Enemy_Cowboy_Blue.cpp" />
     <ClCompile Include="Enemy_Cowboy_Blue2.cpp" />
