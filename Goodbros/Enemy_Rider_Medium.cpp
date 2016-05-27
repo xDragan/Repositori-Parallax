@@ -20,10 +20,11 @@ Enemy_Rider_Medium::Enemy_Rider_Medium(float x, float y) : Enemy(x, y)
 	stop_shoot.speed = 0.04f;
 	stop_shoot.loop = true;
 
-	dieshot.PushBack({ 662, 2848, 36, 54 });
-	dieshot.PushBack({ 771, 2848, 36, 54 });
-	dieshot.PushBack({ 759, 2848, 36, 54 });
-	dieshot.PushBack({ 807, 2848, 36, 54 });
+	dieshot.PushBack({ 1576, 2971, 25, 40 });
+	dieshot.PushBack({ 1629, 2971, 25, 40 });
+	dieshot.PushBack({ 1671, 2860, 25, 40 });
+	dieshot.PushBack({ 1722, 2860, 25, 40 });
+
 	dieshot.speed = 0.09f;
 	dieshot.loop = false;
 
@@ -55,6 +56,6 @@ void Enemy_Rider_Medium::Die()
 	collider->type = COLLIDER_NONE;
 	App->player->win_condition++;
 	path.Erase();
-	path.PushBack({ 0.0f, -0.05f }, 40, &dieshot);
+	path.PushBack({ 0.0f, 0.5f }, 100, &dieshot);
 	path.loop = false;
 }
