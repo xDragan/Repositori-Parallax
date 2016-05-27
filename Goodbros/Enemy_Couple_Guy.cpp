@@ -26,19 +26,19 @@ Enemy_Couple_Guy::Enemy_Couple_Guy(float x, float y) : Enemy(x, y)
 	aware.loop = true;
 
 
-	run.PushBack({ 757, 3123, 34, 45 });
-	run.PushBack({ 803, 3123, 34, 45 });
-	run.PushBack({ 863, 3123, 34, 45 });
-	run.PushBack({ 907, 3123, 34, 45 });
+	run.PushBack({ 757, 3114, 34, 45 });
+	run.PushBack({ 803, 3114, 34, 45 });
+	run.PushBack({ 863, 3114, 34, 45 });
+	run.PushBack({ 907, 3114, 34, 45 });
 	
-	run.speed = 0.10f;
+	run.speed = 0.20f;
 
 	
 
 
 	path.PushBack({ 0, 0 }, 200, &idle);
 	path.PushBack({ 0, 0 }, 100, &aware);
-	path.PushBack({ 2.0f, 0 }, 100, &run);
+	path.PushBack({ 2.0f, 0 }, 200, &run);
 
 	collider = App->collision->AddCollider({ 0, 0, 26, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
