@@ -85,6 +85,7 @@
     <ClInclude Include="Enemy_Girl.h" />
     <ClInclude Include="Enemy_Horse_Right.h" />
     <ClInclude Include="Enemy_Horse_Small_Right.h" />
+    <ClInclude Include="Enemy_Rider_Medium.h" />
     <ClInclude Include="Enemy_wheelbarrow.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
@@ -130,6 +131,7 @@
     <ClCompile Include="Enemy_Girl.cpp" />
     <ClCompile Include="Enemy_Horse_Right.cpp" />
     <ClCompile Include="Enemy_Horse_Small_Right.cpp" />
+    <ClCompile Include="Enemy_Rider_Medium.cpp" />
     <ClCompile Include="Enemy_wheelbarrow.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />

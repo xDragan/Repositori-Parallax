@@ -15,8 +15,8 @@ Enemy_CowBoy_Green_Medium_Right::Enemy_CowBoy_Green_Medium_Right(float x, float 
 	backward.PushBack({ 1144, 2860, 25, 40 });
 	backward.speed = 0.15f;
 
-	stop_shoot.PushBack({ 374, 2848, 25, 40 });
-	stop_shoot.PushBack({ 374, 2848, 25, 40 });
+	stop_shoot.PushBack({ 1095, 2860, 25, 40 });
+	stop_shoot.PushBack({ 1095, 2860, 25, 40 });
 	stop_shoot.speed = 0.04f;
 	stop_shoot.loop = true;
 

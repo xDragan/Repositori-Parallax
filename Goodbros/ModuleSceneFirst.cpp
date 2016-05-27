@@ -120,6 +120,7 @@ update_status ModuleSceneFirst::Update()
 	if (SDL_GetTicks() > time3)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_RIGHT, SCREEN_WIDTH, 100, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::RIDER, SCREEN_WIDTH, 94, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, SCREEN_WIDTH, 100, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::PIG, 210, 150, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::WHEELBARROW, 200, 110, 1);

@@ -121,6 +121,9 @@
     <ClCompile Include="ModuleSceneIntro2.cpp">
       <Filter>Modules\Stages</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_Rider_Medium.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -254,6 +257,9 @@
     </ClInclude>
     <ClInclude Include="ModuleSceneIntro2.h">
       <Filter>Modules\Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Rider_Medium.h">
+      <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
