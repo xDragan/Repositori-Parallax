@@ -22,6 +22,7 @@
 #include "Enemy_Rider_Medium.h"
 #include "Enemy_Rider_Small_Right.h"
 #include "Enemy_Couple_Guy.h"
+#include "Enemy_Couple_Girl.h"
 #include "ModuleStructures.h"
 #include "ModuleUI.h"
 #include "Module_Points.h"
@@ -180,6 +181,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::COUPLE_GUY:
 			enemies[i] = new Enemy_Couple_Guy(info.x, info.y);
+			break;
+		case ENEMY_TYPES::COUPLE_GIRL:
+			enemies[i] = new Enemy_Couple_Girl(info.x, info.y);
 			break;
 		case ENEMY_TYPES::BLUE_COWBOY:
 			enemies[i] = new Enemy_CowBoy_Blue(info.x, info.y);

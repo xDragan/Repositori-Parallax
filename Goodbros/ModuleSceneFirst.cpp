@@ -62,7 +62,8 @@ bool ModuleSceneFirst::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::CAN, SCREEN_WIDTH/2 + 5, 130, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 105, NULL);
 	App->barrelroll->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL);
-	App->enemies->AddEnemy(ENEMY_TYPES::COUPLE_GUY, SCREEN_WIDTH-50, 100, NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::COUPLE_GUY, SCREEN_WIDTH-100, 100, NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::COUPLE_GIRL, SCREEN_WIDTH - 90, 100, NULL);
 	
 	//Barrels
 	App->structuresfront->AddStructure(App->structuresfront->barrel, 6, 144);
