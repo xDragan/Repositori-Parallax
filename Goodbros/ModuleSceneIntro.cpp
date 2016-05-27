@@ -22,7 +22,7 @@ bool ModuleSceneIntro::Start()
 {
 	ticks = SDL_GetTicks();
 	LOG("Loading Parallax intro");
-	background = App->textures->Load("bloodbros/tribute.png");
+	background = App->textures->Load("bloodbros/tribute2.png");
 	App->audio->Load("bloodbros/Parallax_Theme.ogg");
 	return true;
 }
