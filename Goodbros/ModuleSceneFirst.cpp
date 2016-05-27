@@ -158,8 +158,7 @@ update_status ModuleSceneFirst::Update()
 
 	// Draw everything
 	App->render->Blit(background, 0, 0, NULL);
-
-	if (App->player->win_condition >= 18)
+	if (App->player->win_condition >= 18 && App->player->windance.Finished() == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
 		App->player->win_condition = 0;

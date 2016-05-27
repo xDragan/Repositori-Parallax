@@ -214,6 +214,8 @@ ModulePlayer::ModulePlayer()
 	windance.PushBack({ 1187, 126, 46, 72 });
 	windance.PushBack({ 1240, 126, 46, 72 });
 	windance.PushBack({ 1299, 126, 46, 72 });
+	windance.speed = 0.05;
+	windance.loop = true;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -267,6 +269,7 @@ update_status ModulePlayer::Update()
 	{
 		player_coll->type = COLLIDER_PLAYER;
 	}
+	if (win_condition >= 18) Status = WIN;
 	if (godmode == true)
 	{
 		player_coll->type = COLLIDER_NONE;
@@ -662,6 +665,10 @@ update_status ModulePlayer::Update()
 			App->player->lose++;
 			Status = IDLE;
 		}
+		break;
+	case WIN:
+		player_coll->type = COLLIDER_NONE;
+		current_animation = &windance;
 		break;
 	}
 

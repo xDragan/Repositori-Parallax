@@ -19,6 +19,7 @@ enum type
 	SHOOTING_DOWN,
 	ROLLING,
 	DIE,
+	WIN,
 };
 class ModulePlayer : public Module
 {
