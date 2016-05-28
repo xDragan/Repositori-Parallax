@@ -42,6 +42,7 @@ struct EnemyInfo
 	ENEMY_TYPES type = ENEMY_TYPES::NO_TYPE;
 	int x, y;
 	uint points;
+	Uint32 born = 0;
 };
 
 class ModuleEnemies : public Module
@@ -59,7 +60,7 @@ public:
 
 	bool Start();
 	bool CleanUp();
-	bool AddEnemy(ENEMY_TYPES type, int x, int y, uint points);
+	bool AddEnemy(ENEMY_TYPES type, int x, int y, uint points, Uint32 delay);
 
 	void OnCollision(Collider* c1, Collider* c2);
 private:

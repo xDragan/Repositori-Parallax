@@ -54,7 +54,7 @@ void Enemy_Couple_Guy::Move()
 
 void Enemy_Couple_Guy::Die()
 {
-	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 5, position.y, 1);
+	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 5, position.y, 1, NULL);
 	
 
 }

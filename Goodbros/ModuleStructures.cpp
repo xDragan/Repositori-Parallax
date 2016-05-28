@@ -352,7 +352,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 27, 10000);
+				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 27, 10000, NULL);
 				//App->audio->PlayFx(collapse.fx);
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
@@ -389,7 +389,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000);
+				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000, NULL);
 				//App->audio->PlayFx(collapse.fx);
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
@@ -416,7 +416,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 35, active[i]->position.y, COLLIDER_NONE, 300);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 70, active[i]->position.y, COLLIDER_NONE, 300);
 
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 7000);
+				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 7000, NULL);
 				active[i]->hits++;
 			}
 		}
@@ -435,7 +435,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 3, active[i]->position.y + 20, COLLIDER_NONE, 300);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 38, active[i]->position.y + 20, COLLIDER_NONE, 300);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 15, active[i]->position.y - 20, COLLIDER_NONE, 500);
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000);
+				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000, NULL);
 				active[i]->hits++;
 			}
 		}
@@ -454,7 +454,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 3, active[i]->position.y + 15, COLLIDER_NONE, 300);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 38, active[i]->position.y + 15, COLLIDER_NONE, 300);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 10, active[i]->position.y - 20, COLLIDER_NONE, 500);
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000);
+				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000, NULL);
 				active[i]->hits++;
 			}
 		}
@@ -482,7 +482,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 2)
 			{
-				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 3, active[i]->position.y, 1000);
+				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 3, active[i]->position.y, 1000, NULL);
 				active[i]->Coll_Struct.x = 0;
 				active[i]->Coll_Struct.y = 0;
 				active[i]->Coll_Struct.w = 0;

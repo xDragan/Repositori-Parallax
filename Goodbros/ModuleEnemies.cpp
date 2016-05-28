@@ -62,9 +62,12 @@ update_status ModuleEnemies::PreUpdate()
 		{
 			if (queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
 			{
-				SpawnEnemy(queue[i]);
-				queue[i].type = ENEMY_TYPES::NO_TYPE;
-				LOG("Spawning enemy at %d", queue[i].x * SCREEN_SIZE);
+				if (queue[i].born < SDL_GetTicks()){
+					SpawnEnemy(queue[i]);
+					queue[i].type = ENEMY_TYPES::NO_TYPE;
+					LOG("Spawning enemy at %d", queue[i].x * SCREEN_SIZE);
+				}
+				
 			}
 		}
 	}
@@ -131,7 +134,7 @@ bool ModuleEnemies::CleanUp()
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, uint points)
+bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, uint points, Uint32 delay)
 {
 	bool ret = false;
 
@@ -143,6 +146,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y, uint points)
 			queue[i].type = type;
 			queue[i].x = x;
 			queue[i].y = y;
+			queue[i].born = SDL_GetTicks() + delay;
 			ret = true;
 			break;
 		}

@@ -146,7 +146,7 @@ void Enemy_Can::Die()
 		fly = 0;
 	}
 	if (hit == true)
-	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 5, position.y, 1);
+		App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 5, position.y, 1, NULL);
 
 
 	hit = true;
