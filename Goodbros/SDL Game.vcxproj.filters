@@ -133,6 +133,15 @@
     <ClCompile Include="Enemy_Couple_Girl.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_Cowboy_Green_Top_Fabten_1.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_CowBoy_Green_Top_Fabten_2.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_CowBoy_Green_Top_Fabten_3.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -277,6 +286,15 @@
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Couple_Girl.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Cowboy_Green_Top_Fabten_1.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_CowBoy_Green_Top_Fabten_2.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_CowBoy_Green_Top_Fabten_3.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

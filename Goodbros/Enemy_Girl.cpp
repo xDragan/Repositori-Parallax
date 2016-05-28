@@ -14,7 +14,7 @@ Enemy_Girl::Enemy_Girl(float x, float y) : Enemy(x, y)
 	run.PushBack({152,3123,34,45});
 	run.PushBack({202,3123,34,45});
 	run.PushBack({246,3123,34,45});
-	run.speed = 0.10f;
+	run.speed = 0.30f;
 	run.loop = true;
 	
 

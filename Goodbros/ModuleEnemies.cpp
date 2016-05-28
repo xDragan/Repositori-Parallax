@@ -28,6 +28,9 @@
 #include "Module_Points.h"
 #include "Enemy_wheelbarrow.h"
 #include "SDL/include/SDL_timer.h"
+#include "Enemy_CowBoy_Green_Top_Fabten_1.h"
+#include "Enemy_CowBoy_Green_Top_Fabten_2.h"
+#include "Enemy_CowBoy_Green_Top_Fabten_3.h"
 
 #define SPAWN_MARGIN 40
 
@@ -208,6 +211,15 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE:
 			enemies[i] = new Enemy_CowBoy_Green_Right_Tumble(info.x, info.y);
+			break;
+		case ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_1:
+			enemies[i] = new Enemy_CowBoy_Green_Top_Fabten_1(info.x, info.y);
+			break;
+		case ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_2:
+			enemies[i] = new Enemy_CowBoy_Green_Top_Fabten_2(info.x, info.y);
+			break;
+		case ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_3:
+			enemies[i] = new Enemy_CowBoy_Green_Top_Fabten_3(info.x, info.y);
 			break;
 		case ENEMY_TYPES::BARREL_ROLL:
 			enemies[i] = new Enemy_Barrel_Roll(info.x, info.y);

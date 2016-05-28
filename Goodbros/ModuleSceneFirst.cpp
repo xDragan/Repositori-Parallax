@@ -108,6 +108,9 @@ update_status ModuleSceneFirst::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, SCREEN_WIDTH, 110, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 100, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, SCREEN_WIDTH, 100, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_1, 210, 107, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_2, 210, 107, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_3, 210, 107, NULL);
 		time = SDL_GetTicks() + 5000;
 	}
 	if (SDL_GetTicks() > time2)
@@ -152,6 +155,12 @@ update_status ModuleSceneFirst::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 210, 107, NULL);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN)
+	{
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_1, 210, 107, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_2, 210, 107, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_3, 210, 107, NULL);
 	}
 
 	// Draw everything
