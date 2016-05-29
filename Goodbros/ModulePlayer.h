@@ -20,6 +20,7 @@ enum type
 	ROLLING,
 	DIE,
 	WIN,
+
 };
 class ModulePlayer : public Module
 {
@@ -66,6 +67,20 @@ public:
 	Animation die;
 	Animation win;
 	Animation windance;
+	//GOD MODE
+	Animation gidle[7];
+	Animation gforward;
+	Animation gbackward;
+	Animation gshoot[7];
+	Animation gshootdown[7];
+	Animation gdown[7];
+	Animation gftumble;
+	Animation gbtumble;
+	Animation gdownftumble;
+	Animation gdownbtumble;
+	Animation gwin;
+	Animation gwindance;
+
 	iPoint position;
 	
 	Particle deathsound;

@@ -216,6 +216,172 @@ ModulePlayer::ModulePlayer()
 	windance.PushBack({ 1299, 126, 46, 72 });
 	windance.speed = 0.05;
 	windance.loop = true;
+
+	//GOD MODE
+
+	// idle animation //
+	gidle[far_left].PushBack({ 86, 1057, 60, 69 });
+	gidle[Middle_left].PushBack({ 146, 1057, 51, 69 });
+	gidle[near_left].PushBack({ 203, 1057, 45, 69 });
+	gidle[middle].PushBack({ 254, 1057, 45, 69 });
+	gidle[near_right].PushBack({ 305, 1057, 45, 69 });
+	gidle[middle_right].PushBack({ 357, 1057, 56, 69 });
+	gidle[far_right].PushBack({ 409, 1057, 53, 69 });
+
+    gdown[far_left].PushBack({ 501, 1057, 56, 69 });
+	gdown[Middle_left].PushBack({ 561, 1057, 47, 69 });
+	gdown[near_left].PushBack({ 615, 1057, 45, 69 });
+	gdown[middle].PushBack({ 668, 1057, 45, 69 });
+	gdown[near_right].PushBack({ 719, 1057, 45, 69 });
+	gdown[middle_right].PushBack({ 774, 1057, 52, 69 });
+	gdown[far_right].PushBack({ 826, 1057, 54, 69 });
+
+	//Shoot animations //
+	gshoot[far_left].PushBack({ 86, 1187, 60, 69 });
+	gshoot[far_left].PushBack({ 86, 1057, 60, 69 });
+	gshoot[far_left].PushBack({ 86, 1314, 60, 69 });
+	gshoot[Middle_left].PushBack({ 146, 1187, 43, 73 });
+	gshoot[Middle_left].PushBack({ 146, 1057, 51, 73 });
+	gshoot[Middle_left].PushBack({ 146, 10314, 43, 73 });
+	gshoot[near_left].PushBack({ 203, 1187, 38, 70 });
+	gshoot[near_left].PushBack({ 203, 1057, 45, 69 });
+	gshoot[near_left].PushBack({ 203, 1314, 45, 69 });
+
+	gshoot[middle].PushBack({ 254, 1187, 45, 69 });
+	gshoot[middle].PushBack({ 254, 1057, 45, 69 });
+	gshoot[middle].PushBack({ 254, 1314, 45, 69 });
+
+	gshoot[near_right].PushBack({ 305, 1187, 45, 69 });
+	gshoot[near_right].PushBack({ 305, 1057, 45, 69 });
+	gshoot[near_right].PushBack({ 305, 1314, 45, 69 });
+	gshoot[middle_right].PushBack({ 357, 1187, 56, 69 });
+	gshoot[middle_right].PushBack({ 357, 1057, 56, 69 });
+	gshoot[middle_right].PushBack({ 357, 1314, 56, 69 });
+	gshoot[far_right].PushBack({ 413, 1187, 53, 69 });
+	gshoot[far_right].PushBack({ 413, 1057, 53, 69 });
+	gshoot[far_right].PushBack({ 413, 1314, 53, 69 });
+
+	//shot speed
+	gshoot[far_left].speed = 0.22f;
+	gshoot[Middle_left].speed = 0.22f;
+	gshoot[near_left].speed = 0.22f;
+	gshoot[middle].speed = 0.22f;
+	gshoot[near_right].speed = 0.22f;
+	gshoot[middle_right].speed = 0.22f;
+	gshoot[far_right].speed = 0.22f;
+
+	//Shoot Seated Animation//
+	gshootdown[far_left].PushBack({ 501, 1187, 56, 70 });
+	gshootdown[far_left].PushBack({ 501, 1057, 56, 69 });
+	gshootdown[far_left].PushBack({ 501, 1314, 56, 69 });
+	gshootdown[Middle_left].PushBack({ 561, 1187, 47, 69 });
+	gshootdown[Middle_left].PushBack({ 561, 1057, 47, 69 });
+	gshootdown[Middle_left].PushBack({ 561, 1314, 47, 69 });
+	gshootdown[near_left].PushBack({ 615, 1187, 45, 69 });
+	gshootdown[near_left].PushBack({ 615, 1057, 45, 69 });
+	gshootdown[near_left].PushBack({ 615, 1314, 45, 69 });
+
+	gshootdown[middle].PushBack({ 668, 1187, 45, 69 });
+	gshootdown[middle].PushBack({ 668, 1057, 45, 69 });
+	gshootdown[middle].PushBack({ 668, 1314, 45, 69 });
+
+	gshootdown[near_right].PushBack({ 719, 1187, 45, 69 });
+	gshootdown[near_right].PushBack({ 719, 1057, 45, 69 });
+	gshootdown[near_right].PushBack({ 719, 1314, 45, 69 });
+	gshootdown[middle_right].PushBack({ 774, 1187, 52, 69 });
+	gshootdown[middle_right].PushBack({ 774, 1057, 52, 69 });
+	gshootdown[middle_right].PushBack({ 774, 1314, 52, 69 });
+	gshootdown[far_right].PushBack({ 826, 1187, 54, 69 });
+	gshootdown[far_right].PushBack({ 826, 1057, 54, 69 });
+	gshootdown[far_right].PushBack({ 826, 1314, 54, 69 });
+
+	//shot  seated speed
+	gshootdown[far_left].speed = 0.20f;
+	gshootdown[Middle_left].speed = 0.20f;
+	gshootdown[near_left].speed = 0.20f;
+	gshootdown[middle].speed = 0.20f;
+	gshootdown[near_right].speed = 0.20f;
+	gshootdown[middle_right].speed = 0.20f;
+	gshootdown[far_right].speed = 0.20f;
+
+	// walk forward animation//	
+	gforward.PushBack({ 96, 1438, 46, 60 });
+	gforward.PushBack({ 152, 1438, 46, 60 });
+	gforward.PushBack({ 203, 1438, 46, 60 });
+	gforward.PushBack({ 255, 1438, 46, 60 });
+	gforward.PushBack({ 306, 1438, 46, 60 });
+	gforward.PushBack({ 357, 1438, 46, 60 });
+	gforward.speed = 0.2f;
+
+	// frontward tumble animation//
+	gftumble.PushBack({ 511, 1436, 46, 62 });
+	gftumble.PushBack({ 564, 1436, 97, 70 });
+	gftumble.PushBack({ 668, 1436, 46, 62 });
+	gftumble.PushBack({ 720, 1436, 46, 62 });
+	gftumble.PushBack({ 774, 1436, 46, 62 });
+	gftumble.PushBack({ 825, 1436, 46, 62 });
+	gftumble.PushBack({ 875, 1436, 46, 62 });
+	gftumble.PushBack({ 928, 1436, 46, 62 });
+	gftumble.loop = true;
+	gftumble.speed = 0.15f;
+
+	//down frontward tumble animation//
+	gdownftumble.PushBack({ 720, 1436, 46, 62 });
+	gdownftumble.PushBack({ 774, 1436, 46, 62 });
+	gdownftumble.PushBack({ 825, 1436, 46, 62 });
+	gdownftumble.PushBack({ 875, 1436, 46, 62 });
+	gdownftumble.PushBack({ 928, 1436, 46, 62 });
+	gdownftumble.speed = 0.15f;
+
+	//walk backward animation//
+	gbackward.PushBack({ 96, 1508, 46, 60 });
+	gbackward.PushBack({ 151, 1508, 46, 60 });
+	gbackward.PushBack({ 202, 1508, 46, 60 });
+	gbackward.PushBack({ 254, 1508, 46, 60 });
+	gbackward.PushBack({ 306, 1508, 46, 60 });
+	gbackward.PushBack({ 357, 1508, 46, 60 });
+	gbackward.speed = 0.2f;
+
+	//backward tumble animation//
+	gbtumble.PushBack({ 928, 1506, 46, 62 });
+	gbtumble.PushBack({ 826, 1506, 97, 62 });
+	gbtumble.PushBack({ 774, 1506, 46, 62 });
+	gbtumble.PushBack({ 720, 1506, 46, 62 });
+	gbtumble.PushBack({ 668, 1506, 46, 62 });
+	gbtumble.PushBack({ 615, 1506, 46, 62 });
+	gbtumble.PushBack({ 564, 1506, 46, 62 });
+	gbtumble.PushBack({ 511, 1506, 46, 62 });
+	gbtumble.loop = true;
+	gbtumble.speed = 0.15f;
+
+	//down backward tumble animation//
+	gdownbtumble.PushBack({ 720, 1506, 46, 62 });
+	gdownbtumble.PushBack({ 668, 1506, 46, 62 });
+	gdownbtumble.PushBack({ 615, 1506, 46, 62 });
+	gdownbtumble.PushBack({ 564, 1506, 46, 62 });
+	gdownbtumble.PushBack({ 511, 1506, 46, 62 });
+	gdownbtumble.speed = 0.15f;
+
+
+	//win animation// 
+	gwin.PushBack({ 1032, 1054, 46, 72 });
+	gwin.PushBack({ 1084, 1054, 46, 72 });
+	gwin.PushBack({ 1136, 1054, 46, 72 });
+
+	//win dance animation//
+	gwindance.PushBack({ 1187, 1054, 46, 72 });
+	gwindance.PushBack({ 1240, 1057, 46, 72 });
+	gwindance.PushBack({ 1299, 1057, 46, 72 });
+	gwindance.PushBack({ 1358, 1057, 46, 72 });
+	gwindance.PushBack({ 1032, 1126, 46, 72 });
+	gwindance.PushBack({ 1084, 1126, 46, 72 });
+	gwindance.PushBack({ 1136, 1126, 46, 72 });
+	gwindance.PushBack({ 1187, 1126, 46, 72 });
+	gwindance.PushBack({ 1240, 1126, 46, 72 });
+	gwindance.PushBack({ 1299, 1126, 46, 72 });
+	gwindance.speed = 0.05;
+	gwindance.loop = true;
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -286,8 +452,12 @@ update_status ModulePlayer::Update()
 	switch (Status)
 	{
 	case IDLE:
-		current_animation = &idle[Looking_at];
-
+		if (godmode == true){
+			current_animation = &gidle[Looking_at];
+		}
+		else{
+			current_animation = &idle[Looking_at];
+		}
 		if (looking_at() == far_left)
 		{
 			player_coll->SetPos(position.x + 20, position.y + 8);
@@ -339,8 +509,12 @@ update_status ModulePlayer::Update()
 		break;
 
 	case SHOOTING:
-		current_animation = &shoot[Looking_at];
-
+		if (godmode == true){
+			current_animation = &gshoot[Looking_at];
+		}
+		else{
+			current_animation = &shoot[Looking_at];
+		}
 		if (looking_at() == far_left)
 		{
 			player_coll->SetPos(position.x + 20, position.y + 8);
@@ -385,7 +559,12 @@ update_status ModulePlayer::Update()
 		break;
 
 	case LEFT:
-		current_animation = &backward;
+		if (godmode == true){
+			current_animation = &gbackward;
+		}
+		else{
+			current_animation = &backward;
+		}
 		player_coll->SetPos(position.x + 8, position.y);
 
 		if (position.x > 0)
@@ -395,10 +574,18 @@ update_status ModulePlayer::Update()
 		}
 		if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		{
+			gbtumble.loops = 0;
+			gbtumble.Reset();
 			btumble.loops = 0;
 			btumble.Reset();
+			if (godmode == true){
+				current_animation = &gbtumble;
+			}
+			else{
 			current_animation = &btumble;
+		}
 			Status = ROLLING;
+		
 		}
 		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN)
 		{
@@ -423,7 +610,12 @@ update_status ModulePlayer::Update()
 		break;
 
 	case RIGHT:
-		current_animation = &forward;
+		if (godmode == true){
+			current_animation = &gforward;
+		}
+		else{
+			current_animation = &forward;
+		}
 		player_coll->SetPos(position.x + 16, position.y);
 
 		if (position.x < 220)
@@ -432,9 +624,17 @@ update_status ModulePlayer::Update()
 		}
 		if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN)
 		{
+
+			gftumble.loops = 0;
+			gftumble.Reset();
 			ftumble.loops = 0;
 			ftumble.Reset();
-			current_animation = &ftumble;
+			if (godmode == true){
+				current_animation = &gftumble;
+			}
+			else{
+				current_animation = &ftumble;
+			}
 			Status = ROLLING;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN)
@@ -460,7 +660,12 @@ update_status ModulePlayer::Update()
 		break;
 
 	case DOWN:
-		current_animation = &down[Looking_at];
+		if (godmode == true){
+			current_animation = &gdown[Looking_at];
+		}
+		else{
+			current_animation = &down[Looking_at];
+		}
 
 		if (looking_at() == far_left)
 		{
@@ -492,16 +697,30 @@ update_status ModulePlayer::Update()
 		}
 		if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 		{
+			gdownftumble.loops = 0;
+			gdownftumble.Reset();
 			downftumble.loops = 0;
 			downftumble.Reset();
-			current_animation = &downftumble;
+			if (godmode == true){
+				current_animation = &gdownftumble;
+			}
+			else{
+				current_animation = &downftumble;
+			}
 			Status = ROLLING;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 		{
+			gdownbtumble.loops = 0;
+			gdownbtumble.Reset();
 			downbtumble.loops = 0;
 			downbtumble.Reset();
-			current_animation = &downbtumble;
+			if (godmode == true){
+				current_animation = &gdownbtumble;
+			}
+			else{
+				current_animation = &downbtumble;
+			}
 			Status = ROLLING;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN)
@@ -519,8 +738,12 @@ update_status ModulePlayer::Update()
 		break;
 
 	case SHOOTING_DOWN:
-		current_animation = &shootdown[Looking_at];
-
+		if (godmode == true){
+			current_animation = &gshootdown[Looking_at];
+		}
+		else{
+			current_animation = &shootdown[Looking_at];
+		}
 		if (looking_at() == far_left)
 		{
 			player_coll->SetPos(position.x + 20, position.y + 24);
@@ -566,8 +789,9 @@ update_status ModulePlayer::Update()
 
 	case ROLLING:
 		player_coll->type = COLLIDER_NONE;
+		
 
-		if (current_animation == &btumble)
+		if (current_animation == &btumble || current_animation == &gbtumble)
 		{
 			if (position.x < 5)
 			{
@@ -584,54 +808,43 @@ update_status ModulePlayer::Update()
 				break;
 			}
 		}
-		if (current_animation == &ftumble)
+		if (current_animation == &ftumble || current_animation == &gftumble)
 		{
-			current_animation = &ftumble;
 
-			if (current_animation == &ftumble)
+			if (position.x > 210)
 			{
-				if (position.x > 210)
-				{
-					speed = 0;
-				}
-				else
-				{
-					position.x += 1.5;
-				}
-				if (current_animation->Finished() == true)
-				{
-					Status = IDLE;
-					break;
-				}
+				speed = 0;
+			}
+			else
+			{
+				position.x += 1.5;
+			}
+			if (current_animation->Finished() == true)
+			{
+				Status = IDLE;
+				break;
 			}
 		}
-		if (current_animation == &downftumble)
+	
+		if (current_animation == &downftumble || current_animation == &gdownftumble)
 		{
-			current_animation = &downftumble;
-
-			if (current_animation == &downftumble)
+			if (position.x > 210)
 			{
-				if (position.x > 210)
-				{
-					speed = 0;
-				}
-				else
-				{
-					position.x += 1;
-				}
-				if (current_animation->Finished() == true)
-				{
-					Status = IDLE;
-					break;
-				}
+				speed = 0;
+			}
+			else
+			{
+				position.x += 1;
+			}
+			if (current_animation->Finished() == true)
+			{
+				Status = IDLE;
+				break;
 			}
 		}
-		if (current_animation == &downbtumble)
+		
+		if (current_animation == &downbtumble || current_animation == &gdownbtumble)
 		{
-			current_animation = &downbtumble;
-
-			if (current_animation == &downbtumble)
-			{
 				if (position.x < 5)
 				{
 					speed = 0;
@@ -645,7 +858,7 @@ update_status ModulePlayer::Update()
 					Status = IDLE;
 					break;
 				}
-			}
+			
 		}
 		break;
 		
@@ -668,7 +881,12 @@ update_status ModulePlayer::Update()
 		break;
 	case WIN:
 		player_coll->type = COLLIDER_NONE;
-		current_animation = &windance;
+		if (godmode == true){
+			current_animation = &gwindance;
+		}
+		else{
+			current_animation = &windance;
+		}
 		break;
 	}
 
