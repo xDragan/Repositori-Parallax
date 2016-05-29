@@ -63,6 +63,7 @@ bool ModuleSceneFirst::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 90, NULL, 1000);
 	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 70, NULL, 2000);
+
 	
 	//Barrels
 	App->structuresfront->AddStructure(App->structuresfront->barrel, 6, 144);
@@ -105,8 +106,8 @@ bool ModuleSceneFirst::CleanUp()
 // Update: draw background
 update_status ModuleSceneFirst::Update()
 {
-	
-	if (SDL_GetTicks() > time+1000)
+
+	if (SDL_GetTicks() > time + 1000)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 106, NULL, 1000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, 250, 106, NULL, 1300);
@@ -116,13 +117,26 @@ update_status ModuleSceneFirst::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 100, NULL, 3300);
 		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_RIGHT, 250, 90, NULL, 4000);
 		App->enemies->AddEnemy(ENEMY_TYPES::RIDER, 257, 98, NULL, 4000);
+		
+		if (App->structuresmiddle->bardest == false){
 
+			App->enemies->AddEnemy(ENEMY_TYPES::WHEELBARROW, 250, 80, 1, 7000);
+			App->enemies->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, 250, 95, NULL, 3200);
+			App->enemies->AddEnemy(ENEMY_TYPES::RIDER_SMALL_RIGHT, 257, 92, NULL, 3200);
+		}
+	
 
-
-
-
-		time = SDL_GetTicks()+5000;
+		time = SDL_GetTicks() + 25000;
 	}
+
+
+	
+	
+	
+	
+
+
+
 	/*if (SDL_GetTicks() > time2)
 	{
 

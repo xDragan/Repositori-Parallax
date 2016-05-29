@@ -357,6 +357,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 				App->structuresback->cd1 += 0.5;
+				App->structuresmiddle->bardest = true;
 			}
 		}
 
@@ -394,6 +395,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 				App->structuresback->cd1 += 0.5;
+				App->structuresmiddle->fabtendest = true;
 			}
 		}
 

@@ -36,6 +36,7 @@ struct Structure
 	bool Update();
 	bool destroyed = false;
 	bool created = false;
+	
 	Collider* collider = nullptr;
 	buildingtype mytype;
 	Structure();
@@ -53,6 +54,8 @@ public:
 	update_status Update();
 	bool Start();
 	bool CleanUp();
+	bool fabtendest = false;
+	bool bardest = false;
 	void OnCollision(Collider* c1, Collider* c2);
 	void AddStructure(Structure& particle, int x, int y);
 	float cd1 = 0.0;
