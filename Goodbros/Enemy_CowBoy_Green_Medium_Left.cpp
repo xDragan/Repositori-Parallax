@@ -15,8 +15,8 @@ Enemy_CowBoy_Green_Medium_Left::Enemy_CowBoy_Green_Medium_Left(float x, float y)
 	forward.PushBack({ 2164, 2860, 25, 40 });
 	forward.speed = 0.15f;
 
-	stop_shoot.PushBack({ 1095, 2860, 25, 40 });
-	stop_shoot.PushBack({ 1095, 2860, 25, 40 });
+	stop_shoot.PushBack({ 1093, 2860, 25, 40 });
+	stop_shoot.PushBack({ 1093, 2860, 25, 40 });
 	stop_shoot.speed = 0.04f;
 	stop_shoot.loop = true;
 
@@ -35,12 +35,31 @@ Enemy_CowBoy_Green_Medium_Left::Enemy_CowBoy_Green_Medium_Left(float x, float y)
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ 1.0f, 0 }, 95, &forward);
-	path.PushBack({ 0, 0 }, 67, &stop_shoot);
-	path.PushBack({ 1.0f, 0 }, 95, &forward);
-	path.PushBack({ 0, 0 }, 67, &stop_shoot);
-	path.PushBack({ 1.0f, 0 }, 95, &forward);
-	path.loop = true;
+	
+	if (y == 107){
+		path.PushBack({ 1.0f, 0 }, 110, &forward);
+		path.PushBack({ 0, 0 }, 20, &stop_shoot);
+		path.PushBack({ 1.0f, 0 }, 40, &forward);
+		path.PushBack({ 1.0f, -0.8f }, 10, &forward);
+		path.PushBack({ 1.0f, 0 }, 95, &forward);
+		path.loop = true;
+	}
+
+	else{
+		path.PushBack({ 1.0f, 0 }, 90, &forward);
+		path.PushBack({ 0, 0 }, 20, &stop_shoot);
+		path.PushBack({ 1.0f, 0 }, 10, &forward);
+		path.PushBack({ 1.0f, 0.5f }, 10, &forward);
+		path.PushBack({ 1.0f, 0 }, 95, &forward);
+		path.loop = true;
+
+
+
+
+	}
+
+
+
 
 	original_pos.x = x;
 	original_pos.y = y;

@@ -10,13 +10,13 @@ Enemy_CowBoy_Green_Medium_Right::Enemy_CowBoy_Green_Medium_Right(float x, float 
 	backward.PushBack({ 1340, 2860, 25, 40 });
 	backward.PushBack({ 1302, 2860, 25, 40 });
 	backward.PushBack({ 1271, 2860, 25, 40 });
-	backward.PushBack({ 1227 , 2860, 25, 40 });
-	backward.PushBack({ 1185, 2860, 25, 40 });
-	backward.PushBack({ 1144, 2860, 25, 40 });
+	backward.PushBack({ 1229 , 2860, 25, 40 });
+	backward.PushBack({ 1187, 2860, 25, 40 });
+	backward.PushBack({ 1162, 2860, 25, 40 });
 	backward.speed = 0.15f;
 
-	stop_shoot.PushBack({ 1095, 2860, 25, 40 });
-	stop_shoot.PushBack({ 1095, 2860, 25, 40 });
+	stop_shoot.PushBack({ 1093, 2860, 25, 40 });
+	stop_shoot.PushBack({ 1093, 2860, 25, 40 });
 	stop_shoot.speed = 0.04f;
 	stop_shoot.loop = true;
 
@@ -39,12 +39,28 @@ Enemy_CowBoy_Green_Medium_Right::Enemy_CowBoy_Green_Medium_Right(float x, float 
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ -1.0f, 0 }, 95, &backward);
-	path.PushBack({ 0, 0 }, 67, &stop_shoot);
-	path.PushBack({ -1.0f, 0 }, 95, &backward);
-	path.PushBack({ 0, 0 }, 67, &stop_shoot);
-	path.PushBack({ -1.0f, 0 }, 95, &backward);
-	path.loop = true;
+	if (y == 107){
+		path.PushBack({ -1.0f, 0 }, 110, &backward);
+		path.PushBack({ 0, 0 }, 20, &stop_shoot);
+		path.PushBack({ -1.0f, 0 }, 40, &backward);
+		path.PushBack({ -1.0f, -1.0f }, 10, &backward);
+		path.PushBack({ -1.0f, 0 }, 95, &backward);
+		path.loop = true;
+	}
+
+
+	else{
+		path.PushBack({ -1.0f, 0 }, 105, &backward);
+		path.PushBack({ 0, 0 }, 20, &stop_shoot);
+		path.PushBack({ -1.0f, 0 }, 10, &backward);
+		path.PushBack({ -1.0f, 0.5f }, 10, &backward);
+		path.PushBack({ -1.0f, 0 }, 95, &backward);
+		path.loop = true;
+
+
+
+
+	}
 
 	original_pos.x = x;
 	original_pos.y = y;

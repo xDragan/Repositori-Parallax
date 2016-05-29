@@ -16,6 +16,7 @@ Enemy_Horse_Right::Enemy_Horse_Right(float x, float y) : Enemy(x, y)
 	backward.PushBack({ 1223, 1173, 46, 57 });
 	backward.PushBack({ 1290, 1173, 46, 57 });
 	backward.speed = 0.15f;
+	backward.loop = true;
 		
 
 	dieshot.PushBack({ 698, 1173, 46, 57 });
@@ -38,8 +39,9 @@ Enemy_Horse_Right::Enemy_Horse_Right(float x, float y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, -20, 46, 40 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ -1.0f, 0 }, 500, &backward);
-
+	path.PushBack({ -1.5f, 0 }, 200, &backward);
+	path.PushBack({ -1.5f, 0 }, 200, &backward);
+	if (position.x == -50) finished = true;
 
 
 	original_pos.x = x;
@@ -52,7 +54,7 @@ void Enemy_Horse_Right::Move()
 	if (dieshot.Finished() == true){
 		path.PushBack({ -2.50f, 0.0f }, 200, &backward);
 	}
-	if (position.x == -10)
+	if (position.x == -50)
 	{
 		finished = true;
 	}

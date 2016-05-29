@@ -60,10 +60,10 @@ bool ModuleSceneFirst::Start()
 	//App->barrelroll->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::COUPLE_GUY, SCREEN_WIDTH - 100, 100, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::COUPLE_GIRL, SCREEN_WIDTH - 90, 100, NULL, NULL);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL, NULL);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 90, NULL, 1000);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 70, NULL, 2000);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 50, NULL, 3000);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL, NULL);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 90, NULL, 1000);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 70, NULL, 2000);
+	
 	//Barrels
 	App->structuresfront->AddStructure(App->structuresfront->barrel, 6, 144);
 	App->structuresfront->AddStructure(App->structuresfront->barrel, 38, 144);
@@ -105,19 +105,25 @@ bool ModuleSceneFirst::CleanUp()
 // Update: draw background
 update_status ModuleSceneFirst::Update()
 {
-	/*
-	if (SDL_GetTicks() > time + 1000)
+	
+	if (SDL_GetTicks() > time+1000)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, SCREEN_WIDTH, 110, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 100, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, SCREEN_WIDTH, 100, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_1, 210, 107, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_2, 210, 107, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_3, 210, 107, NULL);
-		time = SDL_GetTicks() + 5000;
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 106, NULL, 1000);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, 250, 106, NULL, 1300);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 107, NULL, 2300);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 107, NULL, 2400);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 100, NULL, 3200);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 100, NULL, 3300);
+		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_RIGHT, 250, 90, NULL, 4000);
+		App->enemies->AddEnemy(ENEMY_TYPES::RIDER, 257, 98, NULL, 4000);
+
+
+
+
+
+		time = SDL_GetTicks()+5000;
 	}
-	if (SDL_GetTicks() > time2)
+	/*if (SDL_GetTicks() > time2)
 	{
 
 		time2 = SDL_GetTicks() + 1000;

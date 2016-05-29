@@ -13,7 +13,7 @@ Enemy_CowBoy_Green_Big_Left::Enemy_CowBoy_Green_Big_Left(float x, float y) : Ene
 	forward.PushBack({ 968, 2800, 30, 53 });
 	forward.PushBack({ 931, 2800, 30, 53 });
 	forward.PushBack({ 880, 2800, 30, 53 });
-	forward.speed = 0.15f;
+	forward.speed = 0.20f;
 
 	backward.PushBack({ 110, 2848, 30, 55 });
 	backward.PushBack({ 149, 2848, 30, 55 });
@@ -43,8 +43,8 @@ Enemy_CowBoy_Green_Big_Left::Enemy_CowBoy_Green_Big_Left(float x, float y) : Ene
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 
-	path.PushBack({ 1.0f, 0 }, 120, &forward);
-	path.PushBack({ 0, 0 }, 67, &stop_shoot);
+	path.PushBack({ 1.0f, 0 }, 110, &forward);
+	path.PushBack({ 0, 0 }, 40, &stop_shoot);
 	path.PushBack({ 1.0f, 0 }, 140, &forward);
 	path.loop = true;
 

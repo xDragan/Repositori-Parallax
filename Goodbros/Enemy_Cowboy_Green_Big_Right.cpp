@@ -13,7 +13,7 @@ Enemy_CowBoy_Green_Big_Right::Enemy_CowBoy_Green_Big_Right(float x, float y) : E
 	forward.PushBack({ 968, 2800, 30, 53 });
 	forward.PushBack({ 931, 2800, 30, 53 });
 	forward.PushBack({ 880, 2800, 30, 53 });
-	forward.speed = 0.15f;
+	forward.speed = 0.20;
 
 	backward.PushBack({ 110, 2848, 30, 55 });
 	backward.PushBack({ 149, 2848, 30, 55 });
@@ -42,8 +42,8 @@ Enemy_CowBoy_Green_Big_Right::Enemy_CowBoy_Green_Big_Right(float x, float y) : E
 	        
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ -1.0f, 0 }, 120, &backward);
-	path.PushBack({ 0, 0 }, 67, &stop_shoot);
+	path.PushBack({ -1.0f, 0 }, 125, &backward);
+	path.PushBack({ 0, 0 }, 30, &stop_shoot);
 	path.PushBack({ -1.0f, 0 }, 140, &backward);
 	path.loop = true;
 
