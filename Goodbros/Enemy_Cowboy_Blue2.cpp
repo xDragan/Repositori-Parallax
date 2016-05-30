@@ -154,14 +154,17 @@ void Enemy_CowBoy_Blue2::Move()
 	}
 	if (path.GetFrame() == 183 && isdead == false)
 	{
+		App->particles->AddParticle(App->particles->explotionshot, position.x + 5, position.y + 20, COLLIDER_NONE, 0);
 		App->particles->AddParticle(App->particles->enemyshot, position.x + 10, position.y + 20, COLLIDER_ENEMY_SHOT, 0);
 	}
 	if (path2.GetFrame() == 93 && isdead == false)
 	{
+		App->particles->AddParticle(App->particles->explotionshot, position.x + 5, position.y + 20, COLLIDER_NONE, 0);
 		App->particles->AddParticle(App->particles->enemyshot, position.x + 10, position.y + 20, COLLIDER_ENEMY_SHOT, 0);
 	}
 	if (path2.GetFrame() == 192 && isdead == false)
 	{
+		App->particles->AddParticle(App->particles->explotionshot, position.x + 5, position.y + 20, COLLIDER_NONE, 0);
 		App->particles->AddParticle(App->particles->enemyshot, position.x + 10, position.y + 20, COLLIDER_ENEMY_SHOT, 0);
 	}
 	if (dieshot.Finished() == true)

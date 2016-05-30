@@ -104,10 +104,12 @@ void Enemy_CowBoy_Blue::Move()
 	position = original_pos + path.GetCurrentSpeed(&animation);
 	if (path.GetFrame() == 120 && isdead == false)
 	{
+		App->particles->AddParticle(App->particles->explotionshot, position.x + 5, position.y + 20, COLLIDER_NONE, 0);
 		App->particles->AddParticle(App->particles->enemyshot, position.x+10, position.y+20, COLLIDER_ENEMY_SHOT, 0);
 	}
 	if (path.GetFrame() == 237 && isdead == false)
 	{
+		App->particles->AddParticle(App->particles->explotionshot, position.x + 5, position.y + 20, COLLIDER_NONE, 0);
 		App->particles->AddParticle(App->particles->enemyshot,position.x+10, position.y+20, COLLIDER_ENEMY_SHOT, 0);
 	}
 	if (dieshot.Finished() == true)

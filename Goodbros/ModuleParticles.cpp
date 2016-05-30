@@ -16,7 +16,11 @@ ModuleParticles::ModuleParticles()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
-
+	// Explotion shot
+	explotionshot.anim.PushBack({ 330, 492, 16, 17 });
+	explotionshot.anim.PushBack({ 349, 492, 16, 17 });
+	explotionshot.anim.PushBack({ 365, 492, 16, 17 });
+	explotionshot.anim.speed = 0.2f;
 	// Enemy shot
 	enemyshot.anim.PushBack({ 399, 494, 9, 9});
 	enemyshot.anim.PushBack({ 429, 494, 9, 9 });
@@ -53,10 +57,15 @@ ModuleParticles::ModuleParticles()
 	dynamite.anim.loop = false;
 	dynamite.anim.speed = 0.1f;
 
-	dynamite_exp.anim.PushBack({ 19, 376, 32, 45 });
-	dynamite_exp.anim.PushBack({ 74, 376, 29, 39 });
-	dynamite_exp.anim.PushBack({ 116, 376, 31, 26 });
-	dynamite_exp.anim.PushBack({ 156, 375, 30, 31 });
+	dynamite_exp.anim.PushBack({ 8, 370, 34, 65 });
+	dynamite_exp.anim.PushBack({ 42, 370, 34, 65 });
+	dynamite_exp.anim.PushBack({ 82, 370, 34, 64 });
+	dynamite_exp.anim.PushBack({ 122, 370, 34, 65 });
+	dynamite_exp.anim.PushBack({ 165, 370, 34, 64 });
+	dynamite_exp.anim.PushBack({ 200, 370, 34, 65 });
+	dynamite_exp.anim.PushBack({ 234, 370, 34, 65 });
+	dynamite_exp.anim.PushBack({ 268, 370, 34, 65 });
+	
 	dynamite_exp.anim.loop = false;
 	dynamite_exp.anim.speed = 0.2f;
 
@@ -272,7 +281,7 @@ bool Particle::Update()
 		}
 		if (collider != nullptr && collider->type == COLLIDER_BOMB)
 		{
-			App->particles->AddParticle(App->particles->dynamite_exp, position.x-10, position.y-10, COLLIDER_BOMB_EXPLOSION, 0);
+			App->particles->AddParticle(App->particles->dynamite_exp, position.x-10, position.y-45, COLLIDER_BOMB_EXPLOSION, 0);
 		}
 	}
 

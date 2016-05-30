@@ -51,6 +51,7 @@ private:
 	Particle* active[MAX_ACTIVE_PARTICLES];
 
 public:
+	Particle explotionshot;
 	Particle enemyDynamite;
 	Particle dynamite;
 	Particle dynamite_exp;
