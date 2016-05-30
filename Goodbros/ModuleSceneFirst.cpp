@@ -53,7 +53,7 @@ bool ModuleSceneFirst::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 210, 107, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::CAN, SCREEN_WIDTH / 2 + 5, 130, NULL, NULL);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 105, NULL, NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 105, NULL, NULL);
 	//App->barrelroll->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::COUPLE_GUY, SCREEN_WIDTH - 100, 100, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::COUPLE_GIRL, SCREEN_WIDTH - 90, 100, NULL, NULL);
@@ -107,8 +107,7 @@ bool ModuleSceneFirst::CleanUp()
 // Update: draw background
 update_status ModuleSceneFirst::Update()
 {
-
-	/*if (SDL_GetTicks() > time + 1000)
+	if (SDL_GetTicks() > time + 1000)
 	{
 		//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, SCREEN_WIDTH, 130, NULL, 0);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 106, NULL, 1000);
@@ -129,7 +128,7 @@ update_status ModuleSceneFirst::Update()
 		}
 	
 		time = SDL_GetTicks() + 25000;
-	}*/
+	}
 
 	/*if (SDL_GetTicks() > time2)
 	{

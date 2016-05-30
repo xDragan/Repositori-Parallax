@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleUI.h"
+#include "ModuleAim.h"
 
 Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)  //Y=5,, DF 6
 {
@@ -96,7 +97,7 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)  //Y=5,
 		collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	case 3: //3==escopeta
-		to_score = 2;
+		to_score = 3;
 		point.PushBack({ 339, 7, 32, 16 });
 		point.PushBack({ 373, 7, 32, 16 });
 		point.speed = 0.12f;
@@ -111,7 +112,7 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)  //Y=5,
 		collider = App->collision->AddCollider({ 0, 0, 32, 16 }, COLLIDER_TYPE::COLLIDER_POINTS, (Module*)App->enemies);
 		break;
 	case 4: //4==metralleta
-		to_score = 2;
+		to_score = 4;
 		point.PushBack({ 407, 7, 32, 16 });
 		point.PushBack({ 457, 7, 32, 16 });
 		point.speed = 0.12f;
@@ -150,10 +151,12 @@ void Module_Points::Die()
 		App->UserUI->hitpoints--;
 		break;
 	case 3:
-
+		App->aim->aimmode = SHOTGUN;
+		App->aim->shotgunshots = 0;
 		break;
 	case 4:
-
+		App->aim->aimmode = MACHINEGUN;
+		App->aim->machineshots = 0;
 		break;
 	default:
 		App->UserUI->score += to_score - 100;

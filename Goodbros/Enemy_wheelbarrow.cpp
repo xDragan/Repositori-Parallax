@@ -62,7 +62,6 @@ void Enemy_wheelbarrow::Move()
 void Enemy_wheelbarrow::Die()
 {
 	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x, position.y, 3, NULL);
-	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 20, position.y, 4, NULL);
 	hit = true;
 	hits++;
 }

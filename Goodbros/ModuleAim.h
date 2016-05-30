@@ -9,7 +9,11 @@
 
 struct SDL_Texture;
 struct Collider;
-
+enum AIMTYPE{
+	NORMAL,
+	SHOTGUN,
+	MACHINEGUN,
+};
 class ModuleAim : public Module
 {
 public:
@@ -29,8 +33,14 @@ public:
 	Animation aim;
 	Animation idle;
 	Animation Aimshoot;
+	Animation Aimshotgun;
+	Animation Aimmachine;
 	unsigned int time = 0;
 	iPoint position;
+	uint shotgunshots = 0;
+	uint machineshots = 0;
+	uint aimmode = NORMAL;
+	bool normalaim = true;
 };
 
 #endif
