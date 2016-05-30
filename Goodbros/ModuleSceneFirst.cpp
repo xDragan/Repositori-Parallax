@@ -60,6 +60,10 @@ bool ModuleSceneFirst::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 90, NULL, 1000);
 	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 70, NULL, 2000);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 5000);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 7000);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 9000);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 205, 100, NULL, 5000);
 
 	
 	//Barrels
@@ -104,9 +108,9 @@ bool ModuleSceneFirst::CleanUp()
 update_status ModuleSceneFirst::Update()
 {
 
-	if (SDL_GetTicks() > time + 1000)
+	/*if (SDL_GetTicks() > time + 1000)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, SCREEN_WIDTH, 130, NULL, 0);
+		//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, SCREEN_WIDTH, 130, NULL, 0);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 106, NULL, 1000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, 250, 106, NULL, 1300);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 107, NULL, 2300);
@@ -120,12 +124,14 @@ update_status ModuleSceneFirst::Update()
 
 			App->enemies->AddEnemy(ENEMY_TYPES::WHEELBARROW, 250, 80, 1, 7000);
 			App->enemies->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, 250, 95, NULL, 3200);
-			App->enemies->AddEnemy(ENEMY_TYPES::RIDER_SMALL_RIGHT, 257, 92, NULL, 3200);
+			App->enemies->AddEnemy(ENEMY_TYPES::RIDER_SMALL_RIGHT, 257, 92, NULL, 3200);		
+			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 205, 100, NULL, 5000);
+
 		}
 	
 
 		time = SDL_GetTicks() + 25000;
-	}
+	}*/
 
 
 	
@@ -180,7 +186,7 @@ update_status ModuleSceneFirst::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_1, 210, 107, NULL, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 210, 107, NULL, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_2, 210, 107, NULL, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_3, 210, 107, NULL, NULL);
 	}

@@ -7,12 +7,12 @@
 
 Enemy_CowBoy_Green_Right_Tumble::Enemy_CowBoy_Green_Right_Tumble(float x, float y) : Enemy(x, y)
 {
-	spawnani.PushBack({ 348, 2994, 10, 16 });
-	spawnani.PushBack({ 379, 2999, 12, 21 });
-	spawnani.PushBack({ 411, 2999, 12, 21 });
-	spawnani.PushBack({ 443, 2999, 13, 27 });
+	spawnani.PushBack({ 1388, 2808, 13, 40 });
+	spawnani.PushBack({ 1403, 2808, 13, 40 });
+	spawnani.PushBack({ 1418, 2808, 13, 40 });
+	spawnani.PushBack({ 1435, 2808, 13, 40 });
 	spawnani.loop = false;
-	spawnani.speed = 0.05f;
+	spawnani.speed = 0.15f;
 
 	forward.PushBack({ 1959, 2860, 25, 40 });
 	forward.PushBack({ 2004, 2860, 25, 40 });
@@ -22,16 +22,16 @@ Enemy_CowBoy_Green_Right_Tumble::Enemy_CowBoy_Green_Right_Tumble(float x, float 
 	forward.PushBack({ 2164, 2860, 25, 40 });
 	forward.speed = 0.15f;
 
-	backward.PushBack({ 1143, 2866, 16, 34 });
-	backward.PushBack({ 1185, 2866, 22, 34 });
-	backward.PushBack({ 1227, 2866, 24, 34 });
-	backward.PushBack({ 1270, 2866, 24, 34 });
-	backward.PushBack({ 1302, 2865, 24, 34 });
-	backward.PushBack({ 1340, 2866, 24, 34 });
+	backward.PushBack({ 1340, 2860, 25, 40 });
+	backward.PushBack({ 1302, 2860, 25, 40 });
+	backward.PushBack({ 1271, 2860, 25, 40 });
+	backward.PushBack({ 1229, 2860, 25, 40 });
+	backward.PushBack({ 1187, 2860, 25, 40 });
+	backward.PushBack({ 1162, 2860, 25, 40 });
 	backward.speed = 0.15f;
 
-	stop_shoot.PushBack({ 374, 2848, 25, 40 });
-	stop_shoot.PushBack({ 374, 2848, 25, 40 });
+	stop_shoot.PushBack({ 1056, 2862, 25, 40 });
+	stop_shoot.PushBack({ 1030, 2862, 25, 40 });
 	stop_shoot.speed = 0.04f;
 	stop_shoot.loop = true;
 
@@ -54,10 +54,10 @@ Enemy_CowBoy_Green_Right_Tumble::Enemy_CowBoy_Green_Right_Tumble(float x, float 
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 40 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ 0, 0 }, 90, &spawnani);
-	path.PushBack({ -1.0f, 0 }, 45, &backward);
-	path.PushBack({ 0, 0 }, 45, &crouched);
-	path.PushBack({ 1.0f, 0 }, 80, &forward);
+	path.PushBack({ 0, 0 }, 30, &spawnani);
+	path.PushBack({ -1.0f, 0 }, 30, &backward);
+	path.PushBack({ 0, 0 }, 45, &stop_shoot);
+	path.PushBack({ 1.0f, 0 }, 200, &forward);
 	path.loop = false;
 
 	original_pos.x = x;
@@ -72,12 +72,7 @@ void Enemy_CowBoy_Green_Right_Tumble::Move()
 	{
 		finished = true;
 	}
-	if (position.x >= SCREEN_WIDTH - 20)
-	{
-		collider->type = COLLIDER_NONE;
-		path.Erase();
-		finished = true;
-	}
+	
 }
 
 void Enemy_CowBoy_Green_Right_Tumble::Die()

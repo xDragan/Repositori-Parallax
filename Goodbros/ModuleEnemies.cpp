@@ -28,7 +28,7 @@
 #include "Module_Points.h"
 #include "Enemy_wheelbarrow.h"
 #include "SDL/include/SDL_timer.h"
-#include "Enemy_CowBoy_Green_Top_Fabten_1.h"
+#include "Enemy_CowBoy_Blue_Top_Fabten.h"
 #include "Enemy_CowBoy_Green_Top_Fabten_2.h"
 #include "Enemy_CowBoy_Green_Top_Fabten_3.h"
 
@@ -216,8 +216,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE:
 			enemies[i] = new Enemy_CowBoy_Green_Right_Tumble(info.x, info.y);
 			break;
-		case ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_1:
-			enemies[i] = new Enemy_CowBoy_Green_Top_Fabten_1(info.x, info.y);
+		case ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN:
+			enemies[i] = new Enemy_CowBoy_Blue_Top_Fabten(info.x, info.y);
 			break;
 		case ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_2:
 			enemies[i] = new Enemy_CowBoy_Green_Top_Fabten_2(info.x, info.y);

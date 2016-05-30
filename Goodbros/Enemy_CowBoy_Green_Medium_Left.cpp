@@ -20,10 +20,10 @@ Enemy_CowBoy_Green_Medium_Left::Enemy_CowBoy_Green_Medium_Left(float x, float y)
 	stop_shoot.speed = 0.04f;
 	stop_shoot.loop = true;
 
-	dieshot.PushBack({ 1911, 2860, 25, 40 });
-	dieshot.PushBack({ 1864, 2860, 25, 40 });
-	dieshot.PushBack({ 1815, 2860, 25, 40 });
-	dieshot.PushBack({ 1767, 2860, 25, 40 });
+	dieshot.PushBack({ 1387, 2860, 25, 40 });
+	dieshot.PushBack({ 1435, 2860, 25, 40 });
+	dieshot.PushBack({ 1482, 2860, 25, 40 });
+	dieshot.PushBack({ 1531, 2860, 25, 40 });
 	dieshot.speed = 0.09f;
 	dieshot.loop = false;
 
