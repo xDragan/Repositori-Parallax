@@ -11,6 +11,9 @@
 #include "ModulePlayer.h"
 #include "ModuleText.h"
 #include "ModuleUIntro.h"
+
+
+#include "SDL/include/SDL_timer.h"
 ModuleUI::ModuleUI()
 {
 	insert_coins.PushBack({ 137, 3, 200, 25 });
@@ -33,11 +36,14 @@ ModuleUI::ModuleUI()
 	
 	top.PushBack({ 34, 73, 16, 8 });
 
+	Continue.PushBack({ 16, 82, 50, 9 });
+
 	hitpoints = 3;
 	credit = 0;
 	score = 0;
 	topscori = 2000;
 	dynamite = 10;
+	continue_counter = 10;
 }
 ModuleUI::~ModuleUI()
 {
@@ -50,11 +56,13 @@ bool ModuleUI::Start()
 	credit_counter = App->text->AddNumber(144, SCREEN_HEIGHT - 7, credit, 2);
 	score_counter = App->text->AddNumber(18, 0, topscori, 8);
 	topscore = App->text->AddNumber(SCREEN_WIDTH/2 -25, 0, score, 8);
-	dynamite_counter = App->text->AddNumber(1, SCREEN_HEIGHT - 28, dynamite, 2);
+	dynamite_counter = App->text->AddNumber(1, SCREEN_HEIGHT - 23, dynamite, 2);
+	
 	return true;
 }
 bool ModuleUI::CleanUp()
 {
+	timecont = SDL_GetTicks();
 	LOG("Unloading intro");
 
 	App->textures->Unload(UserInterface);
@@ -62,6 +70,7 @@ bool ModuleUI::CleanUp()
 	App->text->EraseText(score_counter);
 	App->text->EraseText(topscore);
 	App->text->EraseText(dynamite_counter);
+	App->text->EraseText(Continuee);
 	return true;
 }
 update_status ModuleUI::Update()
@@ -71,33 +80,53 @@ update_status ModuleUI::Update()
 	score_counter->ChangeNumber(score);
 	if (score >= topscori) topscori = score;
 	topscore->ChangeNumber(topscori);
+	
 
 
 	if (true){
-		App->render->Blit(UserInterface, 69, 202, &(foe_bar.GetCurrentFrame()), 0.5);
-		App->render->Blit(UserInterface, 73, 202, &(foe_bar.GetCurrentFrame()), 0.5);
-		App->render->Blit(UserInterface, 77, 202, &(foe_bar.GetCurrentFrame()), 0.5);
-		App->render->Blit(UserInterface, 81, 202, &(foe_bar.GetCurrentFrame()), 0.5);
-		App->render->Blit(UserInterface, 85, 202, &(foe_bar.GetCurrentFrame()), 0.5);
-		App->render->Blit(UserInterface, 89, 202, &(foe_bar.GetCurrentFrame()), 0.5);
-		App->render->Blit(UserInterface, 93, 202, &(foe_bar.GetCurrentFrame()), 0.5);
-		App->render->Blit(UserInterface, 97, 202, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 69, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 73, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 77, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 81, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 85, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 89, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 93, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 97, 207, &(foe_bar.GetCurrentFrame()), 0.5);
 	}
 
 	App->render->Blit(UserInterface, 105, SCREEN_HEIGHT-7, &(Credit.GetCurrentFrame()), 0.5);
-	App->render->Blit(UserInterface, 35, 203, &(foe.GetCurrentFrame()), 0.5);
+	App->render->Blit(UserInterface, 35, 208, &(foe.GetCurrentFrame()), 0.5);
 	App->render->Blit(UserInterface, SCREEN_WIDTH/2 -43, 0, &(top.GetCurrentFrame()), 0.5);
 	App->render->Blit(UserInterface, 0, 0, &(characterone.GetCurrentFrame()), 0.5);
-	App->render->Blit(UserInterface, 1, SCREEN_HEIGHT- 44,  &(dynamite_image.GetCurrentFrame()), 0.6);
+	App->render->Blit(UserInterface, 1, SCREEN_HEIGHT- 39,  &(dynamite_image.GetCurrentFrame()), 0.6);
 	if (App->player->lose == 0){
-		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 20, &(life_ball.GetCurrentFrame()), 0.6);
-		App->render->Blit(UserInterface, 8, SCREEN_HEIGHT - 20, &(life_ball.GetCurrentFrame()), 0.6);
+		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 15, &(life_ball.GetCurrentFrame()), 0.6);
+		App->render->Blit(UserInterface, 8, SCREEN_HEIGHT - 15, &(life_ball.GetCurrentFrame()), 0.6);
 	}
 	if (App->player->lose == 1)
 	{
-		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 20, &(life_ball.GetCurrentFrame()), 0.6);
+		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 15, &(life_ball.GetCurrentFrame()), 0.6);
 	}
-
+	if (App->player->loosing == false){
+		continue_counter = 10;
+		App->text->EraseText(Continuee);
+	}
+	if (App->player->loosing == true){
+		if (done == false){
+		Continuee = App->text->AddNumber(85, SCREEN_HEIGHT - 7, continue_counter, 2);
+		done = true;
+	}
+		Continuee->ChangeNumber(continue_counter);
+		if (App->player->c_time >= App->player->timedying || App->player->blinkd)
+		{
+			App->render->Blit(UserInterface, 29, SCREEN_HEIGHT - 8, &(Continue.GetCurrentFrame()), 0.5);
+		}
+		if (SDL_GetTicks() > time)
+		{
+			continue_counter--;
+			time = SDL_GetTicks() + 1100;
+		}
+	}
 	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
 		if (credit < 99)
 		++credit;

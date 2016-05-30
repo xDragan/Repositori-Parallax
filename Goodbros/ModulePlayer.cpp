@@ -220,6 +220,8 @@ ModulePlayer::ModulePlayer()
 	staydied.PushBack({ 1233, 187, 52, 70 });
 	staydied.PushBack({ 1286, 187, 53, 70 });
 	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.PushBack({ 1286, 187, 53, 70 });
+	staydied.PushBack({ 1233, 187, 52, 70 });
 	staydied.loop = true;
 	staydied.speed = 0.03;
 	//win animation// 
@@ -454,6 +456,11 @@ update_status ModulePlayer::Update()
 	{
 		blink = !blink;
 		blink_t = c_time + 100;
+	}
+	if (c_time >= timedying)
+	{
+		blinkd = !blinkd;
+		timedying = c_time + 500;
 	}
 	if (c_time > dmg_cd)
 	{
@@ -897,12 +904,16 @@ update_status ModulePlayer::Update()
 		if (current_animation->Finished() == true){
 			if (lose == 2){
 				current_animation = &staydied;
+				loosing = true;
 			}
 			if (current_animation->Finished() == false){
 				if (App->UserUI->credit >= 1 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN){
 					App->UserUI->score = 0;
+					staydied.Reset();
 					dmg_cd = SDL_GetTicks() + 3000;
 					lose = 0;
+					App->UserUI->done = false;
+					loosing = false;
 					Status = IDLE;
 				}
 			}
@@ -911,6 +922,8 @@ update_status ModulePlayer::Update()
 				App->UserUI->score = 0;
 				dmg_cd = SDL_GetTicks() + 3000;
 				lose++;
+				App->UserUI->done = false;
+				loosing = false;
 				if (lose == 3){
 					lost = true;
 				}

@@ -89,14 +89,15 @@ public:
 	bool godmode = false;
 	bool blink = true;
 	bool played = false;
-
+	bool loosing = false;
 	float speed = 0;
-
+	bool blinkd = true;
 	int blink_t = 0;
 	int Looking_at = 0;
 	int AimSpeed = 0;
-	int c_time = 0;
-	int dmg_cd = 0;
+	uint c_time = 0;
+	uint timedying = 0;
+	uint dmg_cd = 0;
 	int lose = 0;
 	bool lost = false;
 	int timeout = 0;

@@ -193,7 +193,7 @@ update_status ModuleSceneFirst::Update()
 		App->player->win_condition = 0;
 
 	}
-	if (App->player->lost == true)
+	if (App->UserUI->continue_counter == 0)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
 		App->player->lose = 0;
