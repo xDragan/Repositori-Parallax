@@ -29,6 +29,9 @@ bool ModuleSceneWin::Start()
 	App->player->Disable();
 	App->particles->Disable();
 	App->aim->Disable();
+	App->enemies->CleanUp();
+	App->scene_space->CleanUp();
+	App->scene_space->Disable();
 	App->enemies->Disable();
 	App->structuresfront->Disable();
 	App->structuresmiddle->Disable();

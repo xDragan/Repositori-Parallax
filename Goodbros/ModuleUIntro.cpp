@@ -68,11 +68,7 @@ update_status ModuleUIntro::Update()
 	App->render->Blit(UserInterface, 105, SCREEN_HEIGHT - 7, &(Credit.GetCurrentFrame()), 0.5);
 	App->render->Blit(UserInterface, SCREEN_WIDTH / 2 - 43, 0, &(top.GetCurrentFrame()), 0.5);
 	App->render->Blit(UserInterface, 0, 0, &(characterone.GetCurrentFrame()), 0.5);
-	
-	if (App->player->lose == 1)
-	{
-		App->render->Blit(UserInterface, 0, SCREEN_HEIGHT - 20, &(life_ball.GetCurrentFrame()), 0.6);
-	}
+
 
 	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
 		if (credit < 99)

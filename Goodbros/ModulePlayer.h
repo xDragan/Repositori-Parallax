@@ -67,6 +67,7 @@ public:
 	Animation die;
 	Animation win;
 	Animation windance;
+	Animation staydied;
 	//GOD MODE
 	Animation gidle[7];
 	Animation gforward;
@@ -82,9 +83,9 @@ public:
 	Animation gwindance;
 
 	iPoint position;
-	
+	bool dying = false;
 	Particle deathsound;
-
+	uint timedied;
 	bool godmode = false;
 	bool blink = true;
 	bool played = false;
@@ -97,6 +98,7 @@ public:
 	int c_time = 0;
 	int dmg_cd = 0;
 	int lose = 0;
+	bool lost = false;
 	int timeout = 0;
 };
 

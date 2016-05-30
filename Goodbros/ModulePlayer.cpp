@@ -13,6 +13,8 @@
 #include "ModuleUI.h"
 #include "ModuleSceneFirst.h"
 
+#include "SDL/include/SDL_timer.h"
+
 int ModulePlayer::looking_at() const
 {
 	int distance = (App->aim->position.x + 70 / 2) - (position.x + 80 / 2);
@@ -198,6 +200,28 @@ ModulePlayer::ModulePlayer()
 	die.speed = 0.07f;
 	die.loop = false;
 
+	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.PushBack({ 1286, 187, 53, 70 });
+	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.PushBack({ 1286, 187, 53, 70 });
+	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.PushBack({ 1286, 187, 53, 70 });
+	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.PushBack({ 1286, 187, 53, 70 });
+	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.PushBack({ 1286, 187, 53, 70 });
+	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.PushBack({ 1286, 187, 53, 70 });
+	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.PushBack({ 1286, 187, 53, 70 });
+	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.PushBack({ 1286, 187, 53, 70 });
+	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.PushBack({ 1286, 187, 53, 70 });
+	staydied.PushBack({ 1233, 187, 52, 70 });
+	staydied.loop = true;
+	staydied.speed = 0.03;
 	//win animation// 
 	win.PushBack({ 1032, 54, 46, 72 });
 	win.PushBack({ 1084, 54, 46, 72 });
@@ -865,18 +889,33 @@ update_status ModulePlayer::Update()
 	case DIE:
 		player_coll->type = COLLIDER_NONE;
 		current_animation = &die;
-
 		if (played == false)
 		{
 			App->audio->PlayFx(App->player->deathsound.fx);
 			played = true;
 		}
-		if (current_animation->Finished() == true)
-		{
-			App->UserUI->score = 0;
-			dmg_cd = SDL_GetTicks() + 3000;
-			App->player->lose++;
-			Status = IDLE;
+		if (current_animation->Finished() == true){
+			if (lose == 2){
+				current_animation = &staydied;
+			}
+			if (current_animation->Finished() == false){
+				if (App->UserUI->credit >= 1 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN){
+					App->UserUI->score = 0;
+					dmg_cd = SDL_GetTicks() + 3000;
+					lose = 0;
+					Status = IDLE;
+				}
+			}
+			else if (current_animation->Finished() == true)
+			{
+				App->UserUI->score = 0;
+				dmg_cd = SDL_GetTicks() + 3000;
+				lose++;
+				if (lose == 3){
+					lost = true;
+				}
+				Status = IDLE;
+			}
 		}
 		break;
 	case WIN:

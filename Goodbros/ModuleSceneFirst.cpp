@@ -34,9 +34,6 @@ bool ModuleSceneFirst::Start()
 	App->collision->Enable();
 	App->aim->Enable();
 	App->structuresfront->Enable();
-
-	
-
 	App->UserUI->Enable();
 
 
@@ -84,13 +81,13 @@ bool ModuleSceneFirst::CleanUp()
 	LOG("Unloading first scene");
 
 	App->textures->Unload(background);
-	
 	App->player->Disable();
 	App->particles->Disable();
 	App->aim->Disable();
 	App->structuresfront->CleanUp();
 	App->structuresmiddle->CleanUp();
 	App->structuresback->CleanUp();
+	App->enemies->CleanUp();
 	App->enemies->Disable();
 	App->structuresfront->Disable();
 	App->structuresmiddle->Disable();
@@ -109,6 +106,7 @@ update_status ModuleSceneFirst::Update()
 
 	if (SDL_GetTicks() > time + 1000)
 	{
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, SCREEN_WIDTH, 130, NULL, 0);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 106, NULL, 1000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, 250, 106, NULL, 1300);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 107, NULL, 2300);
@@ -195,7 +193,7 @@ update_status ModuleSceneFirst::Update()
 		App->player->win_condition = 0;
 
 	}
-	if (App->player->lose >= 3)
+	if (App->player->lost == true)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
 		App->player->lose = 0;
