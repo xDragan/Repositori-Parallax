@@ -63,7 +63,7 @@ bool ModuleSceneFirst::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 5000);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 7000);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 9000);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 205, 100, NULL, 5000);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 205, 50, NULL, 5000);
 
 	
 	//Barrels

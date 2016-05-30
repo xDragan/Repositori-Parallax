@@ -31,6 +31,7 @@
 #include "Enemy_CowBoy_Blue_Top_Fabten.h"
 #include "Enemy_CowBoy_Green_Top_Fabten_2.h"
 #include "Enemy_CowBoy_Green_Top_Fabten_3.h"
+#include "Enemy_Cowboy_Green_Top_Bar.h"
 
 #define SPAWN_MARGIN 40
 
@@ -216,12 +217,16 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE:
 			enemies[i] = new Enemy_CowBoy_Green_Right_Tumble(info.x, info.y);
 			break;
+		case ENEMY_TYPES::GREEN_COWBOY_TOP_BAR:
+			enemies[i] = new Enemy_CowBoy_Green_Top_Bar(info.x, info.y);
+			break;
 		case ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN:
 			enemies[i] = new Enemy_CowBoy_Blue_Top_Fabten(info.x, info.y);
 			break;
 		case ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_2:
 			enemies[i] = new Enemy_CowBoy_Green_Top_Fabten_2(info.x, info.y);
 			break;
+
 		case ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_3:
 			enemies[i] = new Enemy_CowBoy_Green_Top_Fabten_3(info.x, info.y);
 			break;
