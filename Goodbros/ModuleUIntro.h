@@ -28,6 +28,7 @@ public:
 	Animation oneup;
 	Animation Credit;
 	Animation characterone;
+	Animation InsertCoin;
 	Animation top;
 	Uint32 hitpoints;
 	Uint32 credit;

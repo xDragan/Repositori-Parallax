@@ -29,11 +29,12 @@ public:
 	Animation dynamite_image;
 	Animation foe;
 	Animation foe_bar;
-	Animation foe_bar_white;
+	Animation foe_barw;
 	Animation Credit;
 	Animation characterone;
 	Animation top;
 	Animation Continue;
+	Animation InsertCoin;
 	Uint32 hitpoints;
 	Uint32 credit;
 	Uint32 score;
@@ -50,6 +51,7 @@ public:
 	uint timecont = 0;
 	uint time = 0;
 	bool done = false;
+
 };
 
 

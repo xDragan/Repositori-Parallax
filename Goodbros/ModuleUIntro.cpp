@@ -27,6 +27,8 @@ ModuleUIntro::ModuleUIntro()
 
 	top.PushBack({ 34, 73, 16, 8 });
 
+	InsertCoin.PushBack({ 17, 55, 59, 8 });
+
 	hitpoints = 3;
 	credit = 0;
 	score = 0;
@@ -64,7 +66,12 @@ update_status ModuleUIntro::Update()
 	score_counter->ChangeNumber(score);
 	topscore->ChangeNumber(topscori);
 	if (score >= topscori) topscori = score;
-
+	if (credit == 0){
+		if (App->player->c_time >= App->player->timedying || App->player->blinkd)
+		{
+			App->render->Blit(UserInterface, SCREEN_WIDTH / 2 + 50, SCREEN_HEIGHT - 8, &(InsertCoin.GetCurrentFrame()), 0.5);
+		}
+	}
 	App->render->Blit(UserInterface, 105, SCREEN_HEIGHT - 7, &(Credit.GetCurrentFrame()), 0.5);
 	App->render->Blit(UserInterface, SCREEN_WIDTH / 2 - 43, 0, &(top.GetCurrentFrame()), 0.5);
 	App->render->Blit(UserInterface, 0, 0, &(characterone.GetCurrentFrame()), 0.5);

@@ -28,7 +28,7 @@ ModuleUI::ModuleUI()
 	foe.PushBack({ 51, 73, 30, 8 });
 
 	foe_bar.PushBack({ 83, 72, 4, 9 });
-	foe_bar_white.PushBack({ 88, 73, 4, 9 });
+	foe_barw.PushBack({ 88, 73, 4, 9 });
 
 	Credit.PushBack({ 79, 55, 35, 7});
 
@@ -37,6 +37,8 @@ ModuleUI::ModuleUI()
 	top.PushBack({ 34, 73, 16, 8 });
 
 	Continue.PushBack({ 16, 82, 50, 9 });
+
+	InsertCoin.PushBack({ 17, 55, 59, 8 });
 
 	hitpoints = 3;
 	credit = 0;
@@ -80,10 +82,15 @@ update_status ModuleUI::Update()
 	score_counter->ChangeNumber(score);
 	if (score >= topscori) topscori = score;
 	topscore->ChangeNumber(topscori);
-	
+	if (credit == 0){
+		if (App->player->c_time >= App->player->timedying || App->player->blinkd)
+		{
+			App->render->Blit(UserInterface, SCREEN_WIDTH / 2 + 50, SCREEN_HEIGHT - 8, &(InsertCoin.GetCurrentFrame()), 0.5);
+		}
+	}
 
 
-	if (true){
+	if (App->player->win_condition < 5){
 		App->render->Blit(UserInterface, 69, 207, &(foe_bar.GetCurrentFrame()), 0.5);
 		App->render->Blit(UserInterface, 73, 207, &(foe_bar.GetCurrentFrame()), 0.5);
 		App->render->Blit(UserInterface, 77, 207, &(foe_bar.GetCurrentFrame()), 0.5);
@@ -93,6 +100,89 @@ update_status ModuleUI::Update()
 		App->render->Blit(UserInterface, 93, 207, &(foe_bar.GetCurrentFrame()), 0.5);
 		App->render->Blit(UserInterface, 97, 207, &(foe_bar.GetCurrentFrame()), 0.5);
 	}
+	else if (App->player->win_condition < 10){
+		App->render->Blit(UserInterface, 69, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 73, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 77, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 81, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 85, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 89, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 93, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 97, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+	}
+	else if (App->player->win_condition < 15){
+		App->render->Blit(UserInterface, 69, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 73, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 77, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 81, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 85, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 89, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 93, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 97, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+	}
+	else if (App->player->win_condition < 20){
+		App->render->Blit(UserInterface, 69, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 73, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 77, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 81, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 85, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 89, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 93, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 97, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+	}
+	else if (App->player->win_condition < 25){
+		App->render->Blit(UserInterface, 69, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 73, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 77, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 81, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 85, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 89, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 93, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 97, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+	}
+	else if (App->player->win_condition < 30){
+		App->render->Blit(UserInterface, 69, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 73, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 77, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 81, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 85, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 89, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 93, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 97, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+	}
+	else if (App->player->win_condition < 35){
+		App->render->Blit(UserInterface, 69, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 73, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 77, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 81, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 85, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 89, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 93, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 97, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+	}
+	else if (App->player->win_condition < 40){
+		App->render->Blit(UserInterface, 69, 207, &(foe_bar.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 73, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 77, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 81, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 85, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 89, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 93, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 97, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+	}
+	if (App->player->win_condition == 40){
+		App->render->Blit(UserInterface, 69, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 73, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 77, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 81, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 85, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 89, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 93, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+		App->render->Blit(UserInterface, 97, 208, &(foe_barw.GetCurrentFrame()), 0.5);
+	}
+
+
+	
 
 	App->render->Blit(UserInterface, 105, SCREEN_HEIGHT-7, &(Credit.GetCurrentFrame()), 0.5);
 	App->render->Blit(UserInterface, 35, 208, &(foe.GetCurrentFrame()), 0.5);
