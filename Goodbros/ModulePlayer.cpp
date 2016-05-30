@@ -191,11 +191,11 @@ ModulePlayer::ModulePlayer()
 	downbtumble.PushBack({ 511, 506, 46, 62 });
 	downbtumble.speed = 0.15f;
 
-	die.PushBack({ 1025, 187, 52, 70});
-	die.PushBack({ 1077, 187, 52, 70}); 
-	die.PushBack({ 1129, 187, 52, 70});
-	die.PushBack({1180 , 187, 52, 70});
-	die.PushBack({ 1233, 187, 52, 70});
+	die.PushBack({ 1025, 187, 52, 70 });
+	die.PushBack({ 1077, 187, 52, 70 });
+	die.PushBack({ 1129, 187, 52, 70 });
+	die.PushBack({ 1180, 187, 52, 70 });
+	die.PushBack({ 1233, 187, 52, 70 });
 	die.PushBack({ 1286, 187, 53, 70 });
 	die.speed = 0.07f;
 	die.loop = false;
@@ -224,6 +224,7 @@ ModulePlayer::ModulePlayer()
 	staydied.PushBack({ 1233, 187, 52, 70 });
 	staydied.loop = true;
 	staydied.speed = 0.03;
+
 	//win animation// 
 	win.PushBack({ 1032, 54, 46, 72 });
 	win.PushBack({ 1084, 54, 46, 72 });
@@ -240,8 +241,8 @@ ModulePlayer::ModulePlayer()
 	windance.PushBack({ 1187, 126, 46, 72 });
 	windance.PushBack({ 1240, 126, 46, 72 });
 	windance.PushBack({ 1299, 126, 46, 72 });
-	windance.speed = 0.05;
-	windance.loop = true;
+	windance.speed = 0.03;
+	windance.loop = false;
 
 	//GOD MODE
 
@@ -254,7 +255,7 @@ ModulePlayer::ModulePlayer()
 	gidle[middle_right].PushBack({ 357, 1057, 56, 69 });
 	gidle[far_right].PushBack({ 409, 1057, 53, 69 });
 
-    gdown[far_left].PushBack({ 501, 1057, 56, 69 });
+	gdown[far_left].PushBack({ 501, 1057, 56, 69 });
 	gdown[Middle_left].PushBack({ 561, 1057, 47, 69 });
 	gdown[near_left].PushBack({ 615, 1057, 45, 69 });
 	gdown[middle].PushBack({ 668, 1057, 45, 69 });
@@ -404,9 +405,8 @@ ModulePlayer::ModulePlayer()
 	gwindance.PushBack({ 1187, 1126, 46, 72 });
 	gwindance.PushBack({ 1240, 1126, 46, 72 });
 	gwindance.PushBack({ 1299, 1126, 46, 72 });
-	gwindance.speed = 0.05;
-	gwindance.loop = true;
-
+	gwindance.speed = 0.03;
+	gwindance.loop = false;
 }
 
 ModulePlayer::~ModulePlayer()
