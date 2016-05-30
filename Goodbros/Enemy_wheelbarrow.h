@@ -10,12 +10,13 @@ private:
 	bool stop = false;
 
 	Animation wagon;
-
+	Animation Hitted;
 	iPoint original_pos;
 public:
 
 	Enemy_wheelbarrow(float x, float y, int direction);
 	void Move();
+	bool hit = false;
 	void Die();
 };
 
