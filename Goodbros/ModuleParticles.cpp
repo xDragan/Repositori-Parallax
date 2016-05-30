@@ -25,6 +25,12 @@ ModuleParticles::ModuleParticles()
 	enemyshot.speed.y = 1.5f;
 	enemyshot.life = 10000;
 
+	BarrowExpl.anim.PushBack({20,227,48,48});
+	BarrowExpl.anim.PushBack({ 112, 227, 48, 48});
+	BarrowExpl.anim.PushBack({ 174, 227, 48, 48 });
+	BarrowExpl.anim.PushBack({ 244, 227, 48, 48 });
+	BarrowExpl.anim.loop = true;
+	BarrowExpl.anim.speed = 0.10;
 	// Building explosion
 	building_explosion.anim.PushBack({ 19, 239, 26, 26 });
 	building_explosion.anim.PushBack({ 62, 236, 32, 32 });

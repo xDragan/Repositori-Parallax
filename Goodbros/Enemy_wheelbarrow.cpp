@@ -44,6 +44,10 @@ void Enemy_wheelbarrow::Move()
 	if (hit == false){
 		collider->type = COLLIDER_ENEMY;
 	}
+	if (hits == 3){
+		App->particles->AddParticle(App->particles->BarrowExpl, position.x +4, position.y + 4, COLLIDER_NONE, 0);
+		finished = true;
+	}
 	if (hit == true){
 		collider->type = COLLIDER_NONE;
 		animation = &Hitted;
@@ -60,4 +64,5 @@ void Enemy_wheelbarrow::Die()
 	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x, position.y, 3, NULL);
 	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 20, position.y, 4, NULL);
 	hit = true;
+	hits++;
 }

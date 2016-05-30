@@ -17,6 +17,7 @@ public:
 	Enemy_wheelbarrow(float x, float y, int direction);
 	void Move();
 	bool hit = false;
+	uint hits = 0;
 	void Die();
 };
 

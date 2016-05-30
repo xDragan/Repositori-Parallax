@@ -59,6 +59,7 @@ public:
 	Particle enemyshot;
 	Particle smoke;
 	Particle barrel;
+	Particle BarrowExpl;
 };
 
 #endif // __MODULEPARTICLES_H__
