@@ -126,20 +126,10 @@ update_status ModuleSceneFirst::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, 250, 95, NULL, 3200);
 			App->enemies->AddEnemy(ENEMY_TYPES::RIDER_SMALL_RIGHT, 257, 92, NULL, 3200);		
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 205, 100, NULL, 5000);
-
 		}
 	
-
 		time = SDL_GetTicks() + 25000;
 	}*/
-
-
-	
-	
-	
-	
-
-
 
 	/*if (SDL_GetTicks() > time2)
 	{
@@ -193,7 +183,7 @@ update_status ModuleSceneFirst::Update()
 
 	// Draw everything
 	App->render->Blit(background, 0, 0, NULL);
-	if (App->player->win_condition >= 18 && App->player->windance.Finished() == true)
+	if (App->player->win_condition >= 18 && (App->player->windance.Finished() == true || App->player->gwindance.Finished()))
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_win);
 		App->player->win_condition = 0;

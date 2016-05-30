@@ -38,7 +38,6 @@ bool ModuleSceneWin::Start()
 	App->structuresback->Disable();
 	ticks = SDL_GetTicks();
 	App->building_explosion->Disable();
-	App->UserUI->Disable();
 	background = App->textures->Load("bloodbros/win_scene.png");
 	App->audio->Load("bloodbros/Victory.ogg");
 	App->render->camera.x = App->render->camera.y = 0;
@@ -51,7 +50,6 @@ bool ModuleSceneWin::CleanUp()
 {
 	LOG("Unloading win scene");
 	App->textures->Unload(background);
-	App->UserUI->score = 0;
 	return true;
 }
 
@@ -62,7 +60,7 @@ update_status ModuleSceneWin::Update()
 
 	if (SDL_GetTicks() - ticks > 8000)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
+		App->fade->FadeToBlack(this, (Module*)App->scene_credit);
 	}
 	return UPDATE_CONTINUE;
 }

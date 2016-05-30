@@ -45,6 +45,9 @@ bool ModuleWindow::Init()
 
 		window = SDL_CreateWindow("", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
 
+		SDL_SetWindowTitle(window, "BloodBros 1.0 by Parallax Studios");
+		SDL_FreeSurface;
+
 		if(window == NULL)
 		{
 			LOG("Window could not be created! SDL_Error: %s\n", SDL_GetError());

@@ -268,7 +268,7 @@ ModulePlayer::ModulePlayer()
 	gshoot[far_left].PushBack({ 86, 1314, 60, 69 });
 	gshoot[Middle_left].PushBack({ 146, 1187, 43, 73 });
 	gshoot[Middle_left].PushBack({ 146, 1057, 51, 73 });
-	gshoot[Middle_left].PushBack({ 146, 10314, 43, 73 });
+	gshoot[Middle_left].PushBack({ 146, 1314, 43, 73 });
 	gshoot[near_left].PushBack({ 203, 1187, 38, 70 });
 	gshoot[near_left].PushBack({ 203, 1057, 45, 69 });
 	gshoot[near_left].PushBack({ 203, 1314, 45, 69 });
@@ -388,7 +388,6 @@ ModulePlayer::ModulePlayer()
 	gdownbtumble.PushBack({ 511, 1506, 46, 62 });
 	gdownbtumble.speed = 0.15f;
 
-
 	//win animation// 
 	gwin.PushBack({ 1032, 1054, 46, 72 });
 	gwin.PushBack({ 1084, 1054, 46, 72 });
@@ -483,7 +482,8 @@ update_status ModulePlayer::Update()
 	switch (Status)
 	{
 	case IDLE:
-		if (godmode == true){
+		if (godmode == true)
+		{
 			current_animation = &gidle[Looking_at];
 		}
 		else{
@@ -540,7 +540,8 @@ update_status ModulePlayer::Update()
 		break;
 
 	case SHOOTING:
-		if (godmode == true){
+		if (godmode == true)
+		{
 			current_animation = &gshoot[Looking_at];
 		}
 		else{
@@ -590,10 +591,12 @@ update_status ModulePlayer::Update()
 		break;
 
 	case LEFT:
-		if (godmode == true){
+		if (godmode == true)
+		{
 			current_animation = &gbackward;
 		}
-		else{
+		else
+		{
 			current_animation = &backward;
 		}
 		player_coll->SetPos(position.x + 8, position.y);
@@ -641,7 +644,8 @@ update_status ModulePlayer::Update()
 		break;
 
 	case RIGHT:
-		if (godmode == true){
+		if (godmode == true)
+		{
 			current_animation = &gforward;
 		}
 		else{
@@ -732,10 +736,12 @@ update_status ModulePlayer::Update()
 			gdownftumble.Reset();
 			downftumble.loops = 0;
 			downftumble.Reset();
-			if (godmode == true){
+			if (godmode == true)
+			{
 				current_animation = &gdownftumble;
 			}
-			else{
+			else
+			{
 				current_animation = &downftumble;
 			}
 			Status = ROLLING;
@@ -749,7 +755,8 @@ update_status ModulePlayer::Update()
 			if (godmode == true){
 				current_animation = &gdownbtumble;
 			}
-			else{
+			else
+			{
 				current_animation = &downbtumble;
 			}
 			Status = ROLLING;
@@ -769,10 +776,12 @@ update_status ModulePlayer::Update()
 		break;
 
 	case SHOOTING_DOWN:
-		if (godmode == true){
+		if (godmode == true)
+		{
 			current_animation = &gshootdown[Looking_at];
 		}
-		else{
+		else
+		{
 			current_animation = &shootdown[Looking_at];
 		}
 		if (looking_at() == far_left)
@@ -821,7 +830,6 @@ update_status ModulePlayer::Update()
 	case ROLLING:
 		player_coll->type = COLLIDER_NONE;
 		
-
 		if (current_animation == &btumble || current_animation == &gbtumble)
 		{
 			if (position.x < 5)
@@ -856,7 +864,6 @@ update_status ModulePlayer::Update()
 				break;
 			}
 		}
-	
 		if (current_animation == &downftumble || current_animation == &gdownftumble)
 		{
 			if (position.x > 210)
@@ -873,23 +880,21 @@ update_status ModulePlayer::Update()
 				break;
 			}
 		}
-		
 		if (current_animation == &downbtumble || current_animation == &gdownbtumble)
 		{
-				if (position.x < 5)
-				{
-					speed = 0;
-				}
-				else
-				{
-					position.x -= 1;
-				}
-				if (current_animation->Finished() == true)
-				{
-					Status = IDLE;
-					break;
-				}
-			
+			if (position.x < 5)
+			{
+				speed = 0;
+			}
+			else
+			{
+				position.x -= 1;
+			}
+			if (current_animation->Finished() == true)
+			{
+				Status = IDLE;
+				break;
+			}
 		}
 		break;
 		
@@ -933,7 +938,8 @@ update_status ModulePlayer::Update()
 		break;
 	case WIN:
 		player_coll->type = COLLIDER_NONE;
-		if (godmode == true){
+		if (godmode == true)
+		{
 			current_animation = &gwindance;
 		}
 		else{

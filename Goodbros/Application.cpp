@@ -19,6 +19,8 @@
 #include "ModuleText.h"
 #include "ModuleUIntro.h"
 #include "ModuleSceneIntro2.h"
+#include "ModuleSceneCredit.h"
+
 Application::Application()
 {
 	int i = 0;
@@ -31,6 +33,7 @@ Application::Application()
 	modules[i++] = scene_prestage = new ModuleScenePreStage();
 	modules[i++] = scene_space = new ModuleSceneFirst();
 	modules[i++] = scene_win = new ModuleSceneWin();
+	modules[i++] = scene_credit = new ModuleSceneCredit();
 	modules[i++] = structuresback = new ModuleStructures();
 	modules[i++] = structuresmiddle = new ModuleStructures();
 	modules[i++] = smoke = new ModuleParticles();
@@ -48,7 +51,6 @@ Application::Application()
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
-
 }	
 
 Application::~Application()
@@ -61,15 +63,15 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	// Deactivate modules here ----
+	// Deactivate modules
 	intro2->Disable();
 	scene_space->Disable();
 	scene_prestage->Disable();
 	scene_win->Disable();
+	scene_credit->Disable();
 	player->Disable();
 	collision->Disable();
 	UserUI->Disable();
-	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
