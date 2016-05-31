@@ -66,6 +66,7 @@ public:
 	Particle smoke;
 	Particle barrel;
 	Particle BarrowExpl;
+	Particle coin;
 };
 
 #endif // __MODULEPARTICLES_H__

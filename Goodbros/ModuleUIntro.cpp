@@ -7,6 +7,7 @@
 #include "ModuleSceneIntro.h"
 #include "ModuleSceneFirst.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleParticles.h"
 #include "ModuleUIntro.h"
 #include "ModulePlayer.h"
 #include "ModuleText.h"
@@ -79,7 +80,10 @@ update_status ModuleUIntro::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
 		if (credit < 99)
+		{
+			App->audio->PlayFx(App->particles->coin.fx);
 			++credit;
+		}
 
 	return UPDATE_CONTINUE;
 }

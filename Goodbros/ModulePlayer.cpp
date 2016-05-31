@@ -619,10 +619,10 @@ update_status ModulePlayer::Update()
 				current_animation = &gbtumble;
 			}
 			else{
-			current_animation = &btumble;
-		}
+				current_animation = &btumble;
+			}
 			Status = ROLLING;
-		
+
 		}
 		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN)
 		{
@@ -827,7 +827,7 @@ update_status ModulePlayer::Update()
 
 	case ROLLING:
 		player_coll->type = COLLIDER_NONE;
-		
+
 		if (current_animation == &btumble || current_animation == &gbtumble)
 		{
 			if (position.x < 5)
@@ -895,7 +895,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 		break;
-		
+
 	case DIE:
 		player_coll->type = COLLIDER_NONE;
 		current_animation = &die;
@@ -941,7 +941,7 @@ update_status ModulePlayer::Update()
 		break;
 	case WIN:
 		player_coll->type = COLLIDER_NONE;
-	
+
 		if (godmode == true)
 		{
 			current_animation = &gwindance;
@@ -1016,12 +1016,13 @@ update_status ModulePlayer::Update()
 					if (App->player->current_animation->current_frame > 8)
 						App->player->position = { 150, 70 };
 				}
-			if (current_animation->Finished() == true)
-			{
-				App->fade->FadeToBlack(App->scene_space, (Module*)App->scene_win);
+				if (current_animation->Finished() == true)
+				{
+					App->fade->FadeToBlack(App->scene_space, (Module*)App->scene_win);
+				}
 			}
+			break;
 		}
-		break;
 	}
 
 	// Draw everything
