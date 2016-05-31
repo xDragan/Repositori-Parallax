@@ -148,6 +148,7 @@
     <ClCompile Include="Enemy_CowBoy_Green_Top_Small2.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_CowBoy_Green_Top_Small3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -309,6 +310,7 @@
     <ClInclude Include="Enemy_CowBoy_Green_Top_Small2.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy_CowBoy_Green_Top_Small3.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">

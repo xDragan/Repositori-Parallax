@@ -111,6 +111,11 @@ Enemy_CowBoy_Green_Top_Small2::Enemy_CowBoy_Green_Top_Small2(float x, float y) :
 
 
 
+	
+
+
+
+
 	original_pos.x = x;
 	original_pos.y = y;
 

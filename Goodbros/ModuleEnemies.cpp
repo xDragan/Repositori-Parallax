@@ -32,6 +32,7 @@
 #include "Enemy_CowBoy_Green_Top_Small.h"
 #include "Enemy_CowBoy_Green_Top_Small2.h"
 #include "Enemy_Cowboy_Green_Top_Bar.h"
+#include "Enemy_CowBoy_Green_Top_Small3.h"
 
 #define SPAWN_MARGIN 40
 
@@ -228,6 +229,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2:
 			enemies[i] = new Enemy_CowBoy_Green_Top_Small2(info.x, info.y);
+			break;
+		case ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3:
+			enemies[i] = new Enemy_CowBoy_Green_Top_Small3(info.x, info.y);
 			break;
 		case ENEMY_TYPES::BARREL_ROLL:
 			enemies[i] = new Enemy_Barrel_Roll(info.x, info.y);
