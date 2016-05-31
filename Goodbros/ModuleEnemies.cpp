@@ -134,6 +134,16 @@ bool ModuleEnemies::CleanUp()
 			delete enemies[i];
 			enemies[i] = nullptr;
 		}
+		if (App->enemiesback->enemies[i] != nullptr)
+		{
+			delete App->enemiesback->enemies[i];
+			App->enemiesback->enemies[i] = nullptr;
+		}
+		if (App->enemiesfront->enemies[i] != nullptr)
+		{
+			delete App->enemiesfront->enemies[i];
+			App->enemiesfront->enemies[i] = nullptr;
+		}
 	}
 
 	return true;

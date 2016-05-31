@@ -56,9 +56,9 @@ bool ModuleSceneFirst::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 210, 107, NULL, NULL);
-	//App->enemies->AddEnemy(ENEMY_TYPES::CAN, SCREEN_WIDTH / 2 + 5, 130, NULL, NULL);
+	App->enemies->AddEnemy(ENEMY_TYPES::CAN, SCREEN_WIDTH / 2 + 5, 130, NULL, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 105, NULL, NULL);
-	//App->barrelroll->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL, NULL);
+	App->barrelroll->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::COUPLE_GUY, SCREEN_WIDTH - 100, 100, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::COUPLE_GIRL, SCREEN_WIDTH - 90, 100, NULL, NULL);
 	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL, NULL);
@@ -69,7 +69,10 @@ bool ModuleSceneFirst::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 9000);
 	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 205, 50, NULL, 5000);
 
-	
+	App->structuresmiddle->bardest = false;
+	App->structuresmiddle->fabtendest = false;
+	couple = false;
+	poop = false;
 	//Barrels
 	App->structuresfront->AddStructure(App->structuresfront->barrel, 6, 144);
 	App->structuresfront->AddStructure(App->structuresfront->barrel, 38, 144);
@@ -153,16 +156,16 @@ update_status ModuleSceneFirst::Update()
 		else{
 
 
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 215, 55, NULL, 3000);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 185, 55, NULL, 3200);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 155, 55, NULL, 3400);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 120, 55, NULL, 3600);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 135, 90, NULL, 1000);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 195, 90, NULL, 1000);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 215, 55, NULL, 3000);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 185, 55, NULL, 3200);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 155, 55, NULL, 3400);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 120, 55, NULL, 3600);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 135, 90, NULL, 1000);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 195, 90, NULL, 1000);
 
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 110, 31, NULL, 5200);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 170, 31, NULL, 5100);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 230, 31, NULL, 5300);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 110, 31, NULL, 5200);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 170, 31, NULL, 5100);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 230, 31, NULL, 5300);
 
 
 
@@ -182,7 +185,7 @@ update_status ModuleSceneFirst::Update()
 
 		if (App->structuresmiddle->fabtendest == false && App->structuresfront->fabtendest == false && App->structuresback->fabtendest == false)
 		{
-			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 7, 100, NULL, NULL);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 7, 100, NULL, NULL);
 			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 45, 100, NULL, NULL);
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 3, 47, NULL, 2000);
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 25, 47, NULL, 2100);
@@ -194,21 +197,21 @@ update_status ModuleSceneFirst::Update()
 
 		else{
 
-			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_SMALL, 70, 95, NULL, NULL);
-			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_SMALL, 40, 95, NULL, 100);
-			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_SMALL, 10, 95, NULL, 200);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_SMALL, 70, 95, NULL, NULL);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_SMALL, 40, 95, NULL, 100);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_SMALL, 10, 95, NULL, 200);
 
 
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL4, 70, 50, NULL, 2000);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL4, 40, 50, NULL, 2200);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL4, 10, 50, NULL, 2400);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL4, 70, 50, NULL, 2000);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL4, 40, 50, NULL, 2200);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL4, 10, 50, NULL, 2400);
 
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 5, 15, NULL, 5600);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 20, 15, NULL, 5500);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 35, 15, NULL, 5400);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 50, 15, NULL, 5300);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 65, 15, NULL, 5200);
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 80, 15, NULL, 5100);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 5, 15, NULL, 5600);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 20, 15, NULL, 5500);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 35, 15, NULL, 5400);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 50, 15, NULL, 5300);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 65, 15, NULL, 5200);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 80, 15, NULL, 5100);
 
 
 
