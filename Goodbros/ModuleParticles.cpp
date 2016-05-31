@@ -145,6 +145,9 @@ bool ModuleParticles::Start()
 	shot.fx = App->audio->LoadFx("bloodbros/shot.wav");
 	shotgunshot.fx = App->audio->LoadFx("bloodbros/shotgun-shoot.wav");
 	machineshot.fx = App->audio->LoadFx("bloodbros/machinegun-shot.wav");
+	//Credit.fx = App->
+	points.fx = App->audio->LoadFx("bloodbros/points-catched.wav");
+	weapontake.fx = App->audio->LoadFx("bloodbros/took-weapon.wav");
 	graphics = App->textures->Load("bloodbros/Stuff.png");
 
 	return true;

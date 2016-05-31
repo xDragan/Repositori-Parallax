@@ -59,6 +59,9 @@ public:
 	Particle shot;
 	Particle shotgunshot;
 	Particle machineshot;
+	Particle Credit;
+	Particle points;
+	Particle weapontake;
 	Particle enemyshot;
 	Particle smoke;
 	Particle barrel;
