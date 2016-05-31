@@ -27,7 +27,7 @@ bool ModuleSceneIntro2::Start()
 	App->introUI->Enable();
 	App->barrelroll->Enable();
 	App->particles->Enable();
-	
+	App->enemies->Enable();
 	App->render->camera.x = App->render->camera.y = 0;
 
 	return true;

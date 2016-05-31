@@ -28,12 +28,12 @@ Application::Application()
 	modules[i++] = render = new ModuleRender();
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
-	modules[i++] = scene_credit = new ModuleSceneCredit();
 	modules[i++] = scene_intro = new ModuleSceneIntro();
 	modules[i++] = intro2 = new ModuleSceneIntro2();
 	modules[i++] = scene_prestage = new ModuleScenePreStage();
 	modules[i++] = scene_space = new ModuleSceneFirst();
 	modules[i++] = scene_win = new ModuleSceneWin();
+	modules[i++] = scene_credit = new ModuleSceneCredit();
 	modules[i++] = structuresback = new ModuleStructures();
 	modules[i++] = structuresmiddle = new ModuleStructures();
 	modules[i++] = smoke = new ModuleParticles();

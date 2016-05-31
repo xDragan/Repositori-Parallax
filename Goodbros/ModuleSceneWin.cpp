@@ -50,9 +50,6 @@ bool ModuleSceneWin::CleanUp()
 {
 	LOG("Unloading win scene");
 	App->textures->Unload(background);
-	App->points->CleanUp();
-	App->points->Disable();
-
 	return true;
 }
 
