@@ -229,6 +229,20 @@ update_status ModuleStructures::Update()
 				p->fx_played = true;
 			}
 		}
+		if (active[i]->hits == 4 && active[i]->mytype == FABTEN && fabtenalive == true)
+		{
+			collapse_fabten = SDL_GetTicks() + 1800;
+			fabtenalive = false;
+		}
+		if (active[i]->hits == 4 && active[i]->mytype == BAR && baralive == true)
+		{
+			collapse_fabten = SDL_GetTicks() + 1800;
+			baralive = false;
+		}
+		if (SDL_GetTicks() < collapse_fabten)
+		{
+			App->audio->PlayFx(collapse.fx);
+		}
 		if (active[i]->hits >= 4 && active[i]->mytype != BARREL && active[i]->mytype != INN)
 		{
 			App->collision->EraseCollider(p->collider);
@@ -353,7 +367,6 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			else if (active[i]->hits == 3)
 			{
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 27, 10000, NULL);
-				//App->audio->PlayFx(collapse.fx);
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 				App->structuresback->cd1 += 0.5;
@@ -391,7 +404,6 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			else if (active[i]->hits == 3)
 			{
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000, NULL);
-				//App->audio->PlayFx(collapse.fx);
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 				App->structuresback->cd1 += 0.5;

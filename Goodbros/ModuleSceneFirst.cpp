@@ -128,10 +128,8 @@ update_status ModuleSceneFirst::Update()
 		App->enemiesfront->AddEnemy(ENEMY_TYPES::RIDER, 257, 98, NULL, 9000);
 		App->enemiesfront->AddEnemy(ENEMY_TYPES::POOPING_GUY, 45, 95, NULL, 2000);
 
-
-
-
-		if (App->structuresmiddle->bardest == false && App->structuresfront->bardest == false && App->structuresback->bardest == false){
+		if (App->structuresmiddle->bardest == false && App->structuresfront->bardest == false && App->structuresback->bardest == false)
+		{
 
 			App->enemiesback->AddEnemy(ENEMY_TYPES::WHEELBARROW, 250, 95, 1, 10000);
 			App->enemiesback->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, 250, 95, NULL, 9000);
@@ -141,20 +139,13 @@ update_status ModuleSceneFirst::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 215, 45, NULL, 18000);
 
 		}
-		if (App->structuresmiddle->fabtendest == false && App->structuresfront->fabtendest == false && App->structuresback->fabtendest == false){
-
-
-			
+		if (App->structuresmiddle->fabtendest == false && App->structuresfront->fabtendest == false && App->structuresback->fabtendest == false)
+		{
 			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 7, 100, NULL,20500);
 			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 45, 100, NULL, 20000);
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 3, 47, NULL, 22000);
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 25, 47, NULL, 22200);
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 50, 47, NULL, 22400);
-
-
-
-
-
 		}
 	
 		time = SDL_GetTicks() + 30000;
@@ -190,12 +181,9 @@ update_status ModuleSceneFirst::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 135, 90, NULL, 1000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 195, 90, NULL, 1000);
 
-
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 105, 31, NULL, 1000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 172, 31, NULL, 1000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3, 232, 31, NULL, 1000);
-	
-
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
 	{
