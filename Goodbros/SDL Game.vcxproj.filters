@@ -157,7 +157,9 @@
     <ClCompile Include="Enemy_CowBoy_Blue_Top_Small.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_CowBoy_Green_Top_Small4.cpp" />
+    <ClCompile Include="Enemy_CowBoy_Green_Top_Small4.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -328,7 +330,9 @@
     <ClInclude Include="Enemy_CowBoy_Blue_Top_Small.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_CowBoy_Green_Top_Small4.h" />
+    <ClInclude Include="Enemy_CowBoy_Green_Top_Small4.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">
