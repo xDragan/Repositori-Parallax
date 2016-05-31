@@ -64,7 +64,13 @@ void Enemy_Girl::Die()
 		collider = App->collision->AddCollider({ 0, 0, 34, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	}
 	path.Erase(); 
+	if (hits == 0)
 	path.PushBack({ 1.0f, 0 }, 100, &run);	
+	if (hits == 1)
+		path.PushBack({ 1.5f, 0 }, 100, &run);
+	if (hits >= 2)
+		path.PushBack({ 2.5f, 0 }, 100, &run);
+	hits++;
 	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 5, position.y, 1, NULL);
 	hit = true;
 

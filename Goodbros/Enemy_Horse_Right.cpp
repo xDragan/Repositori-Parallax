@@ -53,8 +53,9 @@ void Enemy_Horse_Right::Move()
 	position = original_pos + path.GetCurrentSpeed(&animation);
 	if (dieshot.Finished() == true){
 		path.PushBack({ -2.50f, 0.0f }, 200, &backward);
+		dieshot.Reset();
 	}
-	if (position.x == -50)
+	if (position.x >= -50)
 	{
 		finished = true;
 	}
@@ -68,6 +69,12 @@ void Enemy_Horse_Right::Die()
 	if (hit == false){
 		path.PushBack({ 0.0f, 0.0f }, 130, &dieshot);
 		path.loop = false;
+	}
+	if (hit == true){
+		if (path.GetFrame() >= 75){
+			path.PushBack({ 0.0f, 0.0f }, 130, &dieshot);
+			path.loop = false;
+		}
 	}
 	
 	hit = true;

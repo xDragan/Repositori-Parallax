@@ -23,6 +23,24 @@ ModuleAim::ModuleAim()
 	Aimmachine.PushBack({517, 248, 43, 32});
 	Aimmachine.speed = 0.2f;
 
+	Aimshotgunshot.PushBack({555, 248, 43, 32});
+	Aimshotgunshot.PushBack({ 603, 248, 43, 32});
+	Aimshotgunshot.PushBack({ 652, 248, 43, 32});
+	Aimshotgunshot.PushBack({ 700, 248, 43,32 });
+	Aimshotgunshot.PushBack({ 469, 248, 43, 32 });
+	Aimshotgunshot.PushBack({ 517, 248, 43, 32 });
+	Aimshotgunshot.speed = 0.5f;
+	Aimshotgunshot.loop = true;
+
+	aimmachinegunshot.PushBack({414, 319, 31,29});
+	aimmachinegunshot.PushBack({ 450, 319, 31, 29 });
+	aimmachinegunshot.PushBack({ 414, 354, 31, 29 });
+	aimmachinegunshot.PushBack({ 450, 354, 31, 29 });
+	aimmachinegunshot.PushBack({ 466, 284, 31, 29 });
+	aimmachinegunshot.PushBack({ 502, 284, 31, 29 });
+	aimmachinegunshot.speed = 0.5f;
+	aimmachinegunshot.loop = true;
+
 	Aimshoot.PushBack({ 626, 288, 23, 21 });
 	Aimshoot.PushBack({ 660, 289, 23, 21 });
 	Aimshoot.PushBack({ 696, 288, 23, 21 });
@@ -140,7 +158,7 @@ update_status ModuleAim::Update()
 				{
 					Aim->type = COLLIDER_PLAYER_NOSHOT;
 				}
-				current_animation = &Aimshoot;
+				current_animation = &aimmachinegunshot;
 			}
 			
 		}
@@ -186,7 +204,7 @@ update_status ModuleAim::Update()
 				{
 					Aim->type = COLLIDER_PLAYER_NOSHOT;
 				}
-				current_animation = &Aimshoot;
+				current_animation = &Aimshotgunshot;
 			}
 		}
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_IDLE)

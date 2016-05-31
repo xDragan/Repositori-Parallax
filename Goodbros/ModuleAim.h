@@ -33,8 +33,10 @@ public:
 	Animation aim;
 	Animation idle;
 	Animation Aimshoot;
+	Animation Aimshotgunshot;
 	Animation Aimshotgun;
 	Animation Aimmachine;
+	Animation aimmachinegunshot;
 	unsigned int time = 0;
 	iPoint position;
 	uint shotgunshots = 0;

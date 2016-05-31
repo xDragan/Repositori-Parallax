@@ -11,6 +11,7 @@
 #include "ModuleAim.h"
 #include "ModuleTextures.h"
 #include "ModuleUI.h"
+#include "ModuleEnemies.h"
 #include "ModuleSceneFirst.h"
 
 #include "SDL/include/SDL_timer.h"
@@ -917,6 +918,8 @@ update_status ModulePlayer::Update()
 					staydied.Reset();
 					dmg_cd = SDL_GetTicks() + 3000;
 					lose = 0;
+					App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 50, position.y, 4, NULL);
+					App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 25, position.y, 2, NULL);
 					App->UserUI->done = false;
 					loosing = false;
 					Status = IDLE;
