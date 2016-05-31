@@ -109,9 +109,14 @@ update_status ModuleAim::Update()
 		{
 			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
 			{
-				if (SDL_GetTicks() > time)
+				if (SDL_GetTicks() > timeshot)
 				{
 					App->audio->PlayFx(App->particles->shot.fx);
+					timeshot = SDL_GetTicks() + 150;
+				}
+				if (SDL_GetTicks() > time)
+				{
+					
 					Aim->type = COLLIDER_PLAYER_SHOT;
 					time = SDL_GetTicks() + 500;
 				}
@@ -150,9 +155,14 @@ update_status ModuleAim::Update()
 		{
 			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
 			{
-				if (SDL_GetTicks() > time)
+				if (SDL_GetTicks() > timeshot)
 				{
 					App->audio->PlayFx(App->particles->shotgunshot.fx);
+					timeshot = SDL_GetTicks() + 150;
+				}
+				if (SDL_GetTicks() > time)
+				{
+				
 					Aim->type = COLLIDER_PLAYER_SHOT;
 					shotgunshots++;
 					time = SDL_GetTicks() + 400;
@@ -197,9 +207,14 @@ update_status ModuleAim::Update()
 		{
 			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
 			{
-				if (SDL_GetTicks() > time)
+				if (SDL_GetTicks() > timeshot)
 				{
 					App->audio->PlayFx(App->particles->machineshot.fx);
+					timeshot = SDL_GetTicks() + 150;
+				}
+				if (SDL_GetTicks() > time)
+				{
+					
 					Aim->type = COLLIDER_PLAYER_SHOT;
 					machineshots++;
 					time = SDL_GetTicks() + 300;

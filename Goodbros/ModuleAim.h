@@ -43,6 +43,7 @@ public:
 	uint machineshots = 0;
 	uint aimmode = NORMAL;
 	bool normalaim = true;
+	uint timeshot = 0;
 };
 
 #endif
