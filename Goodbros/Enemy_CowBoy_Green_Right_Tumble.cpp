@@ -12,7 +12,7 @@ Enemy_CowBoy_Green_Right_Tumble::Enemy_CowBoy_Green_Right_Tumble(float x, float 
 	spawnani.PushBack({ 1418, 2808, 13, 40 });
 	spawnani.PushBack({ 1435, 2808, 13, 40 });
 	spawnani.loop = false;
-	spawnani.speed = 0.15f;
+	spawnani.speed = 0.10f;
 
 	forward.PushBack({ 1959, 2860, 25, 40 });
 	forward.PushBack({ 2004, 2860, 25, 40 });
@@ -54,7 +54,7 @@ Enemy_CowBoy_Green_Right_Tumble::Enemy_CowBoy_Green_Right_Tumble(float x, float 
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 40 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	path.PushBack({ 0, 0 }, 30, &spawnani);
+	path.PushBack({ 0, 0 }, 50, &spawnani);
 	path.PushBack({ -1.0f, 0 }, 30, &backward);
 	path.PushBack({ 0, 0 }, 45, &stop_shoot);
 	path.PushBack({ 1.0f, 0 }, 200, &forward);

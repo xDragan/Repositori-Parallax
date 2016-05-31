@@ -64,7 +64,7 @@ bool ModuleSceneFirst::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 7000);
 	//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 9000);
 	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 205, 50, NULL, 5000);
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 205, 50, NULL, 5000);
+
 	
 	//Barrels
 	App->structuresfront->AddStructure(App->structuresfront->barrel, 6, 144);
@@ -107,29 +107,46 @@ bool ModuleSceneFirst::CleanUp()
 // Update: draw background
 update_status ModuleSceneFirst::Update()
 {
-	/*if (SDL_GetTicks() > time + 1000)
+	if (SDL_GetTicks() > time+100)
 	{
 		//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, SCREEN_WIDTH, 130, NULL, 0);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 106, NULL, 1000);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, 250, 106, NULL, 1300);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 107, NULL, 2300);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 107, NULL, 2400);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 100, NULL, 3200);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 100, NULL, 3300);
-		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_RIGHT, 250, 90, NULL, 4000);
-		App->enemies->AddEnemy(ENEMY_TYPES::RIDER, 257, 98, NULL, 4000);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 106, NULL, 5000);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, 250, 106, NULL, 5000);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 107, NULL, 7000);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 107, NULL, 7000);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 100, NULL, 8000);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 100, NULL, 8000);
+		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_RIGHT, 250, 90, NULL, 9000);
+		App->enemies->AddEnemy(ENEMY_TYPES::RIDER, 257, 98, NULL, 9000);
 		
 		if (App->structuresmiddle->bardest == false){
 
-			App->enemies->AddEnemy(ENEMY_TYPES::WHEELBARROW, 250, 80, 1, 7000);
-			App->enemies->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, 250, 95, NULL, 3200);
-			App->enemies->AddEnemy(ENEMY_TYPES::RIDER_SMALL_RIGHT, 257, 92, NULL, 3200);		
-			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 205, 100, NULL, 5000);
+			App->enemies->AddEnemy(ENEMY_TYPES::WHEELBARROW, 250, 95, 1, 10000);
+			App->enemies->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, 250, 95, NULL, 9000);
+			App->enemies->AddEnemy(ENEMY_TYPES::RIDER_SMALL_RIGHT, 257, 92, NULL, 9000);		
+			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 210, 100, NULL, 17000);
+			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 170, 47, NULL, 18000);
+			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 215, 45, NULL, 18000);
+
+		}
+		if (App->structuresmiddle->fabtendest == false){
+
+
+			
+			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 7, 100, NULL,20500);
+			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 45, 100, NULL, 20000);
+			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 3, 47, NULL, 22000);
+			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 25, 47, NULL, 22200);
+			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 50, 47, NULL, 22400);
+
+
+
+
 
 		}
 	
-		time = SDL_GetTicks() + 25000;
-	}*/
+		time = SDL_GetTicks() + 30000;
+	}
 
 	/*if (SDL_GetTicks() > time2)
 	{

@@ -24,9 +24,12 @@ Enemy_CowBoy_Green_Top_Bar::Enemy_CowBoy_Green_Top_Bar(float x, float y) : Enemy
 	backward.speed = 0.15f;
 
 	stop_shoot.PushBack({ 1093, 2860, 25, 40 });
-	stop_shoot.PushBack({ 1093, 2860, 25, 40 });
+	stop_shoot.PushBack({ 1120, 2860, 25, 40 });
 	stop_shoot.speed = 0.04f;
 	stop_shoot.loop = true;
+
+	idle.PushBack({ 1093, 2860, 25, 40 });
+	idle.speed = 0.01f;
 
 	dieshot.PushBack({ 1387, 2860, 25, 40 });
 	dieshot.PushBack({ 1435, 2860, 25, 40 });
@@ -35,12 +38,14 @@ Enemy_CowBoy_Green_Top_Bar::Enemy_CowBoy_Green_Top_Bar(float x, float y) : Enemy
 	dieshot.speed = 0.09f;
 	dieshot.loop = false;
 
-	dieexplotion.PushBack({ 1576, 2971, 25, 40 });
-	dieexplotion.PushBack({ 1629, 2971, 25, 40 });
+	dieexplotion.PushBack({ 1576, 2860, 25, 40 });
+	dieexplotion.PushBack({ 1629, 2860, 25, 40 });
 	dieexplotion.PushBack({ 1671, 2860, 25, 40 });
 	dieexplotion.PushBack({ 1722, 2860, 25, 40 });
 	dieexplotion.speed = 0.3f;
 	dieexplotion.loop = false;
+
+	crouch.PushBack({ 638, 2972, 25, 40 });
 
 
 
@@ -50,13 +55,13 @@ Enemy_CowBoy_Green_Top_Bar::Enemy_CowBoy_Green_Top_Bar(float x, float y) : Enemy
 	spawni.PushBack({ 1418, 2808, 13, 40 });
 	spawni.PushBack({ 1435, 2808, 13, 40 });
 	spawni.loop = false;
-	spawni.speed = 0.15f;
+	spawni.speed = 0.10f;
 
 
 	jump.PushBack({ 1466, 2808, 25, 40 });
 	jump.PushBack({ 1466, 2808, 25, 40 });
 	jump.PushBack({ 1498, 2793, 25, 40 });
-	jump.speed = 0.05f;
+	jump.speed = 0.03f;
 	jump.loop = false;
 
 
@@ -74,19 +79,49 @@ Enemy_CowBoy_Green_Top_Bar::Enemy_CowBoy_Green_Top_Bar(float x, float y) : Enemy
 		path.PushBack({ -1.0f, 0 }, 30, &backward);
 		path.PushBack({ 0, 0 }, 40, &stop_shoot);
 		path.PushBack({ 1.0f, 0 }, 140, &forward);
-		path.loop = true;
+		path.loop = false;
 	}
 
+	if (x == 215){
+
+		path.PushBack({ 0, 0 }, 50, &spawni);
+		path.PushBack({ -1.0f, 0 }, 20, &backward);
+		path.PushBack({ 0, 0 }, 40, &idle);
+		path.PushBack({ 1.0f, 0 }, 140, &forward);
+		path.loop = false;
+
+
+
+
+
+
+
+	}
+
+
+	if (x == 3){
+		
+		path.PushBack({ 0, 0 }, 50, &spawni);
+		path.PushBack({ 0, 0 }, 40, &stop_shoot);
+		path.PushBack({ 0, -2.0f }, 30, &crouch);
+		path.PushBack({ 0, 2.0f }, 40, &jump);
+		path.PushBack({ 1.0f, 0 }, 85, &forward);
+		path.PushBack({ 0, 0 }, 30, &stop_shoot);
+		path.PushBack({ 1.0f, 1.0f }, 20, &forward);
+		path.PushBack({ 1.0f, 0 }, 500, &forward);
+		path.loop = false;
+		
+
+	}
 	else{
 
-		path.PushBack({ 0, 0 }, 30, &spawni);
-		path.PushBack({ 1.0f, 0 }, 30, &backward);
-		path.PushBack({ 0, 0 }, 40, &stop_shoot);
+		path.PushBack({ 0, 0 }, 50, &spawni);
+		path.PushBack({ 0, 0 }, 40, &idle);
+		path.PushBack({ 0, -2.0f }, 10, &crouch);
 		path.PushBack({ 0, 2.0f }, 40, &jump);
-		path.PushBack({ 1.0f, 0 }, 20, &forward);
-		path.PushBack({ 0, 0 }, 40, &stop_shoot);
-		path.PushBack({ 1.0f, 0 }, 200, &forward);
-		path.loop = true;
+		path.PushBack({ 1.0f, 0 }, 500, &forward);
+		
+		path.loop = false;
 
 
 

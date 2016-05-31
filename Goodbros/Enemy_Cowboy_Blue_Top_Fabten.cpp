@@ -136,7 +136,7 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 
 	if (x >= 20 && x <= 150){
 
-		path.PushBack({ 0, 0 }, 100, &spawnn);
+		path.PushBack({ 0, 0 }, 80, &spawnn);
 		path.PushBack({ 0, 0 }, 60, &grenadesm);
 		path.PushBack({ 0, 0 }, 20, &crouchsm);
 		path.PushBack({ 0, -2.0f }, 20, &crouchsm);
@@ -148,7 +148,7 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 
 	else if (x >= 0 && x <= 20){
 
-		path.PushBack({ 0, 0 }, 100, &spawnn);
+		path.PushBack({ 0, 0 }, 80, &spawnn);
 		path.PushBack({ 0, 0 }, 60, &grenadesm);
 		path.PushBack({ 0, 0 }, 20, &crouchsm);
 		path.PushBack({ 0, -2.0f }, 20, &crouchsm);
@@ -165,9 +165,9 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 
 	else{
 
-		path.PushBack({ 0, 0 }, 100, &spawnn);
+		path.PushBack({ 0, 0 }, 80, &spawnn);
 		path.PushBack({ 0, 0 }, 40, &shootsm);
-		path.PushBack({ -1.0f, 0 }, 40, &backwardsm);
+		path.PushBack({ -1.0f, 0 }, 30, &backwardsm);
 		path.PushBack({ 0, 0 }, 60, &grenadesm);
 		path.PushBack({ 0, -2.0f }, 20, &jumpsm);
 		path.PushBack({ -0.3f, 2.0f },50, &jumpsm);

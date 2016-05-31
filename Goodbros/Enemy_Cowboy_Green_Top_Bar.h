@@ -16,6 +16,8 @@ private:
 	Animation dieexplotion;
 	Animation spawni;
 	Animation jump;
+	Animation idle;
+	Animation crouch;
 	
 
 	bool isdead = false;
