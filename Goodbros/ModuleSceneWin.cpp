@@ -32,6 +32,7 @@ bool ModuleSceneWin::Start()
 	App->enemies->CleanUp();
 	App->scene_space->CleanUp();
 	App->scene_space->Disable();
+	App->enemies->CleanUp();
 	App->enemies->Disable();
 	App->structuresfront->Disable();
 	App->structuresmiddle->Disable();

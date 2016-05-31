@@ -26,8 +26,8 @@ bool ModuleSceneIntro::Start()
 	LOG("Loading Parallax intro");
 	background = App->textures->Load("bloodbros/tribute2.png");
 	App->audio->Load("bloodbros/Parallax_Theme.ogg");
-	App->scene_credit->Disable();
 	App->scene_credit->CleanUp();
+	App->scene_credit->Disable();
 	App->points->Enable();
 	App->smoke->Enable();
 	return true;

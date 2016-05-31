@@ -35,6 +35,7 @@ bool ModuleSceneFirst::Start()
 	App->aim->Enable();
 	App->structuresfront->Enable();
 	App->UserUI->Enable();
+	App->enemies->Enable();
 
 
 	// Player reset position & death animation
@@ -99,6 +100,8 @@ bool ModuleSceneFirst::CleanUp()
 	App->barrelroll->Disable();
 	App->points->Disable();
 	App->smoke->Disable();
+	App->enemies->CleanUp();
+	App->enemies->Disable();
 	App->collision->Disable();
 	App->UserUI->Disable();
 	return true;
@@ -165,6 +168,9 @@ update_status ModuleSceneFirst::Update()
 		time3 = SDL_GetTicks() + 6000;
 	}
 	*/
+
+
+
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 	{
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 120, 55, NULL, 1000);
