@@ -576,11 +576,6 @@ update_status ModulePlayer::Update()
 		{
 			player_coll->SetPos(position.x + 6, position.y + 8);
 		}
-		if (SDL_GetTicks() > timeout)
-		{
-			App->audio->PlayFx(App->particles->shot.fx);
-			timeout = SDL_GetTicks() + 150;
-		}
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			Status = SHOOTING_DOWN;
@@ -820,11 +815,6 @@ update_status ModulePlayer::Update()
 		if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_UP)
 		{
 			Status = DOWN;
-		}
-		if (SDL_GetTicks() > timeout)
-		{
-			App->audio->PlayFx(App->particles->shot.fx);
-			timeout = SDL_GetTicks() + 150;
 		}
 		break;
 

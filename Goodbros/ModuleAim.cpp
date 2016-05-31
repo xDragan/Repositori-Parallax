@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModuleAim.h"
+#include "ModuleAudio.h"
 #include "SDL/include/SDL_timer.h"
 
 ModuleAim::ModuleAim()
@@ -110,6 +111,7 @@ update_status ModuleAim::Update()
 			{
 				if (SDL_GetTicks() > time)
 				{
+					App->audio->PlayFx(App->particles->shot.fx);
 					Aim->type = COLLIDER_PLAYER_SHOT;
 					time = SDL_GetTicks() + 500;
 				}
@@ -144,12 +146,13 @@ update_status ModuleAim::Update()
 		{
 			position.y += speed;
 		}
-		if (App->player->Status != DIE && App->player->Status != ROLLING)
+		if (App->player->Status != DIE && App->player->Status != ROLLING && App->player->Status != WIN);
 		{
 			if (App->input->keyboard[SDL_SCANCODE_Z] == KEY_STATE::KEY_REPEAT)
 			{
 				if (SDL_GetTicks() > time)
 				{
+					App->audio->PlayFx(App->particles->shotgunshot.fx);
 					Aim->type = COLLIDER_PLAYER_SHOT;
 					shotgunshots++;
 					time = SDL_GetTicks() + 400;
@@ -196,6 +199,7 @@ update_status ModuleAim::Update()
 			{
 				if (SDL_GetTicks() > time)
 				{
+					App->audio->PlayFx(App->particles->machineshot.fx);
 					Aim->type = COLLIDER_PLAYER_SHOT;
 					machineshots++;
 					time = SDL_GetTicks() + 300;

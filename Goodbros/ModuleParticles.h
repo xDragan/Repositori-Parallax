@@ -57,6 +57,8 @@ public:
 	Particle dynamite_exp;
 	Particle building_explosion;
 	Particle shot;
+	Particle shotgunshot;
+	Particle machineshot;
 	Particle enemyshot;
 	Particle smoke;
 	Particle barrel;

@@ -143,7 +143,8 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 
 	shot.fx = App->audio->LoadFx("bloodbros/shot.wav");
-
+	shotgunshot.fx = App->audio->LoadFx("bloodbros/shotgun-shoot.wav");
+	machineshot.fx = App->audio->LoadFx("bloodbros/machinegun-shot.wav");
 	graphics = App->textures->Load("bloodbros/Stuff.png");
 
 	return true;
