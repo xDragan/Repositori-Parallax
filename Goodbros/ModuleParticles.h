@@ -60,8 +60,10 @@ public:
 	Particle shotgunshot;
 	Particle machineshot;
 	Particle Credit;
+	Particle love;
 	Particle points;
 	Particle weapontake;
+	Particle WC;
 	Particle enemyshot;
 	Particle smoke;
 	Particle barrel;

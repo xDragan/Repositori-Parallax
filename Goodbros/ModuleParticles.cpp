@@ -57,7 +57,26 @@ ModuleParticles::ModuleParticles()
 	dynamite.anim.loop = false;
 	dynamite.anim.speed = 0.1f;
 
+	//WC
+	WC.anim.PushBack({ 415, 407, 16, 14 });
+	WC.anim.PushBack({ 415, 407, 16, 14 });
+	WC.anim.PushBack({ 415, 407, 16, 14 });
+	WC.anim.PushBack({ 415, 407, 16, 14 });
+	WC.anim.PushBack({ 415, 407, 16, 14 });
+	WC.anim.PushBack({ 415, 407, 16, 14 });
+	WC.anim.PushBack({ 432, 407, 16, 14 });
+	WC.anim.PushBack({ 449, 407, 16, 14 });
+	WC.anim.PushBack({ 466, 407, 16, 14 });
+	WC.anim.loop = false;
+	WC.anim.speed = 0.1;
 
+	love.anim.PushBack({ 533, 387,11 , 14});
+	love.anim.PushBack({ 548, 387, 11, 14});
+	love.anim.PushBack({ 564, 387, 13, 15 });
+	love.anim.PushBack({ 598, 387, 13, 15 });
+	love.anim.PushBack({ 614, 387, 13, 15 });
+	love.anim.loop = false;
+	love.anim.speed = 0.1;
 
 	dynamite_exp.anim.PushBack({ 80, 516, 65, 64 });
 	dynamite_exp.anim.PushBack({ 154, 516, 65, 64 });

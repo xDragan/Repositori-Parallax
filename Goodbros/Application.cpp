@@ -36,6 +36,7 @@ Application::Application()
 	modules[i++] = scene_credit = new ModuleSceneCredit();
 	modules[i++] = structuresback = new ModuleStructures();
 	modules[i++] = enemiesback = new ModuleEnemies();
+	modules[i++] = love = new ModuleParticles();
 	modules[i++] = structuresmiddle = new ModuleStructures();
 	modules[i++] = smoke = new ModuleParticles();
 	modules[i++] = building_explosion = new ModuleParticles();

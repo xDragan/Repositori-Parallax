@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 29
+#define NUM_MODULES 30
 
 class ModuleWindow;
 class ModuleInput;
@@ -56,6 +56,7 @@ public:
 	ModuleStructures* structuresfront;
 	ModuleEnemies* points;
 	ModuleParticles* smoke;
+	ModuleParticles* love;
 	ModuleParticles* building_explosion;
 	ModuleUI* UserUI;
 	ModuleUIntro* introUI;

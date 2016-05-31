@@ -38,6 +38,7 @@ bool ModuleSceneFirst::Start()
 	App->UserUI->Enable();
 	App->enemies->Enable();
 	App->smoke->CleanUp();
+	App->love->Enable();
 	App->smoke->Enable();
 
 
@@ -114,6 +115,8 @@ bool ModuleSceneFirst::CleanUp()
 	App->enemiesback->CleanUp();
 	App->enemiesfront->Disable();
 	App->enemiesback->Disable();
+	App->love->CleanUp();
+	App->love->Disable();
 	return true;
 }
 
@@ -226,6 +229,8 @@ update_status ModuleSceneFirst::Update()
 
 		App->enemiesback->AddEnemy(ENEMY_TYPES::COUPLE_GUY, 170, 95, NULL, 1000);
 		App->enemiesback->AddEnemy(ENEMY_TYPES::COUPLE_GIRL, 180, 95, NULL, 1000);
+		App->love->AddParticle(App->particles->love, 176, 90, COLLIDER_NONE, 2500);
+		App->love->AddParticle(App->particles->love, 176, 90, COLLIDER_NONE, 2900);
 
 		couple = true;
 
@@ -233,6 +238,7 @@ update_status ModuleSceneFirst::Update()
 	if (App->structuresmiddle->fabtendest == true && poop == false){
 
 		App->enemiesback->AddEnemy(ENEMY_TYPES::POOPING_GUY, 45, 95, NULL, 2000);
+		App->love->AddParticle(App->particles->WC, 50, 117, COLLIDER_NONE, 2300);
 		poop = true;
 	}
 

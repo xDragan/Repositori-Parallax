@@ -36,7 +36,7 @@ Enemy_Pooping_Guy::Enemy_Pooping_Guy(float x, float y) : Enemy(x, y)
 
 
 
-	path.PushBack({ 0, 0 }, 200, &idle);
+	path.PushBack({ 0, 0 }, 80, &idle);
 	path.PushBack({ 0, 0 }, 100, &aware);
 	path.PushBack({ -1.5f, 0 }, 200, &run);
 
