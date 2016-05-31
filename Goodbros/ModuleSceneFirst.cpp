@@ -128,7 +128,7 @@ update_status ModuleSceneFirst::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 100, NULL, 8000);
 		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_RIGHT, 250, 90, NULL, 9000);
 		App->enemiesfront->AddEnemy(ENEMY_TYPES::RIDER, 257, 98, NULL, 9000);
-		App->enemiesfront->AddEnemy(ENEMY_TYPES::POOPING_GUY, 45, 95, NULL, 2000);
+		
 
 		time = SDL_GetTicks() + 30000;
 	}
@@ -218,6 +218,20 @@ update_status ModuleSceneFirst::Update()
 
 	}
 
+
+	if (App->structuresmiddle->bardest == true && couple == false){
+
+		App->enemiesback->AddEnemy(ENEMY_TYPES::COUPLE_GUY, 170, 95, NULL, 1000);
+		App->enemiesback->AddEnemy(ENEMY_TYPES::COUPLE_GIRL, 180, 95, NULL, 1000);
+
+		couple = true;
+
+		}
+	if (App->structuresmiddle->fabtendest == true && poop == false){
+
+		App->enemiesback->AddEnemy(ENEMY_TYPES::POOPING_GUY, 45, 95, NULL, 2000);
+		poop = true;
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 	{

@@ -14,6 +14,8 @@ public:
 	bool Start();
 	bool CleanUp();
 	bool spawn = false;
+	bool couple = false;
+	bool poop = false;
 
 	update_status Update();
 	
