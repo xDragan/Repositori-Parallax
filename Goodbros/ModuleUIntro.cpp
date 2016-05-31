@@ -81,7 +81,7 @@ update_status ModuleUIntro::Update()
 	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
 		if (credit < 99)
 		{
-			App->audio->PlayFx(App->particles->coin.fx);
+			App->audio->PlayFx(App->particles->coin.fx, 600);
 			++credit;
 		}
 

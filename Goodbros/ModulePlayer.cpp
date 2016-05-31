@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
+#include "ModuleStructures.h"
 #include "ModuleAim.h"
 #include "ModuleTextures.h"
 #include "ModuleUI.h"
@@ -492,6 +493,7 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN && Status != DIE && Status != ROLLING && App->UserUI->dynamite > 0)
 	{
+		App->audio->PlayFx(App->particles->bombthrow.fx, 400);
 		App->particles->AddParticle(App->particles->dynamite, position.x, position.y, COLLIDER_DYNAMITE, 0);
 		App->UserUI->dynamite--;
 	}
@@ -568,7 +570,8 @@ update_status ModulePlayer::Update()
 		{
 			current_animation = &gshoot[Looking_at];
 		}
-		else{
+		else
+		{
 			current_animation = &shoot[Looking_at];
 		}
 		if (looking_at() == far_left)
@@ -631,10 +634,12 @@ update_status ModulePlayer::Update()
 			gbtumble.Reset();
 			btumble.loops = 0;
 			btumble.Reset();
-			if (godmode == true){
+			if (godmode == true)
+			{
 				current_animation = &gbtumble;
 			}
-			else{
+			else
+			{
 				current_animation = &btumble;
 			}
 			Status = ROLLING;
@@ -917,7 +922,7 @@ update_status ModulePlayer::Update()
 		current_animation = &die;
 		if (played == false)
 		{
-			App->audio->PlayFx(App->player->deathsound.fx);
+			App->audio->PlayFx(App->player->deathsound.fx, 400);
 			played = true;
 		}
 		if (current_animation->Finished() == true)
@@ -929,7 +934,8 @@ update_status ModulePlayer::Update()
 			}
 			if (current_animation->Finished() == false)
 			{
-				if (App->UserUI->credit >= 1 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN){
+				if (App->UserUI->credit >= 1 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+				{
 					App->UserUI->score = 0;
 					staydied.Reset();
 					dmg_cd = SDL_GetTicks() + 3000;

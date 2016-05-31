@@ -38,8 +38,6 @@ public:
 	~ModuleParticles();
 
 	update_status Update();
-	bool isBomb = true;
-	bool isNotBomb = true;
 	bool Start();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
@@ -51,6 +49,7 @@ private:
 	Particle* active[MAX_ACTIVE_PARTICLES];
 
 public:
+	int explosiontime = 0;
 	Particle explotionshot;
 	Particle enemyDynamite;
 	Particle dynamite;
@@ -72,6 +71,7 @@ public:
 	Particle coin;
 	Particle bombthrow;
 	Particle bombexplosion;
+	Particle collapse;
 };
 
 #endif // __MODULEPARTICLES_H__

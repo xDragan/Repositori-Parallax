@@ -115,7 +115,7 @@ update_status ModuleAim::Update()
 			{
 				if (SDL_GetTicks() > timeshot)
 				{
-					App->audio->PlayFx(App->particles->shot.fx);
+					App->audio->PlayFx(App->particles->shot.fx, 250);
 					timeshot = SDL_GetTicks() + 150;
 				}
 				if (SDL_GetTicks() > time)
@@ -161,12 +161,11 @@ update_status ModuleAim::Update()
 			{
 				if (SDL_GetTicks() > timeshot)
 				{
-					App->audio->PlayFx(App->particles->shotgunshot.fx);
+					App->audio->PlayFx(App->particles->shotgunshot.fx, 250);
 					timeshot = SDL_GetTicks() + 150;
 				}
 				if (SDL_GetTicks() > time)
 				{
-				
 					Aim->type = COLLIDER_PLAYER_SHOT;
 					shotgunshots++;
 					time = SDL_GetTicks() + 400;
@@ -183,7 +182,8 @@ update_status ModuleAim::Update()
 		{
 			Aim->type = COLLIDER_PLAYER_NOSHOT;
 		}
-		if (shotgunshots >= 25){
+		if (shotgunshots >= 25)
+		{
 			aimmode = NORMAL;
 			shotgunshots = 0;
 		}
@@ -213,7 +213,7 @@ update_status ModuleAim::Update()
 			{
 				if (SDL_GetTicks() > timeshot)
 				{
-					App->audio->PlayFx(App->particles->machineshot.fx);
+					App->audio->PlayFx(App->particles->machineshot.fx, 250);
 					timeshot = SDL_GetTicks() + 150;
 				}
 				if (SDL_GetTicks() > time)
@@ -243,7 +243,7 @@ update_status ModuleAim::Update()
 	Aim->rect.x = position.x + 1;
 	Aim->rect.y = position.y + 1;
 
-	// Draw everything --------------------------------------
+	// Draw everything
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;

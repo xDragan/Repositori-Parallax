@@ -88,13 +88,13 @@ bool ModuleAudio::UnLoadFx(uint id)
 }
 
 // Play WAV
-bool ModuleAudio::PlayFx(uint id)
+bool ModuleAudio::PlayFx(uint id, uint duration)
 {
 	bool ret = false;
 
 	if (fx[id] != nullptr)
 	{
-		Mix_PlayChannelTimed(-1, fx[id], 1, 250);
+		Mix_PlayChannelTimed(-1, fx[id], 1, duration);
 		ret = true;
 	}
 

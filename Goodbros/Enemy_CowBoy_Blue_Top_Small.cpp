@@ -119,13 +119,13 @@ void Enemy_CowBoy_Blue_Top_Small::Move()
 	
 	if (path.GetFrame() == 110)
 	{
-		App->audio->PlayFx(App->particles->bombthrow.fx);
+		App->audio->PlayFx(App->particles->bombthrow.fx, 400);
 		App->particles->AddParticle(App->particles->enemyDynamite, position.x + 10, position.y + 20, COLLIDER_BOMB, 0);
 	}
 	if (original_pos.x == 40){
 		if (path.GetFrame() == 290)
 		{
-			App->audio->PlayFx(App->particles->bombthrow.fx);
+			App->audio->PlayFx(App->particles->bombthrow.fx, 400);
 			App->particles->AddParticle(App->particles->enemyDynamite, position.x + 10, position.y + 20, COLLIDER_BOMB, 0);
 		}
 	}

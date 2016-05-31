@@ -234,20 +234,6 @@ update_status ModuleStructures::Update()
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
 		}
-		/*if (active[i]->hits >= 3 && active[i]->mytype == FABTEN && SDL_GetTicks() > collapse_fabten) || Con esto funciona pero no se escucha ningun otro sonido mientras se derrumba
-		{
-			collapse_fabten = SDL_GetTicks() + 3800;
-			fabtenalive = false;
-		}
-		if (active[i]->hits == 4 && active[i]->mytype == BAR && baralive == true)
-		{
-			collapse_fabten = SDL_GetTicks() + 3800;
-			baralive = false;
-		}
-		if (SDL_GetTicks() < collapse_fabten)
-		{
-			App->audio->PlayFx(collapse.fx);
-		}*/
 		if (active[i]->hits >= 4 && active[i]->mytype != BARREL && active[i]->mytype != INN)
 		{
 			App->collision->EraseCollider(p->collider);
@@ -374,6 +360,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 27, 10000, NULL);
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
+				App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
 				App->structuresback->cd1 += 0.5;
 				App->structuresmiddle->bardest = true;
 			}
@@ -408,10 +395,9 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
-				//App->audio->PlayMusic("bloodbros/building_collapse.wav", 2.0f); TEST: causa lag
-				//App->audio->PlayFx(collapse.fx); Con esto deberia funcionar, pero no lo hace
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000, NULL);
 				active[i]->hits++;
+				App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 				App->structuresback->cd1 += 0.5;
 				App->structuresmiddle->fabtendest = true;
@@ -427,6 +413,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
+				App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 5, active[i]->position.y + 45, COLLIDER_NONE, 0);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 35, active[i]->position.y + 45, COLLIDER_NONE, 0);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 70, active[i]->position.y + 45, COLLIDER_NONE, 0);
@@ -436,7 +423,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 5, active[i]->position.y, COLLIDER_NONE, 300);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 35, active[i]->position.y, COLLIDER_NONE, 300);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 70, active[i]->position.y, COLLIDER_NONE, 300);
-
+				App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 7000, NULL);
 				active[i]->hits++;
 			}
@@ -451,11 +438,13 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
+				App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 3, active[i]->position.y + 45, COLLIDER_NONE, 0);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 38, active[i]->position.y + 45, COLLIDER_NONE, 0);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 3, active[i]->position.y + 20, COLLIDER_NONE, 300);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 38, active[i]->position.y + 20, COLLIDER_NONE, 300);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 15, active[i]->position.y - 20, COLLIDER_NONE, 500);
+				App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000, NULL);
 				active[i]->hits++;
 			}
@@ -470,11 +459,13 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
+				App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 3, active[i]->position.y + 40, COLLIDER_NONE, 0);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 38, active[i]->position.y + 40, COLLIDER_NONE, 0);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x - 3, active[i]->position.y + 15, COLLIDER_NONE, 300);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 38, active[i]->position.y + 15, COLLIDER_NONE, 300);
 				App->building_explosion->AddParticle(App->particles->building_explosion, active[i]->position.x + 10, active[i]->position.y - 20, COLLIDER_NONE, 500);
+				App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 30, active[i]->position.y, 5000, NULL);
 				active[i]->hits++;
 			}

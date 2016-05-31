@@ -152,17 +152,17 @@ void Module_Points::Die()
 		App->UserUI->hitpoints--;
 		break;
 	case 3:
-		App->audio->PlayFx(App->particles->weapontake.fx);
+		App->audio->PlayFx(App->particles->weapontake.fx, 400);
 		App->aim->aimmode = SHOTGUN;
 		App->aim->shotgunshots = 0;
 		break;
 	case 4:
-		App->audio->PlayFx(App->particles->weapontake.fx);
+		App->audio->PlayFx(App->particles->weapontake.fx, 400);
 		App->aim->aimmode = MACHINEGUN;
 		App->aim->machineshots = 0;
 		break;
 	default:
-		App->audio->PlayFx(App->particles->points.fx);
+		App->audio->PlayFx(App->particles->points.fx, 400);
 		App->UserUI->score += to_score - 100;
 		break;
 	}

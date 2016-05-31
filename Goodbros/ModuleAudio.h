@@ -25,7 +25,7 @@ public:
 	bool UnLoadFx(uint id);
 
 	// Play a previously loaded WAV
-	bool PlayFx(unsigned int fx);
+	bool PlayFx(unsigned int fx, unsigned int duration);
 
 private:
 

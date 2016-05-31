@@ -198,6 +198,7 @@ bool ModuleParticles::Start()
 	weapontake.fx = App->audio->LoadFx("bloodbros/took-weapon.wav");
 	bombthrow.fx = App->audio->LoadFx("bloodbros/bomb-throw.wav");
 	bombexplosion.fx = App->audio->LoadFx("bloodbros/explosion.wav");
+	collapse.fx = App->audio->LoadFx("bloodbros/building_collapse.wav");
 
 	return true;
 }
@@ -242,7 +243,7 @@ update_status ModuleParticles::Update()
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
-				App->audio->PlayFx(p->fx);
+				App->audio->PlayFx(p->fx, 400);
 			}
 		}
 	}
@@ -330,11 +331,12 @@ bool Particle::Update()
 		ret = false;
 		if (collider != nullptr && collider->type == COLLIDER_DYNAMITE)
 		{
-			App->particles->AddParticle(App->particles->dynamite_exp, position.x, position.y, COLLIDER_PLAYER_SHOT, 0);
+			App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
+			App->particles->AddParticle(App->particles->dynamite_exp, position.x - 10, position.y - 30, COLLIDER_PLAYER_SHOT, 0);
 		}
 		if (collider != nullptr && collider->type == COLLIDER_BOMB)
 		{
-			App->audio->PlayFx(App->particles->bombexplosion.fx);
+			App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
 			App->particles->AddParticle(App->particles->dynamite_exp, position.x-10, position.y-45, COLLIDER_BOMB_EXPLOSION, 0);
 		}
 	}
