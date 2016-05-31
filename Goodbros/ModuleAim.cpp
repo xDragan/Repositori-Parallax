@@ -51,6 +51,11 @@ ModuleAim::ModuleAim()
 	Aimshoot.PushBack({ 542, 289, 23, 21 });
 	Aimshoot.speed = 0.4f;
 	Aimshoot.loop = true;
+
+	aimmode = NORMAL;
+
+	shotgunshots = 0;
+	machineshots = 0;
 }
 
 ModuleAim::~ModuleAim()

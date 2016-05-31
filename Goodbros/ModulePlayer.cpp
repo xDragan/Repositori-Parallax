@@ -408,6 +408,9 @@ ModulePlayer::ModulePlayer()
 	gwindance.PushBack({ 1299, 1126, 46, 72 });
 	gwindance.speed = 0.03;
 	gwindance.loop = false;
+
+	lose = 0;
+	win_condition = 0;
 }
 
 ModulePlayer::~ModulePlayer()

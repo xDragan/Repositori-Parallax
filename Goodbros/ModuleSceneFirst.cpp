@@ -37,6 +37,8 @@ bool ModuleSceneFirst::Start()
 	App->structuresfront->Enable();
 	App->UserUI->Enable();
 	App->enemies->Enable();
+	App->smoke->CleanUp();
+	App->smoke->Enable();
 
 
 	// Player reset position & death animation

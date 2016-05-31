@@ -29,7 +29,6 @@ bool ModuleSceneIntro::Start()
 	App->scene_credit->CleanUp();
 	App->scene_credit->Disable();
 	App->points->Enable();
-	App->smoke->Enable();
 	return true;
 }
 

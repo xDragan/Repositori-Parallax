@@ -185,6 +185,15 @@ bool ModuleStructures::Start()
 	barrel3.Coll_Struct.h = 49;
 	barrel3.mytype = BARREL;
 
+
+	smallest_b.created = false;
+	hotel.created = false;
+	inn.created = false;
+
+	App->structuresmiddle->cd1 = 0;
+	App->structuresfront->cd1 = 0;
+	App->structuresback->cd1 = 0;
+
 	return true;
 }
 
