@@ -35,6 +35,7 @@ bool ModuleSceneCredit::Start()
 	bool ret = true;
 
 	background = App->textures->Load("bloodbros/scorescreen.png");
+	App->audio->Load("bloodbros/TittleScreen.ogg");
 	player_name = App->text->AddText(75, 32, "RIC");
 	score_counter = App->text->AddNumber(130, 32, App->UserUI->topscori, 8);
 
@@ -47,6 +48,8 @@ bool ModuleSceneCredit::CleanUp()
 	LOG("Unloading title screen");
 	App->textures->Unload(background);
 	App->UserUI->Disable();
+	App->text->EraseText(player_name);
+	App->text->EraseText(score_counter);
 	App->UserUI->score = 0;
 	return true;
 }
@@ -58,7 +61,7 @@ update_status ModuleSceneCredit::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
+		App->fade->FadeToBlack(this, (Module*)App->intro2);
 	}
 	return UPDATE_CONTINUE;
 }

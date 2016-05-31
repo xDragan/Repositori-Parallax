@@ -12,6 +12,7 @@
 #include "ModuleSceneCredit.h"
 #include "ModuleUIntro.h"
 #include "ModuleEnemies.h"
+#include "ModuleAim.h"
 
 ModuleSceneIntro::ModuleSceneIntro()
 {}
@@ -28,6 +29,8 @@ bool ModuleSceneIntro::Start()
 	App->audio->Load("bloodbros/Parallax_Theme.ogg");
 	App->scene_credit->Disable();
 	App->scene_credit->CleanUp();
+	App->points->CleanUp();
+	App->smoke->CleanUp();
 	App->points->Enable();
 	App->smoke->Enable();
 	return true;
@@ -38,6 +41,7 @@ bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading game scene");
 	App->textures->Unload(background);
+	
 	return true;
 }
 

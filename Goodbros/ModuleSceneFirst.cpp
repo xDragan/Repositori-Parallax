@@ -30,7 +30,7 @@ bool ModuleSceneFirst::Start()
 
 	// Loading various modules
 	App->player->Enable();
-
+	App->enemies->Enable();
 	App->collision->Enable();
 	App->aim->Enable();
 	App->structuresfront->Enable();
@@ -85,8 +85,11 @@ bool ModuleSceneFirst::CleanUp()
 	LOG("Unloading first scene");
 
 	App->textures->Unload(background);
+	App->player->CleanUp();
 	App->player->Disable();
+	App->particles->CleanUp();
 	App->particles->Disable();
+	App->aim->CleanUp();
 	App->aim->Disable();
 	App->structuresfront->CleanUp();
 	App->structuresmiddle->CleanUp();
@@ -96,6 +99,7 @@ bool ModuleSceneFirst::CleanUp()
 	App->structuresfront->Disable();
 	App->structuresmiddle->Disable();
 	App->structuresback->Disable();
+	App->barrelroll->CleanUp();
 	App->barrelroll->Disable();
 	App->points->Disable();
 	App->smoke->Disable();
