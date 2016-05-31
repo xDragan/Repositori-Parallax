@@ -231,7 +231,15 @@ ModulePlayer::ModulePlayer()
 	win.PushBack({ 1084, 54, 46, 72 });
 	win.PushBack({ 1136, 54, 46, 72 });
 
-	//win dance animation//
+	//win dance animation// 
+	windance.PushBack({ 1187, 54, 46, 72 });
+	windance.PushBack({ 1240, 57, 46, 72 });
+	windance.PushBack({ 1187, 54, 46, 72 });
+	windance.PushBack({ 1240, 57, 46, 72 });
+	windance.PushBack({ 1187, 54, 46, 72 });
+	windance.PushBack({ 1240, 57, 46, 72 });
+	windance.PushBack({ 1187, 54, 46, 72 });
+	windance.PushBack({ 1240, 57, 46, 72 });
 	windance.PushBack({ 1187, 54, 46, 72 });
 	windance.PushBack({ 1240, 57, 46, 72 });
 	windance.PushBack({ 1299, 57, 46, 72 });
@@ -242,7 +250,7 @@ ModulePlayer::ModulePlayer()
 	windance.PushBack({ 1187, 126, 46, 72 });
 	windance.PushBack({ 1240, 126, 46, 72 });
 	windance.PushBack({ 1299, 126, 46, 72 });
-	windance.speed = 0.03;
+	windance.speed = 0.08f;
 	windance.loop = false;
 
 	//GOD MODE
@@ -398,6 +406,14 @@ ModulePlayer::ModulePlayer()
 	//win dance animation//
 	gwindance.PushBack({ 1187, 1054, 46, 72 });
 	gwindance.PushBack({ 1240, 1057, 46, 72 });
+	gwindance.PushBack({ 1187, 1054, 46, 72 });
+	gwindance.PushBack({ 1240, 1057, 46, 72 });
+	gwindance.PushBack({ 1187, 1054, 46, 72 });
+	gwindance.PushBack({ 1240, 1057, 46, 72 });
+	gwindance.PushBack({ 1187, 1054, 46, 72 });
+	gwindance.PushBack({ 1240, 1057, 46, 72 });
+	gwindance.PushBack({ 1187, 1054, 46, 72 });
+	gwindance.PushBack({ 1240, 1057, 46, 72 });
 	gwindance.PushBack({ 1299, 1057, 46, 72 });
 	gwindance.PushBack({ 1358, 1057, 46, 72 });
 	gwindance.PushBack({ 1032, 1126, 46, 72 });
@@ -406,7 +422,7 @@ ModulePlayer::ModulePlayer()
 	gwindance.PushBack({ 1187, 1126, 46, 72 });
 	gwindance.PushBack({ 1240, 1126, 46, 72 });
 	gwindance.PushBack({ 1299, 1126, 46, 72 });
-	gwindance.speed = 0.03;
+	gwindance.speed = 0.08f;
 	gwindance.loop = false;
 
 	lose = 0;
@@ -945,37 +961,34 @@ update_status ModulePlayer::Update()
 		if (godmode == true)
 		{
 			current_animation = &gwindance;
-			if (current_animation == &gwindance)
-			{
+			if (current_animation == &gwindance){
+
 				if (position.x != 100 && winani == true)
 				{
 					if (position.x > 100)
 					{
-						position.x -= 0.5;
+						position.x -= 1.5;
 					}
 					if (position.x < 100)
 					{
-						position.x += 0.5;
+						position.x += 1.5;
 					}
-					if (position.x == 100)
-					{
-						winani = false;
-					}
+					if (position.x >= 100 && position.x <= 105) winani = false;
 				}
-				else
-				{
-					if (App->player->current_animation->current_frame > 2)
-						App->player->position = { 100, 150 };
+			if (winani == false)
+			{
+				if (App->player->current_animation->current_frame > 9)
+					App->player->position = { 100, 150 };
 
-					if (App->player->current_animation->current_frame > 4)
-						App->player->position = { 75, 130 };
+				if (App->player->current_animation->current_frame > 11)
+					App->player->position = { 75, 130 };
 
-					if (App->player->current_animation->current_frame > 6)
-						App->player->position = { 50, 100 };
+				if (App->player->current_animation->current_frame > 13)
+					App->player->position = { 50, 100 };
 
-					if (App->player->current_animation->current_frame > 8)
-						App->player->position = { 150, 70 };
-				}
+				if (App->player->current_animation->current_frame > 15)
+					App->player->position = { 135, 70 };
+			}
 			}
 			if (current_animation->Finished() == true)
 			{
@@ -985,45 +998,39 @@ update_status ModulePlayer::Update()
 		else
 		{
 			current_animation = &windance;
-			if (current_animation == &windance)
+			if (position.x != 100 && winani == true)
 			{
-				if (position.x != 100 && winani == true)
+				if (position.x > 100)
 				{
-					if (position.x > 100)
-					{
-						position.x -= 0.5;
-					}
-					if (position.x < 100)
-					{
-						position.x += 0.5;
-					}
-					if (position.x == 100)
-					{
-						winani = false;
-					}
+					position.x -= 1.5;
 				}
-				else
+				if (position.x < 100)
 				{
-					if (App->player->current_animation->current_frame > 2)
-						App->player->position = { 100, 150 };
+					position.x += 1.5;
+				}	
+				if (position.x >= 100 && position.x <= 104) winani = false;
+			}
+			if (winani == false)
+			{
+				if (App->player->current_animation->current_frame > 10)
+					App->player->position = { 100, 150 };
 
-					if (App->player->current_animation->current_frame > 4)
-						App->player->position = { 75, 130 };
+				if (App->player->current_animation->current_frame > 12)
+					App->player->position = { 75, 130 };
 
-					if (App->player->current_animation->current_frame > 6)
-						App->player->position = { 50, 100 };
+				if (App->player->current_animation->current_frame > 13)
+					App->player->position = { 50, 100 };
 
-					if (App->player->current_animation->current_frame > 8)
-						App->player->position = { 150, 70 };
-				}
-				if (current_animation->Finished() == true)
+				if (App->player->current_animation->current_frame > 14)
+					App->player->position = { 135, 70 };
+			}
+				if (current_animation == &windance && current_animation->Finished() == true)
 				{
 					App->fade->FadeToBlack(App->scene_space, (Module*)App->scene_win);
 				}
 			}
 			break;
 		}
-	}
 
 	// Draw everything
 	if (c_time >= dmg_cd || blink)
