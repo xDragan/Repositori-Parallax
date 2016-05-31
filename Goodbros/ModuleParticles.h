@@ -72,6 +72,7 @@ public:
 	Particle bombthrow;
 	Particle bombexplosion;
 	Particle collapse;
+	Particle barrel_exp;
 };
 
 #endif // __MODULEPARTICLES_H__

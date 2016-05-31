@@ -198,7 +198,8 @@ bool ModuleParticles::Start()
 	weapontake.fx = App->audio->LoadFx("bloodbros/took-weapon.wav");
 	bombthrow.fx = App->audio->LoadFx("bloodbros/bomb-throw.wav");
 	bombexplosion.fx = App->audio->LoadFx("bloodbros/explosion.wav");
-	collapse.fx = App->audio->LoadFx("bloodbros/building_collapse.wav");
+	collapse.fx = App->audio->LoadFx("bloodbros/building_collapse2.ogg");
+	barrel_exp.fx = App->audio->LoadFx("bloodbros/explosion_barrel.ogg");
 
 	return true;
 }

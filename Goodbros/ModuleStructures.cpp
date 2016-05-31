@@ -67,8 +67,6 @@ bool ModuleStructures::Start()
 	LOG("Loading buildings");
 	graphics = App->textures->Load("bloodbros/enemy.png");
 
-	collapse.fx = App->audio->LoadFx("bloodbros/building_collapse.wav");
-
 	// BAR
 	bar.Coll_Struct.x = 80;
 	bar.Coll_Struct.y = 2266;
@@ -360,7 +358,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 27, 10000, NULL);
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
-				App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
+				App->audio->PlayFx(App->particles->collapse.fx, 2000);
 				App->structuresback->cd1 += 0.5;
 				App->structuresmiddle->bardest = true;
 			}
@@ -397,7 +395,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			{
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000, NULL);
 				active[i]->hits++;
-				App->audio->PlayFx(App->particles->bombexplosion.fx, 1200);
+				App->audio->PlayFx(App->particles->collapse.fx, 2000);
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
 				App->structuresback->cd1 += 0.5;
 				App->structuresmiddle->fabtendest = true;
@@ -481,6 +479,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = barrel2.Coll_Struct.w;
 				active[i]->Coll_Struct.h = barrel2.Coll_Struct.h;
 				active[i]->hits++;
+				App->audio->PlayFx(App->particles->barrel_exp.fx, 1200);
 				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y - 20, COLLIDER_NONE, 0);
 			}
 			else if (active[i]->hits == 1)
@@ -490,6 +489,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = barrel3.Coll_Struct.w;
 				active[i]->Coll_Struct.h = barrel3.Coll_Struct.h;
 				active[i]->hits++;
+				App->audio->PlayFx(App->particles->barrel_exp.fx, 1200);
 				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y - 5, COLLIDER_NONE, 0);
 			}
 			else if (active[i]->hits == 2)
@@ -500,6 +500,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				active[i]->Coll_Struct.w = 0;
 				active[i]->Coll_Struct.h = 0;
 				active[i]->hits++;
+				App->audio->PlayFx(App->particles->barrel_exp.fx, 1200);
 				App->particles->AddParticle(App->particles->barrel, active[i]->position.x - 12, active[i]->position.y + 10, COLLIDER_NONE, 0);
 			}
 		}
