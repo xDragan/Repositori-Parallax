@@ -85,8 +85,8 @@
     <ClInclude Include="Enemy_CowBoy_Green_Medium_Right.h" />
     <ClInclude Include="Enemy_CowBoy_Green_Right_Tumble.h" />
     <ClInclude Include="Enemy_Cowboy_Blue_Top_Fabten.h" />
-    <ClInclude Include="Enemy_CowBoy_Green_Top_Fabten_2.h" />
-    <ClInclude Include="Enemy_CowBoy_Green_Top_Fabten_3.h" />
+    <ClInclude Include="Enemy_CowBoy_Green_Top_Small.h" />
+    <ClInclude Include="Enemy_CowBoy_Green_Top_Small2.h" />
     <ClInclude Include="Enemy_Girl.h" />
     <ClInclude Include="Enemy_Cowboy_Green_Top_Bar.h" />
     <ClInclude Include="Enemy_Horse_Right.h" />
@@ -140,8 +140,8 @@
     <ClCompile Include="Enemy_CowBoy_Green_Right_Tumble.cpp" />
     <ClCompile Include="Enemy_Cowboy_Blue_Top_Fabten.cpp" />
     <ClCompile Include="Enemy_CowBoy_Green_Top_Bar.cpp" />
-    <ClCompile Include="Enemy_CowBoy_Green_Top_Fabten_2.cpp" />
-    <ClCompile Include="Enemy_CowBoy_Green_Top_Fabten_3.cpp" />
+    <ClCompile Include="Enemy_CowBoy_Green_Top_Small.cpp" />
+    <ClCompile Include="Enemy_CowBoy_Green_Top_Small2.cpp" />
     <ClCompile Include="Enemy_Girl.cpp" />
     <ClCompile Include="Enemy_Horse_Right.cpp" />
     <ClCompile Include="Enemy_Horse_Small_Right.cpp" />

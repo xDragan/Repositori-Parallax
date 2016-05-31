@@ -104,7 +104,7 @@ Enemy_CowBoy_Green_Top_Bar::Enemy_CowBoy_Green_Top_Bar(float x, float y) : Enemy
 		path.PushBack({ 0, 0 }, 50, &spawni);
 		path.PushBack({ 0, 0 }, 40, &stop_shoot);
 		path.PushBack({ 0, -2.0f }, 30, &crouch);
-		path.PushBack({ 0, 2.0f }, 40, &jump);
+		path.PushBack({ 0, 2.0f }, 50, &jump);
 		path.PushBack({ 1.0f, 0 }, 85, &forward);
 		path.PushBack({ 0, 0 }, 30, &stop_shoot);
 		path.PushBack({ 1.0f, 1.0f }, 20, &forward);

@@ -119,7 +119,7 @@ update_status ModuleSceneFirst::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_RIGHT, 250, 90, NULL, 9000);
 		App->enemies->AddEnemy(ENEMY_TYPES::RIDER, 257, 98, NULL, 9000);
 		
-		if (App->structuresmiddle->bardest == false){
+		if (App->structuresmiddle->bardest == false && App->structuresfront->bardest == false && App->structuresback->bardest == false){
 
 			App->enemies->AddEnemy(ENEMY_TYPES::WHEELBARROW, 250, 95, 1, 10000);
 			App->enemies->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, 250, 95, NULL, 9000);
@@ -129,7 +129,7 @@ update_status ModuleSceneFirst::Update()
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 215, 45, NULL, 18000);
 
 		}
-		if (App->structuresmiddle->fabtendest == false){
+		if (App->structuresmiddle->fabtendest == false && App->structuresfront->fabtendest == false && App->structuresback->fabtendest == false){
 
 
 			
@@ -167,9 +167,10 @@ update_status ModuleSceneFirst::Update()
 	*/
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 205, 47, NULL, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 7, 100, NULL, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 45, 100, NULL, 500);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 120, 55, NULL, 1000);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 155, 55, NULL, 1000);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 185, 55, NULL, 1000);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 215, 55, NULL, 1000);
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
 	{
@@ -194,9 +195,7 @@ update_status ModuleSceneFirst::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN)
 	{
-		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 210, 107, NULL, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_2, 210, 107, NULL, NULL);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_FABTEN_3, 210, 107, NULL, NULL);
+		
 	}
 
 	// Draw everything
