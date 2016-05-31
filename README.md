@@ -14,6 +14,7 @@ You can throw dynamite pressing L.
 To activate GODMODE press G.
 
 https://docs.google.com/document/d/1K-VrUWBbR4nnkExs_ooXRPzrOtSBx4APVlgG-u9j8ds/edit
+web: http://xdragan.github.io/Repositori-Parallax/
 
 Game done by:
 
