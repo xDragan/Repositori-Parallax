@@ -16,11 +16,25 @@ ModuleParticles::ModuleParticles()
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
+
+	// Enemy dynamite/bomb explosion
+	edynamite_exp.anim.PushBack({ 8, 370, 34, 65 });
+	edynamite_exp.anim.PushBack({ 42, 370, 34, 65 });
+	edynamite_exp.anim.PushBack({ 82, 370, 34, 64 });
+	edynamite_exp.anim.PushBack({ 122, 370, 34, 65 });
+	edynamite_exp.anim.PushBack({ 165, 370, 34, 64 });
+	edynamite_exp.anim.PushBack({ 200, 370, 34, 65 });
+	edynamite_exp.anim.PushBack({ 234, 370, 34, 65 });
+	edynamite_exp.anim.PushBack({ 268, 370, 34, 65 });
+	edynamite_exp.anim.loop = false;
+	edynamite_exp.anim.speed = 0.2f;
+
 	// Explotion shot
 	explotionshot.anim.PushBack({ 330, 492, 16, 17 });
 	explotionshot.anim.PushBack({ 349, 492, 16, 17 });
 	explotionshot.anim.PushBack({ 365, 492, 16, 17 });
 	explotionshot.anim.speed = 0.2f;
+
 	// Enemy shot
 	enemyshot.anim.PushBack({ 399, 494, 9, 9});
 	enemyshot.anim.PushBack({ 429, 494, 9, 9 });
@@ -166,13 +180,16 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 
+	graphics = App->textures->Load("bloodbros/Stuff.png");
+
 	shot.fx = App->audio->LoadFx("bloodbros/shot.wav");
 	shotgunshot.fx = App->audio->LoadFx("bloodbros/shotgun-shoot.wav");
 	machineshot.fx = App->audio->LoadFx("bloodbros/machinegun-shot.wav");
 	coin.fx = App->audio->LoadFx("bloodbros/insertcoin.ogg");
 	points.fx = App->audio->LoadFx("bloodbros/points-catched.wav");
 	weapontake.fx = App->audio->LoadFx("bloodbros/took-weapon.wav");
-	graphics = App->textures->Load("bloodbros/Stuff.png");
+	bombthrow.fx = App->audio->LoadFx("bloodbros/bomb-throw.wav");
+	bombexplosion.fx = App->audio->LoadFx("bloodbros/explosion.wav");
 
 	return true;
 }
@@ -309,6 +326,7 @@ bool Particle::Update()
 		}
 		if (collider != nullptr && collider->type == COLLIDER_BOMB)
 		{
+			App->audio->PlayFx(App->particles->bombexplosion.fx);
 			App->particles->AddParticle(App->particles->dynamite_exp, position.x-10, position.y-45, COLLIDER_BOMB_EXPLOSION, 0);
 		}
 	}

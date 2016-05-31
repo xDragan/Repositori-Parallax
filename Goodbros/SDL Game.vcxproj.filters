@@ -52,9 +52,6 @@
     <ClCompile Include="Enemy_Cowboy_Blue.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_Cowboy_Blue2.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy_Pig.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
@@ -223,9 +220,6 @@
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Cowboy_Blue.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_Cowboy_Blue2.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Pig.h">

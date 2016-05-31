@@ -210,9 +210,6 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::BLUE_COWBOY:
 			enemies[i] = new Enemy_CowBoy_Blue(info.x, info.y);
 			break;
-		case ENEMY_TYPES::BLUE_COWBOY2:
-			enemies[i] = new Enemy_CowBoy_Blue2(info.x, info.y);
-			break;
 		case ENEMY_TYPES::BLUE_COWBOY3:
 			enemies[i] = new Enemy_CowBoy_Blue3(info.x, info.y);
 			break;

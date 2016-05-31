@@ -2,6 +2,8 @@
 #include "Enemy_CowBoy_Blue_Top_Fabten.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
+#include "ModuleAudio.h"
+#include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleSceneFirst.h"
 
@@ -52,7 +54,6 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 	bwtumbleb.speed = 0.2f;
 	bwtumbleb.loop = true;
 
-
 	fwtumbleb.PushBack({ 107, 739, 36, 54 });
 	fwtumbleb.PushBack({ 149, 739, 41, 54 });
 	fwtumbleb.PushBack({ 195, 739, 36, 54 });
@@ -61,7 +62,6 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 	fwtumbleb.PushBack({ 319, 739, 36, 54 });
 	fwtumbleb.speed = 0.2f;
 	fwtumbleb.loop = true;
-
 
 	dieshotb.PushBack({ 507, 400, 35, 54 });
 	dieshotb.PushBack({ 549, 400, 35, 54 });
@@ -86,7 +86,6 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 	grenadesm.speed = 0.1f;
 	grenadesm.loop = false;
 
-
 	shootb.PushBack({ 353, 396, 30, 55 });
 	shootb.PushBack({ 392, 396, 30, 55 });
 	shootb.PushBack({ 353, 396, 30, 55 });
@@ -106,8 +105,6 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 	jump.PushBack({ 1203, 685, 33, 49 });
 	jump.loop = true;
 
-
-
 	tumblelsm.PushBack({ 791, 1048, 33, 40 });
 	tumblelsm.PushBack({ 832, 1048, 33, 40 });
 	tumblelsm.PushBack({ 888, 1074, 33, 40 });
@@ -115,15 +112,12 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 	tumblelsm.PushBack({ 955, 1074, 33, 40 });
 	tumblelsm.speed = 0.15f;
 
-
-
 	tumblersm.PushBack({ 1222, 1047, 33, 40 });
 	tumblersm.PushBack({ 1172, 1047, 33, 40 });
 	tumblersm.PushBack({ 1129, 1073, 33, 40 });
 	tumblersm.PushBack({ 1088, 1073, 33, 40 });
 	tumblersm.PushBack({ 1043, 1073, 33, 40 });
 	tumblersm.speed = 0.15f;
-
 
 	spawnn.PushBack({ 964, 581, 25, 40 });
 	spawnn.PushBack({ 989, 581, 25, 40 });
@@ -134,8 +128,8 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	if (x >= 20 && x <= 150){
-
+	if (x >= 20 && x <= 150)
+	{
 		path.PushBack({ 0, 0 }, 80, &spawnn);
 		path.PushBack({ 0, 0 }, 60, &grenadesm);
 		path.PushBack({ 0, 0 }, 20, &crouchsm);
@@ -143,11 +137,9 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 		path.PushBack({ 0, 2.0 }, 25, &jump);
 		path.PushBack({ -1.0f, 0 }, 90, &backwardb);
 		path.loop = false;
-	
 	}
-
-	else if (x >= 0 && x <= 20){
-
+	else if (x >= 0 && x <= 20)
+	{
 		path.PushBack({ 0, 0 }, 80, &spawnn);
 		path.PushBack({ 0, 0 }, 60, &grenadesm);
 		path.PushBack({ 0, 0 }, 20, &crouchsm);
@@ -159,12 +151,9 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 		path.PushBack({ 0, 0 }, 35, &shootb);
 		path.PushBack({ 1, 0 }, 35, &fwtumbleb);
 		path.PushBack({ 1.0f, 0 }, 300, &forwardb);
-
-
 	}
-
-	else{
-
+	else
+	{
 		path.PushBack({ 0, 0 }, 80, &spawnn);
 		path.PushBack({ 0, 0 }, 40, &shootsm);
 		path.PushBack({ -1.0f, 0 }, 30, &backwardsm);
@@ -178,9 +167,6 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 		path.PushBack({ 0, 0 }, 20, &shootsm);
 		path.PushBack({ -1.0f, 0 }, 500, &backwardsm);
 		path.loop = false;
-
-
-
 	}
 
 	original_pos.x = x;
@@ -192,6 +178,11 @@ void Enemy_CowBoy_Blue_Top_Fabten::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
 
+	if (path.GetFrame() == 125)
+	{
+		App->audio->PlayFx(App->particles->bombthrow.fx);
+		App->particles->AddParticle(App->particles->enemyDynamite, position.x + 10, position.y + 20, COLLIDER_BOMB, 0);
+	}
 	if (dieshotsm.Finished() == true)
 	{
 		finished = true;

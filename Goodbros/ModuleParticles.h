@@ -55,6 +55,7 @@ public:
 	Particle enemyDynamite;
 	Particle dynamite;
 	Particle dynamite_exp;
+	Particle edynamite_exp;
 	Particle building_explosion;
 	Particle shot;
 	Particle shotgunshot;
@@ -69,6 +70,8 @@ public:
 	Particle barrel;
 	Particle BarrowExpl;
 	Particle coin;
+	Particle bombthrow;
+	Particle bombexplosion;
 };
 
 #endif // __MODULEPARTICLES_H__

@@ -77,7 +77,6 @@
     <ClInclude Include="Enemy_Couple_Girl.h" />
     <ClInclude Include="Enemy_Couple_Guy.h" />
     <ClInclude Include="Enemy_Cowboy_Blue.h" />
-    <ClInclude Include="Enemy_Cowboy_Blue2.h" />
     <ClInclude Include="Enemy_Cowboy_Blue3.h" />
     <ClInclude Include="Enemy_CowBoy_Blue_Top_Small.h" />
     <ClInclude Include="Enemy_Cowboy_Green_Big_Right.h" />
@@ -135,7 +134,6 @@
     <ClCompile Include="Enemy_Couple_Girl.cpp" />
     <ClCompile Include="Enemy_Couple_Guy.cpp" />
     <ClCompile Include="Enemy_Cowboy_Blue.cpp" />
-    <ClCompile Include="Enemy_Cowboy_Blue2.cpp" />
     <ClCompile Include="Enemy_Cowboy_Blue3.cpp" />
     <ClCompile Include="Enemy_CowBoy_Blue_Top_Small.cpp" />
     <ClCompile Include="Enemy_Cowboy_Green_Big_Right.cpp" />

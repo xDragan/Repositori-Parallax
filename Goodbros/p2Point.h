@@ -147,9 +147,9 @@ public:
 	}
 	p2Point<float> GetDirectionbomb(p2Point<float> dst)
 	{
-		p2Point<float> speed{ (40 + dst.x - x) / 100, (-400 + dst.y - y) / 100 };
+		p2Point<float> speed2{ (40 + dst.x - x/2.5f) / 100, (-410 + dst.y - y/1.07f) / 100 };
 
-		return(speed);
+		return(speed2);
 	}
 	p2Point<float> bombExplosion()
 	{
@@ -172,7 +172,7 @@ public:
 
 	p2Point<float> GetSpeed(p2Point<float> dst)
 	{
-		p2Point<float> speed{ (+ dst.x - x) / 100, (-400 + dst.y - y) / 100 };
+		p2Point<float> speed{ (dst.x - x) / 100, (-400 + dst.y - y) / 100 };
 
 		return(speed);
 	}
