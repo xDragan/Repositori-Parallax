@@ -215,15 +215,13 @@ update_status ModuleSceneFirst::Update()
 
 	// Draw everything
 	App->render->Blit(background, 0, 0, NULL);
-	if (App->player->win_condition >= 18 && (App->player->windance.Finished() == true || App->player->gwindance.Finished()))
+	if (App->player->win_condition >= 18)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene_win);
+		App->player->Status = WIN;
 		App->player->win_condition = 0;
-
 	}
 	if (App->UserUI->continue_counter == 0)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
 		App->player->lose = 0;
 		App->player->win_condition = 0;
 	}

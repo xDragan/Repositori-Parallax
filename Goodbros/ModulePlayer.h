@@ -90,6 +90,7 @@ public:
 	bool blink = true;
 	bool played = false;
 	bool loosing = false;
+	bool winani = true;
 	float speed = 0;
 	bool blinkd = true;
 	int blink_t = 0;

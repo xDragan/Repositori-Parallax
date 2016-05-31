@@ -483,6 +483,10 @@ update_status ModulePlayer::Update()
 	{
 		App->particles->AddParticle(App->particles->enemyDynamite, position.x, position.y, COLLIDER_BOMB, 0);
 	}
+	if (App->input->keyboard[SDL_SCANCODE_U] == KEY_STATE::KEY_DOWN)
+	{
+		Status = WIN;
+	}
 	switch (Status)
 	{
 	case IDLE:
@@ -900,12 +904,15 @@ update_status ModulePlayer::Update()
 			App->audio->PlayFx(App->player->deathsound.fx);
 			played = true;
 		}
-		if (current_animation->Finished() == true){
-			if (lose == 2){
+		if (current_animation->Finished() == true)
+		{
+			if (lose == 2)
+			{
 				current_animation = &staydied;
 				loosing = true;
 			}
-			if (current_animation->Finished() == false){
+			if (current_animation->Finished() == false)
+			{
 				if (App->UserUI->credit >= 1 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN){
 					App->UserUI->score = 0;
 					staydied.Reset();
@@ -934,12 +941,85 @@ update_status ModulePlayer::Update()
 		break;
 	case WIN:
 		player_coll->type = COLLIDER_NONE;
+	
 		if (godmode == true)
 		{
 			current_animation = &gwindance;
+			if (current_animation == &gwindance)
+			{
+				if (position.x != 100 && winani == true)
+				{
+					if (position.x > 100)
+					{
+						position.x -= 0.5;
+					}
+					if (position.x < 100)
+					{
+						position.x += 0.5;
+					}
+					if (position.x == 100)
+					{
+						winani = false;
+					}
+				}
+				else
+				{
+					if (App->player->current_animation->current_frame > 2)
+						App->player->position = { 100, 150 };
+
+					if (App->player->current_animation->current_frame > 4)
+						App->player->position = { 75, 130 };
+
+					if (App->player->current_animation->current_frame > 6)
+						App->player->position = { 50, 100 };
+
+					if (App->player->current_animation->current_frame > 8)
+						App->player->position = { 150, 70 };
+				}
+			}
+			if (current_animation->Finished() == true)
+			{
+				App->fade->FadeToBlack(App->scene_space, (Module*)App->scene_win);
+			}
 		}
-		else{
+		else
+		{
 			current_animation = &windance;
+			if (current_animation == &windance)
+			{
+				if (position.x != 100 && winani == true)
+				{
+					if (position.x > 100)
+					{
+						position.x -= 0.5;
+					}
+					if (position.x < 100)
+					{
+						position.x += 0.5;
+					}
+					if (position.x == 100)
+					{
+						winani = false;
+					}
+				}
+				else
+				{
+					if (App->player->current_animation->current_frame > 2)
+						App->player->position = { 100, 150 };
+
+					if (App->player->current_animation->current_frame > 4)
+						App->player->position = { 75, 130 };
+
+					if (App->player->current_animation->current_frame > 6)
+						App->player->position = { 50, 100 };
+
+					if (App->player->current_animation->current_frame > 8)
+						App->player->position = { 150, 70 };
+				}
+			if (current_animation->Finished() == true)
+			{
+				App->fade->FadeToBlack(App->scene_space, (Module*)App->scene_win);
+			}
 		}
 		break;
 	}
