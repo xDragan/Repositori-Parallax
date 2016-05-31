@@ -1,11 +1,11 @@
 #include "Application.h"
-#include "Enemy_CowBoy_Green_Top_Small2.h"
+#include "Enemy_CowBoy_Green_Top_Small4.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "ModuleSceneFirst.h"
 
-Enemy_CowBoy_Green_Top_Small2::Enemy_CowBoy_Green_Top_Small2(float x, float y) : Enemy(x, y)
+Enemy_CowBoy_Green_Top_Small4::Enemy_CowBoy_Green_Top_Small4(float x, float y) : Enemy(x, y)
 {
 	forward.PushBack({ 898, 2903, 20, 30 });
 	forward.PushBack({ 932, 2903, 20, 30 });
@@ -53,9 +53,21 @@ Enemy_CowBoy_Green_Top_Small2::Enemy_CowBoy_Green_Top_Small2(float x, float y) :
 	shoot.loop = false;
 
 
-	idle.PushBack({ 651, 2934, 25, 40 });
-	idle.loop = true;
+	spawnup.PushBack({ 1094, 2912, 15, 20 });
+	spawnup.PushBack({ 1110, 2912, 15, 20 });
+	spawnup.PushBack({ 1127, 2912, 15, 20 });
+	spawnup.PushBack({ 1144, 2912, 15, 20 });
+	spawnup.speed = 0.10f;
+	spawnup.loop = false;
 
+
+
+	spawndown.PushBack({ 1144, 2912, 15, 20 });
+	spawndown.PushBack({ 1127, 2912, 15, 20 });
+	spawndown.PushBack({ 1110, 2912, 15, 20 });
+	spawndown.PushBack({ 1094, 2912, 15, 20 });
+	spawndown.speed = 0.10f;
+	spawndown.loop = false;
 
 
 	jumpSm.PushBack({ 780, 2981, 20, 30 });
@@ -67,59 +79,27 @@ Enemy_CowBoy_Green_Top_Small2::Enemy_CowBoy_Green_Top_Small2(float x, float y) :
 
 
 
-	spawnn.PushBack({ 477, 2984, 20, 30 });
-	spawnn.PushBack({ 509, 2984, 20, 30 });
-	spawnn.PushBack({ 541, 2984, 20, 30 });
-	spawnn.PushBack({ 572, 2999, 20, 30 });
+	spawnn.PushBack({ 477, 2984, 15, 20 });
+	spawnn.PushBack({ 509, 2984, 15, 20 });
+	spawnn.PushBack({ 541, 2984, 15, 20 });
+	spawnn.PushBack({ 572, 2999, 15, 20 });
 	spawnn.speed = 0.08f;
+
 
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 
-	if (x == 185){
+
+
+	if (y == 50){
 
 		path.PushBack({ 0, 0 }, 50, &spawnn);
-		path.PushBack({ -0.6f, 0 }, 40, &backward);
-		path.PushBack({ 0, 0 }, 15, &idle);
-		path.PushBack({ 0.6f, 0 }, 120, &forward);
-		path.PushBack({ 0, 0 }, 30, &shoot);
-		path.PushBack({ 0, -1.50f }, 5, &jumpSm);
-		path.PushBack({ 0, 1.50f }, 30, &jumpSm);
-		path.PushBack({ 0.6f, 0 }, 300, &forward);
+		path.PushBack({ 0.6f, 0 }, 40, &forward);
+		path.PushBack({ 0, 0 }, 50, &shoot);
+		path.PushBack({ -0.6f, 0 }, 800, &backward);
 		path.loop = false;
 
 	}
-
-	if (x == 215){
-
-		path.PushBack({ 0, 0 }, 50, &spawnn);
-		path.PushBack({ -0.6f, 0 }, 40, &backward);
-		path.PushBack({ 0, 0 }, 15, &idle);
-		path.PushBack({ 0.6f, 0 }, 80, &forward);
-		path.PushBack({ 0, 0 }, 30, &shoot);
-		path.PushBack({ 0, -1.50f }, 5, &jumpSm);
-		path.PushBack({ 0, 1.50f }, 30, &jumpSm);
-		path.PushBack({ 0.6f, 0 }, 300, &forward);
-		path.loop = false;
-
-	}
-
-	if ( x == 135){
-
-
-
-		path.PushBack({ 0, 0 }, 50, &spawnn);
-		path.PushBack({ 0.6f, 0 }, 30, &forward);
-		path.PushBack({ 0, 0 }, 15, &shoot);
-		path.PushBack({ 0.6f, 0 }, 500, &forward);
-		path.loop = false;
-
-	}
-
-
-
-
-	
 
 
 
@@ -129,9 +109,10 @@ Enemy_CowBoy_Green_Top_Small2::Enemy_CowBoy_Green_Top_Small2(float x, float y) :
 
 }
 
-void Enemy_CowBoy_Green_Top_Small2::Move()
+void Enemy_CowBoy_Green_Top_Small4::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
+
 
 	if (dieshot.Finished() == true)
 	{
@@ -140,7 +121,7 @@ void Enemy_CowBoy_Green_Top_Small2::Move()
 
 }
 
-void Enemy_CowBoy_Green_Top_Small2::Die()
+void Enemy_CowBoy_Green_Top_Small4::Die()
 {
 	collider->type = COLLIDER_NONE;
 	App->player->win_condition++;

@@ -38,20 +38,21 @@ Enemy_CowBoy_Blue_Top_Small::Enemy_CowBoy_Blue_Top_Small(float x, float y) : Ene
 	dieexplotion.PushBack({ 889, 397, 36, 54 });
 	dieexplotion.speed = 0.3f;
 
-	grenadeSm.PushBack({ 437, 1630, 25, 40 });
-	grenadeSm.PushBack({ 454, 1630, 25, 40 });
-	grenadeSm.PushBack({ 471, 1630, 25, 40 });
-	grenadeSm.PushBack({ 491, 1630, 25, 40 });
-	grenadeSm.PushBack({ 510, 1630, 25, 40 });
-	grenadeSm.PushBack({ 527, 1630, 25, 40 });
+	grenadeSm.PushBack({ 437, 1630, 15, 25 });
+	grenadeSm.PushBack({ 454, 1630, 15, 25 });
+	grenadeSm.PushBack({ 471, 1630, 15, 25 });
+	grenadeSm.PushBack({ 491, 1630, 15, 25 });
+	grenadeSm.PushBack({ 510, 1630, 15, 25 });
+	grenadeSm.PushBack({ 527, 1630, 15, 25 });
 	grenadeSm.speed = 0.1f;
-	grenadeSm.loop = false;
+	grenadeSm.loop = true;
 
-	fwtumble.PushBack({ 1109, 1630, 36, 54 });
-	fwtumble.PushBack({ 1080, 1630 , 41, 54 });
-	fwtumble.PushBack({ 161, 739, 36, 54 });
-
-	fwtumble.speed = 0.2f;
+	fwtumble.PushBack({ 1111, 1630, 15, 23 });
+	fwtumble.PushBack({ 1080, 1630 , 15, 23 });
+	fwtumble.PushBack({ 1064, 1630, 15, 23 });
+	fwtumble.PushBack({ 1008, 1630, 15, 23 });
+	fwtumble.PushBack({ 1026, 1630, 15, 23 });
+	fwtumble.speed = 0.1f;
 	fwtumble.loop = true;
 
 
@@ -68,24 +69,25 @@ Enemy_CowBoy_Blue_Top_Small::Enemy_CowBoy_Blue_Top_Small(float x, float y) : Ene
 	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 
-	if (x == 120){
+	if (x == 10|| x==70){
 
 		path.PushBack({ 0, 0 }, 50, &spawnn);
-		path.PushBack({ 1.0f, 0 }, 40, &forward);
+		path.PushBack({ 0.6f, 0 }, 40, &forward);
 		path.PushBack({ 0, 0 }, 60, &grenadeSm);
-		path.PushBack({ -1.0f, 0 }, 150, &backward);
+		path.PushBack({ -0.6f, 0 }, 300, &backward);
 		
 		path.loop = false;
 	}
 
-	if (x == 155){
+	if (x==40  ){
 
 		path.PushBack({ 0, 0 }, 50, &spawnn);
-		path.PushBack({ 1.0f, 0 }, 40, &forward);
+		path.PushBack({ 0.6f, 0 }, 40, &forward);
 		path.PushBack({ 0, 0 }, 60, &grenadeSm);
-		path.PushBack({ 1.0f, 0 }, 100, &forward);
+		path.PushBack({ 0.6f, 0 }, 100, &forward);
 		path.PushBack({ 1.0f, 0 }, 15, &fwtumble);
-		path.PushBack({ -1.0f, 0 }, 150, &backward);
+		path.PushBack({ 0, 0 }, 60, &grenadeSm);
+		path.PushBack({ -0.6f, 0 }, 300, &backward);
 
 		path.loop = false;
 

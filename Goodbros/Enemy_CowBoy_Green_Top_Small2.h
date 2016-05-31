@@ -18,6 +18,7 @@ private:
 	Animation grenadeSm;;
 	Animation jumpSm;
 	Animation spawnn;
+	Animation idle;
 	bool isdead = false;
 
 	iPoint original_pos;

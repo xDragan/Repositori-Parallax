@@ -33,6 +33,7 @@
 #include "Enemy_CowBoy_Green_Top_Small2.h"
 #include "Enemy_Cowboy_Green_Top_Bar.h"
 #include "Enemy_CowBoy_Green_Top_Small3.h"
+#include "Enemy_CowBoy_Green_Top_Small4.h"
 #include "Enemy_CowBoy_Blue_Top_Small.h"
 #include "Enemy_Pooping_Guy.h"
 
@@ -234,6 +235,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL3:
 			enemies[i] = new Enemy_CowBoy_Green_Top_Small3(info.x, info.y);
+			break;
+		case ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL4:
+			enemies[i] = new Enemy_CowBoy_Green_Top_Small4(info.x, info.y);
 			break;
 		case ENEMY_TYPES::BLUE_COWBOY_TOP_SMALL:
 			enemies[i] = new Enemy_CowBoy_Blue_Top_Small(info.x, info.y);

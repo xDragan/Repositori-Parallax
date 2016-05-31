@@ -100,6 +100,19 @@ Enemy_CowBoy_Green_Top_Small3::Enemy_CowBoy_Green_Top_Small3(float x, float y) :
 
 	}
 
+	if (y == 15){
+
+
+		path.PushBack({ 0, 0 }, 50, &spawnup);
+		path.PushBack({ 0, 0 }, 50, &shoot);
+		path.PushBack({ 0, 0 }, 50, &shoot);
+		path.PushBack({ 0, 0 }, 50, &spawndown);
+		path.loop = false;
+
+
+
+	}
+
 
 
 
@@ -111,14 +124,6 @@ Enemy_CowBoy_Green_Top_Small3::Enemy_CowBoy_Green_Top_Small3(float x, float y) :
 void Enemy_CowBoy_Green_Top_Small3::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
-
-
-	if (path.GetFrame() == 150){
-
-		finished = true;
-
-	}
-
 
 	if (dieshot.Finished() == true)
 	{

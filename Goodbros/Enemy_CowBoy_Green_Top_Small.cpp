@@ -52,6 +52,8 @@ Enemy_CowBoy_Green_Top_Small::Enemy_CowBoy_Green_Top_Small(float x, float y) : E
 	shoot.speed = 0.10f;
 	shoot.loop = false;
 
+	idle.PushBack({ 651, 2934, 25, 40 });
+	idle.loop = true;
 
 	spawnup.PushBack({ 1094, 2912, 20, 20 });
 	spawnup.PushBack({ 1110, 2981, 20, 20 });
@@ -92,21 +94,26 @@ Enemy_CowBoy_Green_Top_Small::Enemy_CowBoy_Green_Top_Small(float x, float y) : E
 	if (x == 120){
 
 		path.PushBack({ 0, 0 }, 50, &spawnn);
-		path.PushBack({ 1.0f, 0 }, 115, &forward);
-		path.PushBack({ 0, 0 }, 15, &shoot);
+		path.PushBack({ -0.6f, 0 }, 40, &backward);
+		path.PushBack({ 0, 0 }, 15, &idle);
+		path.PushBack({ 0.6f, 0 }, 240, &forward);
+		path.PushBack({ 0, 0 }, 30, &shoot);
 		path.PushBack({ 0, -1.50f }, 5, &jumpSm);
 		path.PushBack({ 0, 1.50f }, 30, &jumpSm);
-		path.PushBack({ 1.0f, 0 }, 40, &forward);
+		path.PushBack({ 0.6f, 0 }, 300, &forward);
 		path.loop = false;
 	}
 
 	if (x == 155){
 
 		path.PushBack({ 0, 0 }, 50, &spawnn);
-		path.PushBack({ 1.0f, 0 }, 80, &forward);
+		path.PushBack({ -0.6f, 0 }, 40, &backward);
+		path.PushBack({ 0, 0 }, 15, &idle);
+		path.PushBack({ 0.6f, 0 }, 180, &forward);
+		path.PushBack({ 0, 0 }, 30, &shoot);
 		path.PushBack({ 0, -1.50f }, 5, &jumpSm);
 		path.PushBack({ 0, 1.50f }, 30, &jumpSm);
-		path.PushBack({ 1.0f, 0 }, 40, &forward);
+		path.PushBack({ 0.6f, 0 }, 300, &forward);
 		path.loop = false;
 
 	}
@@ -115,9 +122,9 @@ Enemy_CowBoy_Green_Top_Small::Enemy_CowBoy_Green_Top_Small(float x, float y) : E
 	if ( x == 195){
 
 		path.PushBack({ 0, 0 }, 50, &spawnn);
-		path.PushBack({ -1.0f, 0 }, 40, &backward);
-		path.PushBack({ 0, 0 }, 15, &shoot);
-		path.PushBack({ 1.0, 0 }, 500, &forward);
+		path.PushBack({ -0.6f, 0 }, 30, &backward);
+		path.PushBack({ 0, 0 }, 30, &shoot);
+		path.PushBack({ 0.6f, 0 }, 500, &forward);
 		path.loop = false;
 
 	}
