@@ -163,6 +163,13 @@ update_status ModuleSceneFirst::Update()
 		}
 		time2 = SDL_GetTicks() + 16000;
 	}
+	if (SDL_GetTicks() > time4 + 9000){
+		App->enemiesback->AddEnemy(ENEMY_TYPES::WHEELBARROW, SCREEN_WIDTH, 98, NULL, 200);
+		App->enemiesback->AddEnemy(ENEMY_TYPES::WHEELBARROW, SCREEN_WIDTH, 98, NULL, 600);
+		App->enemiesback->AddEnemy(ENEMY_TYPES::WHEELBARROW, SCREEN_WIDTH, 98, NULL, 900);
+		time4 = SDL_GetTicks() + 16000;
+
+	}
 	if (SDL_GetTicks() > time3 + 22000)
 	{
 

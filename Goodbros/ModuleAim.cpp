@@ -20,16 +20,16 @@ ModuleAim::ModuleAim()
 	Aimshotgun.PushBack({ 502, 284, 31, 29 });
 	Aimshotgun.speed = 0.2f;
 
-	Aimmachine.PushBack({469, 248, 43, 32});
-	Aimmachine.PushBack({517, 248, 43, 32});
+	Aimmachine.PushBack({459, 248, 43, 32});
+	Aimmachine.PushBack({507, 248, 43, 32});
 	Aimmachine.speed = 0.2f;
 
 	Aimshotgunshot.PushBack({555, 248, 43, 32});
 	Aimshotgunshot.PushBack({ 603, 248, 43, 32});
 	Aimshotgunshot.PushBack({ 652, 248, 43, 32});
 	Aimshotgunshot.PushBack({ 700, 248, 43,32 });
-	Aimshotgunshot.PushBack({ 469, 248, 43, 32 });
-	Aimshotgunshot.PushBack({ 517, 248, 43, 32 });
+	Aimshotgunshot.PushBack({ 459, 248, 43, 32 });
+	Aimshotgunshot.PushBack({ 507, 248, 43, 32 });
 	Aimshotgunshot.speed = 0.3f;
 	Aimshotgunshot.loop = true;
 
