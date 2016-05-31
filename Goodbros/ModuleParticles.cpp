@@ -38,10 +38,18 @@ ModuleParticles::ModuleParticles()
 	// Enemy shot
 	enemyshot.anim.PushBack({ 399, 494, 9, 9});
 	enemyshot.anim.PushBack({ 429, 494, 9, 9 });
+	enemyshot.anim.PushBack({ 399, 494, 9, 9 });
+	enemyshot.anim.PushBack({ 399, 494, 9, 9 });
+	enemyshot.anim.PushBack({ 429, 494, 9, 9 });
+	enemyshot.anim.PushBack({ 399, 494, 9, 9 });
+	enemyshot.anim.PushBack({ 399, 494, 9, 9 });
+	enemyshot.anim.PushBack({ 429, 494, 9, 9 });
+	enemyshot.anim.PushBack({ 429, 494, 9, 9 });
+	enemyshot.anim.PushBack({ 429, 494, 9, 9 });
 	enemyshot.anim.loop = true;
 	enemyshot.anim.speed = 0.035f;
 	enemyshot.speed.y = 1.5f;
-	enemyshot.life = 10000;
+	enemyshot.life = 90000;
 
 	BarrowExpl.anim.PushBack({20,227,48,48});
 	BarrowExpl.anim.PushBack({ 112, 227, 48, 48});

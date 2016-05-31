@@ -252,7 +252,7 @@ update_status ModuleSceneFirst::Update()
 
 	// Draw everything
 	App->render->Blit(background, 0, 0, NULL);
-	if (App->player->win_condition >= 18)
+	if (App->player->win_condition >= 40)
 	{
 		App->player->Status = WIN;
 		App->player->win_condition = 0;

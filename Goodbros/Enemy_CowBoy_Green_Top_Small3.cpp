@@ -125,7 +125,9 @@ Enemy_CowBoy_Green_Top_Small3::Enemy_CowBoy_Green_Top_Small3(float x, float y) :
 void Enemy_CowBoy_Green_Top_Small3::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
-
+	if (path.GetFrame() == 100){
+				App->particles->AddParticle(App->particles->enemyshot, position.x + 5, position.y + 10, COLLIDER_ENEMY_SHOT, 0);
+		}
 	if (path.GetFrame() == 200){
 		finished = true;
 	}

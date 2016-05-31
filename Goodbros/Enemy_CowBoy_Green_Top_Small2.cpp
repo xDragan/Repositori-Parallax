@@ -132,7 +132,16 @@ Enemy_CowBoy_Green_Top_Small2::Enemy_CowBoy_Green_Top_Small2(float x, float y) :
 void Enemy_CowBoy_Green_Top_Small2::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
-
+	if (original_pos.x == 135){
+		if (path.GetFrame() == 85){
+			App->particles->AddParticle(App->particles->enemyshot, position.x + 5, position.y + 10, COLLIDER_ENEMY_SHOT, 0);
+		}
+	}
+	if (original_pos.x == 215 || original_pos.x == 185){
+		if (path.GetFrame() == 235){
+			App->particles->AddParticle(App->particles->enemyshot, position.x + 5, position.y + 10, COLLIDER_ENEMY_SHOT, 0);
+		}
+	}
 	if (dieshot.Finished() == true)
 	{
 		finished = true;

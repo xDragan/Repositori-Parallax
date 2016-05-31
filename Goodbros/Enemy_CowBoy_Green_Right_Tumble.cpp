@@ -68,6 +68,9 @@ void Enemy_CowBoy_Green_Right_Tumble::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
 
+	if (path.GetFrame() == 100){
+		App->particles->AddParticle(App->particles->enemyshot, position.x + 5, position.y + 10, COLLIDER_ENEMY_SHOT, 0);
+	}
 	if (dieshot.Finished() == true)
 	{
 		finished = true;

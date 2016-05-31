@@ -177,8 +177,12 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 void Enemy_CowBoy_Blue_Top_Fabten::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
-
-	if (path.GetFrame() == 125)
+	if (original_pos.x == 170){
+		if (path.GetFrame() == 110){
+			App->particles->AddParticle(App->particles->enemyshot, position.x + 5, position.y + 10, COLLIDER_ENEMY_SHOT, 0);
+		}
+	}
+	if (path.GetFrame() == 160)
 	{
 		App->audio->PlayFx(App->particles->bombthrow.fx);
 		App->particles->AddParticle(App->particles->enemyDynamite, position.x + 10, position.y + 20, COLLIDER_BOMB, 0);

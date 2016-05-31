@@ -86,7 +86,7 @@ Enemy_CowBoy_Green_Top_Bar::Enemy_CowBoy_Green_Top_Bar(float x, float y) : Enemy
 
 		path.PushBack({ 0, 0 }, 50, &spawni);
 		path.PushBack({ -1.0f, 0 }, 20, &backward);
-		path.PushBack({ 0, 0 }, 40, &idle);
+		path.PushBack({ 0, 0 }, 40, &stop_shoot);
 		path.PushBack({ 1.0f, 0 }, 140, &forward);
 		path.loop = false;
 
@@ -134,7 +134,22 @@ Enemy_CowBoy_Green_Top_Bar::Enemy_CowBoy_Green_Top_Bar(float x, float y) : Enemy
 void Enemy_CowBoy_Green_Top_Bar::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
-
+	
+	if (original_pos.x == 215 || original_pos.x == 205){
+		if (path.GetFrame() == 90){
+			App->particles->AddParticle(App->particles->enemyshot, position.x + 5, position.y + 10, COLLIDER_ENEMY_SHOT, 0);
+		}
+	}
+	if (original_pos.x == 215){
+		if (path.GetFrame() == 90){
+			App->particles->AddParticle(App->particles->enemyshot, position.x + 5, position.y + 10, COLLIDER_ENEMY_SHOT, 0);
+		}
+	}
+	if (original_pos.x == 3){
+		if (path.GetFrame() == 70){
+			App->particles->AddParticle(App->particles->enemyshot, position.x + 5, position.y + 10, COLLIDER_ENEMY_SHOT, 0);
+		}
+	}
 	if (dieshot.Finished() == true)
 	{
 		finished = true;

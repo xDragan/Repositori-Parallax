@@ -485,7 +485,7 @@ update_status ModulePlayer::Update()
 	{
 		player_coll->type = COLLIDER_PLAYER;
 	}
-	if (win_condition >= 18) Status = WIN;
+	if (win_condition >= 40) Status = WIN;
 	if (godmode == true)
 	{
 		player_coll->type = COLLIDER_NONE;

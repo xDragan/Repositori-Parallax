@@ -124,7 +124,7 @@ public:
 
 		p2Point<float> direction;
 
-		/*direction.y = 0.6;
+		direction.y = 0.6;
 		direction.x = (((dst.x + HALF_PLAYER_WIDTH) - x) / ((dst.y - HALF_PLAYER_HEIGHT) - y)) * 0.3 ;
 
 		if ((abs(direction.x) + abs(direction.y)) > 5){
@@ -134,15 +134,10 @@ public:
 		}
 
 		if ((abs(direction.x) + abs(direction.y)) < 4){
-			direction.x *= 1.1;
+			direction.x *= 0.5;
 			direction.y *= 2;
 
-		}*/
-
-		direction.x = 0;
-		direction.y = 1;
-
-
+		}
 		return(direction);
 	}
 	p2Point<float> GetDirectionbomb(p2Point<float> dst)

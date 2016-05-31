@@ -4,6 +4,7 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "ModuleSceneFirst.h"
+#include "ModuleAudio.h"
 
 Enemy_CowBoy_Blue_Top_Small::Enemy_CowBoy_Blue_Top_Small(float x, float y) : Enemy(x, y)
 {
@@ -115,7 +116,19 @@ Enemy_CowBoy_Blue_Top_Small::Enemy_CowBoy_Blue_Top_Small(float x, float y) : Ene
 void Enemy_CowBoy_Blue_Top_Small::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
-
+	
+	if (path.GetFrame() == 110)
+	{
+		App->audio->PlayFx(App->particles->bombthrow.fx);
+		App->particles->AddParticle(App->particles->enemyDynamite, position.x + 10, position.y + 20, COLLIDER_BOMB, 0);
+	}
+	if (original_pos.x == 40){
+		if (path.GetFrame() == 290)
+		{
+			App->audio->PlayFx(App->particles->bombthrow.fx);
+			App->particles->AddParticle(App->particles->enemyDynamite, position.x + 10, position.y + 20, COLLIDER_BOMB, 0);
+		}
+	}
 	if (dieshot.Finished() == true)
 	{
 		finished = true;
