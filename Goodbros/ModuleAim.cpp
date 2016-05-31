@@ -30,7 +30,7 @@ ModuleAim::ModuleAim()
 	Aimshotgunshot.PushBack({ 700, 248, 43,32 });
 	Aimshotgunshot.PushBack({ 469, 248, 43, 32 });
 	Aimshotgunshot.PushBack({ 517, 248, 43, 32 });
-	Aimshotgunshot.speed = 0.5f;
+	Aimshotgunshot.speed = 0.3f;
 	Aimshotgunshot.loop = true;
 
 	aimmachinegunshot.PushBack({414, 319, 31,29});
@@ -39,17 +39,16 @@ ModuleAim::ModuleAim()
 	aimmachinegunshot.PushBack({ 450, 354, 31, 29 });
 	aimmachinegunshot.PushBack({ 466, 284, 31, 29 });
 	aimmachinegunshot.PushBack({ 502, 284, 31, 29 });
-	aimmachinegunshot.speed = 0.5f;
+	aimmachinegunshot.speed = 0.3f;
 	aimmachinegunshot.loop = true;
 
-	Aimshoot.PushBack({ 626, 288, 23, 21 });
-	Aimshoot.PushBack({ 660, 289, 23, 21 });
-	Aimshoot.PushBack({ 696, 288, 23, 21 });
-	Aimshoot.PushBack({ 737, 288, 23, 21 });
+	Aimshoot.PushBack({ 625, 289, 23, 21 });
+	Aimshoot.PushBack({ 662, 289, 23, 21 });
+	Aimshoot.PushBack({ 697, 289, 23, 21 });
+	Aimshoot.PushBack({ 737, 289, 23, 21 });
 	Aimshoot.PushBack({ 542, 289, 23, 21 });
-	Aimshoot.PushBack({ 579, 289, 23, 31 });
-	Aimshoot.PushBack({ 542, 289, 23, 21 });
-	Aimshoot.speed = 0.4f;
+
+	Aimshoot.speed = 0.3f;
 	Aimshoot.loop = true;
 
 	aimmode = NORMAL;

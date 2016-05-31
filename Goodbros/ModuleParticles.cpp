@@ -57,14 +57,19 @@ ModuleParticles::ModuleParticles()
 	dynamite.anim.loop = false;
 	dynamite.anim.speed = 0.1f;
 
-	dynamite_exp.anim.PushBack({ 8, 370, 34, 65 });
-	dynamite_exp.anim.PushBack({ 42, 370, 34, 65 });
-	dynamite_exp.anim.PushBack({ 82, 370, 34, 64 });
-	dynamite_exp.anim.PushBack({ 122, 370, 34, 65 });
-	dynamite_exp.anim.PushBack({ 165, 370, 34, 64 });
-	dynamite_exp.anim.PushBack({ 200, 370, 34, 65 });
-	dynamite_exp.anim.PushBack({ 234, 370, 34, 65 });
-	dynamite_exp.anim.PushBack({ 268, 370, 34, 65 });
+
+
+	dynamite_exp.anim.PushBack({ 80, 516, 65, 64 });
+	dynamite_exp.anim.PushBack({ 154, 516, 65, 64 });
+	dynamite_exp.anim.PushBack({ 226, 516, 65, 64 });
+	dynamite_exp.anim.PushBack({ 9, 295, 65, 64 });
+	dynamite_exp.anim.PushBack({ 80, 295, 65, 64 });
+	dynamite_exp.anim.PushBack({ 301, 516, 65, 64 });
+	dynamite_exp.anim.PushBack({ 366, 516, 65, 64 });
+	dynamite_exp.anim.PushBack({ 154, 295, 65, 64 });
+	dynamite_exp.anim.PushBack({ 226, 295, 65, 64 });
+	dynamite_exp.anim.PushBack({ 301, 295, 65, 64 });
+
 	
 	dynamite_exp.anim.loop = false;
 	dynamite_exp.anim.speed = 0.2f;
