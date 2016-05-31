@@ -171,6 +171,10 @@ update_status ModuleSceneFirst::Update()
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 155, 55, NULL, 1000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 185, 55, NULL, 1000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 215, 55, NULL, 1000);
+
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL2, 135, 90, NULL, 1000);
+		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_SMALL, 195, 90, NULL, 1000);
+
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN)
 	{

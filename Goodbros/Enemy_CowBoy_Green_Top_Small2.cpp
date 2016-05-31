@@ -96,6 +96,21 @@ Enemy_CowBoy_Green_Top_Small2::Enemy_CowBoy_Green_Top_Small2(float x, float y) :
 
 	}
 
+	if ( x == 135){
+
+
+
+		path.PushBack({ 0, 0 }, 50, &spawnn);
+		path.PushBack({ 1.0f, 0 }, 70, &forward);
+		path.PushBack({ 0, 0 }, 15, &shoot);
+		path.PushBack({ 1.0, 0 }, 500, &forward);
+		path.loop = false;
+
+	}
+
+
+
+
 	original_pos.x = x;
 	original_pos.y = y;
 

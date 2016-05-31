@@ -87,13 +87,30 @@ Enemy_CowBoy_Green_Top_Small::Enemy_CowBoy_Green_Top_Small(float x, float y) : E
 
 		path.PushBack({ 0, 0 }, 50, &spawnn);
 		path.PushBack({ 1.0f, 0 }, 80, &forward);
-		path.PushBack({ 0, 0 }, 15, &shoot);
 		path.PushBack({ 0, -1.50f }, 5, &jumpSm);
 		path.PushBack({ 0, 1.50f }, 30, &jumpSm);
 		path.PushBack({ 1.0f, 0 }, 40, &forward);
 		path.loop = false;
 
 	}
+
+
+	if ( x == 195){
+
+		path.PushBack({ 0, 0 }, 50, &spawnn);
+		path.PushBack({ -1.0f, 0 }, 40, &backward);
+		path.PushBack({ 0, 0 }, 15, &shoot);
+		path.PushBack({ 1.0, 0 }, 500, &forward);
+		path.loop = false;
+
+	}
+
+	
+
+
+
+
+
 
 
 	original_pos.x = x;
