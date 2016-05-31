@@ -28,21 +28,24 @@ bool ModuleAudio::Start() //receives int lvl that will load audio diferently dep
 	return ret;
 }
 
-Mix_Music* ModuleAudio::Load(const char*location){
+Mix_Music* ModuleAudio::Load(const char*location)
+{
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 	music=Mix_LoadMUS(location);
 	Mix_PlayMusic(music, -1);
 	return music;
 }
 
-bool ModuleAudio::Disable(){
+bool ModuleAudio::Disable()
+{
 	LOG("music clean");
 	Mix_FreeMusic(music);
 	music = NULL;
 	return true;
 }
 
-bool ModuleAudio::CleanUp(){
+bool ModuleAudio::CleanUp()
+{
 	LOG("Freeing textures and Audio library");
 	Mix_CloseAudio();
 	Mix_FreeMusic(music);
@@ -95,5 +98,56 @@ bool ModuleAudio::PlayFx(uint id)
 		ret = true;
 	}
 
+	return ret;
+}
+
+// Play a music file
+bool ModuleAudio::PlayMusic(const char* path, float fade_time)
+{
+	bool ret = true;
+
+	if (music != NULL)
+	{
+		if (fade_time > 0.0f)
+		{
+			Mix_FadeOutMusic((int)(fade_time * 1000.0f));
+		}
+		else
+		{
+			Mix_HaltMusic();
+		}
+
+		// this call blocks until fade out is done
+		Mix_FreeMusic(music);
+	}
+
+	music = Mix_LoadMUS(path);
+
+	if (music == NULL)
+	{
+		LOG("Cannot load music %s. Mix_GetError(): %s\n", path, Mix_GetError());
+		ret = false;
+	}
+	else
+	{
+		if (fade_time > 0.0f)
+		{
+			if (Mix_FadeInMusic(music, -1, (int)(fade_time * 1000.0f)) < 0)
+			{
+				LOG("Cannot fade in music %s. Mix_GetError(): %s", path, Mix_GetError());
+				ret = false;
+			}
+		}
+		else
+		{
+			if (Mix_PlayMusic(music, -1) < 0)
+			{
+				LOG("Cannot play in music %s. Mix_GetError(): %s", path, Mix_GetError());
+				ret = false;
+			}
+		}
+	}
+
+	LOG("Successfully playing %s", path);
 	return ret;
 }

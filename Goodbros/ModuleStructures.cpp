@@ -66,6 +66,7 @@ bool ModuleStructures::Start()
 {
 	LOG("Loading buildings");
 	graphics = App->textures->Load("bloodbros/enemy.png");
+
 	collapse.fx = App->audio->LoadFx("bloodbros/building_collapse.wav");
 
 	// BAR
@@ -223,26 +224,21 @@ update_status ModuleStructures::Update()
 		if (active[i]->hits < 4)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &p->Coll_Struct, 0);
-			if (p->fx_played == false)
-			{
-				// Play particle fx here
-				p->fx_played = true;
-			}
 		}
-		if (active[i]->hits == 4 && active[i]->mytype == FABTEN && fabtenalive == true)
+		/*if (active[i]->hits >= 3 && active[i]->mytype == FABTEN && SDL_GetTicks() > collapse_fabten) || Con esto funciona pero no se escucha ningun otro sonido mientras se derrumba
 		{
-			collapse_fabten = SDL_GetTicks() + 1800;
+			collapse_fabten = SDL_GetTicks() + 3800;
 			fabtenalive = false;
 		}
 		if (active[i]->hits == 4 && active[i]->mytype == BAR && baralive == true)
 		{
-			collapse_fabten = SDL_GetTicks() + 1800;
+			collapse_fabten = SDL_GetTicks() + 3800;
 			baralive = false;
 		}
 		if (SDL_GetTicks() < collapse_fabten)
 		{
 			App->audio->PlayFx(collapse.fx);
-		}
+		}*/
 		if (active[i]->hits >= 4 && active[i]->mytype != BARREL && active[i]->mytype != INN)
 		{
 			App->collision->EraseCollider(p->collider);
@@ -403,6 +399,8 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			}
 			else if (active[i]->hits == 3)
 			{
+				//App->audio->PlayMusic("bloodbros/building_collapse.wav", 2.0f); TEST: causa lag
+				//App->audio->PlayFx(collapse.fx); Con esto deberia funcionar, pero no lo hace
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000, NULL);
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
