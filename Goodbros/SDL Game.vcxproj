@@ -123,6 +123,7 @@
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="Enemy_Pig.h" />
     <ClInclude Include="Path.h" />
+    <ClInclude Include="Enemy_Pooping_Guy.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -175,6 +176,7 @@
     <ClCompile Include="Enemy_Pig.cpp" />
     <ClCompile Include="ModuleScenePreStage.cpp" />
     <ClCompile Include="Module_Points.cpp" />
+    <ClCompile Include="Enemy_Pooping_Guy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\..\Windows\System32\user32.dll" />
