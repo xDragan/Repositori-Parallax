@@ -11,6 +11,9 @@ private:
 
 	Animation forwardsm;
 	Animation forwardb;
+	Animation backwardsm;
+	Animation backwardb;
+	Animation bwtumbleb;
 	Animation dieshotsm;
 	Animation dieexplotionsm;
 	Animation fwtumblesm;
@@ -22,7 +25,12 @@ private:
 	Animation grenadeb;
 	Animation crouchb;
 	Animation jumpsm;
+	Animation jump;
 	Animation spawnn;
+	Animation shootb;
+	Animation shootsm;
+	Animation tumblersm;
+	Animation tumblelsm;
 	bool isdead = false;
 
 	iPoint original_pos;
