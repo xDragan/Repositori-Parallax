@@ -35,10 +35,12 @@ Application::Application()
 	modules[i++] = scene_win = new ModuleSceneWin();
 	modules[i++] = scene_credit = new ModuleSceneCredit();
 	modules[i++] = structuresback = new ModuleStructures();
+	modules[i++] = enemiesback = new ModuleEnemies();
 	modules[i++] = structuresmiddle = new ModuleStructures();
 	modules[i++] = smoke = new ModuleParticles();
 	modules[i++] = building_explosion = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = enemiesfront = new ModuleEnemies();
 	modules[i++] = barrelroll = new ModuleEnemies();
 	modules[i++] = structuresfront = new ModuleStructures();
 	modules[i++] = aim = new ModuleAim();

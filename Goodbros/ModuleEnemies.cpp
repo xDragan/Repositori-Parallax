@@ -259,6 +259,18 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			App->UserUI->score += 100;
 			App->points->enemies[i]->Die();
 		}
+		if (App->enemiesback->enemies[i] != nullptr && App->enemiesback->enemies[i]->GetCollider() == c1)
+		{
+			App->UserUI->score += 100;
+			App->enemiesback->enemies[i]->Die();
+
+		}
+		if (App->enemiesfront->enemies[i] != nullptr && App->enemiesfront->enemies[i]->GetCollider() == c1)
+		{
+			App->UserUI->score += 100;
+			App->enemiesfront->enemies[i]->Die();
+		}
+
 	}
 }
 

@@ -41,7 +41,6 @@ Enemy_Horse_Right::Enemy_Horse_Right(float x, float y) : Enemy(x, y)
 
 	path.PushBack({ -1.5f, 0 }, 200, &backward);
 	path.PushBack({ -1.5f, 0 }, 200, &backward);
-	if (position.x == -50) finished = true;
 
 
 	original_pos.x = x;
@@ -51,11 +50,11 @@ Enemy_Horse_Right::Enemy_Horse_Right(float x, float y) : Enemy(x, y)
 void Enemy_Horse_Right::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
+
 	if (dieshot.Finished() == true){
 		path.PushBack({ -2.50f, 0.0f }, 200, &backward);
-		dieshot.Reset();
 	}
-	if (position.x >= -50)
+	if (position.x <= -50)
 	{
 		finished = true;
 	}
@@ -69,14 +68,7 @@ void Enemy_Horse_Right::Die()
 	if (hit == false){
 		path.PushBack({ 0.0f, 0.0f }, 130, &dieshot);
 		path.loop = false;
-	}
-	if (hit == true){
-		if (path.GetFrame() >= 75){
-			path.PushBack({ 0.0f, 0.0f }, 130, &dieshot);
-			path.loop = false;
-		}
-	}
-	
+	}	
 	hit = true;
 	
 	

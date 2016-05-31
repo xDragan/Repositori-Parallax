@@ -30,7 +30,8 @@ bool ModuleSceneFirst::Start()
 
 	// Loading various modules
 	App->player->Enable();
-
+	App->enemiesback->Enable();
+	App->enemiesfront->Enable();
 	App->collision->Enable();
 	App->aim->Enable();
 	App->structuresfront->Enable();
@@ -104,6 +105,10 @@ bool ModuleSceneFirst::CleanUp()
 	App->enemies->Disable();
 	App->collision->Disable();
 	App->UserUI->Disable();
+	App->enemiesfront->CleanUp();
+	App->enemiesback->CleanUp();
+	App->enemiesfront->Disable();
+	App->enemiesback->Disable();
 	return true;
 }
 
@@ -113,20 +118,20 @@ update_status ModuleSceneFirst::Update()
 	if (SDL_GetTicks() > time+100)
 	{
 		//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY, SCREEN_WIDTH, 130, NULL, 0);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 106, NULL, 5000);
-		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, 250, 106, NULL, 5000);
+		App->enemiesfront->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 106, NULL, 5000);
+		App->enemiesfront->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, 250, 106, NULL, 5000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 107, NULL, 7000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 107, NULL, 7000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 100, NULL, 8000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 100, NULL, 8000);
 		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_RIGHT, 250, 90, NULL, 9000);
-		App->enemies->AddEnemy(ENEMY_TYPES::RIDER, 257, 98, NULL, 9000);
+		App->enemiesfront->AddEnemy(ENEMY_TYPES::RIDER, 257, 98, NULL, 9000);
 		
 		if (App->structuresmiddle->bardest == false && App->structuresfront->bardest == false && App->structuresback->bardest == false){
 
-			App->enemies->AddEnemy(ENEMY_TYPES::WHEELBARROW, 250, 95, 1, 10000);
-			App->enemies->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, 250, 95, NULL, 9000);
-			App->enemies->AddEnemy(ENEMY_TYPES::RIDER_SMALL_RIGHT, 257, 92, NULL, 9000);		
+			App->enemiesback->AddEnemy(ENEMY_TYPES::WHEELBARROW, 250, 95, 1, 10000);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::HORSE_SMALL_RIGHT, 250, 95, NULL, 9000);
+			App->enemiesback->AddEnemy(ENEMY_TYPES::RIDER_SMALL_RIGHT, 257, 92, NULL, 9000);		
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 210, 100, NULL, 17000);
 			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 170, 47, NULL, 18000);
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 215, 45, NULL, 18000);
