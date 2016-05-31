@@ -168,7 +168,7 @@ update_status ModuleSceneFirst::Update()
 
 		if (App->structuresmiddle->fabtendest == false && App->structuresfront->fabtendest == false && App->structuresback->fabtendest == false)
 		{
-			App->enemiesback->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 7, 100, NULL, NULL);
+			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 7, 100, NULL, NULL);
 			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 45, 100, NULL, NULL);
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 3, 47, NULL, 2000);
 			App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 25, 47, NULL, 2100);
@@ -246,7 +246,7 @@ update_status ModuleSceneFirst::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN)
 	{
-		App->enemiesback->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 7, 100, NULL, NULL);
+		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 7, 100, NULL, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 45, 100, NULL, NULL);
 	}
 
