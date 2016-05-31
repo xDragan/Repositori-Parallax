@@ -29,7 +29,7 @@ Enemy_wheelbarrow::Enemy_wheelbarrow(float x, float y, int direction) : Enemy(x,
 	Hittedleft.loop = true;
 	Hittedleft.PushBack({ 200, 3269, 48, 42 });*/
 
-	collider = App->collision->AddCollider({ 0, 0, 48, 48 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 30, 28 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;

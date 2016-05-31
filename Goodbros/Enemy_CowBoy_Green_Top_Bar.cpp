@@ -71,7 +71,7 @@ Enemy_CowBoy_Green_Top_Bar::Enemy_CowBoy_Green_Top_Bar(float x, float y) : Enemy
 
 
 
-	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, -20, 24, 40 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 
 	if (x == 205){

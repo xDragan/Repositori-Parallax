@@ -26,7 +26,7 @@ Enemy_Rider_Small_Right::Enemy_Rider_Small_Right(float x, float y) : Enemy(x, y)
 
 
 
-	collider = App->collision->AddCollider({ 0, -20, 25, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, -20, 15, 20 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	path.PushBack({ -1.0f, 0 }, 100, &backward);
 

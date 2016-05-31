@@ -37,7 +37,7 @@ Enemy_Horse_Right::Enemy_Horse_Right(float x, float y) : Enemy(x, y)
 
 
 
-	collider = App->collision->AddCollider({ 0, -20, 46, 40 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, -20, 40, 40 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	path.PushBack({ -1.5f, 0 }, 200, &backward);
 	path.PushBack({ -1.5f, 0 }, 200, &backward);

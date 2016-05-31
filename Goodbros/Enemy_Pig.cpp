@@ -13,7 +13,7 @@ Enemy_Pig::Enemy_Pig(float x, float y) : Enemy(x, y)
 
 	animation = &run;
 
-	collider = App->collision->AddCollider({0, 0, 24, 24}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({0, 0, 32, 24}, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
 }

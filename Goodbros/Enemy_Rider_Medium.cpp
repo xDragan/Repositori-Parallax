@@ -31,7 +31,7 @@ Enemy_Rider_Medium::Enemy_Rider_Medium(float x, float y) : Enemy(x, y)
 
 
 
-	collider = App->collision->AddCollider({ 0, -20, 25, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, -20, 25, 25 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	path.PushBack({ -1.5f, 0 }, 100, &backward);
 	

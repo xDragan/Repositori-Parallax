@@ -40,7 +40,7 @@ Enemy_Couple_Guy::Enemy_Couple_Guy(float x, float y) : Enemy(x, y)
 	path.PushBack({ 0, 0 }, 100, &aware);
 	path.PushBack({ 2.0f, 0 }, 200, &run);
 
-	collider = App->collision->AddCollider({ 0, 0, 26, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 26, 40 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;

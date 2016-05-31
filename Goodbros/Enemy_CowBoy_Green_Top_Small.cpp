@@ -88,7 +88,7 @@ Enemy_CowBoy_Green_Top_Small::Enemy_CowBoy_Green_Top_Small(float x, float y) : E
 	spawnn.speed = 0.08f;
 
 
-	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, -20, 20, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 
 	if (x == 120){

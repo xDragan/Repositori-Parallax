@@ -63,13 +63,13 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 	fwtumbleb.speed = 0.2f;
 	fwtumbleb.loop = true;
 
-	dieshotb.PushBack({ 507, 400, 35, 54 });
-	dieshotb.PushBack({ 549, 400, 35, 54 });
-	dieshotb.PushBack({ 589, 400, 35, 54 });
-	dieshotb.PushBack({ 632, 400, 35, 54 });
+	dieshotsm.PushBack({ 285, 1065, 30, 54 });
+	dieshotsm.PushBack({ 317, 1065, 30, 54 });
+	dieshotsm.PushBack({ 359, 1065, 30, 54 });
+	dieshotsm.PushBack({ 395, 1055, 30, 54 });
 
-	dieshotb.speed = 0.09f;
-	dieshotb.loop = false;
+	dieshotsm.speed = 0.09f;
+	dieshotsm.loop = false;
 
 	dieexplotionb.PushBack({ 744, 397, 36, 54 });
 	dieexplotionb.PushBack({ 798, 397, 36, 54 });
@@ -126,7 +126,7 @@ Enemy_CowBoy_Blue_Top_Fabten::Enemy_CowBoy_Blue_Top_Fabten(float x, float y) : E
 	spawnn.PushBack({ 591, 1018, 25, 40 });
 	spawnn.speed = 0.05f;
 
-	collider = App->collision->AddCollider({ 0, -20, 24, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, -20, 24, 40 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	if (x >= 20 && x <= 150)
 	{
@@ -206,4 +206,9 @@ void Enemy_CowBoy_Blue_Top_Fabten::Die()
 	path.Erase();
 	path.PushBack({ 0.0f, 0.0f }, 40, &dieshotsm);
 	path.loop = false;
+
+
+
+
+
 }
