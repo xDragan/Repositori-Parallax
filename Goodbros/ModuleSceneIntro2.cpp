@@ -26,8 +26,7 @@ bool ModuleSceneIntro2::Start()
 	App->audio->Load("bloodbros/TittleScreen.ogg");
 	App->introUI->Enable();
 	App->barrelroll->Enable();
-	App->particles->Enable();
-
+	App->points->Enable();
 	App->render->camera.x = App->render->camera.y = 0;
 
 	return true;

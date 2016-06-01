@@ -964,13 +964,6 @@ update_status ModulePlayer::Update()
 		break;
 	case WIN:
 		player_coll->type = COLLIDER_NONE;
-		App->enemies->CleanUp();
-		App->enemies->Disable();
-		App->enemiesfront->CleanUp();
-		App->enemiesback->CleanUp();
-		App->enemiesfront->Disable();
-		App->enemiesback->Disable();
-
 		if (godmode == true)
 		{
 			current_animation = &gwindance;

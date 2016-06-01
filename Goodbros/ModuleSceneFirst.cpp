@@ -27,7 +27,7 @@ bool ModuleSceneFirst::Start()
 	LOG("Loading first stage scene");
 	background = App->textures->Load("bloodbros/level1destroyed.png");
 	App->audio->Load("bloodbros/level1.ogg");
-
+	
 	// Loading various modules
 	App->player->Enable();
 	App->enemiesback->Enable();
@@ -37,10 +37,9 @@ bool ModuleSceneFirst::Start()
 	App->structuresfront->Enable();
 	App->UserUI->Enable();
 	App->enemies->Enable();
-	App->smoke->CleanUp();
+	App->enemies->Start();
 	App->love->Enable();
 	App->smoke->Enable();
-
 
 	// Player reset position & death animation
 	App->player->position.x = 120;
@@ -83,29 +82,23 @@ bool ModuleSceneFirst::CleanUp()
 
 	App->textures->Unload(background);
 	App->player->Disable();
-	App->particles->Disable();
+	App->particles->CleanUp();
 	App->aim->Disable();
 	App->structuresfront->CleanUp();
 	App->structuresmiddle->CleanUp();
 	App->structuresback->CleanUp();
 	App->enemies->CleanUp();
-	App->enemies->Disable();
 	App->structuresfront->Disable();
 	App->structuresmiddle->Disable();
 	App->structuresback->Disable();
 	App->barrelroll->Disable();
 	App->points->Disable();
 	App->smoke->Disable();
-	App->enemies->CleanUp();
-	App->enemies->Disable();
 	App->collision->Disable();
 	App->UserUI->Disable();
 	App->enemiesfront->CleanUp();
 	App->enemiesback->CleanUp();
-	App->enemiesfront->Disable();
-	App->enemiesback->Disable();
 	App->love->CleanUp();
-	App->love->Disable();
 	return true;
 }
 
@@ -249,7 +242,7 @@ update_status ModuleSceneFirst::Update()
 
 	// Draw everything
 	App->render->Blit(background, 0, 0, NULL);
-	if (App->player->win_condition >= 30)
+	if (App->player->win_condition >= 18)
 	{
 		App->audio->Load("bloodbros/Victory.ogg");
 		App->player->Status = WIN;

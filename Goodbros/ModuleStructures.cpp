@@ -251,7 +251,7 @@ update_status ModuleStructures::Update()
 		{
 			if (App->particles->collapse.fx_played == false)
 			{
-				App->audio->PlayFx(App->particles->collapse.fx, 8000);
+				App->audio->PlayFx(App->particles->collapse.fx, 5500);
 				App->particles->collapse.fx_played = true;
 			}
 			App->collision->EraseCollider(p->collider);

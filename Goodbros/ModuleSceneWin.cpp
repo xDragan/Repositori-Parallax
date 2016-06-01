@@ -26,17 +26,8 @@ ModuleSceneWin::~ModuleSceneWin()
 bool ModuleSceneWin::Start()
 {
 	LOG("Loading win scene");	
-	App->player->Disable();
-	App->particles->Disable();
-	App->aim->Disable();
-	App->enemies->CleanUp();
 	App->scene_space->CleanUp();
 	App->scene_space->Disable();
-	App->enemies->CleanUp();
-	App->enemies->Disable();
-	App->structuresfront->Disable();
-	App->structuresmiddle->Disable();
-	App->structuresback->Disable();
 	ticks = SDL_GetTicks();
 	App->building_explosion->Disable();
 	background = App->textures->Load("bloodbros/win_scene.png");

@@ -28,7 +28,9 @@ bool ModuleSceneIntro::Start()
 	App->audio->Load("bloodbros/Parallax_Theme.ogg");
 	App->scene_credit->CleanUp();
 	App->scene_credit->Disable();
+	App->particles->Enable();
 	App->points->Enable();
+	App->smoke->CleanUp();
 	return true;
 }
 
