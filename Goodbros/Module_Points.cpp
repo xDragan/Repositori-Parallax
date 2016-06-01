@@ -114,8 +114,8 @@ Module_Points::Module_Points(float x, float y, uint points) :Enemy(x, y)  //Y=5,
 		break;
 	case 4: //4==metralleta
 		to_score = 4;
-		point.PushBack({ 407, 7, 32, 16 });
-		point.PushBack({ 457, 7, 32, 16 });
+		point.PushBack({ 407, 7, 50, 16 });
+		point.PushBack({ 457, 7, 50, 16 });
 		point.speed = 0.12f;
 		path.PushBack({ 0, -1.6f }, 15, &point);
 		path.PushBack({ 0, -1.0f }, 7, &point);

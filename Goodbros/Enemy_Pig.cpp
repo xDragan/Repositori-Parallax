@@ -36,6 +36,6 @@ void Enemy_Pig::Move()
 
 void Enemy_Pig::Die()
 {
-	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 20, position.y, 2, NULL);
+	App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x + 20, position.y, 1, NULL);
 	hit = true;
 }

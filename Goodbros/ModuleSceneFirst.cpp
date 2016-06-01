@@ -229,6 +229,7 @@ update_status ModuleSceneFirst::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN)
 	{
+		App->points->AddEnemy(ENEMY_TYPES::POINTS, 50, 50, 4, NULL);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 210, 107, NULL, NULL);
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN)
