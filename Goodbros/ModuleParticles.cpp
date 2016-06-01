@@ -203,6 +203,7 @@ bool ModuleParticles::Start()
 	pig_hit.fx = App->audio->LoadFx("bloodbros/pig_hit.wav");
 	horse_hit.fx = App->audio->LoadFx("bloodbros/horse_hit.wav");
 	win_sound.fx = App->audio->LoadFx("bloodbros/Victory.ogg");
+	girl_hit.fx = App->audio->LoadFx("bloodbros/bloodbro-104.wav");
 
 	return true;
 }

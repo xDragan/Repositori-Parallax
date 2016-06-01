@@ -58,7 +58,7 @@ update_status ModuleSceneWin::Update()
 {
 	App->render->Blit(background, 0, 0, NULL);
 
-	if (SDL_GetTicks() - ticks > 8000)
+	if (SDL_GetTicks() - ticks > 3500)
 	{
 		App->fade->FadeToBlack(this, (Module*)App->scene_credit);
 	}

@@ -20,7 +20,6 @@ enum type
 	ROLLING,
 	DIE,
 	WIN,
-
 };
 class ModulePlayer : public Module
 {

@@ -76,6 +76,7 @@ public:
 	Particle pig_hit;
 	Particle horse_hit;
 	Particle win_sound;
+	Particle girl_hit;
 };
 
 #endif // __MODULEPARTICLES_H__

@@ -41,15 +41,18 @@ Enemy_wheelbarrow::Enemy_wheelbarrow(float x, float y, int direction) : Enemy(x,
 void Enemy_wheelbarrow::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
-	if (hit == false){
+	if (hit == false)
+	{
 		collider->type = COLLIDER_ENEMY;
 	}
-	if (hits == 3){
+	if (hits == 3)
+	{
 		App->particles->AddParticle(App->particles->BarrowExpl, position.x +4, position.y + 4, COLLIDER_NONE, 0);
 		App->points->AddEnemy(ENEMY_TYPES::POINTS, position.x, position.y, 3, NULL);
 		finished = true;
 	}
-	if (hit == true){
+	if (hit == true)
+	{
 		collider->type = COLLIDER_NONE;
 		animation = &Hitted;
 		if (animation->Finished() == true){
@@ -62,7 +65,6 @@ void Enemy_wheelbarrow::Move()
 
 void Enemy_wheelbarrow::Die()
 {
-	
 	hit = true;
 	hits++;
 }

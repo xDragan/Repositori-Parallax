@@ -106,7 +106,7 @@ bool ModuleStructures::Start()
 
 	bar.destroy.PushBack({ 490, 2266, 115, 147 });
 	bar.destroy.PushBack({ 490, 2266, 115, 128 });
-	bar.destroy.PushBack({ 490, 2266, 115, 118 });
+	bar.destroy.PushBack({ 490, 2266, 115, 116 });
 	bar.destroy.PushBack({ 490, 2266, 115, 110 });
 	bar.destroy.PushBack({ 490, 2266, 115, 99 });
 	bar.destroy.PushBack({ 490, 2266, 115, 87 });

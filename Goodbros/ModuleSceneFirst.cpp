@@ -114,7 +114,6 @@ update_status ModuleSceneFirst::Update()
 {
 	if (SDL_GetTicks() > time + 100)
 	{
-
 		App->enemiesfront->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 106, NULL, 5000);
 		App->enemiesfront->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, 250, 106, NULL, 5000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 107, NULL, 7000);
@@ -250,8 +249,9 @@ update_status ModuleSceneFirst::Update()
 
 	// Draw everything
 	App->render->Blit(background, 0, 0, NULL);
-	if (App->player->win_condition >= 40)
+	if (App->player->win_condition >= 30)
 	{
+		App->audio->Load("bloodbros/Victory.ogg");
 		App->player->Status = WIN;
 		App->player->win_condition = 0;
 	}

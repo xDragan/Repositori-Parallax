@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollision.h"
+#include "ModuleAudio.h"
 
 Enemy_Girl::Enemy_Girl(float x, float y) : Enemy(x, y)
 {
@@ -16,7 +17,6 @@ Enemy_Girl::Enemy_Girl(float x, float y) : Enemy(x, y)
 	run.PushBack({246,3123,34,45});
 	run.speed = 0.30f;
 	run.loop = true;
-	
 
 	dead.PushBack({291,3123,34,45});
 	dead.PushBack({332,3123,34,45});
@@ -28,7 +28,6 @@ Enemy_Girl::Enemy_Girl(float x, float y) : Enemy(x, y)
 	dead.loop = false;
 
 	dead.speed = 0.07f;
-	
 
 	path.PushBack({ 0.3f, 0 },300, &walk);
 
@@ -53,6 +52,11 @@ void Enemy_Girl::Move()
 		path.Erase();
 		path.PushBack({ 0, 0 }, 40, &dead);
 		path.loop = false;
+	}
+	if (hit == true && App->particles->girl_hit.fx_played == false)
+	{
+		App->audio->PlayFx(App->particles->girl_hit.fx, 1000);
+		App->particles->girl_hit.fx_played = true;
 	}
 }
 
