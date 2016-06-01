@@ -29,6 +29,7 @@ bool ModuleSceneFirst::Start()
 	App->audio->Load("bloodbros/level1.ogg");
 	
 	// Loading various modules
+	App->particles->Start();
 	App->player->Enable();
 	App->enemiesback->Enable();
 	App->enemiesfront->Enable();
@@ -37,7 +38,6 @@ bool ModuleSceneFirst::Start()
 	App->structuresfront->Enable();
 	App->UserUI->Enable();
 	App->enemies->Enable();
-	App->enemies->Start();
 	App->love->Enable();
 	App->smoke->Enable();
 
@@ -82,12 +82,11 @@ bool ModuleSceneFirst::CleanUp()
 
 	App->textures->Unload(background);
 	App->player->Disable();
-	App->particles->CleanUp();
 	App->aim->Disable();
-	App->structuresfront->CleanUp();
-	App->structuresmiddle->CleanUp();
-	App->structuresback->CleanUp();
-	App->enemies->CleanUp();
+	App->structuresfront->Disable();
+	App->structuresmiddle->Disable();
+	App->structuresback->Disable();
+	App->enemies->Disable();
 	App->structuresfront->Disable();
 	App->structuresmiddle->Disable();
 	App->structuresback->Disable();
@@ -96,9 +95,9 @@ bool ModuleSceneFirst::CleanUp()
 	App->smoke->Disable();
 	App->collision->Disable();
 	App->UserUI->Disable();
-	App->enemiesfront->CleanUp();
-	App->enemiesback->CleanUp();
-	App->love->CleanUp();
+	App->enemiesfront->Disable();
+	App->enemiesback->Disable();
+	App->love->Disable();
 	return true;
 }
 
@@ -155,7 +154,6 @@ update_status ModuleSceneFirst::Update()
 	}
 	if (SDL_GetTicks() > time3 + 22000)
 	{
-
 		if (App->structuresmiddle->fabtendest == false && App->structuresfront->fabtendest == false && App->structuresback->fabtendest == false)
 		{
 			App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 7, 100, NULL, NULL);
@@ -185,7 +183,6 @@ update_status ModuleSceneFirst::Update()
 
 		time3 = SDL_GetTicks() + 8000;
 	}
-
 	if (App->structuresmiddle->bardest == true && couple == false)
 	{
 		App->enemiesback->AddEnemy(ENEMY_TYPES::COUPLE_GUY, 170, 95, NULL, 1000);
@@ -242,7 +239,7 @@ update_status ModuleSceneFirst::Update()
 
 	// Draw everything
 	App->render->Blit(background, 0, 0, NULL);
-	if (App->player->win_condition >= 18)
+	if (App->player->win_condition >= 28)
 	{
 		App->audio->Load("bloodbros/Victory.ogg");
 		App->player->Status = WIN;
