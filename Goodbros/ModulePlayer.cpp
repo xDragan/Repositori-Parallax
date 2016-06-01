@@ -252,6 +252,7 @@ ModulePlayer::ModulePlayer()
 	windance.PushBack({ 1240, 126, 46, 72 });
 	windance.PushBack({ 1299, 126, 46, 72 });
 	windance.speed = 0.08f;
+	windance.loops = 0;
 	windance.loop = false;
 
 	//GOD MODE
@@ -424,6 +425,7 @@ ModulePlayer::ModulePlayer()
 	gwindance.PushBack({ 1240, 1126, 46, 72 });
 	gwindance.PushBack({ 1299, 1126, 46, 72 });
 	gwindance.speed = 0.08f;
+	gwindance.loops = 0;
 	gwindance.loop = false;
 
 	lose = 0;

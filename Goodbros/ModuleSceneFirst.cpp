@@ -80,6 +80,8 @@ bool ModuleSceneFirst::CleanUp()
 {
 	LOG("Unloading first scene");
 
+	App->player->windance.Reset();
+	App->player->gwindance.Reset();
 	App->textures->Unload(background);
 	App->player->Disable();
 	App->aim->Disable();
