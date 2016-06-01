@@ -4,6 +4,7 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "ModuleSceneFirst.h"
+#include "ModuleAudio.h"
 
 Enemy_Horse_Small_Right::Enemy_Horse_Small_Right(float x, float y) : Enemy(x, y)
 {
@@ -32,15 +33,9 @@ Enemy_Horse_Small_Right::Enemy_Horse_Small_Right(float x, float y) : Enemy(x, y)
 	dieshot.speed = 0.12f;
 	dieshot.loop = true;
 
-
-
-
-
 	collider = App->collision->AddCollider({ 0, -20, 30, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	path.PushBack({ -1.0f, 0 }, 500, &backward);
-
-
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -50,12 +45,17 @@ void Enemy_Horse_Small_Right::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
 
-	if (dieshot.Finished() == true){
+	if (dieshot.Finished() == true)
+	{
 		path.PushBack({ -2.50f, 0.0f }, 200, &backward);
 	}
 	if (position.x == -10)
 	{
 		finished = true;
+	}
+	if (hit == true)
+	{
+		App->audio->PlayFx(App->particles->horse_hit.fx, 1000);
 	}
 }
 
@@ -64,12 +64,11 @@ void Enemy_Horse_Small_Right::Die()
 	collider->type = COLLIDER_NONE;
 	App->player->win_condition++;
 	path.Erase();
-	if (hit == false){
+	if (hit == false)
+	{
 		path.PushBack({ 0.0f, 0.0f }, 130, &dieshot);
 		path.loop = false;
 	}
 
 	hit = true;
-
-
 }

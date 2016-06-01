@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "ModuleEnemies.h"
 #include "ModuleCollision.h"
+#include "ModuleAudio.h"
 
 Enemy_Pig::Enemy_Pig(float x, float y) : Enemy(x, y)
 {
@@ -22,7 +23,11 @@ void Enemy_Pig::Move()
 {
 	position.y = original_y;
 	if (hit == false){ position.x -= 1; }
-	if (hit == true) { position.x -= 3; }
+	if (hit == true)
+	{ 
+		App->audio->PlayFx(App->particles->pig_hit.fx, 1000);
+		position.x -= 3;
+	}
 }
 
 void Enemy_Pig::Die()

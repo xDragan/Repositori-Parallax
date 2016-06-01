@@ -73,6 +73,8 @@ public:
 	Particle bombexplosion;
 	Particle collapse;
 	Particle barrel_exp;
+	Particle pig_hit;
+	Particle horse_hit;
 };
 
 #endif // __MODULEPARTICLES_H__

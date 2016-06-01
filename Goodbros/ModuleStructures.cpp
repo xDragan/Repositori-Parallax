@@ -67,6 +67,21 @@ bool ModuleStructures::Start()
 	LOG("Loading buildings");
 	graphics = App->textures->Load("bloodbros/enemy.png");
 
+	/* Column
+	column.Coll_Struct.x = 623;
+	column.Coll_Struct.y = 2352;
+	column.Coll_Struct.w = 98;
+	column.Coll_Struct.h = 56;
+	column.mytype = BARRELROL;
+
+	column.destroy.PushBack({ 623, 2352, 98, 56 });
+	column.destroy.PushBack({ 623, 2352, 98, 41 });
+	column.destroy.PushBack({ 623, 2352, 98, 26 });
+	column.destroy.PushBack({ 623, 2352, 98, 11 });
+	column.destroy.PushBack({ 623, 2352, 98, 0 });
+	column.destroy.loop = false;
+	column.destroy.speed = 0.05f;*/
+
 	// BAR
 	bar.Coll_Struct.x = 80;
 	bar.Coll_Struct.y = 2266;
@@ -238,6 +253,7 @@ update_status ModuleStructures::Update()
 			if (p->position.y >= 120)
 			{
 				App->structuresmiddle->fabten.destroy.GetCurrentFrame();
+				App->structuresmiddle->bar.destroy.GetCurrentFrame();
 			}
 			else
 			{
@@ -363,6 +379,23 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				App->structuresmiddle->bardest = true;
 			}
 		}
+
+		/* Column
+		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == COLUMN)
+		{
+			if (active[i]->hits == 0)
+			{
+				active[i]->Coll_Struct.x = column.Coll_Struct.x;
+				active[i]->Coll_Struct.y = column.Coll_Struct.y;
+				active[i]->Coll_Struct.w = column.Coll_Struct.w;
+				active[i]->Coll_Struct.h = column.Coll_Struct.h;
+				active[i]->hits = 3;
+			}
+			else if (active[i]->hits == 3)
+			{
+				active[i]->hits++;
+			}
+		}*/
 
 		// FABTEN
 		if (active[i] != nullptr && active[i]->get_collider() == c1 && active[i]->mytype == FABTEN)

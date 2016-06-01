@@ -4,6 +4,7 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "ModuleSceneFirst.h"
+#include "ModuleAudio.h"
 
 Enemy_Rider_Medium::Enemy_Rider_Medium(float x, float y) : Enemy(x, y)
 {
@@ -12,7 +13,6 @@ Enemy_Rider_Medium::Enemy_Rider_Medium(float x, float y) : Enemy(x, y)
 	backward.PushBack({ 1164, 2817, 25, 40 });
 	backward.PushBack({ 1164, 2816, 25, 40 });
 
-	
 	backward.speed = 0.15f;
 
 	stop_shoot.PushBack({ 1095, 2860, 25, 40 });
@@ -27,9 +27,6 @@ Enemy_Rider_Medium::Enemy_Rider_Medium(float x, float y) : Enemy(x, y)
 
 	dieshot.speed = 0.09f;
 	dieshot.loop = false;
-
-
-
 
 	collider = App->collision->AddCollider({ 0, -20, 25, 25 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -49,6 +46,10 @@ void Enemy_Rider_Medium::Move()
 	{
 		finished = true;
 	}
+	if (hit == true)
+	{
+		App->audio->PlayFx(App->particles->horse_hit.fx, 1000);
+	}
 }
 
 void Enemy_Rider_Medium::Die()
@@ -58,4 +59,5 @@ void Enemy_Rider_Medium::Die()
 	path.Erase();
 	path.PushBack({ 0.0f, 0.5f }, 100, &dieshot);
 	path.loop = false;
+	hit = true;
 }

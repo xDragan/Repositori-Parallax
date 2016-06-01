@@ -7,10 +7,11 @@
 #include "p2Point.h"
 #include "ModuleParticles.h"
 
-#define MAX_BUILDINGS 10
+#define MAX_BUILDINGS 15
 
 enum buildingtype
 {
+	//COLUMN,
 	BAR,
 	INN,
 	FABTEN,
@@ -74,5 +75,6 @@ public:
 	Structure inn, hotel, smallest_b;
 	Structure fabten, fabten2, fabten3, fabten4;
 	Structure barrel, barrel2, barrel3;
+	//Structure column;
 };
 #endif // __MODULESTRUCTURES_H__

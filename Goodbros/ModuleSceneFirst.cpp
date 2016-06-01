@@ -52,28 +52,17 @@ bool ModuleSceneFirst::Start()
 	App->structuresback->AddStructure(App->structuresback->smallest_b, 175, 42);
 	App->structuresmiddle->AddStructure(App->structuresmiddle->fabten, 0, 8);
 	App->structuresmiddle->AddStructure(App->structuresmiddle->bar, 145, 0);
+	//App->structuresfront->AddStructure(App->structuresfront->column, 155, 88);
 
-	// Enemies
-	//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY2, 10, 101, NULL, NULL);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY3, 50, 101, NULL, NULL);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_RIGHT_TUMBLE, 210, 107, NULL, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::CAN, SCREEN_WIDTH / 2 + 5, 130, NULL, NULL);
 	App->enemies->AddEnemy(ENEMY_TYPES::GIRL, 0, 105, NULL, NULL);
 	App->barrelroll->AddEnemy(ENEMY_TYPES::BARREL_ROLL, 0, 130, NULL, NULL);
-	//App->enemies->AddEnemy(ENEMY_TYPES::COUPLE_GUY, SCREEN_WIDTH - 100, 100, NULL, NULL);
-	//App->enemies->AddEnemy(ENEMY_TYPES::COUPLE_GIRL, SCREEN_WIDTH - 90, 100, NULL, NULL);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 110, NULL, NULL);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 90, NULL, 1000);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_LEFT, -14, 70, NULL, 2000);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 5000);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 7000);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BLUE_COWBOY_TOP_FABTEN, 50, 45, NULL, 9000);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_TOP_BAR, 205, 50, NULL, 5000);
 
 	App->structuresmiddle->bardest = false;
 	App->structuresmiddle->fabtendest = false;
 	couple = false;
 	poop = false;
+
 	//Barrels
 	App->structuresfront->AddStructure(App->structuresfront->barrel, 6, 144);
 	App->structuresfront->AddStructure(App->structuresfront->barrel, 38, 144);
@@ -130,6 +119,7 @@ update_status ModuleSceneFirst::Update()
 		App->enemiesfront->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_BIG_RIGHT, 250, 106, NULL, 5000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 107, NULL, 7000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 107, NULL, 7000);
+		App->enemies->AddEnemy(ENEMY_TYPES::PIG, 250, 137, NULL, 4000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_LEFT, -14, 100, NULL, 8000);
 		App->enemies->AddEnemy(ENEMY_TYPES::GREEN_COWBOY_MEDIUM_RIGHT, 250, 100, NULL, 8000);
 		App->enemies->AddEnemy(ENEMY_TYPES::HORSE_RIGHT, 250, 90, NULL, 9000);
@@ -163,7 +153,8 @@ update_status ModuleSceneFirst::Update()
 		}
 		time2 = SDL_GetTicks() + 16000;
 	}
-	if (SDL_GetTicks() > time4 + 9000){
+	if (SDL_GetTicks() > time4 + 9000)
+	{
 		App->enemiesback->AddEnemy(ENEMY_TYPES::WHEELBARROW, SCREEN_WIDTH, 98, NULL, 200);
 		App->enemiesback->AddEnemy(ENEMY_TYPES::WHEELBARROW, SCREEN_WIDTH, 98, NULL, 600);
 		App->enemiesback->AddEnemy(ENEMY_TYPES::WHEELBARROW, SCREEN_WIDTH, 98, NULL, 900);
