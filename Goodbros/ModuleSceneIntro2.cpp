@@ -24,11 +24,8 @@ bool ModuleSceneIntro2::Start()
 	
 	background = App->textures->Load("bloodbros/window inic.png");
 	App->audio->Load("bloodbros/TittleScreen.ogg");
-	App->introUI->Enable();
-	App->barrelroll->Enable();
-	App->points->Enable();
 	App->render->camera.x = App->render->camera.y = 0;
-
+	App->introUI->Enable();
 	return true;
 }
 
@@ -37,7 +34,6 @@ bool ModuleSceneIntro2::CleanUp()
 {
 	LOG("Unloading game intro");
 	App->textures->Unload(background);
-	App->introUI->Disable();
 	return true;
 }
 

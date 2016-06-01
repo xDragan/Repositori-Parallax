@@ -8,11 +8,9 @@
 #include "ModuleSceneWin.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
-#include "ModuleCollision.h"
-#include "ModuleParticles.h"
-#include "ModuleAim.h"
+#include "ModuleUIntro.h"
 #include "ModuleEnemies.h"
-#include "ModuleStructures.h"
+#include "ModuleParticles.h"
 #include "moduleUI.h"
 #include "SDL\include\SDL.h"
 
@@ -26,9 +24,11 @@ ModuleSceneWin::~ModuleSceneWin()
 bool ModuleSceneWin::Start()
 {
 	LOG("Loading win scene");	
-	App->scene_space->CleanUp();
 	App->scene_space->Disable();
+	App->particles->Disable();
 	App->enemies->Disable();
+	App->introUI->Disable();
+	App->UserUI->Disable();
 	ticks = SDL_GetTicks();
 	App->building_explosion->Disable();
 	background = App->textures->Load("bloodbros/win_scene.png");

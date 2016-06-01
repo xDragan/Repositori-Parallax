@@ -31,6 +31,7 @@ bool ModuleSceneFirst::Start()
 	// Loading various modules
 	App->particles->Start();
 	App->player->Enable();
+	App->particles->Enable();
 	App->enemiesback->Enable();
 	App->enemiesfront->Enable();
 	App->collision->Enable();
@@ -89,14 +90,10 @@ bool ModuleSceneFirst::CleanUp()
 	App->structuresmiddle->Disable();
 	App->structuresback->Disable();
 	App->enemies->Disable();
-	App->structuresfront->Disable();
-	App->structuresmiddle->Disable();
-	App->structuresback->Disable();
 	App->barrelroll->Disable();
 	App->points->Disable();
 	App->smoke->Disable();
 	App->collision->Disable();
-	App->UserUI->Disable();
 	App->enemiesfront->Disable();
 	App->enemiesback->Disable();
 	App->love->Disable();

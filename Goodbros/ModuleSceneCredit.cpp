@@ -5,15 +5,10 @@
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneFirst.h"
-#include "ModuleSceneWin.h"
 #include "ModuleAudio.h"
-#include "ModulePlayer.h"
-#include "ModuleCollision.h"
-#include "ModuleParticles.h"
 #include "ModuleAim.h"
-#include "ModuleEnemies.h"
-#include "ModuleStructures.h"
 #include "ModuleUI.h"
+#include "ModuleUIntro.h"
 #include "ModuleText.h"
 #include "ModuleSceneCredit.h"
 #include "SDL\include\SDL.h"
@@ -47,7 +42,7 @@ bool ModuleSceneCredit::CleanUp()
 {
 	LOG("Unloading title screen");
 	App->textures->Unload(background);
-	App->UserUI->Disable();
+	App->introUI->Disable();
 	App->UserUI->score = 0;
 	App->text->EraseText(player_name);
 	App->text->EraseText(score_counter);
