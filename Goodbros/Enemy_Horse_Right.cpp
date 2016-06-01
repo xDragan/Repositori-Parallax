@@ -4,6 +4,7 @@
 #include "ModulePlayer.h"
 #include "ModuleEnemies.h"
 #include "ModuleSceneFirst.h"
+#include "ModuleAudio.h"
 
 Enemy_Horse_Right::Enemy_Horse_Right(float x, float y) : Enemy(x, y)
 {
@@ -57,6 +58,11 @@ void Enemy_Horse_Right::Move()
 	if (position.x <= -50)
 	{
 		finished = true;
+	}
+	if (hit == true && App->particles->horse_hit.fx_played == false)
+	{
+		App->audio->PlayFx(App->particles->horse_hit.fx, 1000);
+		App->particles->horse_hit.fx_played = true;
 	}
 }
 

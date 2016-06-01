@@ -963,11 +963,16 @@ update_status ModulePlayer::Update()
 		break;
 	case WIN:
 		player_coll->type = COLLIDER_NONE;
-
+		if (App->particles->win_sound.fx_played == false)
+		{
+			App->audio->PlayFx(App->particles->win_sound.fx, 8050);
+			App->particles->win_sound.fx_played = true;
+		}
 		if (godmode == true)
 		{
 			current_animation = &gwindance;
-			if (current_animation == &gwindance){
+			if (current_animation == &gwindance)
+			{
 
 				if (position.x != 100 && winani == true)
 				{

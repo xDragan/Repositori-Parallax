@@ -105,8 +105,8 @@ bool ModuleStructures::Start()
 	bar4.Coll_Struct.h = 147;
 
 	bar.destroy.PushBack({ 490, 2266, 115, 147 });
-	bar.destroy.PushBack({ 490, 2266, 115, 132 });
-	bar.destroy.PushBack({ 490, 2266, 115, 121 });
+	bar.destroy.PushBack({ 490, 2266, 115, 128 });
+	bar.destroy.PushBack({ 490, 2266, 115, 118 });
 	bar.destroy.PushBack({ 490, 2266, 115, 110 });
 	bar.destroy.PushBack({ 490, 2266, 115, 99 });
 	bar.destroy.PushBack({ 490, 2266, 115, 87 });
@@ -118,7 +118,7 @@ bool ModuleStructures::Start()
 	bar.destroy.PushBack({ 490, 2266, 115, 12 });
 	bar.destroy.PushBack({ 490, 2266, 115, 4 });
 	bar.destroy.loop = false;
-	bar.destroy.speed = 0.05f;
+	bar.destroy.speed = 0.031f;
 
 	// GREY BUILDING
 	inn.Coll_Struct.x = 91;
@@ -170,7 +170,7 @@ bool ModuleStructures::Start()
 	fabten.destroy.PushBack({ 469, 2548, 105, 28 });
 	fabten.destroy.PushBack({ 469, 2548, 105, 18 });
 	fabten.destroy.loop = false;
-	fabten.destroy.speed = 0.05f;
+	fabten.destroy.speed = 0.031f;
 
 	// Smallest building
 	smallest_b.Coll_Struct.x = 289;
@@ -249,6 +249,11 @@ update_status ModuleStructures::Update()
 		}
 		if (active[i]->hits >= 4 && active[i]->mytype != BARREL && active[i]->mytype != INN)
 		{
+			if (App->particles->collapse.fx_played == false)
+			{
+				App->audio->PlayFx(App->particles->collapse.fx, 8000);
+				App->particles->collapse.fx_played = true;
+			}
 			App->collision->EraseCollider(p->collider);
 			if (p->position.y >= 120)
 			{
@@ -257,7 +262,7 @@ update_status ModuleStructures::Update()
 			}
 			else
 			{
-				App->render->Blit(graphics, p->position.x, p->position.y += 0.53f, &p->destroy.GetCurrentFrame());
+				App->render->Blit(graphics, p->position.x, p->position.y += 0.33f, &p->destroy.GetCurrentFrame());
 			}
 			if (p->destroy.Finished() == true && active[i]->destroyed == false)
 			{
@@ -374,7 +379,7 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 45, active[i]->position.y + 27, 10000, NULL);
 				active[i]->hits++;
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
-				App->audio->PlayFx(App->particles->collapse.fx, 2000);
+				App->particles->collapse.fx_played = false;
 				App->structuresback->cd1 += 0.5;
 				App->structuresmiddle->bardest = true;
 			}
@@ -428,8 +433,8 @@ void ModuleStructures::OnCollision(Collider* c1, Collider* c2)
 			{
 				App->points->AddEnemy(ENEMY_TYPES::POINTS, active[i]->position.x + 25, active[i]->position.y + 19, 10000, NULL);
 				active[i]->hits++;
-				App->audio->PlayFx(App->particles->collapse.fx, 2000);
 				App->smoke->AddParticle(App->particles->smoke, active[i]->position.x - 10, active[i]->position.y + 125, COLLIDER_NONE, 0);
+				App->particles->collapse.fx_played = false;
 				App->structuresback->cd1 += 0.5;
 				App->structuresmiddle->fabtendest = true;
 			}

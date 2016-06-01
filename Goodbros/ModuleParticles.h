@@ -75,6 +75,7 @@ public:
 	Particle barrel_exp;
 	Particle pig_hit;
 	Particle horse_hit;
+	Particle win_sound;
 };
 
 #endif // __MODULEPARTICLES_H__

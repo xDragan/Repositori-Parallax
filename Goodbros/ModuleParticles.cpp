@@ -169,8 +169,8 @@ ModuleParticles::ModuleParticles()
 	smoke.anim.PushBack({ 27, 77, 127, 30 });
 
 	smoke.anim.loop = true;
-	smoke.anim.speed = 0.14f;
-	smoke.life = 12000;
+	smoke.anim.speed = 0.09f;
+	smoke.life = 60000;
 
 	barrel.anim.PushBack({ 42, 452, 23, 41 });
 	barrel.anim.PushBack({ 94, 449, 47, 45 });
@@ -198,10 +198,11 @@ bool ModuleParticles::Start()
 	weapontake.fx = App->audio->LoadFx("bloodbros/took-weapon.wav");
 	bombthrow.fx = App->audio->LoadFx("bloodbros/bomb-throw.wav");
 	bombexplosion.fx = App->audio->LoadFx("bloodbros/explosion.wav");
-	collapse.fx = App->audio->LoadFx("bloodbros/building_collapse2.ogg");
+	collapse.fx = App->audio->LoadFx("bloodbros/bloodbro-051.wav");
 	barrel_exp.fx = App->audio->LoadFx("bloodbros/explosion_barrel.ogg");
 	pig_hit.fx = App->audio->LoadFx("bloodbros/pig_hit.wav");
 	horse_hit.fx = App->audio->LoadFx("bloodbros/horse_hit.wav");
+	win_sound.fx = App->audio->LoadFx("bloodbros/Victory.ogg");
 
 	return true;
 }

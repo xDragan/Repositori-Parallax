@@ -46,9 +46,10 @@ void Enemy_Rider_Medium::Move()
 	{
 		finished = true;
 	}
-	if (hit == true)
+	if (hit == true && App->particles->horse_hit.fx_played == false)
 	{
 		App->audio->PlayFx(App->particles->horse_hit.fx, 1000);
+		App->particles->horse_hit.fx_played = true;
 	}
 }
 

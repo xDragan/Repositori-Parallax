@@ -23,9 +23,13 @@ void Enemy_Pig::Move()
 {
 	position.y = original_y;
 	if (hit == false){ position.x -= 1; }
+	if (hit == true && App->particles->pig_hit.fx_played == false)
+	{
+		App->audio->PlayFx(App->particles->pig_hit.fx, 1000);
+		App->particles->pig_hit.fx_played = true;
+	}
 	if (hit == true)
 	{ 
-		App->audio->PlayFx(App->particles->pig_hit.fx, 1000);
 		position.x -= 3;
 	}
 }
