@@ -58,6 +58,3 @@ Marc López
 Marc Fabian
 Javier Ortiz
 
-
-// https://docs.google.com/document/d/1K-VrUWBbR4nnkExs_ooXRPzrOtSBx4APVlgG-u9j8ds/edit
-//Commit done in 27-4-2016 has the name of the owner wrong. It should be Marc López instead of Sergi21r.
